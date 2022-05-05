@@ -24,3 +24,7 @@ Route::get('/parceiros', function () {
 Route::get('/enderecos', function () {
     return view('static_views.enderecos');
 });
+
+Route::get('/associe', function () {
+    return view('static_views.associe');
+});
