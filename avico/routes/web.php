@@ -25,6 +25,8 @@ Route::get('/enderecos', function () {
     return view('static_views.enderecos');
 });
 
-Route::get('/associe', function () {
+Route::get('/inscricao', function () {
     return view('static_views.associe');
 });
+
+Route::post('store','App\Http\Controllers\AssocieController@store');
