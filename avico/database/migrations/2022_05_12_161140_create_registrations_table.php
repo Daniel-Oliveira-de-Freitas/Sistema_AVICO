@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('telefone', 100);
             $table->string('profissao', 100);
             $table->string('infectado', 100);
-            $table->string('descricao', 100);
-            $table->string('perda', 100);
+            $table->string('descricao') -> nullable();
+            $table->string('perda') -> nullable();
             $table->string('motivo', 10000);
             $table->string('voluntario', 100);
             $table->string('contribuicao') -> nullable();
