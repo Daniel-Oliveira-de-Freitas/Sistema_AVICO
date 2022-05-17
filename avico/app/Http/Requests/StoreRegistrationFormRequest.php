@@ -33,7 +33,6 @@ class StoreRegistrationFormRequest extends FormRequest
             'telefone' => 'required|numeric',
             'profissao' => 'required',
             'infectado' => 'required',
-            'descricao' => 'required',
             'perda' => 'required',
             'motivo' => 'required',
             'voluntario' => 'required',
