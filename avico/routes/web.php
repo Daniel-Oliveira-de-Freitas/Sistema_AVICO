@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/perguntasFrequentes', function () {
+    return view('static_views.perguntasFrequentes');
+});
+
 Route::get('/parceiros', function () {
     return view('static_views.parceiros');
 });
