@@ -9,6 +9,11 @@ use Illuminate\Support\Arr;
 
 class AssocieController extends Controller
 {
+
+    public function create(){
+        return view('static_views.associados.associe');
+    }
+
     public function store(StoreRegistrationFormRequest $request)
     {
         $inscrito = new Registration();

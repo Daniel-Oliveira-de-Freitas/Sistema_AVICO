@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('phone_number');
-            $table->string('state', 100);
-            $table->string('city', 100);
-            $table->string('profissao', 100);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
