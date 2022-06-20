@@ -24,20 +24,19 @@ class StoreRegistrationFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo' => 'required|string|max:10|min:9',
             'nome' => 'required|string|max:255|min:3',
-            'cidade' => 'required',
-            'estado' => 'required',
+            'dataNascimento' => 'required|date',
+            'genero' => 'required',
+            'cpf' => 'numeric',
+            'rg' => 'numeric',
+            'celular' =>'required|numeric|min:8|max:8',
+            'telefone_residencial' =>'numeric',
             'email' => [
                 'required', 'email', 'unique:registrations'
             ],
-            'telefone' => 'required|numeric',
-            'profissao' => 'required',
-            'infectado' => 'required',
-            'perda' => 'required',
-            'motivo' => 'required',
-            'voluntario' => 'required',
-            'contribuicao'=>'nullable',
-            'indicacoes'=>'nullable'
+            'endereco' => 'required'
+
         ];
     }
 }

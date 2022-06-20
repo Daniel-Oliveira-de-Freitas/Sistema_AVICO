@@ -10,7 +10,8 @@ use Illuminate\Support\Arr;
 class AssocieController extends Controller
 {
 
-    public function create(){
+    public function create()
+    {
         return view('static_views.associados.associe');
     }
 
@@ -26,7 +27,6 @@ class AssocieController extends Controller
         $inscrito->infectado =  $request->infectado;
         $inscrito->descricao = $request->descricao;
         $inscrito->perda =  $request->perda;
-        //$inscrito-> $request->vinculo; verificar se é necessario realizar a persistencia
         $motivos = $request->input('motivo');
         $motivoArray = array();
 
@@ -35,12 +35,60 @@ class AssocieController extends Controller
         }
 
         $inscrito->motivo = json_encode($motivoArray);
-        //$inscrito->motivo =  $request->motivo;
         $inscrito->voluntario = $request->voluntario;
         $inscrito->contribuicao = $request->contribuicao;
         $inscrito->indicacoes = $request->indicacoes;
         $inscrito->save();
 
         return redirect('/inscricao');
+    }
+
+
+
+    function verifyCPF($cpf)
+    {
+        $cpfToArray = str_split($cpf);
+        $tenthDigit = $cpfToArray[9];
+        $eleventhDigit = $cpfToArray[10];
+        array_pop($cpfToArray);
+        array_pop($cpfToArray);
+        $total = 0;
+        $multiplicador = 2;
+        
+        for ($index = 8; $index > 0; $index--) {
+            $total += $cpfToArray[$index] * $multiplicador;
+            $multiplicador++;
+        }
+        
+        $resto = $total % 11;
+        unset($total);
+        
+        if ($resto >= 2) {
+            $tenthShouldBe = 11 - $resto;
+            array_push($cpf, $tenthShouldBe);
+        } else {
+            $tenthShouldBe = 0;
+            array_push($cpf, $tenthShouldBe);
+        }
+        
+        $multiplicador = 2;
+        for ($index = 9; $index > 0; $index--) {
+            $total += $cpfToArray[$index] * $multiplicador;
+            $multiplicador++;
+        }
+
+        if ($resto >= 2) {
+            $eleventhShouldBe = 11 - $resto;
+            array_push($cpf, $eleventhShouldBe);
+        } else {
+            $eleventhShouldBe = 0;
+            array_push($cpf, $eleventhShouldBe);
+        }
+
+        if ($tenthDigit == $cpf[9] && $eleventhDigit == $cpf[10]) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
