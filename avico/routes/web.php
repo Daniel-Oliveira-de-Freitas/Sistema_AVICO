@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/perguntasFrequentes', function () {
-    return view('static_views.perguntasFrequentes');
+Route::get('/perguntas', function () {
+    return view('static_views.perguntas');
 });
 
 Route::get('/parceiros', function () {
