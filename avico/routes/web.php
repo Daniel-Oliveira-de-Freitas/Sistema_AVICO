@@ -30,10 +30,6 @@ Route::get('/enderecos', function () {
     return view('static_views.enderecos');
 });
 
-Route::get('/inscricao', [AssocieController::class, 'create']);
+Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
-Route::get('/teste', function () {
-    return view('static_views.associados.teste');
-});
-
-Route::post('store',[AssocieController::class, 'store'])->name('store.dados');
+Route::post('/inscricao/store',[AssocieController::class, 'store'])->name('inscricao.store');

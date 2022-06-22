@@ -2,6 +2,8 @@ $("#outrosData").removeAttr('required');
 $("#parentesco").removeAttr('required');
 $("#comprovanteMedico").removeAttr('required');
 $("#certidaoObito").removeAttr('required');
+$("#deposito").removeAttr('required');
+$("#pix").removeAttr('required');
 
 function outrosInputShow() {
     if (document.getElementById('outros').selected) {
@@ -42,7 +44,21 @@ function sobreviventeInputShow() {
     }
 }
 
-$('#nenhum:checkbox').click(function (e) {
+function associadoPagamentoRequired() {
+    if (document.getElementById('associado').checked == true) {
+        $("#deposito").attr('required', 'required');
+        $("#pix").attr('required', 'required');
+        $("#deposito").attr('data-parsley-required data-parsley-mincheck', 'data-parsley-required data-parsley-mincheck');
+        $("#pix").attr('data-parsley-required data-parsley-mincheck', 'data-parsley-required data-parsley-mincheck');
+    } else {
+        $("#deposito").removeAttr('required');
+        $("#pix").removeAttr('required');
+        $("#deposito").removeAttr('data-parsley-required data-parsley-mincheck', 'data-parsley-required data-parsley-mincheck');
+        $("#pix").removeAttr('data-parsley-required data-parsley-mincheck', 'data-parsley-required data-parsley-mincheck');
+    }
+}
+
+$('#nenhum:checkbox').click(function () {
     if ($(this).is(':checked')) {
         $('#familiar:checked').prop('checked', false);
         $('#sobrevivente:checked').prop('checked', false);
@@ -59,6 +75,7 @@ $('.tipo:checkbox').click(function (e) {
     if ($(this).is(':checked')) {
         $('.tipo:checked').prop('checked', false);
         $(this).prop('checked', true);
+        associadoPagamentoRequired();
     }
     else {
         e.preventDefault();
@@ -123,12 +140,12 @@ $(function () {
         })
     })
 
-
     $sections.each(function (index, section) {
         $(section).find(':input').attr('data-parsley-group', 'block-' + index);
     });
 
     navigateTo(0);
 });
-    $('form').parsley().options.requiredMessage = "Este campo é obrigatório"
-    $.Parsley.options.requiredMessage = "this field is required"
+
+$('form').parsley().options.requiredMessage = "Este campo é obrigatório"
+$.Parsley.options.requiredMessage = "this field is required"

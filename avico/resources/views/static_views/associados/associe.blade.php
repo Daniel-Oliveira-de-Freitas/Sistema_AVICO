@@ -9,11 +9,12 @@
     .form-content.current {
         display: inherit;
     }
+
     p {
         font-weight: bold
     }
 
-    .parsley-errors-list{
+    .parsley-errors-list {
         list-style: none;
         color: red;
     }
@@ -45,19 +46,22 @@
         <h1 class="text-center">Formulario de Cadastro Avico</h1>
         <div class="card-body">
             <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
-            <form action="{{ action('App\Http\Controllers\AssocieController@store') }}" method="POST" class="form-cadastro" >
+            <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('sucess001') !!}</small></h6>
+            <form action="{{route('inscricao.store') }}" method="POST"
+                class="form-cadastro">
                 @csrf
                 <div class="form-content">
                     <div class="mb-3">
                         <label>Deseja se tornar:</label>
                         <div>
                             <input class="tipo form-check-input" type="checkbox" name="tipo" id="voluntario"
-                            value="Voluntario" data-parsley-required data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma opção"> 
+                                value="Voluntario" data-parsley-required data-parsley-mincheck="1"
+                                data-parsley-required-message="Você deve selecionar uma opção">
                             <label class="form-check-label" for="voluntario">Voluntario</label>
                         </div>
                         <div class="form-check">
                             <input class="tipo form-check-input" type="checkbox" name="tipo" id="associado"
-                            value="Associado">
+                                value="Associado" onchange="fieldRequired()">
                             <label class="form-check-label" for="associado">Associado</label>
                         </div>
                     </div>
@@ -100,7 +104,8 @@
                                 informações via e-mail, WhatsApp, SMS sobre a associação. Este consentimento serve para
                                 atender aos requisitos da Lei nº 13.709/18 (Lei Geral de Proteção de Dados).
                             </p>
-                            <p class="associacao">4. Tenho ciência de que, ao solicitar o presente requerimento de associação à AVICO, devo
+                            <p class="associacao">4. Tenho ciência de que, ao solicitar o presente requerimento de
+                                associação à AVICO, devo
                                 conhecer e cumprir com o Estatuto Social, decisões internas e Regimentos Internos,
                                 incluindo, mas não se limitando, ao Código de Conduta, Políticas e Procedimentos, sob pena
                                 de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
@@ -124,7 +129,8 @@
                         <div class="form-check">
                             <label class="form-check-label">Masculino</label>
                             <input class="genero form-check-input" type="checkbox" name="genero" id="Masculino"
-                                value="Masculino" data-parsley-required data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma opção">
+                                value="Masculino" data-parsley-required data-parsley-mincheck="1"
+                                data-parsley-required-message="Você deve selecionar uma opção">
                         </div>
                         <div class="form-check">
                             <input class="genero form-check-input" type="checkbox" name="genero" id="Feminino"
@@ -146,7 +152,7 @@
                         <input class="form-control" type="number" name="rg" required>
                     </div>
                     <div class="mb-3">
-                        <label>Celular (DDD+número)</label>
+                        <label>Celular (DDD+número)*</label>
                         <input class="form-control" type="number" placeholder="(DDD+número)" name="celular" required>
                     </div>
                     <div class="mb-3">
@@ -163,7 +169,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Nº*</label>
-                        <input class="form-control" type="number" class="nmrEndereco" required>
+                        <input class="form-control" type="number" name="nmrEndereco" required>
                     </div>
                     <div class="mb-3">
                         <label>Complemento</label>
@@ -175,7 +181,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Bairro*</label>
-                        <input class="form-control" type="text" class="bairro" required>
+                        <input class="form-control" type="text" name="bairro" required>
                     </div>
                     <div class="mb-3">
                         <label>Cidade/UF*</label>
@@ -190,19 +196,21 @@
 
                         <div class="form-check">
                             <label for="">Sobrevivente da COVID-19</label>
-                            <input class="condicao form-check-input" type="checkbox" name="condicao" id="sobrevivente"
-                                value="Sobrevivente da COVID-19" onchange="condicaoChanged()" data-parsley-required data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma ou mais caixas"/>
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                id="sobrevivente" value="Sobrevivente da COVID-19" onchange="condicaoChanged()"
+                                data-parsley-required data-parsley-mincheck="1"
+                                data-parsley-required-message="Você deve selecionar uma ou mais caixas" />
                         </div>
                         <div class="form-check">
                             <label for="">Familiar de vítima da COVID-19</label>
 
-                            <input class="condicao form-check-input" type="checkbox" name="condicao" id="familiar"
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="familiar"
                                 value="Familiar de vítima da COVID-19" onchange="condicaoChanged()">
                         </div>
                         <div class="form-check">
                             <label for="">Nenhuma das alternativas acima</label>
 
-                            <input class="condicao form-check-input" type="checkbox" name="condicao" id="nenhum"
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="nenhum"
                                 value="Nenhuma das alternativas acima">
                         </div>
                     </div>
@@ -221,8 +229,13 @@
                         </select>
                         <div id="outrosInput">
                             <span>Por favor, especifique no campo abaixo:*</span>
-                            <input class="outrosData form-control" name="outro" id="outrosData" type="text" required>
+                            <input class="outrosData form-control" name="outro" id="outrosData" type="text"
+                                required>
                         </div>
+                    </div>
+                    <div class="form-check">
+                        <label for="senha">Digite sua senha:</label>
+                        <input class="password" type="password" required>
                     </div>
                 </div>
                 <div class="form-content mb-3">
@@ -241,7 +254,8 @@
                     <div class="form-check">
                         <label class="form-check-label">Depósito</label>
                         <input class="pagamento form-check-input" type="checkbox" name="pagamento" id="deposito"
-                            value="Depósito" data-parsley-required data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma ou mais condições">
+                            value="Depósito" data-parsley-required data-parsley-mincheck="1"
+                            data-parsley-required-message="Você deve selecionar uma ou mais condições">
                     </div>
 
                     <div class="form-check">
@@ -258,24 +272,30 @@
                     </p>
                     <div class="mb-3" id="rgCPF">
                         <label class="form-label" for="Cópia do RG/CPF">CPF/RG</label>
-                        <input class="form-control" type="file" name="cpf_rg" required>
+                        <input class="form-control" type="file" onchange="fileValidation()" name="cpf_rg[]"
+                            accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                     <div class="mb-3" id="comprovante">
                         <label class="form-label" for="">Cópia de Comprovante Médico de existência de sequelas da
                             COVID-19 (em caso de sobrevivente)
                         </label>
-                        <input class="form-control" type="file" name="comprovanteMedico"  id="comprovanteMedico" required>
+                        <input class="form-control" type="file" name="comprovanteMedico[]"
+                            onchange="fileValidation()" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg" multiple
+                            required>
                     </div>
                     <div class="mb-3" id="certidao_obito">
                         <label class="form-label" for="">Cópia da Certidão de Óbito da vítima (em caso de familiar
                             de vítima)
                         </label>
-                        <input class="form-control" type="file" name="certidaoObito" id="certidaoObito"  required>
+                        <input class="form-control" type="file" name="certidaoObito[]" onchange="fileValidation()"
+                            id="certidaoObito" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
 
                     <div class="mb-3" id="compEndereco">
                         <label class="form-label" for="">Cópia de Comprovante de Endereço</label>
-                        <input class="form-control" type="file" name="comprovanteEndereco" id="comprovanteEndereco" required>
+                        <input class="form-control" type="file" name="comprovanteEndereco[]"
+                            onchange="fileValidation()" id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple
+                            required>
                     </div>
                     <div class="mb-3" id="comprovanteRendaFamiliar">
                         <label class="form-label" for="">Para casos de isenção de contribuição (renda familiar
@@ -283,7 +303,8 @@
                             familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a renda
                             familiar.
                         </label>
-                        <input class="form-control" type="file" name="comprovanteRenda" required>
+                        <input class="form-control" type="file" onchange="fileValidation()" name="comprovanteRenda[]"
+                            accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                 </div>
 
@@ -295,5 +316,5 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/validations.js"></script>
 @endsection
