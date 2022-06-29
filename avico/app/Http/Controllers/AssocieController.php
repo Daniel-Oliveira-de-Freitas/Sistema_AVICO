@@ -17,29 +17,28 @@ class AssocieController extends Controller
     public function store(Request $request)
     {
         $inscrito = new Registration();
-        // $inscrito->tipo = $request->tipo;
+        $inscrito->tipo = $request->tipo;
         $inscrito->nome =  $request->nome;
         $inscrito->dataNascimento =  $request->dataNascimento;
         $inscrito->genero =  $request->genero;
         $inscrito->cpf =  $request->cpf;
         $inscrito->email =  $request->email;
-        $inscrito->password =  $request->senha;
-        // $inscrito->rg =  $request->rg;
-        // $inscrito->celular = $request->celular;
-        // $inscrito->telefone_residencial = $request->telefone_residencial;
-        // $inscrito->descricao = $request->descricao;
-        // $inscrito->endereco =  $request->endereco;
-        // $inscrito->nmrEndereco = $request->nmrEndereco;
-        // $inscrito->complemento = $request->complemento;
-        // $inscrito->cep = $request->cep;
-        // $inscrito->bairro = $request->bairro;
-        // $inscrito->cidade_uf = $request->cidade_uf;
-        // $inscrito->profissao = $request->profissao;
-        // $condicaos = $request->input('condicoes');
-        // $inscrito->condicao = $this->transformValuesInJson($condicaos);
-        // $inscrito->grauParentesco = $request->grauParentesco;
-        // $inscrito->outro = $request->outro;
-        // $inscrito->pagamento = $request->pagamento;
+        $inscrito->password =  $request->password;
+        $inscrito->rg =  $request->rg;
+        $inscrito->celular = $request->celular;
+        $inscrito->telefone_residencial = $request->telefone_residencial;
+        $inscrito->endereco =  $request->endereco;
+        $inscrito->nmrEndereco = $request->nmrEndereco;
+        $inscrito->complemento = $request->complemento;
+        $inscrito->cep = $request->cep;
+        $inscrito->bairro = $request->bairro;
+        $inscrito->cidade_uf = $request->cidade_uf;
+        $inscrito->profissao = $request->profissao;
+        $condicaos = $request->input('condicoes');
+        $inscrito->condicao = $this->transformValuesInJson($condicaos);
+        $inscrito->grauParentesco = $request->parentesco;
+        $inscrito->outro = $request->outro;
+        $inscrito->pagamento = $request->pagamento;
         // $inscrito->cpf_rg = $request->cpf_rg;
         // $inscrito->comprovanteMedico = $request->comprovanteMedico;
         // $inscrito->certidaoObito = $request->certidaoObito;
@@ -49,6 +48,15 @@ class AssocieController extends Controller
 
         return redirect()->route('inscricao.avico')->with('sucess001', "Cadastro realizado com sucesso!");
     }
+
+    function fileSave($req, $name){
+        $files = $req->file("{{$name}}");
+         foreach ($files as $cond) {
+                $imageName = '-image-'.time().rand(1,1000).'.'.$cond->extension();
+                $cond->move(public_path('product_images'),$imageName);
+                return $cond;
+            }
+        }
 
     function transformValuesInJson($value)
     {
