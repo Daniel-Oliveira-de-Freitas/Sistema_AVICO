@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AssocieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/perguntas', function () {
+    return view('static_views.perguntas');
+});
+
 Route::get('/parceiros', function () {
     return view('static_views.parceiros');
 });
@@ -24,3 +29,7 @@ Route::get('/parceiros', function () {
 Route::get('/enderecos', function () {
     return view('static_views.enderecos');
 });
+
+Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
+
+Route::post('/inscricao/store',[AssocieController::class, 'store'])->name('inscricao.store');
