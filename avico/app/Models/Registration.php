@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
+
     protected $fillable = [
+        'id',
         'tipo',
         'nome',
         'dataNascimento',
@@ -34,5 +36,17 @@ class Registration extends Model
         'certidaoObito',
         'comprovanteEndereco',
         'comprovanteRenda',
+        'file_id'
     ];
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
+
+    public function getCondicoesAttribute()
+    {
+        return json_decode($this->attributes['filenames']);
+    }
 }
