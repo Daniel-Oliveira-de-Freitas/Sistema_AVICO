@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegistrationFormRequest;
+use App\Models\File;
 use App\Models\Registration as Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -14,7 +16,7 @@ class AssocieController extends Controller
         return view('static_views.associados.associe');
     }
 
-    public function store(Request $request)
+    public function store(StoreRegistrationFormRequest $request)
     {
         $inscrito = new Registration();
         $inscrito->tipo = $request->tipo;
@@ -36,27 +38,30 @@ class AssocieController extends Controller
         $inscrito->profissao = $request->profissao;
         $condicaos = $request->input('condicoes');
         $inscrito->condicao = $this->transformValuesInJson($condicaos);
-        $inscrito->grauParentesco = $request->parentesco;
+        $grau =  $request->parentesco;
+        $inscrito->grauParentesco = $grau;
         $inscrito->outro = $request->outro;
         $inscrito->pagamento = $request->pagamento;
-        // $inscrito->cpf_rg = $request->cpf_rg;
-        // $inscrito->comprovanteMedico = $request->comprovanteMedico;
-        // $inscrito->certidaoObito = $request->certidaoObito;
-        // $inscrito->comprovanteEndereco = $request->comprovanteEndereco;
-        // $inscrito->comprovanteRenda = $request->comprovanteRenda;
         $inscrito->save();
-
+        $file = new File();
+        $file->filenames =  $this->storageFile($request);
+        $file->registration_id = $inscrito->id;
+        $file->save();
         return redirect()->route('inscricao.avico')->with('sucess001', "Cadastro realizado com sucesso!");
     }
 
-    function fileSave($req, $name){
-        $files = $req->file("{{$name}}");
-         foreach ($files as $cond) {
-                $imageName = '-image-'.time().rand(1,1000).'.'.$cond->extension();
-                $cond->move(public_path('product_images'),$imageName);
-                return $cond;
+    public function storageFile($request)
+    {
+        $filesArray = [];
+        if ($request->hasfile('filenames')) {
+            foreach ($request->file('filenames') as $file) {
+                $name = $file->getClientOriginalName() . '.' . $file->extension();
+                $file->move(public_path('files'), $name);
+                $filesArray[] = $name;
             }
         }
+        return $filesArray;
+    }
 
     function transformValuesInJson($value)
     {

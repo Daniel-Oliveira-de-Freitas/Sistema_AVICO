@@ -79,15 +79,15 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.name("nome")).sendKeys("Teste");
             driver.findElement(By.name("dataNascimento")).sendKeys("12/03/2002");
             generoRandom();
-            driver.findElement(By.name("cpf")).sendKeys("102398128192");
-            driver.findElement(By.name("rg")).sendKeys("12321312321523");
-            driver.findElement(By.name("celular")).sendKeys("1293821031");
-            driver.findElement(By.name("telefone_residencial")).sendKeys("102398128192");
-            driver.findElement(By.name("email")).sendKeys("sla@gmail.com");
+            driver.findElement(By.name("cpf")).sendKeys("10239812819");
+            driver.findElement(By.name("rg")).sendKeys("23213123213");
+            driver.findElement(By.name("celular")).sendKeys("1256119111");
+            driver.findElement(By.name("telefone_residencial")).sendKeys("1256119111");
+            driver.findElement(By.name("email")).sendKeys("sla19@gmail.com");
             driver.findElement(By.name("endereco")).sendKeys("102398128192");
             driver.findElement(By.name("nmrEndereco")).sendKeys("102398128192");
             driver.findElement(By.name("complemento")).sendKeys("102398128192");
-            driver.findElement(By.name("cep")).sendKeys("102398128192");
+            driver.findElement(By.name("cep")).sendKeys("10239812");
             driver.findElement(By.name("bairro")).sendKeys("102398128192");
             driver.findElement(By.name("cidade_uf")).sendKeys("102398128192");
             driver.findElement(By.name("profissao")).sendKeys("qoskwokows");
@@ -100,16 +100,16 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.className(BTN_NEXT)).click();
             pagamentoRandom();
             driver.findElement(By.className(BTN_NEXT)).click();
-            driver.findElement(By.name("cpf_rg[]")).sendKeys("C:/selenium/img/csnn.png");
+            driver.findElement(By.id("cpf_rg")).sendKeys("C:/selenium/img/csnn.png");
             if (letra.equals("s")) {
-                driver.findElement(By.name("comprovanteMedico[]")).sendKeys("C:/selenium/img/csnn.png");
+                driver.findElement(By.id("comprovanteMedico")).sendKeys("C:/selenium/img/csnn.png");
             } else if (letra.equals("f")) {
-                driver.findElement(By.name("certidaoObito[]")).sendKeys("C:/selenium/img/csnn2.png");
+                driver.findElement(By.id("certidaoObito")).sendKeys("C:/selenium/img/csnn2.png");
             }
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.name("comprovanteEndereco[]")).sendKeys("C:/selenium/img/csnn2.png");
-            driver.findElement(By.name("comprovanteRenda[]")).sendKeys("C:/selenium/img/csnn2.png");
+            driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/csnn2.png");
+            driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/csnn2.png");
           driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -152,16 +152,16 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.className(BTN_NEXT)).click();
             pagamentoRandom();
             driver.findElement(By.className(BTN_NEXT)).click();
-            driver.findElement(By.name("cpf_rg[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("cpf_rg")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             if (letra.equals("s")) {
-                driver.findElement(By.name("comprovanteMedico[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+                driver.findElement(By.id("comprovanteMedico")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             } else if (letra.equals("f")) {
-                driver.findElement(By.name("certidaoObito[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+                driver.findElement(By.id("certidaoObito")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             }
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.name("comprovanteEndereco[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
-            driver.findElement(By.name("comprovanteRenda[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
           driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -235,15 +235,15 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.name("nome")).sendKeys("Teste");
             driver.findElement(By.name("dataNascimento")).sendKeys("12/03/2002");
             generoRandom();
-            driver.findElement(By.name("cpf")).sendKeys("102398128192");
-            driver.findElement(By.name("rg")).sendKeys("12321312321523");
+            driver.findElement(By.name("cpf")).sendKeys("10239812819");
+            driver.findElement(By.name("rg")).sendKeys("10239812819");
             driver.findElement(By.name("celular")).sendKeys("1293821031");
-            driver.findElement(By.name("telefone_residencial")).sendKeys("102398128192");
+            driver.findElement(By.name("telefone_residencial")).sendKeys("10239812812");
             driver.findElement(By.name("email")).sendKeys("sla@gmail.com");
             driver.findElement(By.name("endereco")).sendKeys("102398128192");
             driver.findElement(By.name("nmrEndereco")).sendKeys("102398128192");
             driver.findElement(By.name("complemento")).sendKeys("102398128192");
-            driver.findElement(By.name("cep")).sendKeys("102398128192");
+            driver.findElement(By.name("cep")).sendKeys("1023981");
             driver.findElement(By.name("bairro")).sendKeys("102398128192");
             driver.findElement(By.name("cidade_uf")).sendKeys("102398128192");
             driver.findElement(By.name("profissao")).sendKeys("qoskwokows");
@@ -254,16 +254,16 @@ public class FormularioInscricaoTeste {
             Thread.sleep(1000);
             driver.findElement(By.className("password")).sendKeys("1234");
             driver.findElement(By.className(BTN_NEXT)).click();
-            driver.findElement(By.name("cpf_rg[]")).sendKeys("C:/selenium/img/csnn.png");
+            driver.findElement(By.id("cpf_rg")).sendKeys("C:/selenium/img/csnn.png");
             if (letra.equals("s")) {
-                driver.findElement(By.name("comprovanteMedico[]")).sendKeys("C:/selenium/img/csnn.png");
+                driver.findElement(By.id("comprovanteMedico")).sendKeys("C:/selenium/img/csnn.png");
             } else if (letra.equals("f")) {
-                driver.findElement(By.name("certidaoObito[]")).sendKeys("C:/selenium/img/csnn2.png");
+                driver.findElement(By.id("certidaoObito")).sendKeys("C:/selenium/img/csnn2.png");
             }
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.name("comprovanteEndereco[]")).sendKeys("C:/selenium/img/csnn2.png");
-            driver.findElement(By.name("comprovanteRenda[]")).sendKeys("C:/selenium/img/csnn2.png");
+            driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/csnn2.png");
+            driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/csnn2.png");
           driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -306,16 +306,16 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.className(BTN_NEXT)).click();
             pagamentoRandom();
             driver.findElement(By.className(BTN_NEXT)).click();
-            driver.findElement(By.name("cpf_rg[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("cpf_rg")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             if (letra.equals("s")) {
-                driver.findElement(By.name("comprovanteMedico[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+                driver.findElement(By.id("comprovanteMedico")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             } else if (letra.equals("f")) {
-                driver.findElement(By.name("certidaoObito[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+                driver.findElement(By.id("certidaoObito")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
             }
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.name("comprovanteEndereco[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
-            driver.findElement(By.name("comprovanteRenda[]")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
+            driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/Crash Bandicoot - The Wrath of Cortex (USA) (v1.01).bin");
           driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();

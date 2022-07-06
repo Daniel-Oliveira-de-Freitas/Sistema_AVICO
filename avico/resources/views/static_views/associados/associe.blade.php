@@ -44,11 +44,19 @@
 @section('content')
     <div class="container rows col-md-6 offset-md-3 ">
         <h1 class="text-center">Formulario de Cadastro Avico</h1>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="card-body">
             <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
             <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('sucess001') !!}</small></h6>
-            <form action="{{route('inscricao.store') }}" method="POST"
-                class="form-cadastro">
+            <form action="{{route('inscricao.store') }}" method="POST" class="form-cadastro" enctype="multipart/form-data">
                 @csrf
                 <div class="form-content">
                     <div class="mb-3">
@@ -225,7 +233,7 @@
                             </option>
                             <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em linha
                                 colateral (tio/tia, sobrinho/sobrinha)</option>
-                            <option id="outros">Outros</option>
+                            <option id="outros" value="outros">Outros</option>
                         </select>
                         <div id="outrosInput">
                             <span>Por favor, especifique no campo abaixo:*</span>
@@ -272,30 +280,30 @@
                     </p>
                     <div class="mb-3" id="rgCPF">
                         <label class="form-label" for="Cópia do RG/CPF">CPF/RG</label>
-                        <input class="form-control" type="file" onchange="fileValidation()" name="cpf_rg[]"
-                            accept="image/.jpg,.png,.jpeg" multiple required>
+                        <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]" id="cpf_rg"
+                         accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                     <div class="mb-3" id="comprovante">
                         <label class="form-label" for="">Cópia de Comprovante Médico de existência de sequelas da
                             COVID-19 (em caso de sobrevivente)
                         </label>
-                        <input class="form-control" type="file" name="comprovanteMedico[]"
-                            onchange="fileValidation()" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg" multiple
-                            required>
+                        <input class="form-control" type="file" name="filenames[]"
+                            onchange="fileValidation()" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg"
+                            multiple required>
                     </div>
                     <div class="mb-3" id="certidao_obito">
                         <label class="form-label" for="">Cópia da Certidão de Óbito da vítima (em caso de familiar
                             de vítima)
                         </label>
-                        <input class="form-control" type="file" name="certidaoObito[]" onchange="fileValidation()"
+                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
                             id="certidaoObito" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
 
                     <div class="mb-3" id="compEndereco">
                         <label class="form-label" for="">Cópia de Comprovante de Endereço</label>
-                        <input class="form-control" type="file" name="comprovanteEndereco[]"
-                            onchange="fileValidation()" id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple
-                            required>
+                        <input class="form-control" type="file" name="filenames[]"
+                            onchange="fileValidation()" id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg"
+                            multiple required>
                     </div>
                     <div class="mb-3" id="comprovanteRendaFamiliar">
                         <label class="form-label" for="">Para casos de isenção de contribuição (renda familiar
@@ -303,7 +311,7 @@
                             familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a renda
                             familiar.
                         </label>
-                        <input class="form-control" type="file" onchange="fileValidation()" name="comprovanteRenda[]"
+                        <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]" id="comprovanteRenda"
                             accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                 </div>
