@@ -5,7 +5,7 @@
     <table class="table align-middle table-bordered">
         <thead class="table-dark">
             <tr>
-                <th scope="col">id inscricão</th>
+                {{-- <th scope="col">id inscricão</th> --}}
                 <th scope="col">Nome</th>
                 <th scope="col">Genêro</th>
                 <th scope="col">Tipo associação</th>
@@ -20,9 +20,9 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($inscricoes as $inscricao)
             <tr>
-                @foreach ($inscricoes as $inscricao)
-                    <th scope="row">{{ $inscricao->id }}</th>
+                    {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
                     <td>{{ $inscricao->nome }}</td>
                     <td>{{ $inscricao->genero }}</td>
                     <td>{{ $inscricao->tipo }}</td>

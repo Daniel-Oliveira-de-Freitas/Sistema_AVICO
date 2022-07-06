@@ -28,7 +28,7 @@ class StoreRegistrationFormRequest extends FormRequest
             'nome' => 'required|string|max:255|min:3',
             'dataNascimento' => 'required|date',
             'genero' => 'required',
-            'cpf' => 'required|numeric|digits_between:10,11',
+            'cpf' => 'required|numeric|unique:registrations|digits_between:10,11',
             'rg' => 'required|numeric|digits_between:9,11',
             'celular' =>'required|numeric|digits_between:10,11',
             'telefone_residencial' =>'numeric|digits_between:9,11',
