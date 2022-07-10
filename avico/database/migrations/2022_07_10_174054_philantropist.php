@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('parentesco', function (Blueprint $table) {
+        Schema::create('philanthropist', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('person_id');
+            $table->enum('paymentType', ['pix', 'deposito']);
+            $table->timestamps();
+
+            $table->foreign('person_id')->references('id')->on('person')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('philanthropist');
+        
     }
 };
