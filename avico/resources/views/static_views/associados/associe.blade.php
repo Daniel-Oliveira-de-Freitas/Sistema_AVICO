@@ -1,48 +1,44 @@
 @extends('layouts.app')
 @section('title', 'Formulário para associar-se a Avico')
-<link rel="stylesheet" href="/css/style.css">
 <style>
     .form-content {
         display: none;
     }
-
     .form-content.current {
         display: inherit;
     }
-
     p {
         font-weight: bold
     }
-
     .parsley-errors-list {
         list-style: none;
         color: red;
     }
-
     .btn-info,
     .btn-sucess {
         margin-top: 10px;
+        margin-bottom: 80px;
+        display: block;
     }
-
     #grauParentesco {
         display: none;
     }
-
     #outrosInput {
         display: none;
     }
-
     #certidao_obito {
         display: none;
     }
-
     #comprovante {
         display: none;
+    }
+    .form_body{
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     }
 </style>
 
 @section('content')
-    <div class="container rows col-md-6 offset-md-3 ">
+    <div class="form_body container rows col-md-6 offset-md-3 ">
         <h1 class="text-center">Formulario de Cadastro Avico</h1>
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -52,7 +48,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+            @endif
         <div class="card-body">
             <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
             <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('sucess001') !!}</small></h6>
@@ -76,7 +72,8 @@
                 </div>
                 <div class="form-content">
                     <div class="form-group">
-                        <div class="text-sm-start">
+                        <div class="text-sm-start form-check">
+                        
                             <h1 class="text-center mb-12">TERMO DE ASSOCIAÇÃO</h1>
                             <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo vedado o
                                 uso
@@ -118,52 +115,63 @@
                                 incluindo, mas não se limitando, ao Código de Conduta, Políticas e Procedimentos, sob pena
                                 de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
                         </div>
-                        <input id="termos" name="termos" type="checkbox" required>
+
+                        <input id="termos" name="termos" class=" form-check-input" type="checkbox" required>
                         <label for="termos">Concorda com os termos de associação?*</label>
                     </div>
                 </div>
 
                 <div class="form-content">
-                    <div class="form-group">
-                        <span>Nome completo*</label>
-                            <input class="form-control form-control-lg text-break" type="text" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Data de Nascimento*</label>
-                        <input class="form-control" type="date" name="dataNascimento">
-                    </div>
-                    <div class="form-group">
-                        <label>Gênero*</label>
-                        <div class="form-check">
-                            <label class="form-check-label">Masculino</label>
+                    <div class="row">
+                        <div class="form-group col">
+                            <span>Nome completo*</label>
+                                <input class="form-control form-control-lg text-break" type="text" name="nome" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Data de Nascimento*</label>
+                                <input class="form-control" type="date" name="dataNascimento">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="senha">Digite sua senha:</label>
+                                <input class="password  form-control" type="password" id="password" required>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="senha">Confirmar senha:</label>
+                                <input class="form-control" type="password" id="confirmPassword" required>
+                                <span id='message'></span>
+                            </div>
+                            <div class="mb-3 form-group">
+                                <label>Gênero*</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">Masculino</label>
                             <input class="genero form-check-input" type="checkbox" name="genero" id="Masculino"
                                 value="Masculino" data-parsley-required data-parsley-mincheck="1"
                                 data-parsley-required-message="Você deve selecionar uma opção">
-                        </div>
-                        <div class="form-check">
+                            </div>
+                            <div class="form-check">
                             <input class="genero form-check-input" type="checkbox" name="genero" id="Feminino"
-                                value="Feminino">
+                            value="Feminino">
                             <label class="form-check-label">Feminino</label>
                         </div>
                         <div class="form-check">
                             <input class="genero form-check-input" type="checkbox" name="genero" id="Neutro"
-                                value="Neutro">
+                            value="Neutro">
                             <label class="form-check-label">Neutro</label>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label>CPF*</label>
                         <input class="form-control" type="number" name="cpf" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label>RG*</label>
                         <input class="form-control" type="number" name="rg" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label>Celular (DDD+número)*</label>
                         <input class="form-control" type="number" placeholder="(DDD+número)" name="celular" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label>Telefone residencial (DDD+número)</label>
                         <input class="form-control" type="number" placeholder="(DDD+número)" name="telefone_residencial">
                     </div>
@@ -171,31 +179,31 @@
                         <label>E-mail*</label>
                         <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label>Endereço*</label>
                         <input class="form-control" type="text" name="endereco" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-2">
                         <label>Nº*</label>
                         <input class="form-control" type="number" name="nmrEndereco" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-4">
                         <label>Complemento</label>
                         <input class="form-control" type="text" name="complemento">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-3">
                         <label>CEP*</label>
                         <input class="form-control" type="text" name="cep" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-4">
                         <label>Bairro*</label>
                         <input class="form-control" type="text" name="bairro" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-5">
                         <label>Cidade/UF*</label>
                         <input class="form-control" type="text" name="cidade_uf" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 ">
                         <label>Profissão</label>
                         <input class="form-control" type="text" name="profissao">
                     </div>
@@ -205,47 +213,44 @@
                         <div class="form-check">
                             <label for="">Sobrevivente da COVID-19</label>
                             <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                                id="sobrevivente" value="Sobrevivente da COVID-19" onchange="condicaoChanged()"
-                                data-parsley-required data-parsley-mincheck="1"
-                                data-parsley-required-message="Você deve selecionar uma ou mais caixas" />
+                            id="sobrevivente" value="Sobrevivente da COVID-19" onchange="condicaoChanged()"
+                            data-parsley-required data-parsley-mincheck="1"
+                            data-parsley-required-message="Você deve selecionar uma ou mais caixas" />
                         </div>
                         <div class="form-check">
-                            <label for="">Familiar de vítima da COVID-19</label>
-
-                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="familiar"
+                                <label for="">Familiar de vítima da COVID-19</label>
+                                
+                                <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="familiar"
                                 value="Familiar de vítima da COVID-19" onchange="condicaoChanged()">
-                        </div>
-                        <div class="form-check">
-                            <label for="">Nenhuma das alternativas acima</label>
-
-                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="nenhum"
+                            </div>
+                            <div class="form-check">
+                                <label for="">Nenhuma das alternativas acima</label>
+                                
+                                <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="nenhum"
                                 value="Nenhuma das alternativas acima">
+                            </div>
                         </div>
-                    </div>
-                    <div id="grauParentesco" class="mb-3">
-                        <label>Qual o grau de parentesco com a vítima?*</label>
-                        <select onchange="outrosInputShow()" class="parentesco" id="parentesco" required>
-                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
+                        <div id="grauParentesco" class="mb-3">
+                            <label>Qual o grau de parentesco com a vítima?*</label>
+                            <select onchange="outrosInputShow()" class="parentesco" id="parentesco" required>
+                                <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
                             <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha reta (pai/mãe,
                                 filho/filha)</option>
-                            <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha reta (avô/avó,
-                                neto/neta)
-                            </option>
-                            <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em linha
-                                colateral (tio/tia, sobrinho/sobrinha)</option>
+                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha reta (avô/avó,
+                                    neto/neta)
+                                </option>
+                                <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em linha
+                                    colateral (tio/tia, sobrinho/sobrinha)</option>
                             <option id="outros" value="outros">Outros</option>
                         </select>
                         <div id="outrosInput">
                             <span>Por favor, especifique no campo abaixo:*</span>
                             <input class="outrosData form-control" name="outro" id="outrosData" type="text"
-                                required>
+                            required>
                         </div>
                     </div>
-                    <div class="form-check">
-                        <label for="senha">Digite sua senha:</label>
-                        <input class="password" type="password" required>
-                    </div>
                 </div>
+            </div>
                 <div class="form-content mb-3">
                     <p>1. Tornando-se associado, você está ciente do pagamento do valor de R$ 40,00 (quarenta reais) mensais
                         a
@@ -316,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="form-navigation">
+                <div class="form-navigation mb-3 d-grid gap-1 d-md-flex justify-content-md-center">
                     <button type="button" class="previous btn btn-info float-left">Anterior</button>
                     <button type="button" class="next btn btn-info float-right">Proximo</button>
                     <button type="submit" class="btn btn-sucess float-right">Submit</button>
