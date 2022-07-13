@@ -2,6 +2,7 @@
 @section('title', 'Listagem de inscrições');
 
 @section('content')
+<div>
     <table class="table align-middle table-bordered">
         <thead class="table-dark">
             <tr>
@@ -22,20 +23,21 @@
         <tbody>
             @foreach ($inscricoes as $inscricao)
             <tr>
-                    {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
-                    <td>{{ $inscricao->nome }}</td>
-                    <td>{{ $inscricao->genero }}</td>
-                    <td>{{ $inscricao->tipo }}</td>
-                    <td>{{ $inscricao->pagamento }}</td>
-                    <td>{{ $inscricao->email }}</td>
-                    <td>{{ $inscricao->cpf }}</td>
-                    <td>{{ $inscricao->rg }}</td>
-                    <td>{{ $inscricao->condicao }}</td>
-                    <td>{{ $inscricao->cidade_uf }}</td>
-                    <td><a href=""><button>Download Arquivos</button></a></td>
-                    <td><button>Deferir</button> <button>Indeferir</button></td>
+                {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
+                <td>{{ $inscricao->nome }}</td>
+                <td>{{ $inscricao->genero }}</td>
+                <td>{{ $inscricao->tipo }}</td>
+                <td>{{ $inscricao->pagamento }}</td>
+                <td>{{ $inscricao->email }}</td>
+                <td>{{ $inscricao->cpf }}</td>
+                <td>{{ $inscricao->rg }}</td>
+                <td>{{ $inscricao->condicao }}</td>
+                <td>{{ $inscricao->cidade_uf }}</td>
+                <td><a href=""><button>Download Arquivos</button></a></td>
+                <td><button>Deferir</button> <button>Indeferir</button></td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
 @endsection

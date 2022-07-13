@@ -58,6 +58,13 @@ function associadoPagamentoRequired() {
     }
 }
 
+$('#password, #confirmPassword').on('keyup', function () {
+    if ($('#password').val() == $('#confirmPassword').val()) {
+        $('#message').html('As senhas são identicas').css('color', 'green');
+    } else
+        $('#message').html('As senhas não são identicas').css('color', 'red');
+});
+
 $('#nenhum:checkbox').click(function () {
     if ($(this).is(':checked')) {
         $('#familiar:checked').prop('checked', false);
@@ -73,12 +80,7 @@ $('#nenhum:checkbox').click(function () {
 
 $('.tipo:checkbox').click(function (e) {
     if ($(this).is(':checked')) {
-        $('.tipo:checked').prop('checked', false);
-        $(this).prop('checked', true);
         associadoPagamentoRequired();
-    }
-    else {
-        e.preventDefault();
     }
 });
 
@@ -123,7 +125,9 @@ $(function () {
     }
 
     $('.form-navigation .previous').click(function () {
-        if (document.getElementById('voluntario').checked && currentIndex() == 4)
+        if (document.getElementById('voluntario').checked && document.getElementById('associado').checked && currentIndex() == 4)
+            navigateTo(currentIndex() - 1);
+        else if (document.getElementById('voluntario').checked && currentIndex() == 4)
             navigateTo(currentIndex() - 2)
         else
             navigateTo(currentIndex() - 1);
@@ -133,7 +137,9 @@ $(function () {
         $('.form-cadastro').parsley().whenValidate({
             group: 'block-' + currentIndex()
         }).done(function () {
-            if (document.getElementById('voluntario').checked && currentIndex() == 2)
+            if (document.getElementById('voluntario').checked && document.getElementById('associado').checked && currentIndex() == 2)
+            navigateTo(currentIndex() + 1)
+            else if (document.getElementById('voluntario').checked && currentIndex() == 2)
                 navigateTo(currentIndex() + 2)
             else
                 navigateTo(currentIndex() + 1)

@@ -1,10 +1,7 @@
 <style>
-    footer {
-        background-color: rgb(227, 227, 227);
-    }
-    .center {
-        text-align: center;
-    }
+    .content {
+  flex: 1 0 auto;
+}
 </style>
 <footer>
     <div>
