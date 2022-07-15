@@ -44,6 +44,12 @@
         #content {
             min-height: 100%;
         }
+
+        body{
+            position: relative;
+            overflow-x: hidden;
+            padding-top: 120px; 
+        }
     </style>
 </head>
 
