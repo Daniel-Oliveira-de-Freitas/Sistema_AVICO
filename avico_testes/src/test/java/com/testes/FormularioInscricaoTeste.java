@@ -78,8 +78,10 @@ public class FormularioInscricaoTeste {
             Thread.sleep(2000);
             driver.findElement(By.name("nome")).sendKeys("Teste");
             driver.findElement(By.name("dataNascimento")).sendKeys("12/03/2002");
+            driver.findElement(By.className("password")).sendKeys("1234");
+            driver.findElement(By.id("confirmPassword")).sendKeys("1234");
             generoRandom();
-            driver.findElement(By.name("cpf")).sendKeys("10239812819");
+            driver.findElement(By.name("cpf")).sendKeys("10233812819");
             driver.findElement(By.name("rg")).sendKeys("23213123213");
             driver.findElement(By.name("celular")).sendKeys("1256119111");
             driver.findElement(By.name("telefone_residencial")).sendKeys("1256119111");
@@ -96,7 +98,6 @@ public class FormularioInscricaoTeste {
             String letra = condicaoRandom();
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.className("password")).sendKeys("1234");
             driver.findElement(By.className(BTN_NEXT)).click();
             pagamentoRandom();
             driver.findElement(By.className(BTN_NEXT)).click();
@@ -110,7 +111,7 @@ public class FormularioInscricaoTeste {
             Thread.sleep(1000);
             driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/csnn2.png");
             driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/csnn2.png");
-          driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
+          driver.findElement(By.xpath("/html/body/div/section/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -234,16 +235,18 @@ public class FormularioInscricaoTeste {
             Thread.sleep(2000);
             driver.findElement(By.name("nome")).sendKeys("Teste");
             driver.findElement(By.name("dataNascimento")).sendKeys("12/03/2002");
+            driver.findElement(By.className("password")).sendKeys("1234");
+            driver.findElement(By.id("confirmPassword")).sendKeys("1234");
             generoRandom();
-            driver.findElement(By.name("cpf")).sendKeys("10239812819");
-            driver.findElement(By.name("rg")).sendKeys("10239812819");
+            driver.findElement(By.name("cpf")).sendKeys("102398122222819");
+            driver.findElement(By.name("rg")).sendKeys("10239812222819");
             driver.findElement(By.name("celular")).sendKeys("1293821031");
             driver.findElement(By.name("telefone_residencial")).sendKeys("10239812812");
-            driver.findElement(By.name("email")).sendKeys("sla@gmail.com");
+            driver.findElement(By.name("email")).sendKeys("sla2@gmail.com");
             driver.findElement(By.name("endereco")).sendKeys("102398128192");
             driver.findElement(By.name("nmrEndereco")).sendKeys("102398128192");
             driver.findElement(By.name("complemento")).sendKeys("102398128192");
-            driver.findElement(By.name("cep")).sendKeys("1023981");
+            driver.findElement(By.name("cep")).sendKeys("10239222222281");
             driver.findElement(By.name("bairro")).sendKeys("102398128192");
             driver.findElement(By.name("cidade_uf")).sendKeys("102398128192");
             driver.findElement(By.name("profissao")).sendKeys("qoskwokows");
@@ -252,7 +255,6 @@ public class FormularioInscricaoTeste {
             String letra = condicaoRandom();
             action.sendKeys(Keys.PAGE_DOWN).build().perform();
             Thread.sleep(1000);
-            driver.findElement(By.className("password")).sendKeys("1234");
             driver.findElement(By.className(BTN_NEXT)).click();
             driver.findElement(By.id("cpf_rg")).sendKeys("C:/selenium/img/csnn.png");
             if (letra.equals("s")) {
@@ -264,7 +266,7 @@ public class FormularioInscricaoTeste {
             Thread.sleep(1000);
             driver.findElement(By.id("comprovanteEndereco")).sendKeys("C:/selenium/img/csnn2.png");
             driver.findElement(By.id("comprovanteRenda")).sendKeys("C:/selenium/img/csnn2.png");
-          driver.findElement(By.xpath("/html/body/div/div/div/form/div[6]/button[3]")).click();
+            driver.findElement(By.xpath("/html/body/div/section/div/div/form/div[6]/button[3]")).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -289,7 +291,7 @@ public class FormularioInscricaoTeste {
             driver.findElement(By.name("rg")).sendKeys("seleniumhqqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfh");
             driver.findElement(By.name("celular")).sendKeys("cincocinconovenovesixqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfh");
             driver.findElement(By.name("telefone_residencial")).sendKeys("adsdasdasdasfdsfgfgjtqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfh");
-            driver.findElement(By.name("email")).sendKeys("4578965454@4566456453687.commmmm");
+            driver.findElement(By.name("email")).sendKeys("457896665454@4566456453687.commmmm");
             driver.findElement(By.name("endereco")).sendKeys("vai a direita depois a esquerda e depois dobra e chegou qwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhq");
             driver.findElement(By.name("nmrEndereco")).sendKeys("oito oitoqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfh");
             driver.findElement(By.name("complemento")).sendKeys("depois da ponte depois dos trilhosqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfhqwerfgdsfghryutyuifgfh");

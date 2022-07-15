@@ -12,9 +12,9 @@
                         A AVICO
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">SOBRE NÓS</a>
-                        <a class="dropdown-item" href="#">ESTRUTURA ORGANIZACIONAL</a>
-                        <a class="dropdown-item" href="#">ESTATUTO</a>
+                        <a class="dropdown-item" href="/sobre">SOBRE NÓS</a>
+                        <a class="dropdown-item" href="/estrutura">ESTRUTURA ORGANIZACIONAL</a>
+                        <a class="dropdown-item" href="/estatuto">ESTATUTO</a>
                         <a class="dropdown-item" href="#">NOTÍCIAS</a>
                     </div>
                 </div>
@@ -23,14 +23,14 @@
                         EIXOS DE ATUAÇÃO
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">JURÍDICO</a> 
-                        <a class="dropdown-item" href="#">APOIO PSICOSSOCIAL</a>
-                        <a class="dropdown-item" href="#">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
+                        <a class="dropdown-item" href="/juridico">JURÍDICO</a> 
+                        <a class="dropdown-item" href="/apoio">APOIO PSICOSSOCIAL</a>
+                        <a class="dropdown-item" href="/mobilizacao">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
                     </div>
                 </div>
-                <li class="nav-item"><a class="nav-link" href="#about">Núcleos Estaduais</a></li>
-                <li class="nav-item"><a class="nav-link" href="#team">Fale Conosco</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Endereços Úteis</a></li>
+                <li class="nav-item"><a class="nav-link" href="/nucleos">Núcleos Estaduais</a></li>
+                <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
+                <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Perguntas Frequentes</a></li>
             </ul>
         </div>

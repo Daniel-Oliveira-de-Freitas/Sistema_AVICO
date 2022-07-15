@@ -31,22 +31,19 @@ class StoreRegistrationFormRequest extends FormRequest
             'cpf' => 'required|numeric|unique:registrations|digits_between:10,11',
             'rg' => 'required|numeric|digits_between:9,11',
             'celular' =>'required|numeric|digits_between:10,11',
-            'telefone_residencial' =>'numeric|digits_between:9,11',
             'email' => [
                 'required', 'email', 'unique:registrations'
             ],
             'endereco' => 'required|string',
             'nmrEndereco' => 'required|numeric',
-            'complemento' => 'string',
             'cep' => 'required|numeric|digits_between:0,8',
             'bairro' => 'required|string',
             'cidade_uf'=> 'required|string|max:50',
-            'profissao' => 'string',
             'condicoes' => 'required|array|min:1|max:2',
             'grauParentesco' => 'array|min:1',
             // 'outro' => 'string|min:3',
             // 'pagamento' => 'required',
-            'filenames' => "required|array|min:1|max:4|max:20000",
+            'filenames' => "required|array|min:1|max:8|max:20000",
         ];
     }
 

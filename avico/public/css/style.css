@@ -11723,13 +11723,11 @@ header.masthead .masthead-heading {
 }
 
 section#contact {
-  background-color: #212529;
-  background-image: url("../images/assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }
 section#contact .section-heading {
-  color: #fff;
+  color: black;
 }
 section#contact form#contactForm .form-group {
   margin-bottom: 1.5rem;
