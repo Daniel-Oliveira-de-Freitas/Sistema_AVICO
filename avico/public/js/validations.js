@@ -34,6 +34,12 @@ function familiarVitimaInputShow() {
     }
 }
 
+function maxLengthCheck(object)
+{
+  if (object.value.length > object.maxLength)
+    object.value = object.value.slice(0, object.maxLength)
+}
+
 function sobreviventeInputShow() {
     if (document.getElementById('sobrevivente').checked) {
         document.getElementById('comprovante').style.display = 'block';
@@ -60,7 +66,7 @@ function associadoPagamentoRequired() {
 
 $('#password, #confirmPassword').on('keyup', function () {
     if ($('#password').val() == $('#confirmPassword').val()) {
-        $('#message').html('As senhas são identicas').css('color', 'green');
+        $('#message').html('');
     } else
         $('#message').html('As senhas não são identicas').css('color', 'red');
 });
@@ -99,15 +105,15 @@ $('.genero:checkbox').click(function (e) {
     }
 });
 
-$('.pagamento:checkbox').click(function (e) {
-    if ($(this).is(':checked')) {
-        $('.pagamento:checked').prop('checked', false);
-        $(this).prop('checked', true);
-    }
-    else {
-        e.preventDefault();
-    }
-});
+// $('.pagamento:checkbox').click(function (e) {
+//     if ($(this).is(':checked')) {
+//         $('.pagamento:checked').prop('checked', false);
+//         $(this).prop('checked', true);
+//     }
+//     else {
+//         e.preventDefault();
+//     }
+// });
 
 
 $(function () {
@@ -154,4 +160,4 @@ $(function () {
 });
 
 $('form').parsley().options.requiredMessage = "Este campo é obrigatório"
-$.Parsley.options.requiredMessage = "this field is required"
+$.Parsley.requiredMessage = "this field is required"

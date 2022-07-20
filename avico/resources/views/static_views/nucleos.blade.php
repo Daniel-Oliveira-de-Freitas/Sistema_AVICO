@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Núcloes Estaduais')
+
 @section('content')
 <section class="page-section">
     <div class="container container-text">

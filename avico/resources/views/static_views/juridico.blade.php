@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <section class="page-section">
-    <main class="container container-text" >
-        
+
+    <main class="container" style="padding-right: 120px; padding-left: 165px; font-size: 13px;">
+        <div style="text-align: justify;">
+
             
             <h3>Assessoria Jurídica</h3>
 
@@ -68,7 +70,7 @@
                 Com a enorme demanda por orientação jurídica, AVICO passou a oferecer gratuitamente orientações básicas e preliminares relacionada à Covid-19. Em geral as dúvidas dos interessados são sobre direitos trabalhistas, licença previdência, acidentária e pensão por morte, seguros de vida, entre outros. Mas é importante ressaltar, que a Avico não é um escritório de advocacia, temos poucos advogados voluntários que dentro de suas disponibilidade de tempo e de seus conhecimentos orientam as pessoas como e onde buscar acesso a justiça. Para tirar suas dúvidas e receber orientação entre em contato com nosso whatsapp (51) 99180-9952 de segunda a sextas-feiras, das 9h as 12h e das 14h as 18h ou pelo e-mail avicobrasil@gmail.com.
             </p>
 
-        
+
     </main>
 </section>
 @endsection
