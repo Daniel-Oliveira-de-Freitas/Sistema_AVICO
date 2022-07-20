@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+	<link href="{{ asset('css/estilos-adicionais.css') }}" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
@@ -31,6 +32,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>@yield('title')</title>
     <!--<title>Parceiros &#8211; Avico Brasil</title>-->
+
     <style>
         button {
             padding-left: 0;
@@ -51,6 +53,10 @@
             padding-top: 120px; 
         }
     </style>
+
+    
+  
+
 </head>
 
 <body id="page-top">

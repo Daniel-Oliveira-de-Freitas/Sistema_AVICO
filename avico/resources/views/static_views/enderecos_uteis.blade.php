@@ -1,28 +1,7 @@
 @extends('layouts.app')
-<style>
-    a:link {
-        /* color: blue; */
-        text-decoration: none;
-
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    button {
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        border-top: 0;
-        border-bottom: 0;
-    }
-</style>
-
 @section('content')
     <section class="page-section">
-        <main class="container" style="padding-left: 100px; font-size: 13px;">
+        <main class="container container-text">
             <div>
                 <h3>Endereços úteis</h3>
 

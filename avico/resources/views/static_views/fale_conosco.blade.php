@@ -1,15 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Fale Conosco')
-<style>
-    button{
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        border-top: 0;
-        border-bottom: 0;
-    }
-</style>
+
 @section('content')
 <section class="page-section">
     <div class="container">

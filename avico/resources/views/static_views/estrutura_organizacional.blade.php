@@ -1,15 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Estrutura Organizacional')
-<style>
-    button{
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        border-top: 0;
-        border-bottom: 0;
-    }
-</style>
+
 @section('content')
 <section class="page-section" id="team">
     <div class="container">
@@ -18,7 +9,9 @@
             <h3 class="section-subheading text-muted">A gestão da AVICO Brasil é composta por:</h3>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+
+            <div class="col-lg-6">
+
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/perfil-paola.jpeg')}}" alt="..." />
                     <h4>Paola Falceta</h4>
@@ -29,7 +22,9 @@
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4">
+            
+            <div class="col-lg-6">
+
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/perfil-bruno.jpeg')}}" alt="..." />
                     <h4>Bruno Da Rosa Lumertz</h4>
