@@ -44,8 +44,8 @@
                             </h2>
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
-                                Resposta da primeira pergunta Resposta da primeira pergunta Resposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira pergunta 
-
+                                <p class="faq">Resposta da primeira pergunta Resposta da primeira pergunta Resposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira pergunta 
+									
                             </div>
                             </div>
                         </div>

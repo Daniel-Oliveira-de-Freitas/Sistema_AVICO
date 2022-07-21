@@ -2,8 +2,8 @@
 @section('content')
 <section class="page-section">
 
-    <main class="container" style="padding-right: 120px; padding-left: 165px; font-size: 13px;">
-        <div style="text-align: justify;">
+    <main class="container container-text">
+        
 
             
             <h3>Assessoria Jurídica</h3>
