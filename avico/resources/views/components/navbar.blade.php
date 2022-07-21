@@ -31,7 +31,7 @@
                 <li class="nav-item"><a class="nav-link" href="/nucleos">Núcleos Estaduais</a></li>
                 <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Perguntas Frequentes</a></li>
+                <li class="nav-item"><a class="nav-link" href="/perguntas">Perguntas Frequentes</a></li>
             </ul>
         </div>
     </div>

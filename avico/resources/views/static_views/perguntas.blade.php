@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Perguntas Frequentes</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Perguntas Frequentes</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+@extends('layouts.app')
+@section('content')
+<section class="page-section">
+
+    <main class="container container-texto">
+
+                <!--<h3>Perguntas Frequentes</h3>
+         
                 <h2>Como funciona o sistema?</h2>
                 <p>
                     O sistema funciona de forma simples, basta se cadastrar e se inscrever em um dos eventos.
@@ -45,9 +33,47 @@
                 <h2>Como faço para excluir meu cadastro?</h2>
                 <p>
                     Para exclusão de seu cadastro basta clicar no botão "Excluir" e será redirecionado para a página inicial.   <br>
-                    
+                -->
 
-</body>
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                Pergunta #1
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                Resposta da primeira pergunta Resposta da primeira pergunta Resposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira perguntaResposta da primeira pergunta 
 
-
-</html>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                Pergunta #2
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                Resposta da segunda perguntaResposta da segunda perguntaResposta da segunda perguntaResposta da segunda perguntaResposta da segunda pergunta
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                Pergunta #3
+                            </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                Resposta da terceira perguntaResposta da terceira perguntaResposta da terceira perguntaResposta da terceira perguntaResposta da terceira perguntaResposta da terceira pergunta
+                            </div>
+                            </div>
+                        </div>
+                    </div>       
+    </main>
+</section>
+@endsection
