@@ -15,7 +15,6 @@
                         <a class="dropdown-item" href="/sobre">SOBRE NÓS</a>
                         <a class="dropdown-item" href="/estrutura">ESTRUTURA ORGANIZACIONAL</a>
                         <a class="dropdown-item" href="/estatuto">ESTATUTO</a>
-                        <a class="dropdown-item" href="#">NOTÍCIAS</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -28,6 +27,7 @@
                         <a class="dropdown-item" href="/mobilizacao">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
                     </div>
                 </div>
+                <li class="nav-item"><a class="nav-link" href="">Notícias</a></li>
                 <li class="nav-item"><a class="nav-link" href="/nucleos">Núcleos Estaduais</a></li>
                 <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
