@@ -201,59 +201,80 @@
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>08 de abril de 2021</h4>
-                                <h4 class="subheading">Fundação</h4>
+                                <h5 class="subheading">Fundação</h5>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">em pleno colapso da saúde pública na cidade de Porto Alegre/RS, partir da indignação de Gustavo Bernardes (Advogado) e Paola Falceta (Assistente Social) com a ineficiência e negligência do Estado diante das múltiplas consequências da pandemia de covid-19 na vida dos brasileiros.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/2.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>Final de 2020</h4>
-                                <h4 class="subheading">Gustavo foi internado</h4>
+                                <h4>09 de junho de 2021</h4>
+                                <h5 class="subheading">Representação criminal contra Bolsonaro na PGR</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">(e entubado) para tratamento da doença e sofreu com as graves sequelas oriundas da infecção. Paola foi infectada enquanto cuidava de sua mãe, hospitalizada primeiramente para uma cirurgia de emergência, mas que também se infectou e faleceu da doença em março de 2021.</p></div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>22 de junho de 2021</h4>
+                                <h5 class="subheading">Ato que homenageiam 500 mil vítimas da Covid-19</h5>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Por terem atuado juntos na defesa de Direitos Humanos de outro coletivo da sociedade civil, sempre acreditaram que, diante da inação (intencional ou não) do Estado, somente a potência da mobilização social e o enfrentamento comunitário poderiam minimizar os diferentes impactos da pandemia no Brasil.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4>15 de outubro de 2021</h4>
+                                <h5 class="subheading">Ato em Homenagem a 602 mil vítimas da Covid-19 em frente ao Congresso Nacional</h5>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Nasce, dessa força conjunta, um coletivo social que luta por justiça e memória às vítimas fatais e também pela garantia e acesso aos Direitos Humanos constitucionais dos sobreviventes da covid-19. Ainda que estejamos constituídos legalmente (com CNPJ), não somos uma empresa ou escritório de advocacia, não temos sede ou funcionários.</p></div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>DATA XX/XX/XX</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>05 novembro de 2021</h4>
+                                <h5 class="subheading">AVICO integra comitê estadual em defesa das vítimas da Covid-19 do conselho estadual de saúde</h5>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Somos todos trabalhadores que paralelamente oferecem seu apoio e conhecimento solidária e coletivamente à outros como nós. Decidimos não ficar parados assistindo o Estado brasileiro contribuindo com o adoecimento e morte de nosso povo pela covid-19.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>OUTRA DATA XX/XX/XXXX</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4>19 de dezembro de 2021</h4>
+                                <h5 class="subheading">MPF ajuíza ação civil pública contra União em defesa das vítimas da Covid-19</h5>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">E para isso, é fundamental que  ocupemos os diversos espaços políticos e sociais da nossa sociedade, fazendo com que enxerguem e ouçam as nossas histórias. Somos vidas e amores de alguém e nunca nos reduzirão a números! É na luta coletiva que somos mais fortes!</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>12 de março de 2022</h4>
+                                <h5 class="subheading">AVICO Brasil faz atos em homenagem ao dia das vítimas da Covid-19 em sete capitais</h5>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>08 de abril de 2022</h4>
+                                <h5 class="subheading">AVICO ajuíza queixa-crime contra Bolsonaro no STF</h5>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>27 de abril de 2022</h4>
+                                <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
+                            </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
