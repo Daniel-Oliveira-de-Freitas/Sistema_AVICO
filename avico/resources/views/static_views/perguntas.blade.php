@@ -56,7 +56,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
-                                Não precisa, mas caso queira fazer algum tipo de contribuição você poderá fazer.
+                                <p class="faq">Não precisa, mas caso queira fazer algum tipo de contribuição você poderá fazer.
                             </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
-                                Após a realização do cadastro, faremos a validação da pessoa que se cadastrou, verificando se está apta a ser associada/voluntária da AVICO, portanto, nos próximos dias fique de olho em seu email, pois poderá ser enviado uma confirmação deste cadastro.
+                                <p class="faq">Após a realização do cadastro, faremos a validação da pessoa que se cadastrou, verificando se está apta a ser associada/voluntária da AVICO, portanto, nos próximos dias fique de olho em seu email, pois poderá ser enviado uma confirmação deste cadastro.
                             </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
-                                Atualmente a AVICO não possui nenhuma sede física, atuamos de maneira online.
+                                <p class="faq">Atualmente a AVICO não possui nenhuma sede física, atuamos de maneira online.
                             </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
-                            Para entrar em contato com a AVICO basta preencher as informações neste <a href="/fale_conosco">link</a>. Ou entrar em contato através das nossas redes sociais.
+                                <p class="faq">Para entrar em contato com a AVICO basta preencher as informações neste <a href="/fale_conosco">link</a>. Ou entrar em contato através das nossas redes sociais.
                             </div>
                             </div>
                         </div>

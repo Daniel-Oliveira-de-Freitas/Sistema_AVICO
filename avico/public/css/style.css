@@ -4691,7 +4691,7 @@ textarea.form-control-lg {
   }
 }
 .accordion-button:not(.collapsed) {
-  color: #e6b400;
+  /*color: #e6b400;*/
   background-color: #fffae6;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
@@ -4720,6 +4720,7 @@ textarea.form-control-lg {
 }
 .accordion-button:focus {
   z-index: 3;
+  background-color: transparent;
   border-color: #ffe480;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
