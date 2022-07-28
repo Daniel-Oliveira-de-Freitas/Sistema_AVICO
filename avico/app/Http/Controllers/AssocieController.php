@@ -34,7 +34,8 @@ class AssocieController extends Controller
         $inscrito->complemento = $request->complemento;
         $inscrito->cep = $request->cep;
         $inscrito->bairro = $request->bairro;
-        $inscrito->cidade_uf = $request->cidade_uf;
+        $inscrito->cidade = $request->cidade;
+        $inscrito->uf = $request->uf;
         $inscrito->profissao = $request->profissao;
         $condicaos = $request->input('condicoes');
         $inscrito->condicao = $this->transformValuesInJson($condicaos);

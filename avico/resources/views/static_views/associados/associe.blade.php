@@ -50,22 +50,15 @@
     }
 </style>
 
+
 @section('content')
     {{-- <section> --}}
         <div class="form_body container rows col-md-6 offset-md-3 ">
+  </script>
             <h1 class="text-center">Formulario de Cadastro Avico</h1>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="card-body">
                 <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
-                <h6 class="text-center" id="obrigatorio"><small>{!! session()->get('sucess001') !!}</small></h6>
+                <h2 class="text-center" id="obrigatorio"><small>{!! session()->get('sucess001') !!}</small></h2>
                 <form action="{{ route('inscricao.store') }}" method="POST" class="form-cadastro"
                     enctype="multipart/form-data">
                     @csrf
@@ -157,7 +150,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="senha">Digite sua senha*</label>
-                                <input class="password  form-control" type="password" id="password" required>
+                                <input class="password  form-control" type="password" name="password" id="password" required>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="senha">Confirmar senha*</label>
@@ -195,41 +188,78 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label>Celular (DDD+número)*</label>
-                                <input class="form-control" type="number" name="celular" placeholder="(DDD+número)" data-parsley-minlength="10" oninput="maxLengthCheck(this)" data-parsley-minlength-message="Insira um numero de celular válido." maxlength="11" required>
+                                <input class="form-control" type="tel" name="celular" id="celular" data-parsley-minlength="10" maxlength="18" required>
+                                <br>
+                                <span id="message_errorCelular" style="color: red; visibility:hidden;">Insira um numero de celular válido.</span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label>Telefone residencial (DDD+número)</label>
-                                <input class="form-control" type="number" placeholder="(DDD+número)"
-                                    name="telefone_residencial" data-parsley-minlength-message="Insira um numero de telefone residencial válido." data-parsley-minlength="10">
+                                <input class="form-control" type="tel"
+                                    name="telefone_residencial" id="telefone_residencial" data-parsley-minlength-message="Insira um numero de telefone residencial válido." data-parsley-minlength="10" maxlength="18">
+                                    <br>
+                                    <span id="message_errorTelefoneResidencial" style="color: red; visibility:hidden;">Insira um numero de telefone residencial válido.</span>
                             </div>
                             <div class="mb-3">
                                 <label>E-mail*</label>
                                 <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email"
                                     required  data-parsley-type-message="Email inválido">
                             </div>
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-3">
+                                <label>CEP*</label>
+                                <input class="form-control" type="text" name="cep" id="cep" data-parsley-minlength-message="Insira um CEP válido." data-parsley-minlength="8" maxlength="8" required>
+                                <span id="message_errorCep" style="color: red; visibility:hidden;">CEP não encontrado</span>
+                            </div>
+                            <div class="mb-3 col-md-7">
                                 <label>Endereço*</label>
-                                <input class="form-control" type="text" name="endereco" required>
+                                <input class="form-control" type="text" name="endereco" id="endereco" required>
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label>Nº*</label>
                                 <input class="form-control" type="number" name="nmrEndereco" required>
                             </div>
+                            <div class="mb-3 col-md-6">
+                                <label>Cidade*</label>
+                                <input class="form-control" type="text" name="cidade" id="cidade" required>
+                            </div>
+                            <div class="mb-3 col-md-2">
+                                <label>UF*</label>
+                                <select class="form-select form-select" name="uf" id="uf" required>
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+                            </div>
                             <div class="mb-3 col-md-4">
                                 <label>Complemento</label>
-                                <input class="form-control" type="text" name="complemento">
+                                <input class="form-control" type="text" name="complemento" id="complemento">
                             </div>
-                            <div class="mb-3 col-md-3">
-                                <label>CEP*</label>
-                                <input class="form-control" type="text" name="cep"  data-parsley-minlength-message="Insira um CEP válido." data-parsley-minlength="8" maxlength="8" required>
-                            </div>
-                            <div class="mb-3 col-md-4">
+                            <div class="mb-3">
                                 <label>Bairro*</label>
-                                <input class="form-control" type="text" name="bairro" required>
-                            </div>
-                            <div class="mb-3 col-md-5">
-                                <label>Cidade/UF*</label>
-                                <input class="form-control" type="text" name="cidade_uf" required>
+                                <input class="form-control" type="text" name="bairro" id="bairro" required>
                             </div>
                             <div class="mb-3 ">
                                 <label>Profissão</label>
@@ -261,7 +291,7 @@
                             </div>
                             <div id="grauParentesco" class="mb-3">
                                 <label>Qual o grau de parentesco com a vítima?*</label>
-                                <select onchange="outrosInputShow()" class="parentesco" id="parentesco" required>
+                                <select onchange="outrosInputShow()" class="parentesco" name="parentesco" id="parentesco" required>
                                     <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
                                     <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha reta
                                         (pai/mãe,
