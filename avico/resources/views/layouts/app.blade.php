@@ -35,7 +35,7 @@
     <title>@yield('title')</title>
     <!--<title>Parceiros &#8211; Avico Brasil</title>-->
 
-    <style>
+ <!--   <style>
         button {
             padding-left: 0;
             padding-right: 0;
@@ -54,7 +54,7 @@
             overflow-x: hidden;
             padding-top: 120px; 
         }
-    </style>
+    </style>-->
 
     
   

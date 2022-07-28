@@ -2,7 +2,7 @@
 @section('content')
 <section class="page-section">
 
-    <main class="container container-texto">
+    <main class="container container-texto ">
 
                 <!--<h3>Perguntas Frequentes</h3>
          
@@ -35,7 +35,7 @@
                     Para exclusão de seu cadastro basta clicar no botão "Excluir" e será redirecionado para a página inicial.   <br>
                 -->
 
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">

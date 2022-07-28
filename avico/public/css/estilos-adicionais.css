@@ -16,6 +16,8 @@ body{
 	position: relative;
 	overflow-x: hidden;
 	padding-top: 120px; 
+	
+
 }
 .container-text{
 	padding-right: 160px;
@@ -25,7 +27,17 @@ body{
 }
 .faq{
 	font-size: 14px;
+   
 } 
+.datanoticia{
+    font-size: 13px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 0.9;
+}
+.altura-linha{
+    line-height: 1.5;
+}
 
 .btn-nav-drop{
 	font-size:.85rem;
@@ -51,7 +63,7 @@ body{
     height: 1.56rem;
     width: 1.56rem;
     max-width: 1.56rem;
-    background-color: #4a9dc5;
+    background-color: #4a9cc5;
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
@@ -64,12 +76,16 @@ body{
 	 -webkit-border-radius: 50%;
 }
 
-@media (max-width: 900px) { /*tablet*/
+@media (max-width: 990px) { /*tablet*/
 	.container-text{
 		padding-right: 35px;
 		padding-left: 35px;
 		font-size: 14px;
 	}
+    .police{
+        display: none;
+    }
+   
 }
 
 @media (max-width: 425px) {
@@ -78,4 +94,8 @@ body{
 		padding-left: 15px;
 		font-size: 14px;
 	}
+    .police{
+        display: none;
+    }
+    
 }

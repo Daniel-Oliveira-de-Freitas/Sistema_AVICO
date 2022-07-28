@@ -30,10 +30,10 @@
 						<img class="card-img-top"
 							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Mesmo com o fim da situação de emergência sanitária, parte da população ainda sofre com sequelas da covid-19
-							</p>
-						  <a class="btn btn-primary">Leia Mais</a>
+						  <p class="datanoticia">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Mesmo com o fim da situação de emergência sanitária, parte da população ainda sofre com sequelas da covid-19
+</p>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -41,12 +41,12 @@
 					<div class="col-md-4 px-3" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
-							 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
+							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            <p class="datanoticia">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary">Button</a>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -54,12 +54,12 @@
 					<div class="col-md-4 px-3" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
-							 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
+							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            <p class="datanoticia">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary">Button</a>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -75,12 +75,12 @@
 					<div class="col-md-4 px-3" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
-							 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
+							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            <p class="datanoticia">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary">Button</a>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -88,12 +88,12 @@
 					<div class="col-md-4 px-3" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
-							 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
+							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            <p class="datanoticia">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary">Button</a>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -101,12 +101,12 @@
 					<div class="col-md-4 px-3" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
-							 src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
+							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
 						<div class="card-body">
-						  <h4 class="card-title">Card title</h4>
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+            <p class="datanoticia ">Postado em 28/07/2022</p>
+						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary">Button</a>
+						  <a class="btn btn-primary btn-sm">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -197,82 +197,100 @@
                 </div>
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/1.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>08 de <br />abril<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/1.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>08 de abril de 2021</h4>
-                                <h5 class="subheading">Fundação</h5>
+                                <!--<h4>08 de abril de 2021</h4>-->
+                                <h5 class="subheading">Fundação da Avico</h5>
                             </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/2.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>09 de <br />junho<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/2.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>09 de junho de 2021</h4>
+                                <!--<h4>09 de junho de 2021</h4>-->
                                 <h5 class="subheading">Representação criminal contra Bolsonaro na PGR</h4>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>22 de <br />junho<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>22 de junho de 2021</h4>
+                                <!--<h4>22 de junho de 2021</h4>-->
                                 <h5 class="subheading">Ato que homenageiam 500 mil vítimas da Covid-19</h5>
                             </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>15 de <br />outubro<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>15 de outubro de 2021</h4>
+                                <!--<h4>15 de outubro de 2021</h4>-->
                                 <h5 class="subheading">Ato em Homenagem a 602 mil vítimas da Covid-19 em frente ao Congresso Nacional</h5>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>05 de <br />novembro<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>05 novembro de 2021</h4>
+                                <!--<h4>05 novembro de 2021</h4>-->
                                 <h5 class="subheading">AVICO integra comitê estadual em defesa das vítimas da Covid-19 do conselho estadual de saúde</h5>
                             </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>19 de <br />dezembro<br /> de 2021</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>19 de dezembro de 2021</h4>
+                                <!--<h4>19 de dezembro de 2021</h4>-->
                                 <h5 class="subheading">MPF ajuíza ação civil pública contra União em defesa das vítimas da Covid-19</h5>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>12 de <br />março <br />de 2022</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>12 de março de 2022</h4>
+                                <!--<h4>12 de março de 2022</h4>-->
                                 <h5 class="subheading">AVICO Brasil faz atos em homenagem ao dia das vítimas da Covid-19 em sete capitais</h5>
                             </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." /></div>
+                        <div class="timeline-image"><h4>08 de<br /> abril <br />de 2022</h4><!--<img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/4.jpg')}}" alt="..." />--></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>08 de abril de 2022</h4>
+                                <!--<h4>08 de abril de 2022</h4>-->
                                 <h5 class="subheading">AVICO ajuíza queixa-crime contra Bolsonaro no STF</h5>
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <!--<li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset('images/assets/img/about/3.jpg')}}" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>27 de abril de 2022</h4>
+                                <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
+                            </div>
+                        </div>
+                    </li>-->
+                    <li class="timeline-panel">
+                        <div class="timeline-image">
+                          
+                            <h4>
+                            27 de 
+                                <br />
+                                abril
+                                <br />
+                                de 2022
+                            </h4>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <!--<h4>27 de abril de 2022</h4>-->
                                 <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
                             </div>
                         </div>
