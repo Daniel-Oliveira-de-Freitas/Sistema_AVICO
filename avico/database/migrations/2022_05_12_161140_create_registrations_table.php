@@ -31,7 +31,8 @@ return new class extends Migration
             $table->string('complemento')->nullable();
             $table->string('cep');
             $table->string('bairro');
-            $table->string('cidade_uf');
+            $table->string('cidade');
+            $table->string('uf');
             $table->string('profissao')-> nullable();
             $table->string('condicao');
             $table->string('grauParentesco')->nullable();

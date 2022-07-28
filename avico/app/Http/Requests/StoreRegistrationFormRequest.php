@@ -30,7 +30,7 @@ class StoreRegistrationFormRequest extends FormRequest
             'genero' => 'required',
             'cpf' => 'required|numeric|unique:registrations|digits_between:10,11',
             'rg' => 'required|numeric|digits_between:9,11',
-            'celular' =>'required|numeric|digits_between:10,11',
+            'celular' =>'required|digits_between:10,18',
             'email' => [
                 'required', 'email', 'unique:registrations'
             ],
@@ -38,7 +38,8 @@ class StoreRegistrationFormRequest extends FormRequest
             'nmrEndereco' => 'required|numeric',
             'cep' => 'required|numeric|digits_between:0,8',
             'bairro' => 'required|string',
-            'cidade_uf'=> 'required|string|max:50',
+            'cidade'=> 'required|string|max:50',
+            'uf'=> 'required',
             'condicoes' => 'required|array|min:1|max:2',
             'grauParentesco' => 'array|min:1',
             // 'outro' => 'string|min:3',

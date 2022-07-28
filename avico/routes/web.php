@@ -63,7 +63,7 @@ Route::get('/juridico', function () {
     return view('static_views.juridico');
 });
 
-Route::get('/listar', [ListagemController::class, 'create']);
+// Route::get('/listar', [ListagemController::class, 'create']);
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
