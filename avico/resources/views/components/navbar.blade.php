@@ -27,7 +27,7 @@
                         <a class="dropdown-item" href="/mobilizacao">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
                     </div>
                 </div>
-                <li class="nav-item"><a class="nav-link" href="">Notícias</a></li>
+                <li class="nav-item"><a class="nav-link" href="/noticias">Notícias</a></li>
                 <li class="nav-item"><a class="nav-link" href="/nucleos">Núcleos Estaduais</a></li>
                 <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
