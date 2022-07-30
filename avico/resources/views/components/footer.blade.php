@@ -17,10 +17,6 @@
                         <a class="btn btn-dark btn-social mx-2" href="https://www.youtube.com/channel/UCDqJYVJaFZ63BYjhXc35JXQ" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="mailto:avicobrasil@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                     </div>
-                    <div class="col-lg-4 text-lg-end police">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                    </div>
                 </div>
             </div>
         </footer>

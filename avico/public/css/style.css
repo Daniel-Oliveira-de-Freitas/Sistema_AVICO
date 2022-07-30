@@ -7490,8 +7490,8 @@ textarea.form-control-lg {
 }
 
 .py-3 {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 .py-4 {
@@ -11308,7 +11308,7 @@ p {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 8rem 0;
 }
 .page-section h2.section-heading, .page-section .section-heading.h2 {
   font-size: 2.5rem;
