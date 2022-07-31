@@ -9,9 +9,9 @@
             <a class="btn btn-primary btn-xl text-uppercase" href="/inscricao">Associe-se a AVICO</a>
         </div>
     </header>
-   <!-- Cards Noticias-->
+   <!-- Cards Noticias LG-->
    <section class="page-section" id="noticias">
-        <div class="container px-5">
+        <div class="container px-lg-5">
              
 			 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
@@ -33,12 +33,12 @@
 						  <p class="datanoticia">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Mesmo com o fim da situação de emergência sanitária, parte da população ainda sofre com sequelas da covid-19
 </p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm" href="#">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
 
-					<div class="col-md-4 px-3" style="float:left">
+					<div class="col-md-4 px-3 lgcards" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
 							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
@@ -46,12 +46,12 @@
             <p class="datanoticia">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm href="#"">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
 
-					<div class="col-md-4 px-3" style="float:left">
+					<div class="col-md-4 px-3 lgcards" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
 							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
@@ -59,7 +59,7 @@
             <p class="datanoticia">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm href="#"">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -80,12 +80,12 @@
             <p class="datanoticia">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm href="#"">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
 
-					<div class="col-md-4 px-3" style="float:left">
+					<div class="col-md-4 px-3 lgcards" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
 							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
@@ -93,12 +93,12 @@
             <p class="datanoticia">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm href="#"">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
 
-					<div class="col-md-4 px-3" style="float:left">
+					<div class="col-md-4 px-3 lgcards" style="float:left">
 					  <div class="card mb-2">
 						<img class="card-img-top"
 							 src="images\assets\img\noticias\Flavio-Dutra-9882-2.jpg" alt="Imagem de um paciente em tratamento e uma profissional de saúde">
@@ -106,7 +106,7 @@
             <p class="datanoticia ">Postado em 28/07/2022</p>
 						  <p class="card-text altura-linha">Some quick example text to build on the card title and make up the bulk of the
 							card's content.</p>
-						  <a class="btn btn-primary btn-sm">Leia Mais</a>
+						  <a class="btn btn-primary btn-sm href="#"">Leia Mais</a>
 						</div>
 					  </div>
 					</div>
@@ -143,7 +143,11 @@
 					</div>
 				</section>
 
-			   <!-- Fim Cards Noticias-->
+			   <!-- Fim Cards Noticias LG-->
+
+
+
+         
    
     </section>
     <!--<section class="page-section" id="services">

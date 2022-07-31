@@ -67,6 +67,10 @@ Route::get('/noticias', function () {
     return view('static_views.noticias');
 });
 
+Route::get('/noticia_ler', function () {
+    return view('static_views.noticia_ler');
+});
+
 // Route::get('/listar', [ListagemController::class, 'create']);
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');

@@ -15,7 +15,7 @@ button {
 body{
 	position: relative;
 	overflow-x: hidden;
-	padding-top: 120px; 
+	padding-top: 50px; 
 	
 
 }
@@ -41,6 +41,22 @@ body{
 
 .btn-nav-drop{
 	font-size:.85rem;
+}
+
+.sem_ a:link,
+.sem_ a:visited,
+.sem_ a:focus,
+.sem_ a:focus-visible{
+    text-decoration: none;
+}
+.sem_cor a:link,
+.sem_cor a:visited,
+.sem_cor a:focus,
+.sem_cor a:focus-visible{
+    color: #000;
+}
+.noticia{
+    padding-right: 2em;
 }
 .carousel-indicators li {
     box-sizing: content-box;
@@ -77,25 +93,61 @@ body{
 }
 
 @media (max-width: 990px) { /*tablet*/
-	.container-text{
+	
+    body{
+        position: relative;
+        overflow-x: hidden;
+        padding-top: 30px; 
+        
+    
+    }
+    .container-text{
 		padding-right: 35px;
 		padding-left: 35px;
 		font-size: 14px;
 	}
-    .police{
+    .leiamais{
         display: none;
     }
-   
+    .noticia{
+        padding-right: 0.9em;
+        margin-bottom: 10em;
+    }
+    .rpttitle{
+        padding-top: 0.9em;
+    }
+    .rmb{
+        margin-bottom: 15em;
+    }
 }
 
 @media (max-width: 425px) {
-	.container-text{
+	body{
+        position: relative;
+        overflow-x: hidden;
+        padding-top: 150px; 
+        
+    
+    }
+    .container-text{
 		padding-right: 15px;
 		padding-left: 15px;
 		font-size: 14px;
 	}
-    .police{
+    .leiamais{
         display: none;
     }
-    
+    .noticia{
+        padding-right: 0.9em;
+        margin-bottom: 10em;
+    }
+    .rpttitle{
+        padding-top: 0.9em;
+    }
+    .lgcards{
+        display: none;
+    }
+    .rmb{
+        margin-bottom: 15em;
+    }
 }

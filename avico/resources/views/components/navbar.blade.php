@@ -7,15 +7,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <div class="dropdown">
+         
+            <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         A AVICO
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/sobre">SOBRE NÓS</a>
-                        <a class="dropdown-item" href="/estrutura">ESTRUTURA ORGANIZACIONAL</a>
-                        <a class="dropdown-item" href="/estatuto">ESTATUTO</a>
-                    </div>
+                 
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/sobre">SOBRE NÓS</a></li>
+                        <li><a class="dropdown-item" href="/estrutura">ESTRUTURA ORGANIZACIONAL</a></li>
+                        <li><a class="dropdown-item" href="/estatuto">ESTATUTO</a></li>
+                    </ul>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
