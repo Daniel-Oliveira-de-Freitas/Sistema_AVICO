@@ -67,8 +67,8 @@ Route::get('/noticias', function () {
     return view('static_views.noticias');
 });
 
-Route::get('/noticia_ler', function () {
-    return view('static_views.noticia_ler');
+Route::get('/noticias', function () {
+    return view('static_views.noticias');
 });
 
 // Route::get('/listar', [ListagemController::class, 'create']);
@@ -76,3 +76,46 @@ Route::get('/noticia_ler', function () {
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
 Route::post('/inscricao/store',[AssocieController::class, 'store'])->name('inscricao.store');
+
+
+//Rotas das Noticias
+
+Route::get('/covid-longa-e-tema-do-decimo-informe-da-rede-trabalhadores-covid-19-do-cesteh-fiocruz', function () {
+    return view('static_views.noticias.noticia_ler');
+});
+
+Route::get('/mesmo-com-o-fim-da-situacao-de-emergencia-sanitaria-parte-da-populacao-ainda-sofre-com-sequelas-da-covid-19', function () {
+    return view('static_views.noticias.noticia_ler2');
+});
+
+Route::get('/audiencia-debate-a-situacao-das-sequelas-das-vitimas-da-covid-no-rio-grande-do-sul', function () {
+    return view('static_views.noticias.noticia_ler3');
+});
+
+Route::get('/estamos-ha-quase-tres-anos-com-a-covid-19-no-brasil-e-ainda-nada-foi-feito-critica-presidenta-da-avico-no-pleno-do-cns-sobre-familiares-e-vitimas-da-doenca', function () {
+    return view('static_views.noticias.noticia_ler4');
+});
+
+Route::get('/audiencias-publicas-debaterao-a-situacao-das-sequelas-das-vitimas-da-covid-no-estado', function () {
+    return view('static_views.noticias.noticia_ler5');
+});
+
+Route::get('/assembleia-legislativa-instala-frente-parlamentar-em-defesa-das-vitimas-da-covid-19', function () {
+    return view('static_views.noticias.noticia_ler6');
+});
+
+Route::get('/avico-brasil-completa-1-ano-com-pedido-de-assistencia-litisconsorcial-em-acao-do-mpf-contra-uniao-e-queixa-crime-subsidiaria-contra-o-presidente-da-republica', function () {
+    return view('static_views.noticias.noticia_ler7');
+});
+
+Route::get('/nota-de-repudio-ao-decreto-no-56-403-de-26-de-fevereiro-de-2022', function () {
+    return view('static_views.noticias.noticia_ler8');
+});
+
+Route::get('/bancada-petista-encaminhara-criacao-de-frente-parlamentar-em-defesa-das-vitimas-de-covid-19', function () {
+    return view('static_views.noticias.noticia_ler9');
+});
+
+Route::get('/manifestacao-publica-sobre-a-gravidade-da-reducao-da-quarentena-da-covid-19', function () {
+    return view('static_views.noticias.noticia_ler10');
+});
