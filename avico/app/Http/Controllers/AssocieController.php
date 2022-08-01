@@ -25,7 +25,8 @@ class AssocieController extends Controller
         $inscrito->genero =  $request->genero;
         $inscrito->cpf =  $request->cpf;
         $inscrito->email =  $request->email;
-        $inscrito->password =  $request->password;
+        $encrypted_password = bcrypt($request->password);
+        $inscrito->password = $encrypted_password;
         $inscrito->rg =  $request->rg;
         $inscrito->celular = $request->celular;
         $inscrito->telefone_residencial = $request->telefone_residencial;
