@@ -240,7 +240,7 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <!--<h4>15 de outubro de 2021</h4>-->
-                            <h5 class="subheading">Ato em Homenagem a 602 mil vítimas da Covid-19 em frente ao Congresso
+                            <h5 class="subheading">Ato em Dashboardnagem a 602 mil vítimas da Covid-19 em frente ao Congresso
                                 Nacional</h5>
                         </div>
                     </div>

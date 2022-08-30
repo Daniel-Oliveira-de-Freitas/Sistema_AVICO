@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AssocieController;
-use App\Http\Controllers\ListagemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +16,12 @@ use App\Http\Controllers\ListagemController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/perguntas', function () {
     return view('static_views.perguntas');
@@ -76,7 +80,6 @@ Route::get('/noticias', function () {
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
 Route::post('/inscricao/store',[AssocieController::class, 'store'])->name('inscricao.store');
-
 
 //Rotas das Noticias
 
