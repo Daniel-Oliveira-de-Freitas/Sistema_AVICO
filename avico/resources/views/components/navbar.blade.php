@@ -34,6 +34,15 @@
                 <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
                 <li class="nav-item"><a class="nav-link" href="/perguntas">Perguntas Frequentes</a></li>
+                @can('admin')
+                <li class="nav-item"><a class="nav-link" href="/listar">Listar</a></li>
+                @endcan
+                @guest
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                @endguest
+                @auth
+                <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
+                @endauth
             </ul>
         </div>
     </div>

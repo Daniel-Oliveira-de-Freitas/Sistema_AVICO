@@ -53,8 +53,7 @@
 
 @section('content')
     {{-- <section> --}}
-        <div class="form_body container rows col-md-6 offset-md-3 ">
-  </script>
+        <section class="form_body container rows col-md-6 offset-md-3 ">
             <h1 class="text-center">Formulario de Cadastro Avico</h1>
             <div class="card-body">
                 <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
@@ -386,13 +385,13 @@
                     </div>
 
                     <div class="form-navigation mb-3 gap-1 d-md-flex justify-content-md-center">
-                        <button type="button" class="previous btn btn-info float-left">Anterior</button>
-                        <button type="button" class="next btn btn-info float-right">Proximo</button>
-                        <button type="submit" class="btn btn-success float-right">Enviar</button>
+                        <button type="button" class="previous btn btn-info float-left mr-5">Anterior</button>
+                        <button type="button" class="next btn btn-info float-right mr-5">Proximo</button>
+                        <button type="submit" class="btn btn-success float-right mr-5">Enviar</button>
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
     {{-- </section> --}}
     <script type="text/javascript" src="./js/validations.js"></script>
 @endsection

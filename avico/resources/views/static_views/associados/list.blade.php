@@ -2,21 +2,21 @@
 @section('title', 'Listagem de inscrições');
 
 @section('content')
-<div>
-    <table class="table align-middle table-bordered">
+<section class="table-responsive">
+    <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 {{-- <th scope="col">id inscricão</th> --}}
-                <th scope="col">Nome</th>
-                <th scope="col">Genêro</th>
-                <th scope="col">Tipo associação</th>
-                <th scope="col">Pagamento</th>
-                <th scope="col">Email</th>
-                <th scope="col">CPF</th>
-                <th scope="col">RG</th>
-                <th scope="col">Condição</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Arquivos comprobatórios</th>
+                <th scope="row">Nome</th>
+                <th scope="row">Genêro</th>
+                <th scope="row">Tipo associação</th>
+                <th scope="row">Pagamento</th>
+                <th scope="row">Email</th>
+                <th scope="row">CPF</th>
+                <th scope="row">RG</th>
+                <th scope="row">Condição</th>
+                <th scope="row">Cidade</th>
+                <th scope="row">Arquivos comprobatórios</th>
                 <th></th>
             </tr>
         </thead>
@@ -33,11 +33,14 @@
                 <td>{{ $inscricao->rg }}</td>
                 <td>{{ $inscricao->condicao }}</td>
                 <td>{{ $inscricao->cidade_uf }}</td>
-                <td><a href=""><button>Download Arquivos</button></a></td>
-                <td><button>Deferir</button> <button>Indeferir</button></td>
+                <td><button type="button" class="btn btn-info">Download Arquivos</button></td>
+                <td><div class="btn-group"> 
+                    <button type="button" class="btn btn-primary">Deferir</button> 
+                    <button type="button" class="btn btn-primary">Indeferir</button></div>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</div>
+</section>
 @endsection

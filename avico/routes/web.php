@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AssocieController;
+use App\Http\Controllers\ListagemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,7 +77,6 @@ Route::get('/noticias', function () {
     return view('static_views.noticias');
 });
 
-// Route::get('/listar', [ListagemController::class, 'create']);
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
