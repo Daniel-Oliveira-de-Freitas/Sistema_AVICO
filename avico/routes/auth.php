@@ -58,7 +58,8 @@ Route::middleware('auth')->group(function () {
     
 });
 
-Route::group(['middleware' => ['permission:admin']], function () {
+Route::middleware('role:admin')->group(function () {
+// Route::group(['middleware' => ['permission:admin']], function () {
     Route::get('/listar', [ListagemController::class, 'create']);
 });
 

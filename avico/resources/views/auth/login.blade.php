@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <section class="container" >
+
     <div class="col-md-4 col-md-offset-4">
         <br><br><br><br><br>
-        <form  action="{{ route('login') }}" method="POST">
+        @if ($errors->any())
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Usuário ou senha errados</strong></div>
+        @endif
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Email</label>

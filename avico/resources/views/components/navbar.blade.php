@@ -34,9 +34,16 @@
                 <li class="nav-item"><a class="nav-link" href="/fale_conosco">Fale Conosco</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enderecos">Endereços Úteis</a></li>
                 <li class="nav-item"><a class="nav-link" href="/perguntas">Perguntas Frequentes</a></li>
-                @can('admin')
-                <li class="nav-item"><a class="nav-link" href="/listar">Listar</a></li>
-                @endcan
+                @role('admin')
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       ADMINISTRAÇÂO
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/listar">Listar Inscrições</a>
+                    </div>
+                </div>
+                @endrole
                 @guest
                 <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 @endguest
