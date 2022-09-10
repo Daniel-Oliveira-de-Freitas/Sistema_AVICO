@@ -16,10 +16,15 @@ class ListagemController extends Controller
     public function Create(){
      
         $inscricoes = $this->getAllPedidosAssociados()->get();
+        // dd($inscricoes);
         return view("static_views.associados.list")->with(compact('inscricoes'));
     }
 
     protected function getAllPedidosAssociados(){
-        return DB::table('users')->join('persons', 'persons.user_id', '=', 'users.id')->join('adresses','persons.id','=','adresses.person_id')->where('users.status', '=', 'aguardando_aprovacao');
+        return DB::table('users')->join('persons', 'persons.user_id', '=', 'users.id')
+        ->join('adresses','persons.id','=','adresses.person_id')
+        ->join('model_has_roles','model_has_roles.model_id', '=', 'persons.id')
+        ->join('roles','roles.id', '=','model_has_roles.role_id')
+        ->where('users.status', '=', 'aguardando_aprovacao');
     }
 }

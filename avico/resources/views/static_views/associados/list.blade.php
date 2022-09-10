@@ -16,6 +16,7 @@
                 <th scope="row">RG</th>
                 <th scope="row">Condição</th>
                 <th scope="row">Cidade</th>
+                <th scope="row">Estado</th>
                 <th scope="row">Arquivos comprobatórios</th>
                 <th></th>
             </tr>
@@ -26,12 +27,13 @@
                 {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
                 <td>{{ $inscricao->nome_completo }}</td>
                 <td>{{ $inscricao->genero }}</td>
-                <td></td>
-                <td></td>
+                <td>{{$inscricao->name}}</td>
+                <td>{{ $inscricao->tipo_pagamento}}</td>
                 <td>{{ $inscricao->email }}</td>
                 <td>{{ $inscricao->cpf }}</td>
                 <td>{{ $inscricao->rg }}</td>
                 <td></td>
+                <td>{{ $inscricao->cidade }}</td>
                 <td>{{ $inscricao->estado }}</td>
                 <td><button type="button" class="btn btn-info">Download Arquivos</button></td>
                 <td><div class="btn-group"> 
