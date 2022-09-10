@@ -24,15 +24,15 @@
             @foreach ($inscricoes as $inscricao)
             <tr>
                 {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
-                <td>{{ $inscricao->nome }}</td>
+                <td>{{ $inscricao->nome_completo }}</td>
                 <td>{{ $inscricao->genero }}</td>
-                <td>{{ $inscricao->tipo }}</td>
-                <td>{{ $inscricao->pagamento }}</td>
+                <td></td>
+                <td></td>
                 <td>{{ $inscricao->email }}</td>
                 <td>{{ $inscricao->cpf }}</td>
                 <td>{{ $inscricao->rg }}</td>
-                <td>{{ $inscricao->condicao }}</td>
-                <td>{{ $inscricao->cidade_uf }}</td>
+                <td></td>
+                <td>{{ $inscricao->estado }}</td>
                 <td><button type="button" class="btn btn-info">Download Arquivos</button></td>
                 <td><div class="btn-group"> 
                     <button type="button" class="btn btn-primary">Deferir</button> 

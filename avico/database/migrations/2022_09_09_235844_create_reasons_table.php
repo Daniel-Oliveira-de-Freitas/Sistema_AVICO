@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('condicoes', function (Blueprint $table) {
+        Schema::create('reasons', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("parentesco")->nullable();
-            $table->string('descricao');
+            $table->unsignedBigInteger('person_id');
+            $table->string('condicao');
+            $table->string('grau_parentesco')->nullable();
+            $table->string('outros')->nullable();
+
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('reasons');
     }
 };

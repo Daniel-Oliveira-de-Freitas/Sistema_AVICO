@@ -5,15 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Reason extends Model
 {
     use HasFactory;
-    
+
     public $timestamps = false;
-    
+    protected $table = 'reasons';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'arquivos',
         'person_id',
-        'caminho_arquivo'
+        'condicao',
+        'grau_parentesco',
+        'outros'
     ];
 }
