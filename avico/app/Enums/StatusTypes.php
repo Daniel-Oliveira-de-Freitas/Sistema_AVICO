@@ -2,9 +2,10 @@
 
 namespace App\Enums;
 
-class StatusTypes{
-    public const STATUS_TYPES = [
-        'aprovado'   => 'aprovado',
-        'indeferido' => 'indeferido',
-    ];
+enum StatusTypes: string
+{   
+        case Aguardando_aprovacao = 'aguardando_aprovacao';
+        case Aprovado = 'aprovado';
+        case Indeferido = 'indeferido';
+    
 }

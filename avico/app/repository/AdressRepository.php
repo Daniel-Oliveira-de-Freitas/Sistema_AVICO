@@ -3,12 +3,13 @@
 namespace App\Repository;
 
 use App\Models\Adress;
+use App\Repositories\Contracts\GenericRepositoryInterface;
 use Illuminate\Http\Request;
 
 class AdressRepository
 {
         
-    private PersonRepository $personRepository;
+    protected PersonRepository $personRepository;
     
     public function save(Request $request, $person_id){
         $this->personRepository = new PersonRepository();

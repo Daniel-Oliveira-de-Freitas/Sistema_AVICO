@@ -2,9 +2,10 @@
 @section('title', 'Listagem de inscrições');
 
 @section('content')
-<section class="table-responsive">
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
+<section class="container-active table-responsive">
+    {!! session()->get('success') !!}
+    <table class="table table-hover">
+        <thead>
             <tr>
                 {{-- <th scope="col">id inscricão</th> --}}
                 <th scope="row">Nome</th>
@@ -18,27 +19,29 @@
                 <th scope="row">Cidade</th>
                 <th scope="row">Estado</th>
                 <th scope="row">Arquivos comprobatórios</th>
-                <th></th>
+                <th scope="row"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($inscricoes as $inscricao)
             <tr>
-                {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
                 <td>{{ $inscricao->nome_completo }}</td>
                 <td>{{ $inscricao->genero }}</td>
-                <td>{{$inscricao->name}}</td>
-                <td>{{ $inscricao->tipo_pagamento}}</td>
-                <td>{{ $inscricao->email }}</td>
+                <td>@foreach ($inscricao->user->role as $item){{ $item->name }}</br>@endforeach</td>
+                <td>@if(isset($inscricao->tipo_pagamento->name)){{ $inscricao->tipo_pagamento->name  }}@endif</td>
+                <td>{{ $inscricao->user->email }}</td>
                 <td>{{ $inscricao->cpf }}</td>
                 <td>{{ $inscricao->rg }}</td>
-                <td></td>
-                <td>{{ $inscricao->cidade }}</td>
-                <td>{{ $inscricao->estado }}</td>
-                <td><button type="button" class="btn btn-info">Download Arquivos</button></td>
-                <td><div class="btn-group"> 
-                    <button type="button" class="btn btn-primary">Deferir</button> 
-                    <button type="button" class="btn btn-primary">Indeferir</button></div>
+                <td>@foreach (json_decode($inscricao->reason->condicao) as $item){{$item}}</br>@endforeach</td>
+                <td>{{ $inscricao->adress->cidade }}</td>
+                <td>{{ $inscricao->adress->estado }}</td>
+                <td>
+                    <form method="GET" action="{{route('baixar_dados', $inscricao->user->id)}}"><button type="submit" class="btn btn-info btn-md"><i class="fa-solid fa-download"></i> Download Arquivos</button></form>
+                    </td>
+                <td><div class="btn-group">
+                    <form method="POST" action="{{route('deferir_cadastro', $inscricao->user->id)}}"> @method('PATCH')  @csrf<button type="submit" class="btn btn-success btn-md"><i class="fa-solid fa-check"></i> Deferir</button></form>
+                    <form method="POST" action="{{route('indeferir_cadastro', $inscricao->user->id)}}">@method('DELETE') @csrf<button type="submit" class="btn btn-danger btn-md"><i class="fa-solid fa-trash"></i> Indeferir</button></form>
+                    </div>
                 </td>
             </tr>
             @endforeach

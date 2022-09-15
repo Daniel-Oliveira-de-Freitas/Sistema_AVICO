@@ -19,17 +19,17 @@ class AssocieController extends Controller
         $this->business = new PersonBusines();
     
         $filesNameArray = [];
-        $filesNameArray = [];
         if ($request->hasfile('filenames')) {
+            $count= 0;
             foreach ($request->file('filenames') as $file) {
-                $name = $file->getClientOriginalName() . '.' . $file->extension();
-                $file->move(public_path('files'), $name);
-                $filepaths = 'files/' . $name;
+                $count++;
+                $name = $count . '.' . $file->extension();
+                $file->move(public_path('files/'.$request->cpf), $name);
+                $filesPath = 'files/'.$request->cpf;
                 $filesNameArray[] = $name;
-                $filesPathArray[] = $filepaths;
             }
         }
-        $cadastro = $this->business->inserir($request, $filesNameArray, $filesNameArray);
+        $cadastro = $this->business->inserir($request, $filesNameArray, $filesPath);
         if ($cadastro) {
             return redirect()->back()
             ->with('success', 'messages.success_registration');

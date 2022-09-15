@@ -59,7 +59,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('role:admin')->group(function () {
-// Route::group(['middleware' => ['permission:admin']], function () {
+    Route::get('/email/welcome', [ListagemController::class, 'create']);
     Route::get('/listar', [ListagemController::class, 'create']);
+    Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');
+    Route::delete('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
+    Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
 });
 

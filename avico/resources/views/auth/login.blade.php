@@ -20,6 +20,7 @@
                 <label>Senha</label>
                 <input type="password" name="password" class="form-control" placeholder="Digite sua Senha" required autofocus>
             </div>
+            <a class="mb-3" href="/forgot-password">Esqueci minha senha</a>
             <br>
             <button type="submit" class="btn btn-primary col-md-12 col-md-offset-12">Login</button>
         </form>

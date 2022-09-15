@@ -2,9 +2,8 @@
 
 namespace App\Enums;
 
-class PaymentTypes{
-    public const PAYMENT_TYPES = [
-        'PIX'   => 'Pix',
-        'DEPOSITO' => 'Depósito',
-    ];
+enum PaymentTypes: string
+{
+        case Pix = 'pix';
+        case Deposito = 'deposito';
 }

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AssocieController;
-use App\Http\Controllers\ListagemController;
+use App\Mail\FaleConoscoEmail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +60,11 @@ Route::get('/sobre', function () {
 });
 
 Route::get('/fale_conosco', function () {
+    return view('static_views.fale_conosco');
+});
+
+Route::post('/fale_conosco/mail', function (Request $request) {
+    Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
     return view('static_views.fale_conosco');
 });
 

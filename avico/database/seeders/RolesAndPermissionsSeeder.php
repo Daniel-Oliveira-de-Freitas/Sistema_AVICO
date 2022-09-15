@@ -30,6 +30,6 @@ class RolesAndPermissionsSeeder extends Seeder
         ->givePermissionTo(['visualizar', 'cadastrar']);
     
         $role = Role::create(['name' => 'voluntario']);
-        $role->givePermissionTo(['visualizar']);
+        $role->givePermissionTo(['visualizar', 'cadastrar']);
     }
 }
