@@ -22,8 +22,6 @@ class FaleConoscoEmail extends Mailable
         $this->email = $data;
     }
 
-
-
     /**
      * Build the message.
      *

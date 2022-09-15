@@ -53,7 +53,7 @@ class WelcomeUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Notificação sobre o status cadastro Avico Brasil')
+                    ->subject('Notificação sobre o status do cadastro na Avico Brasil')
                     ->line('Seu cadastro na Avico Brasil foi aprovado')
                     ->action('Acesse o site aqui', url('/'))
                     ->line('Bem vindo!');
