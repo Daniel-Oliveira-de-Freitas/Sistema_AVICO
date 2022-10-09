@@ -130,3 +130,15 @@ Route::get('/bancada-petista-encaminhara-criacao-de-frente-parlamentar-em-defesa
 Route::get('/manifestacao-publica-sobre-a-gravidade-da-reducao-da-quarentena-da-covid-19', function () {
     return view('static_views.noticias.noticia_ler10');
 });
+
+Route::get('/associacao-reune-parentes-e-pessoas-que-tiveram-a-doenca-queixa-crime-afirma-que-presidente-cometeu-nove-crimes-na-conducao-do-enfrentamento-a-pandemia-e-cita-inercia-da-pgr', function () {
+    return view('static_views.noticias.noticia_ler11');
+});
+
+Route::get('/antropologo-jean-segata-e-indicado-ao-premio-pesquisador-gaucho-2022-por-pesquisas-sobre-os-impactos-sociais-da-covid-19', function () {
+    return view('static_views.noticias.noticia_ler12');
+});
+
+Route::get('/juri-simbolico-do-tribunal-permanente-dos-povos-condena-bolsonaro-por-crimes-contra-a-humanidade-durante-a-pandemia', function () {
+    return view('static_views.noticias.noticia_ler13');
+});
