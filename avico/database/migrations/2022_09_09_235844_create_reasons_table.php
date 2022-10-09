@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reasons', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('person_id');
-            $table->string('condicao');
+            $table->json('condicao');
             $table->string('grau_parentesco')->nullable();
             $table->string('outros')->nullable();
 

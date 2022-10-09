@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Listagem de inscrições');
+@section('title', 'Listagem de inscrições')
 
 @section('content')
-<section class="table-responsive">
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
+<section class="container-active table-responsive justify-content-center">
+    <div class="container">{!! session()->get('success') !!}</div>
+    <table class="table table-hover">
+        <thead>
             <tr>
-                {{-- <th scope="col">id inscricão</th> --}}
                 <th scope="row">Nome</th>
                 <th scope="row">Genêro</th>
                 <th scope="row">Tipo associação</th>
@@ -16,31 +16,42 @@
                 <th scope="row">RG</th>
                 <th scope="row">Condição</th>
                 <th scope="row">Cidade</th>
+                <th scope="row">Estado</th>
                 <th scope="row">Arquivos comprobatórios</th>
-                <th></th>
+                <th scope="row">Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($inscricoes as $inscricao)
             <tr>
-                {{-- <th scope="row">{{ $inscricao->id }}</th> --}}
-                <td>{{ $inscricao->nome_completo }}</td>
-                <td>{{ $inscricao->genero }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ $inscricao->person->nome_completo }}</td>
+                <td>{{ $inscricao->person->genero }}</td>
+                <td>@foreach ($inscricao->role as $item){{ $item->name }}</br>@endforeach</td>
+                <td>@if(isset($inscricao->person->tipo_pagamento->name)){{ $inscricao->person->tipo_pagamento->name  }}@endif</td>
                 <td>{{ $inscricao->email }}</td>
-                <td>{{ $inscricao->cpf }}</td>
-                <td>{{ $inscricao->rg }}</td>
-                <td></td>
-                <td>{{ $inscricao->estado }}</td>
-                <td><button type="button" class="btn btn-info">Download Arquivos</button></td>
-                <td><div class="btn-group"> 
-                    <button type="button" class="btn btn-primary">Deferir</button> 
-                    <button type="button" class="btn btn-primary">Indeferir</button></div>
-                </td>
-            </tr>
-            @endforeach
+                <td>{{ $inscricao->person->cpf }}</td>
+                <td>{{ $inscricao->person->rg }}</td>
+                <td>@foreach (json_decode($inscricao->person->reason->condicao) as $item){{$item}}</br>@endforeach</td>
+                <td>{{ $inscricao->person->adress->cidade }}</td>
+                <td>{{ $inscricao->person->adress->estado }}</td>
+                <td>
+                 <form method="GET" action="{{route('baixar_dados', $inscricao->id)}}"><button type="submit" class="btn btn-info btn-md"><i class="fa-solid fa-download"></i> Download Arquivos</button></form>
+                 </td>
+                <td><div class="btn-group">
+                    <button type="button" role="button" href="#" data-toggle="modal" data-target="#ModalVisualizar{{$inscricao->id}}" class="btn btn-info btn-sm"><i class="fa-solid fa-eye"></i> Visualizar</button>
+                    <button type="button" role="button" href="#" data-toggle="modal" data-target="#ModalAprovar{{$inscricao->id}}" class="btn btn-success btn-sm"><i class="fa-solid fa-check"></i> Deferir</button>
+                    <button type="button" role="button" href="#" data-toggle="modal" data-target="#ModalReprovar{{$inscricao->id}}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Indeferir</button>
+                </div>
+            </td>
+        </tr>
+        @include('modals.associe.view')
+        @include('modals.associe.deferir')
+        @include('modals.associe.indeferir')
+        @endforeach
         </tbody>
     </table>
+    <div class="container">
+        {{$inscricoes->links('pagination::bootstrap-5')}}
+    </div>
 </section>
 @endsection

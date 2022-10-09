@@ -2,9 +2,8 @@
 
 namespace App\Enums;
 
-class UserTypes{
-    public const USER_TYPES = [
-        'voluntario'   => 'voluntario',
-        'associado' => 'associado',
-    ];
+enum UserTypes: string
+{
+       case Voluntario = 'voluntario';
+       case Associado = 'associado';
 }

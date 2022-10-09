@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Repository;
-
-use App\Http\Requests\StoreRegistrationFormRequest;
 use App\Models\Person;
 use App\Repository\UserRepository;
 use Exception;
@@ -24,8 +22,8 @@ class PersonRepository
         $this->adressRepository = new AdressRepository();
         $this->reasonRepository = new ReasonRepository();
         try {
+            DB::beginTransaction();
             $userid = $this->userRepository->save($request);
-
             $person = new Person();
             $person->nome_completo =  $request->nome;
             $person->user_id = $userid;
