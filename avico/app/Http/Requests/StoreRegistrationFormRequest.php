@@ -24,7 +24,7 @@ class StoreRegistrationFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo' => 'required|string|max:10|min:9',
+            'tipo' => 'required',
             'nome' => 'required|string|max:255|min:3',
             'dataNascimento' => 'required|date',
             'genero' => 'required',

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AssocieController;
+use App\Mail\FaleConoscoEmail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +63,11 @@ Route::get('/fale_conosco', function () {
     return view('static_views.fale_conosco');
 });
 
+Route::post('/fale_conosco/mail', function (Request $request) {
+    Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
+    return view('static_views.fale_conosco');
+});
+
 Route::get('/enderecos', function () {
     return view('static_views.enderecos_uteis');
 });
@@ -75,7 +84,6 @@ Route::get('/noticias', function () {
     return view('static_views.noticias');
 });
 
-// Route::get('/listar', [ListagemController::class, 'create']);
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
@@ -121,4 +129,16 @@ Route::get('/bancada-petista-encaminhara-criacao-de-frente-parlamentar-em-defesa
 
 Route::get('/manifestacao-publica-sobre-a-gravidade-da-reducao-da-quarentena-da-covid-19', function () {
     return view('static_views.noticias.noticia_ler10');
+});
+
+Route::get('/associacao-reune-parentes-e-pessoas-que-tiveram-a-doenca-queixa-crime-afirma-que-presidente-cometeu-nove-crimes-na-conducao-do-enfrentamento-a-pandemia-e-cita-inercia-da-pgr', function () {
+    return view('static_views.noticias.noticia_ler11');
+});
+
+Route::get('/antropologo-jean-segata-e-indicado-ao-premio-pesquisador-gaucho-2022-por-pesquisas-sobre-os-impactos-sociais-da-covid-19', function () {
+    return view('static_views.noticias.noticia_ler12');
+});
+
+Route::get('/juri-simbolico-do-tribunal-permanente-dos-povos-condena-bolsonaro-por-crimes-contra-a-humanidade-durante-a-pandemia', function () {
+    return view('static_views.noticias.noticia_ler13');
 });

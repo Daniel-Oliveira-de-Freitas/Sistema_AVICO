@@ -16,9 +16,11 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('filenames');
-            $table->foreignIdFor(Registration::class);
-            $table->timestamps();
+            $table->unsignedBigInteger('person_id');
+            $table->json('arquivos');
+            $table->json('caminho_arquivos');
+            
+            $table->foreign('person_id')->references('id')->on('persons')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

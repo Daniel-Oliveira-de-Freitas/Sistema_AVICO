@@ -7,6 +7,49 @@
             <h3 class="section-heading text-uppercase">Notícias</h3>
         </div>
         <div class="row border-top  pt-3">
+            <div class="col-lg-4"><img class="img-fluid" src="images\assets\img\noticias\TPP.png" alt=""></div>
+            <div class="col-lg-8 rpttitle">
+                <!--link da notícia completa aqui-->
+                <div class="sem_cor"><a
+                        href="/juri-simbolico-do-tribunal-permanente-dos-povos-condena-bolsonaro-por-crimes-contra-a-humanidade-durante-a-pandemia">
+                        <h5>Júri simbólico do Tribunal Permanente dos Povos condena Bolsonaro por crimes contra a humanidade durante a pandemia</h5>
+                    </a></div>
+                <p>Atuação do TPP não tem atribuição para aplicar penas, mas alerta comunidade internacional e pode informar comissões jurídicas e cortes internacionais sobre a postura do presidente brasileiro frente às mortes por Covid-19 no Brasil.</p>
+                <p>O júri simbólico do Tribunal Permanente dos Povos (TPP) leu nesta quinta-feira (01) a sentença que condenou o presidente Jair Bolsonaro (PL) por crimes contra a humanidade no Brasil e violação dos direitos humanos durante a pandemia da Covid-19.</p>
+                <div class="float-end pe-2 pb-4"><a class="btn btn-primary btn-sm"
+                        href="/juri-simbolico-do-tribunal-permanente-dos-povos-condena-bolsonaro-por-crimes-contra-a-humanidade-durante-a-pandemia">Leia
+                        Mais</a></div>
+            </div>
+        <div class="row border-top  pt-3">
+            <div class="col-lg-4"><img class="img-fluid" src="images\assets\img\noticias\Jean-Segata.png" alt=""></div>
+            <div class="col-lg-8 rpttitle">
+                <!--link da notícia completa aqui-->
+                <div class="sem_cor"><a
+                        href="/antropologo-jean-segata-e-indicado-ao-premio-pesquisador-gaucho-2022-por-pesquisas-sobre-os-impactos-sociais-da-covid-19">
+                        <h5>Antropólogo Jean Segata é indicado ao Prêmio Pesquisador Gaúcho 2022 por pesquisas sobre os impactos sociais da Covid-19</h5>
+                    </a></div>
+                <p>Jean Segata, professor do Departamento de Antropologia e do Programa de Pós-Graduação em Antropologia Social (PPGAS), é o indicado da Comissão de Pesquisa Instituto de Filosofia e Ciências Humanas da Universidade do Rio Grande do Sul (Compesq IFCH/UFRGS) para o Prêmio Pesquisador Gaúcho 2022, da Fundação de Amparo à Pesquisa do Estado do Rio Grande do Sul (FAPERGS). Em sua 12ª edição e com o tema “Ciência Gera Desenvolvimento”, a premiação reconhece o trabalho de pesquisadores e destaca a importância do investimento em ciência, inovação e tecnologia como alavanca para o desenvolvimento do Rio Grande do Sul.</p>
+                <div class="float-end pe-2 pb-4"><a class="btn btn-primary btn-sm"
+                        href="/antropologo-jean-segata-e-indicado-ao-premio-pesquisador-gaucho-2022-por-pesquisas-sobre-os-impactos-sociais-da-covid-19">Leia
+                        Mais</a></div>
+            </div>
+        <div class="row border-top  pt-3">
+            <div class="col-lg-4"><img class="img-fluid" src="images\assets\img\noticias\LOGO-AVICO-2021-OK-PNG-930x620.png" alt=""></div>
+            <div class="col-lg-8 rpttitle">
+                <!--link da notícia completa aqui-->
+                <div class="sem_cor"><a
+                        href="/associacao-reune-parentes-e-pessoas-que-tiveram-a-doenca-queixa-crime-afirma-que-presidente-cometeu-nove-crimes-na-conducao-do-enfrentamento-a-pandemia-e-cita-inercia-da-pgr">
+                        <h5>Barroso envia à PGR acusação contra Bolsonaro sobre pandemia e queixa-crime lista 9 crimes</h5>
+                    </a></div>
+                <p>A associação apresentou ao Supremo uma ação penal privada subsidiária da pública – tipo de processo previsto na Constituição quando não há ação do Ministério Público no prazo legal.</p>
+                <p>No pedido, o grupo justifica o pedido sustentando que houve “inércia” da Procuradoria-Geral da República. Eles também argumentam que apresentaram representações ao MP e pediram informações sobre o andamento do caso, que ficou sem resposta.</p>
+                <p>A associação cita ainda a apresentação do <a href="https://g1.globo.com/politica/cpi-da-covid/noticia/2021/10/26/cpi-da-covid-aprova-relatorio-atribui-nove-crimes-a-bolsonaro-e-pede-80-indiciamentos.ghtml">relatório final da CPI da Covid no Senado</a>, sobre o qual tentaram obter informações na PGR, sem sucesso.</p>
+                <p>“A inércia (formal e material) do Procurador-Geral da República, em tal contexto, é induvidosa e deixa aberto o caminho para o oferecimento da presente queixa-crime subsidiária”, declaram.</p>
+                <div class="float-end pe-2 pb-4"><a class="btn btn-primary btn-sm"
+                        href="/associacao-reune-parentes-e-pessoas-que-tiveram-a-doenca-queixa-crime-afirma-que-presidente-cometeu-nove-crimes-na-conducao-do-enfrentamento-a-pandemia-e-cita-inercia-da-pgr">Leia
+                        Mais</a></div>
+            </div>
+        <div class="row border-top  pt-3">
             <div class="col-lg-4"><img class="img-fluid" src="images\assets\img\noticias\Infome10.png" alt=""></div>
             <div class="col-lg-8 rpttitle">
                 <!--link da notícia completa aqui-->

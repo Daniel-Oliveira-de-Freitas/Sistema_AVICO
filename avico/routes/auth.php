@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssocieController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -8,10 +9,11 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\ListagemController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
+    Route::get('register', [RegisteredUserController::class, 'giverUserAuths'])
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
@@ -51,6 +53,17 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+    
 });
+
+Route::middleware('role:admin')->group(function () {
+    Route::get('/email/welcome', [ListagemController::class, 'create']);
+    Route::get('/listar', [ListagemController::class, 'create']);
+    Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');
+    Route::patch('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
+    Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
+    Route::get('/listar/visualizar/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
+});
+
