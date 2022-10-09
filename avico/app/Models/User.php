@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\StatusTypes;
 use App\Mail\WelcomeEmail;
 use App\Notifications\ResetPasswordNotification;
+use App\Notifications\WelcomeUserNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -92,6 +93,6 @@ class User extends Authenticatable
      */
     public function sendWelcomeNotification()
     {
-        $this->notify(new WelcomeEmail());
+        $this->notify(new WelcomeUserNotification());
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Busines\PersonBusines;
 use App\Http\Requests\StoreRegistrationFormRequest;
+use Illuminate\Http\Request;
 
 class AssocieController extends Controller
 {
@@ -14,10 +15,9 @@ class AssocieController extends Controller
     
     private PersonBusines $business;
     
-    public function store(StoreRegistrationFormRequest $request)
+    public function store(Request $request)
     {
         $this->business = new PersonBusines();
-    
         $filesNameArray = [];
         if ($request->hasfile('filenames')) {
             $count= 0;

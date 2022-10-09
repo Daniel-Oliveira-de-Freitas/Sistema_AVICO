@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\StatusTypes;
 use App\Models\Person;
 use App\Models\User;
+use App\Notifications\IndeferUserNotification;
 use App\Notifications\WelcomeUserNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use ZipArchive;
 
@@ -13,22 +15,18 @@ class ListagemController extends Controller
 {
   public function create()
   {
-    $inscricoes = Person::whereHas('User', function ($q) {
-      $q->where('status', StatusTypes::Aguardando_aprovacao->value);
-    })->get();
-
+    $inscricoes = User::where('status', StatusTypes::Aguardando_aprovacao->value)->paginate(10);
     return view("static_views.associados.list")->with(compact('inscricoes'));
   }
 
-  public function remove($id)
+  public function remove(Request $request,$id)
   {
     $user = User::findorfail($id);
-    File::deleteDirectory(public_path($user->person->file->caminho_arquivos));
-    $user->delete();
-
+    $user->update(['status' => StatusTypes::Indeferido->value, 'active' => false]);
+    $user->notify(new IndeferUserNotification($request->motivo));
     return redirect()->back()->with('success', '<div class="alert alert-dismissible alert-success">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Usuario deletado</strong>
+        <strong>Usuario indeferido no sisteam</strong>
       </div>');
   }
 
@@ -42,7 +40,7 @@ class ListagemController extends Controller
         <strong>Usuario aprovado no sistema</strong>
       </div>');
   }
-
+  
   public function downloadFiles($id)
   {
     $user = User::findorfail($id);

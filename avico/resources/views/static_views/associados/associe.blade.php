@@ -70,16 +70,11 @@
                         <br>
                         @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                             <br>
-                            <input class="tipo form-check-input" type="checkbox" name="tipo" id="{{ $value->value }}"
+                            <input class="tipo form-check-input" type="checkbox" name="tipo[]" id="{{ $value->value }}"
                             value="{{ $value->value }}" data-parsley-required data-parsley-mincheck="1"
                             data-parsley-required-message="Você deve selecionar uma opção">
                             <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                         @endforeach
-                        {{-- <div class="form-check">
-                                <input class="tipo form-check-input" type="checkbox" name="tipo" id="associado"
-                                    value="Associado">
-                                <label class="form-check-label" for="associado">Associado</label>
-                            </div> --}}
                     </div>
                 </div>
                 <div class="form-content">

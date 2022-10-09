@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserTypes;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -48,5 +49,13 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function giverUserAuths(){
+        $user = User::all();
+           
+        foreach ($user as $u) {
+        $u->assignRole(UserTypes::Voluntario->value);  
+        }
     }
 }

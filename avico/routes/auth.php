@@ -13,7 +13,7 @@ use App\Http\Controllers\ListagemController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
+    Route::get('register', [RegisteredUserController::class, 'giverUserAuths'])
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
@@ -62,7 +62,8 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/email/welcome', [ListagemController::class, 'create']);
     Route::get('/listar', [ListagemController::class, 'create']);
     Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');
-    Route::delete('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
+    Route::patch('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
     Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
+    Route::get('/listar/visualizar/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
 });
 

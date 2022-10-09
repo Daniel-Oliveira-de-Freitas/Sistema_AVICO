@@ -15,7 +15,12 @@ class UserRepository {
         $user->email =  $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        $user->assignRole(UserTypes::from($request->tipo)->value);
+        if(in_array(UserTypes::Voluntario->value, $request->tipo,true) === true && in_array(UserTypes::Associado->value, $request->tipo, true) === true){
+            $user->assignRole(UserTypes::from($request->tipo[0])->value);
+            $user->assignRole(UserTypes::from($request->tipo[1])->value);
+        }else {
+            $user->assignRole(UserTypes::from($request->tipo[0])->value);
+        }
         return $user->id;
     }
 
