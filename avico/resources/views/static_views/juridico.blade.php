@@ -1,10 +1,9 @@
 @extends('layouts.app')
+@section('title', 'Juridico')
 @section('content')
 <section class="page-section">
 
     <main class="container container-text">
-        
-
             
             <h3>Assessoria Jurídica</h3>
 
