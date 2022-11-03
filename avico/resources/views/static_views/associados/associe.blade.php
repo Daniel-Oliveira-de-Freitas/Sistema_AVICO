@@ -1,59 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Formulário para associar-se a Avico')
-<style>
-    .form-content {
-        display: none;
-    }
-
-    .form-content.current {
-        display: inherit;
-    }
-
-    p {
-        font-weight: bold
-    }
-
-    .parsley-errors-list {
-        list-style: none;
-        color: red;
-    }
-
-    .btn-info,
-    .btn-success {
-        margin-top: 10px;
-        margin-bottom: 80px;
-        display: block;
-    }
-
-    .form-navigation {
-        padding-bottom: 120px;
-    }
-
-    #grauParentesco {
-        display: none;
-    }
-
-    #outrosInput {
-        display: none;
-    }
-
-    #certidao_obito {
-        display: none;
-    }
-
-    #comprovante {
-        display: none;
-    }
-
-    .form_body {
-        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
-</style>
-
 
 @section('content')
-    {{-- <section> --}}
-    <section class="form_body container rows col-md-6 offset-md-3 ">
+    <section class="form_body container rows col-md-6 offset-md-3">
         @if (session('success'))
             @include(session('success'))
         @elseif(session('fail'))
@@ -64,31 +13,28 @@
             <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
             <form action="{{ route('inscricao.store') }}" method="POST" class="form-cadastro" enctype="multipart/form-data">
                 @csrf
-                <div class="form-content">
-                    <div class="mb-3">
-                        <label>Deseja se tornar:</label>
-                        <br>
+                <div class="form-content mb-3">
+                    <label class="mb-2">Deseja se tornar:</label>
                         @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                             <br>
                             <input class="tipo form-check-input" type="checkbox" name="tipo[]" id="{{ $value->value }}"
-                            value="{{ $value->value }}" data-parsley-required data-parsley-mincheck="1"
-                            data-parsley-required-message="Você deve selecionar uma opção">
+                                value="{{ $value->value }}" data-parsley-required data-parsley-mincheck="1"
+                                data-parsley-required-message="Você deve selecionar uma opção">
                             <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                         @endforeach
-                    </div>
                 </div>
                 <div class="form-content">
                     <div class="form-group">
                         <div class="text-sm-start form-check">
 
-                            <h1 class="text-center mb-12">TERMO DE ASSOCIAÇÃO</h1>
+                            <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
                             <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo
                                 vedado o
                                 uso
                                 para fins
                                 diversos, seguindo a Lei Geral Proteção de Dados LEI Nº 13.709, DE 14 DE AGOSTO DE 2018.
                             </p>
-                            <p class="associacao">
+                            <p>
                                 2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
                                 requerer
                                 a admissão
@@ -123,7 +69,7 @@
                                 informações via e-mail, WhatsApp, SMS sobre a associação. Este consentimento serve para
                                 atender aos requisitos da Lei nº 13.709/18 (Lei Geral de Proteção de Dados).
                             </p>
-                            <p class="associacao">4. Tenho ciência de que, ao solicitar o presente requerimento de
+                            <p>4. Tenho ciência de que, ao solicitar o presente requerimento de
                                 associação à AVICO, devo
                                 conhecer e cumprir com o Estatuto Social, decisões internas e Regimentos Internos,
                                 incluindo, mas não se limitando, ao Código de Conduta, Políticas e Procedimentos, sob
@@ -138,54 +84,88 @@
 
                 <div class="form-content">
                     <div class="row">
-                        <div class="form-group col">
+                        <div class="mb-3 form-group col">
                             <span>Nome completo*</span>
-                            <input class="form-control form-control-lg text-break" type="text" name="nome" required>
+                            <input class="form-control form-control text-break" type="text" name="nome" required>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="mb-3 form-group col-md-6">
                             <label>Data de Nascimento*</label>
                             <input class="form-control" type="date" name="dataNascimento">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="senha">Digite sua senha*</label>
-                            <input class="password  form-control" type="password" name="password" id="password" required>
+                            <input class="password form-control" type="password" name="password" id="password" required>
+                            <span id='message_password'></span>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="senha">Confirmar senha*</label>
                             <input class="form-control" type="password" id="confirmPassword" required>
-                            <span id='message'></span>
+                            <span id='message_confirmPassword'></span>
                         </div>
                         <div class="mb-3 form-group">
                             <label>Gênero*</label>
-                            <div>
+                            </br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">Masculino</label>
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="Masculino"
+                                    <input class="genero form-check-input" type="checkbox" name="genero" id="masculino"
                                         value="Masculino">
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="Feminino"
+                                    <input class="genero form-check-input" type="checkbox" name="genero" id="feminino"
                                         value="Feminino">
                                     <label class="form-check-label">Feminino</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="Neutro"
+                                    <input class="genero form-check-input" type="checkbox" name="genero" id="nao_binario"
+                                        value="Não-binário">
+                                    <label class="form-check-label">Não-binário</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="genero form-check-input" type="checkbox" name="genero" id="neutro"
                                         value="Neutro" data-parsley-required data-parsley-mincheck="1"
                                         data-parsley-required-message="Você deve selecionar uma opção">
                                     <label class="form-check-label">Prefiro Não Definir</label>
                                 </div>
-                            </div>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label>Raça/Cor:*</label>
+                                </br>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">Branca</label>
+                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="branca"
+                                        value="Branca">
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="Preta"
+                                        value="Preta">
+                                    <label class="form-check-label">Preta</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="parda"
+                                        value="Parda">
+                                    <label class="form-check-label">Parda</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="indigena"
+                                        value="Indígena">
+                                    <label class="form-check-label">Indígena</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="amarela"
+                                        value="Amarela " data-parsley-required data-parsley-mincheck="1"
+                                        data-parsley-required-message="Você deve selecionar uma opção">
+                                    <label class="form-check-label">Amarela </label>
+                                </div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>CPF*</label>
-                            <input class="form-control" type="number" name="cpf" data-parsley-minlength="10"
-                                oninput="maxLengthCheck(this)" maxlength="11"
-                                data-parsley-minlength-message="Insira um CPF válido." required>
+                            <input class="form-control" type="text" name="cpf" id="cpf" data-parsley-minlength="10" oninput="maxLengthCheck(this)" 
+                            maxlength="14" data-parsley-minlength-message="Insira um CPF válido." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>RG*</label>
-                            <input class="form-control" type="number" name="rg" data-parsley-minlength="10"
-                                oninput="maxLengthCheck(this)" maxlength="10"
+                            <input class="form-control" type="text" name="rg" data-parsley-minlength="10"
+                                oninput="maxLengthCheck(this)" maxlength="13"
                                 data-parsley-minlength-message="Insira um RG válido." required>
                         </div>
                         <div class="mb-3 col-md-6">
@@ -271,8 +251,8 @@
                             <input class="form-control" type="text" name="bairro" id="bairro" required>
                         </div>
                         <div class="mb-3 ">
-                            <label>Profissão</label>
-                            <input class="form-control" type="text" name="profissao">
+                            <label>Profissão*</label>
+                            <input class="form-control" type="text" name="profissao" required>
                         </div>
                         <div class="mb-3">
                             <label>Qual sua condição para se tornar associado?*</label>
@@ -320,14 +300,26 @@
                                     required>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label>Quantos pessoas do seu grupo familiar nuclear você perdeu para a COVID-19 (mãe, pai, filho, filha, avô, avó, pais, cônjuges)?</label>
+                            <input class="form-control" type="text" name="complemento" id="complemento">
+                        </div>
                     </div>
                 </div>
                 <div class="form-content mb-3">
                     <p>1. Tornando-se associado, você está ciente do pagamento do valor de R$ 40,00 (quarenta reais)
-                        mensais
-                        a
-                        título de contribuição à AVICO.
+                        mensais a título de contribuição à AVICO.
                     </p>
+                    <label>O pagamento da mensalidade acima informada será realizada da seguinte forma:</label>
+                    <div class="form-check">
+                        @foreach (\App\Enums\PaymentTypes::cases() as $key => $value)
+                            <br>
+                            <label class="form-check-label" for="{{ $value->name }}">{{ $value->name }}</label>
+                            <input class="pagamento form-check-input" type="radio" name="pagamento"
+                                id="{{ $value->value }}" value="{{ $value->value }}" data-parsley-required
+                                data-parsley-required-message="Você deve selecionar um tipo de pagamento">
+                        @endforeach
+                    </div>
                     <p>2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo com a renda bruta
                         familiar
                         do
@@ -335,18 +327,6 @@
                         envio
                         de
                         documentos que demonstrem a renda.</p>
-                    <label>O pagamento da mensalidade acima informada será realizada da seguinte forma:
-                    </label>
-
-                    <div class="form-check">
-                        @foreach (\App\Enums\PaymentTypes::cases() as $key => $value)
-                            <br>
-                            <label class="form-check-label" for="{{ $value->name }}">{{ $value->name }}</label>
-                            <input class="pagamento form-check-input" type="radio" name="pagamento"
-                                id="{{ $value->value }}" value="{{ $value->value }}" data-parsley-required
-                                data-parsley-required-message="Você deve selecionar uma tipo de pagamento">
-                        @endforeach
-                    </div>
                 </div>
 
                 <div class="form-content mb-3">
@@ -400,6 +380,5 @@
             </form>
         </div>
     </section>
-    {{-- </section> --}}
     <script type="text/javascript" src="./js/validations.js"></script>
 @endsection

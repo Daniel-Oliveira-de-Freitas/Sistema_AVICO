@@ -15,14 +15,12 @@ function outrosInputShow() {
     }
 }
 $(document).on("keypress", 'form', function (e) {
-    var code = e.keyCode || e.which;
+    let code = e.keyCode || e.which;
     if (code == 13) {
         e.preventDefault();
         return false;
     }
 });
-
-
 
 function familiarVitimaInputShow() {
     if (document.getElementById('familiar').checked == true) {
@@ -113,16 +111,16 @@ $(document).ready(function () {
 
 const campoCelular = document.querySelector("#celular");
 const celularInput = window.intlTelInput(campoCelular, {
-  preferredCountries: ["br", "us"],
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    preferredCountries: ["br", "us"],
+    utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
 
 const campoTelefoneResidencial = document.querySelector("#telefone_residencial");
 const telefoneResidencialInput = window.intlTelInput(campoTelefoneResidencial, {
-  preferredCountries: ["br", "us"],
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    preferredCountries: ["br", "us"],
+    utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
 
 $('#celular').on().on('keyup', function (event) {
@@ -160,10 +158,17 @@ function associadoPagamentoRequired() {
 
 $('#password, #confirmPassword').on('keyup', function () {
     if ($('#password').val() == $('#confirmPassword').val()) {
-        $('#message').html('');
-    } else
-        $('#message').html('As senhas não são identicas').css('color', 'red');
+        $('#message_confirmPassword').html('');
+    } else {
+        $('#message_confirmPassword').html('As senhas não são identicas').css('color', 'red');
+    }
+    if ($('#password').val().trim().length > 4) {
+        $('#message_password').html('');
+    } else {
+        $('#message_password').html('A senha deve conter mais do que 4 caracteres!').css('color', 'red');
+    }
 });
+
 
 $('#nenhum:checkbox').click(function () {
     if ($(this).is(':checked')) {
@@ -200,11 +205,11 @@ $('.genero:checkbox').click(function (e) {
 });
 
 $(function () {
-    var $sections = $('.form-content');
+    let $sections = $('.form-content');
     function navigateTo(index) {
         $sections.removeClass('current').eq(index).addClass('current');
         $('.form-navigation .previous').toggle(index > 0);
-        var atTheEnd = index >= $sections.length - 1;
+        let atTheEnd = index >= $sections.length - 1;
         $('.form-navigation .next').toggle(!atTheEnd);
         $('.form-navigation [type=submit]').toggle(atTheEnd);
     }
@@ -244,3 +249,20 @@ $(function () {
 
 $('form').parsley().options.requiredMessage = "Este campo é obrigatório"
 $.Parsley.requiredMessage = "this field is required"
+
+   document.getElementById('cpf').addEventListener('input', function(e) {
+    
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+        e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '/' : x[4]) + x[4] + (x[5] ? '-' + x[5] : '');
+        
+        if(e.target.value.length < 15) {
+            x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '-' + x[4] : '');
+        }
+
+        console.log('Com formatação: ' + e.target.value);
+        
+        //Caso queira pegar apenas os números use essa função para remover todos os caracteres menos os números em Javascript
+        let valor = e.target.value.replace(/[^0-9]/g, '');
+        console.log('Sem formatação: ' + valor);
+    });
