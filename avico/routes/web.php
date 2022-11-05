@@ -80,6 +80,7 @@ Route::get('/noticias', function () {
     return view('static_views.noticias');
 });
 
+
 Route::get('/noticias', function () {
     return view('static_views.noticias');
 });

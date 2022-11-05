@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ListagemController;
+use App\Http\Controllers\Notice\NoticeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('role:admin')->group(function () {
     Route::get('/email/welcome', [ListagemController::class, 'create']);
     Route::get('/listar', [ListagemController::class, 'create']);
+    Route::get('/noticias/criaNoticia', [NoticeController::class, 'create']);
+    Route::post('/noticias/criaNoticia/store', [NoticeController::class, 'store'])->name('cria_noticia');
     Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');
     Route::patch('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
     Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
