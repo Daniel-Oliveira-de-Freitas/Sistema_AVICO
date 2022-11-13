@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Formulário para associar-se a Avico')
 
-@section('content')
+@section('content') 
     <section class="form_body container rows col-md-6 offset-md-3">
         @if (session('success'))
             @include(session('success'))
@@ -9,88 +9,81 @@
             @include(session('fail'))
         @endif
         <h1 class="text-center">Formulario de Cadastro Avico</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card-body">
             <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
             <form action="{{ route('inscricao.store') }}" method="POST" class="form-cadastro" enctype="multipart/form-data">
                 @csrf
                 <div class="form-content mb-3">
                     <label class="mb-2">Deseja se tornar:</label>
-                        @foreach (\App\Enums\UserTypes::cases() as $key => $value)
-                            <br>
-                            <input class="tipo form-check-input" type="checkbox" name="tipo[]" id="{{ $value->value }}"
-                                value="{{ $value->value }}" data-parsley-required data-parsley-mincheck="1"
-                                data-parsley-required-message="Você deve selecionar uma opção">
-                            <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
-                        @endforeach
+                    @foreach (\App\Enums\UserTypes::cases() as $key => $value)
+                        <br>
+                        <input class="tipo form-check-input" type="checkbox" name="tipo[]" id="{{ $value->value }}"
+                            value="{{ $value->value }}" data-parsley-required data-parsley-mincheck="1"
+                            data-parsley-required-message="Você deve selecionar uma opção">
+                        <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
+                    @endforeach
                 </div>
                 <div class="form-content">
-                    <div class="form-group">
-                        <div class="text-sm-start form-check">
+                    <div class="form-group text-sm-start form-check">
 
-                            <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
-                            <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo
-                                vedado o
-                                uso
-                                para fins
-                                diversos, seguindo a Lei Geral Proteção de Dados LEI Nº 13.709, DE 14 DE AGOSTO DE 2018.
-                            </p>
-                            <p>
-                                2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
-                                requerer
-                                a admissão
-                                como Associado da AVICO – Associação de Vítimas e Familiares de vítimas de COVID-19,
-                                inscrita no
-                                CNPJ
-                                sob nº
-                                42.900.150/0001-00, com sede na Avenida Praia de Belas, nº 454, apto 201, Praia de
-                                Belas,
-                                CEP
-                                90110-000,
-                                Porto
-                                Alegre/RS, de acordo com o artigo 27, parágrafo segundo, do Estatuto e suas alterações,
-                                disponível no
-                                site
-                                www.avico.com.br, do qual declaro, por meio deste termo, ter total conhecimento e me
-                                comprometo
-                                a
-                                respeitar
-                                todas as suas disposições.
-                            </p>
-                            <p>3. Estou ciente e de acordo em disponibilizar meus dados pessoais para cadastro na AVICO
-                                e de
-                                que serão utilizados com a finalidade de controle social, bem como ajudar nas atividades
-                                desenvolvidas pela organização. Autorizo a AVICO, ao uso e divulgação da minha imagem,
-                                incluindo em atividades do advocacy, materiais de mídia como fotos, vídeos e documentos,
-                                e
-                                para utilização de relatório e atividades de divulgação, sem que nada haja a ser
-                                reclamado a
-                                título de direitos relacionados à minha imagem. Bem como, também autorizo o recebimento
-                                de
-                                informações via e-mail, WhatsApp, SMS sobre a associação. Este consentimento serve para
-                                atender aos requisitos da Lei nº 13.709/18 (Lei Geral de Proteção de Dados).
-                            </p>
-                            <p>4. Tenho ciência de que, ao solicitar o presente requerimento de
-                                associação à AVICO, devo
-                                conhecer e cumprir com o Estatuto Social, decisões internas e Regimentos Internos,
-                                incluindo, mas não se limitando, ao Código de Conduta, Políticas e Procedimentos, sob
-                                pena
-                                de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
-                        </div>
-
-                        <input id="termos" name="termos" class=" form-check-input" type="checkbox" required>
-                        <label for="termos">Concorda com os termos de associação?*</label>
+                        <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
+                        <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo
+                            vedado o
+                            uso
+                            para fins
+                            diversos, seguindo a Lei Geral Proteção de Dados LEI Nº 13.709, DE 14 DE AGOSTO DE 2018.
+                        </p>
+                        <p>
+                            2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
+                            requerer a admissão como Associado da AVICO – Associação de Vítimas e Familiares de vítimas de COVID-19,
+                            inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Praia de Belas, nº 454, apto 201, Praia de
+                            Belas, CEP 90110-000, Porto Alegre/RS, de acordo com o artigo 27, parágrafo segundo, do Estatuto e suas alterações,
+                            disponível no site www.avico.com.br, do qual declaro, por meio deste termo, ter total conhecimento e me
+                            comprometo a respeitar todas as suas disposições.
+                        </p>
+                        <p>3. Estou ciente e de acordo em disponibilizar meus dados pessoais para cadastro na AVICO
+                            e de
+                            que serão utilizados com a finalidade de controle social, bem como ajudar nas atividades
+                            desenvolvidas pela organização. Autorizo a AVICO, ao uso e divulgação da minha imagem,
+                            incluindo em atividades do advocacy, materiais de mídia como fotos, vídeos e documentos,
+                            e
+                            para utilização de relatório e atividades de divulgação, sem que nada haja a ser
+                            reclamado a
+                            título de direitos relacionados à minha imagem. Bem como, também autorizo o recebimento
+                            de
+                            informações via e-mail, WhatsApp, SMS sobre a associação. Este consentimento serve para
+                            atender aos requisitos da Lei nº 13.709/18 (Lei Geral de Proteção de Dados).
+                        </p>
+                        <p>4. Tenho ciência de que, ao solicitar o presente requerimento de
+                            associação à AVICO, devo
+                            conhecer e cumprir com o Estatuto Social, decisões internas e Regimentos Internos,
+                            incluindo, mas não se limitando, ao Código de Conduta, Políticas e Procedimentos, sob
+                            pena
+                            de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
                     </div>
+
+                    <input id="termos" name="termos" class=" form-check-input" type="checkbox" required>
+                    <label for="termos">Concorda com os termos de associação?*</label>
                 </div>
 
                 <div class="form-content">
                     <div class="row">
                         <div class="mb-3 form-group col">
                             <span>Nome completo*</span>
-                            <input class="form-control form-control text-break" type="text" name="nome" required>
+                            <input class="form-control form-control text-break" type="text" name="nome" id="nome" required>
                         </div>
                         <div class="mb-3 form-group col-md-6">
                             <label>Data de Nascimento*</label>
-                            <input class="form-control" type="date" name="dataNascimento">
+                            <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="senha">Digite sua senha*</label>
@@ -105,67 +98,68 @@
                         <div class="mb-3 form-group">
                             <label>Gênero*</label>
                             </br>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">Masculino</label>
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="masculino"
-                                        value="Masculino">
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="feminino"
-                                        value="Feminino">
-                                    <label class="form-check-label">Feminino</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="nao_binario"
-                                        value="Não-binário">
-                                    <label class="form-check-label">Não-binário</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="genero" id="neutro"
-                                        value="Neutro" data-parsley-required data-parsley-mincheck="1"
-                                        data-parsley-required-message="Você deve selecionar uma opção">
-                                    <label class="form-check-label">Prefiro Não Definir</label>
-                                </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">Masculino</label>
+                                <input class="genero form-check-input" type="checkbox" name="genero" id="masculino"
+                                    value="Masculino">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="genero form-check-input" type="checkbox" name="genero" id="feminino"
+                                    value="Feminino">
+                                <label class="form-check-label">Feminino</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="genero form-check-input" type="checkbox" name="genero" id="nao_binario"
+                                    value="Não-binário">
+                                <label class="form-check-label">Não-binário</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="genero form-check-input" type="checkbox" name="genero" id="neutro"
+                                    value="Neutro" data-parsley-required data-parsley-mincheck="1"
+                                    data-parsley-required-message="Você deve selecionar uma opção">
+                                <label class="form-check-label">Prefiro Não Definir</label>
+                            </div>
                         </div>
                         <div class="mb-3 form-group">
-                            <label>Raça/Cor:*</label>
-                                </br>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">Branca</label>
-                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="branca"
-                                        value="Branca">
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="Preta"
-                                        value="Preta">
-                                    <label class="form-check-label">Preta</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="parda"
-                                        value="Parda">
-                                    <label class="form-check-label">Parda</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="indigena"
-                                        value="Indígena">
-                                    <label class="form-check-label">Indígena</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="genero form-check-input" type="checkbox" name="raca_cor" id="amarela"
-                                        value="Amarela " data-parsley-required data-parsley-mincheck="1"
-                                        data-parsley-required-message="Você deve selecionar uma opção">
-                                    <label class="form-check-label">Amarela </label>
-                                </div>
+                            <label>Raça/Cor*</label>
+                            </br>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">Branca</label>
+                                <input class="raca_cor form-check-input" type="checkbox" name="raca_cor" id="branca"
+                                    value="Branca">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="raca_cor form-check-input" type="checkbox" name="raca_cor" id="Preta"
+                                    value="Preta">
+                                <label class="form-check-label">Preta</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="genero form-check-input" type="checkbox" name="raca_cor" id="parda"
+                                    value="Parda">
+                                <label class="form-check-label">Parda</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="raca_cor form-check-input" type="checkbox" name="raca_cor" id="indigena"
+                                    value="Indígena">
+                                <label class="form-check-label">Indígena</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="raca_cor form-check-input" type="checkbox" name="raca_cor" id="amarela"
+                                    value="Amarela " data-parsley-required data-parsley-mincheck="1"
+                                    data-parsley-required-message="Você deve selecionar uma opção">
+                                <label class="form-check-label">Amarela </label>
+                            </div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>CPF*</label>
-                            <input class="form-control" type="text" name="cpf" id="cpf" data-parsley-minlength="10" oninput="maxLengthCheck(this)" 
-                            maxlength="14" data-parsley-minlength-message="Insira um CPF válido." required>
+                            <input class="form-control" type="text" name="cpf" id="cpf"
+                                data-parsley-minlength="10" oninput="maxLengthCheck(this)" maxlength="14"
+                                data-parsley-minlength-message="Insira um CPF válido." required>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>RG*</label>
-                            <input class="form-control" type="text" name="rg" data-parsley-minlength="10"
-                                oninput="maxLengthCheck(this)" maxlength="13"
+                            <input class="form-control" type="text" name="rg" id="rg"
+                                data-parsley-minlength="10" oninput="maxLengthCheck(this)" maxlength="13"
                                 data-parsley-minlength-message="Insira um RG válido." required>
                         </div>
                         <div class="mb-3 col-md-6">
@@ -301,8 +295,21 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label>Quantos pessoas do seu grupo familiar nuclear você perdeu para a COVID-19 (mãe, pai, filho, filha, avô, avó, pais, cônjuges)?</label>
-                            <input class="form-control" type="text" name="complemento" id="complemento">
+                            <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu para a COVID-19 (mãe, pai,
+                                filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um novo campo (Max 10) </label>
+                            <div id="field" class="row mt-3">
+                                <div class="mb-3 col">
+                                    <label for="nome">Nome Completo</label>
+                                    <input class="form-control " type="text" name="test" id="test">
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="idade">idade</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="test" id="test">
+                                        <button type="button" class="btn-sm btn-primary" id="add_form_field" ><i class="fa-solid fa-plus"></i></button>
+                                     </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,7 +318,7 @@
                         mensais a título de contribuição à AVICO.
                     </p>
                     <label>O pagamento da mensalidade acima informada será realizada da seguinte forma:</label>
-                    <div class="form-check">
+                    <div class="form-check mb-2">
                         @foreach (\App\Enums\PaymentTypes::cases() as $key => $value)
                             <br>
                             <label class="form-check-label" for="{{ $value->name }}">{{ $value->name }}</label>
@@ -320,20 +327,33 @@
                                 data-parsley-required-message="Você deve selecionar um tipo de pagamento">
                         @endforeach
                     </div>
-                    <p>2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo com a renda bruta
-                        familiar
-                        do
-                        associado (renda bruta de até de 1,5 salário mínimo per capita) que deverá ser comprovada pelo
-                        envio
-                        de
-                        documentos que demonstrem a renda.</p>
+                    <p class="mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo com a
+                        renda bruta
+                        familiar do associado (renda bruta de até de 1,5 salário mínimo per capita) que deverá ser
+                        comprovada pelo
+                        envio de documentos que demonstrem a renda.</p>
+
+                    <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
+                        onchange="comprovanteIsencaoInputShow()" type="checkbox">
+                    <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
+                        analise socio economica familia pela diretoria da AVICO.</label>
                 </div>
 
                 <div class="form-content mb-3">
-                    <p>1. Estou de acordo e entendo que devo encaminhar para o e-mail avico@gmail.com , juntamente com o
-                        presente termo devidamente assinado, os documentos abaixo elecancados, em boa ordem, legíveis e
-                        digitalizados, sob pena de indeferimento imediato do requerimento:
+                    <p>1. Estou de acordo e entendo que devo encaminhar os documentos abaixo elecancados, em boa ordem,
+                        legíveis e
+                        digitalizados, sob pena de indeferimento imediato do requerimento.
                     </p>
+                    <p>2. Para gerar o termo para a assinatura clique no botão indicado: 
+                        <a type="button" target="_blank" href="inscricao/gerar_pdf"id="gerar_pdf" class="btn btn-primary mb-2">Gerar termo</a>
+                        . Caso seja necessario pode ser assinado digitalmente via <a href="https://sso.acesso.gov.br/login?client_id=assinador.iti.br&authorization_id=1844e5391cc">
+                            site do GOV.</a>
+                    </p>
+                    <div class="mb-3" id="termo_inscricao">
+                        <label class="form-label" for="termo_inscrição">Termo de inscrição AVICO*</label>
+                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
+                            id="termo_inscricao" accept="image/.jpg,.png,.jpeg" required>
+                    </div>
                     <div class="mb-3" id="rgCPF">
                         <label class="form-label" for="Cópia do RG/CPF">CPF/RG*</label>
                         <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]"
@@ -361,7 +381,7 @@
                         <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
                             id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
-                    <div class="mb-3" id="comprovanteRendaFamiliar">
+                    <div class="mb-3" id="comprovante_isencao">
                         <label class="form-label" for="">Para casos de isenção de contribuição (renda familiar
                             bruta de até 1,5 salário mínimo per capita), cópia dos documentos comprobatórios de renda
                             familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a renda
@@ -380,5 +400,10 @@
             </form>
         </div>
     </section>
-    <script type="text/javascript" src="./js/validations.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+    <script type="text/javascript" src="./js/registration_form/validations.js"></script>
+    <script type="text/javascript" src="./js/registration_form/pdf_generator.js"></script>
+    <script type="text/javascript" src="./js/registration_form/field_formmatter.js"></script>
+    <script type="text/javascript" src="./js/registration_form/form_control.js"></script>
 @endsection

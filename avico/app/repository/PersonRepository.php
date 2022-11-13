@@ -29,14 +29,15 @@ class PersonRepository
             $person->user_id = $userid;
             $person->data_nascimento =  $request->dataNascimento;
             $person->genero =  $request->genero;
+            $person->raca_cor =  $request->raca_cor;
             $person->cpf =  $request->cpf;
             $person->rg =  $request->rg;
             $person->telefone = $request->celular;
             $person->telefone_residencial = $request->telefone_residencial;
             $person->profissao = $request->profissao;
             $person->tipo_pagamento = $request->pagamento;
+            $person->declaracao_isencao = $request->has('declaracao_isencao') ? true : false;
             $person->save();
-
             $this->reasonRepository->save($request, $person->id);
             $this->adressRepository->save($request, $person->id);
             $this->fileRepository->save($person->id, $fileNames, $filePaths);

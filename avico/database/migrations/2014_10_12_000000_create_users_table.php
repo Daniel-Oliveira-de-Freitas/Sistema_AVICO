@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('status')->default(StatusTypes::Aguardando_aprovacao->value);
-            $table->boolean('active')->default('false');
+            $table->boolean('active')->default(false);
             $table->rememberToken();
         });
     }

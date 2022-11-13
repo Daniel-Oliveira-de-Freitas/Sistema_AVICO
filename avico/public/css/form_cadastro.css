@@ -26,6 +26,10 @@ p {
     padding-bottom: 120px;
 }
 
+#comprovante_isencao{
+    display: none;
+}
+
 #grauParentesco {
     display: none;
 }
