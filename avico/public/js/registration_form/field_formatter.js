@@ -1,9 +1,9 @@
-$(document).ready(function () {
-    let $seuCampoCpf = $("#cpf");
-    $seuCampoCpf.mask('000.000.000-00', { reverse: true });
-    let $seuCamporg = $("#rg");
-    $seuCamporg.mask('00.000.000-0', { reverse: true });
-    
+let $seuCampoCpf = $("#cpf");
+$seuCampoCpf.mask('000.000.000-00', { reverse: true });
+let $seuCamporg = $("#rg");
+$seuCamporg.mask('00.000.000-0', { reverse: true });
+
+window.addEventListener('jquery', event => {
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
         $("#endereco").val("");

@@ -1,11 +1,3 @@
-.form-content {
-    display: none;
-}
-
-.form-content.current {
-    display: inherit;
-}
-
 p {
     font-weight: bold
 }
@@ -25,26 +17,26 @@ p {
 .form-navigation {
     padding-bottom: 120px;
 }
-
+/* 
 #comprovante_isencao{
     display: none;
-}
+} */
 
-#grauParentesco {
+/* #grauParentesco {
     display: none;
-}
+} */
 
-#outrosInput {
+/* #outrosInput {
     display: none;
-}
+} */
 
-#certidao_obito {
+/* #certidao_obito {
     display: none;
 }
 
 #comprovante {
     display: none;
-}
+} */
 
 .form_body {
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

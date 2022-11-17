@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <title>@yield('title')</title>
+    @livewireStyles
     <noscript>Seu navegador não possui suporte ou o Javascript foi desabilitado</noscript>
 </head>
 
@@ -39,6 +40,7 @@
         @yield('content')
     </main>
     <x-footer />
+    @livewireScripts
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <script type="text/javascript" src="js/jquery.maskedinput-1.1.4.pack.js"></script>

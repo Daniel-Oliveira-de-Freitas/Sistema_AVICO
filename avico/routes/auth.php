@@ -10,9 +10,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ListagemController;
 use App\Http\Controllers\PDFController;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Console\Input\Input;
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'giverUserAuths'])
@@ -36,8 +35,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.update');
-
-    Route::get('inscricao/gerar_pdf', [PDFController::class, 'generate_pdf']);
 
 });
 
