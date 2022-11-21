@@ -4,7 +4,7 @@
     @elseif(session('fail'))
         @include(session('fail'))
     @endif
-    <h1 class="text-center">Formulario de Cadastro Avico</h1>
+    <h1 class="text-center">Formulário de Cadastro Avico</h1>
     <div class="card-body">
         <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
 
@@ -19,10 +19,14 @@
                             id="{{ $value->value }}" value="{{ $value->value }}" data-parsley-required
                             data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma opção">
                         <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
-                        @endforeach
-                        <div class="mt-3">
-                            <span class="text-danger">@error('tipo'){{ $message }}@enderror</span>
-                        </div>
+                    @endforeach
+                    <div class="mt-3">
+                        <span class="text-danger">
+                            @error('tipo')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
                 </div>
             @endif
             @if ($currentStep == 2)
@@ -72,7 +76,11 @@
                     <input id="termos" name="termos" class=" form-check-input" type="checkbox" wire:model="termos">
                     <label for="termos">Concorda com os termos de associação?*</label>
                     <div class="mt-3">
-                        <span class="text-danger">@error('termos'){{ $message }}@enderror</span>
+                        <span class="text-danger">
+                            @error('termos')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             @endif
@@ -83,17 +91,25 @@
                             <label>Nome completo*</label>
                             <input class="form-control form-control text-break" type="text" name="nome"
                                 wire:model="nome" id="nome">
-                                <div class="mt-3">
-                                    <span class="text-danger">@error('nome'){{ $message }}@enderror</span>
-                                </div>
+                            <div class="mt-3">
+                                <span class="text-danger">
+                                    @error('nome')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
                         <div class="mb-3 form-group col-md-6">
                             <label>Data de Nascimento*</label>
                             <input class="form-control" type="date" name="dataNascimento" wire:model="dataNascimento"
                                 id="dataNascimento">
-                                <div class="mt-3">
-                                    <span class="text-danger">@error('dataNascimento'){{ $message }}@enderror</span>
-                                </div>
+                            <div class="mt-3">
+                                <span class="text-danger">
+                                    @error('dataNascimento')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="senha">Digite sua senha*</label>
@@ -101,44 +117,55 @@
                                 id="password">
                             <span id='message_password'></span>
                             <div class="mt-3">
-                                <span class="text-danger">@error('password'){{ $message }}@enderror</span>
+                                <span class="text-danger">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                             </div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="senha">Confirmar senha*</label>
                             <input class="form-control" type="password" id="confirmPassword"
                                 wire:model="confirmPassword">
-                                <div class="mt-3">
-                                    <span class="text-danger">@error('confirmPassword'){{ $message }}@enderror</span>
-                                </div>
+                            <div class="mt-3">
+                                <span class="text-danger">
+                                    @error('confirmPassword')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
                         </div>
                         <div class="mb-3 form-group">
                             <label>Gênero*</label>
                             <br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">Masculino</label>
-                                <input class="genero form-check-input" type="radio" name="genero"
-                                    wire:model="genero" id="masculino" value="Masculino">
+                                <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                                    id="masculino" value="Masculino">
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="genero form-check-input" type="radio" name="genero"
-                                    wire:model="genero" id="feminino" value="Feminino">
+                                <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                                    id="feminino" value="Feminino">
                                 <label class="form-check-label">Feminino</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="genero form-check-input" type="radio" name="genero"
-                                    wire:model="genero" id="nao_binario" value="Não-binário">
+                                <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                                    id="nao_binario" value="Não-binário">
                                 <label class="form-check-label">Não-binário</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="genero form-check-input" type="radio" name="genero"
-                                    wire:model="genero" id="neutro" value="Neutro" data-parsley-required
-                                    data-parsley-mincheck="1"
+                                <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                                    id="neutro" value="Neutro" data-parsley-required data-parsley-mincheck="1"
                                     data-parsley-required-message="Você deve selecionar uma opção">
                                 <label class="form-check-label">Prefiro Não Definir</label>
                             </div>
                             <div class="mt-3">
-                                <span class="text-danger">@error('genero'){{ $message }}@enderror</span>
+                                <span class="text-danger">
+                                    @error('genero')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                             </div>
                         </div>
                         <div class="mb-3 form-group">
@@ -171,29 +198,42 @@
                                     data-parsley-required-message="Você deve selecionar uma opção">
                                 <label class="form-check-label">Amarela </label>
                             </div>
-                            <div class="mt-3"><span class="text-danger">@error('raca_cor'){{ $message }}@enderror</span></div>
+                            <div class="mt-3"><span class="text-danger">
+                                    @error('raca_cor')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>CPF*</label>
                             <input class="form-control" type="text" name="cpf" wire:model.lazy="cpf"
-                                id="cpf" data-parsley-minlength="10"
-                                maxlength="14" data-parsley-minlength-message="Insira um CPF válido." required>
-                            <div class="mt-3"><span class="text-danger">@error('cpf'){{ $message }}@enderror</span></div>
+                                id="cpf" data-parsley-minlength="10" maxlength="14"
+                                data-parsley-minlength-message="Insira um CPF válido." required>
+                            <div class="mt-3"><span class="text-danger">
+                                    @error('cpf')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>RG*</label>
                             <input class="form-control" type="text" name="rg" wire:model="rg"
-                                id="rg"  maxlength="14" required>
-                            <div class="mt-3"><span class="text-danger">@error('rg'){{ $message }}@enderror</span></div>
+                                id="rg" maxlength="14" required>
+                            <div class="mt-3"><span class="text-danger">
+                                    @error('rg')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
-                        <div class="mb-3 col-md-6"  wire:ignore>
+                        <div class="mb-3 col-md-6">
                             <label>Celular (DDD+número)*</label>
                             <input class="form-control" type="tel" name="celular" wire:model="celular"
-                                id="celular" data-parsley-minlength="10" maxlength="18" required>
-                            <br>
-                            <span id="message_errorCelular" style="color: red; visibility:hidden;">Insira um numero de
-                                celular válido.</span>
-                            <div class="mt-3"><span class="text-danger">@error('celular'){{ $message }}@enderror</span></div>
+                                id="celular" maxlength="18" required>
+                            <div class="mt-3"><span class="text-danger">
+                                    @error('celular')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>Telefone residencial (DDD+número)</label>
@@ -204,40 +244,61 @@
                             <span id="message_errorTelefoneResidencial" style="color: red; visibility:hidden;">Insira
                                 um
                                 numero de telefone residencial válido.</span>
-                                <div class="mt-2"><span class="text-danger">@error('telefone_residencial'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('telefone_residencial')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3">
                             <label>E-mail*</label>
                             <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email"
                                 wire:model="email" required data-parsley-type-message="Email inválido">
-                            <div class="mt-3"><span class="text-danger">@error('email'){{ $message }}@enderror</span></div>
+                            <div class="mt-3"><span class="text-danger">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-3">
                             <label>CEP*</label>
                             <input class="form-control" type="text" name="cep" wire:model="cep"
-                                id="cep" data-parsley-minlength-message="Insira um CEP válido."
-                                data-parsley-minlength="8" maxlength="8" required>
-                                <div class="mt-2"><span class="text-danger">@error('cep'){{ $message }}@enderror</span></div>
-                            <span id="message_errorCep" style="color: red; visibility:hidden;">CEP não
-                                encontrado</span>
+                                id="cep" maxlength="8" required>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('cep')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-7">
                             <label>Endereço*</label>
                             <input class="form-control" type="text" name="endereco" wire:model="endereco"
                                 id="endereco" required>
-                                <div class="mt-2"><span class="text-danger">@error('endereco'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('endereco')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-2">
                             <label>Nº*</label>
                             <input class="form-control" type="number" name="nmrEndereco" wire:model="nmrEndereco"
                                 required>
-                                <div class="mt-2"><span class="text-danger">@error('nmrEndereco'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('nmrEndereco')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label>Cidade*</label>
                             <input class="form-control" type="text" name="cidade" wire:model="cidade"
                                 id="cidade" required>
-                            <div class="mt-2"><span class="text-danger">@error('cidade'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('cidade')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-2">
                             <label>UF*</label>
@@ -271,7 +332,11 @@
                                 <option value="SE">SE</option>
                                 <option value="TO">TO</option>
                             </select>
-                            <div class="mt-2"><span class="text-danger">@error('uf'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('uf')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label>Complemento</label>
@@ -282,86 +347,154 @@
                             <label>Bairro*</label>
                             <input class="form-control" type="text" name="bairro" wire:model="bairro"
                                 id="bairro">
-                            <div class="mt-2"><span class="text-danger">@error('bairro'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('bairro')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3 ">
                             <label>Profissão*</label>
-                            <input class="form-control" type="text" name="profissao" wire:model="profissao">
-                            <div class="mt-2"><span class="text-danger">@error('profissao'){{ $message }}@enderror</span></div>
+                            <input class="form-select" type="text" name="profissao" wire:model="profissao">
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('profissao')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                         <div class="mb-3">
                             <label>Qual sua condição para se tornar associado?*</label>
 
                             <div class="form-check">
-                                <label for="">Sobrevivente da COVID-19</label>
+                                <label for="Sobrevivente da COVID-19">Sobrevivente da COVID-19</label>
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                                    wire:model="condicoes" id="sobrevivente" value="Sobrevivente da COVID-19"
-                                    onchange="condicaoChanged()" data-parsley-required data-parsley-mincheck="1"
-                                    data-parsley-required-message="Você deve selecionar uma ou mais caixas" />
+                                    wire:model="condicoes" id="sobrevivente" value="Sobrevivente da COVID-19" />
                             </div>
                             <div class="form-check">
-                                <label for="">Familiar de vítima da COVID-19</label>
+                                <label for="Familiar de vítima da COVID-19">Familiar de vítima da COVID-19</label>
 
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                                    wire:model="condicoes" id="familiar" value="Familiar de vítima da COVID-19"
-                                    onchange="condicaoChanged()">
+                                    wire:model="condicoes" id="familiar" value="Familiar de vítima da COVID-19">
                             </div>
                             <div class="form-check">
-                                <label for="">Nenhuma das alternativas acima</label>
+                                <label for="Nenhuma das alternativas acima">Nenhuma das alternativas acima</label>
 
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
                                     wire:model="condicoes" id="nenhum" value="Nenhuma das alternativas acima">
                             </div>
-                            <div class="mt-2"><span class="text-danger">@error('condicoes'){{ $message }}@enderror</span></div>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('condicoes')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
-                        @if (in_array("Familiar de vítima da COVID-19", $this->condicoes))
-                        <div id="grauParentesco" class="mb-3">
-                            <label>Qual o grau de parentesco com a vítima?*</label>
-                            <select onchange="outrosInputShow()" class="parentesco" name="parentesco"
-                            wire:model="parentesco" id="parentesco" required>
-                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
-                            <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha reta
-                                (pai/mãe,
-                                filho/filha)</option>
-                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha reta
-                                    (avô/avó,
-                                    neto/neta)
-                                </option>
-                                <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em
-                                    linha
-                                    colateral (tio/tia, sobrinho/sobrinha)</option>
+                        @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
+                            <div id="grauParentesco" class="mb-3">
+                                <label>Qual o grau de parentesco com a vítima?*</label>
+                                <select class="form-select parentesco" name="parentesco" wire:model="parentesco"
+                                    id="parentesco" required>
+                                    <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
+                                    <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha reta
+                                        (pai/mãe,
+                                        filho/filha)</option>
+                                    <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha reta
+                                        (avô/avó,
+                                        neto/neta)
+                                    </option>
+                                    <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em
+                                        linha
+                                        colateral (tio/tia, sobrinho/sobrinha)</option>
                                     <option id="outros" value="outros">Outros</option>
                                 </select>
-                                <div class="mt-2"><span class="text-danger">@error('parentesco'){{ $message }}@enderror</span></div>
-                                @if ($parentesco === "outros")
-                                <div id="outrosInput mt-3">
-                                    <span class="mt-3">Por favor, especifique no campo abaixo:*</span>
-                                    <input class="outrosData form-control mt-3" name="outro" wire:model="outros"
-                                    id="outrosData" type="text" required>
-                                    <div class="mt-2"><span class="text-danger">@error('outros'){{ $message }}@enderror</span></div>
-                                </div>
+                                <div class="mt-2"><span class="text-danger">
+                                        @error('parentesco')
+                                            {{ $message }}
+                                        @enderror
+                                    </span></div>
+                                @if ($parentesco === 'outros')
+                                    <div id="outrosInput mt-3">
+                                        <span class="mt-3">Por favor, especifique no campo abaixo:*</span>
+                                        <input class="outrosData form-control mt-3" name="outro"
+                                            wire:model="outros" id="outrosData" type="text" required>
+                                        <div class="mt-2"><span class="text-danger">
+                                                @error('outros')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span></div>
+                                    </div>
                                 @endif
-                        </div>
+                            </div>
                         @endif
                         <div class="mb-3">
                             <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
                                 para a COVID-19 (mãe, pai,
                                 filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um novo
-                                campo (Max 10) </label>
-                            <div id="field" class="row mt-3">
-                                <div class="mb-3 col">
-                                    <label for="nome">Nome Completo</label>
-                                    <input class="form-control " type="text" name="test" id="test">
-                                </div>
-                                <div class="mb-3 col-md-2">
-                                    <label for="idade">idade</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" name="test" id="test">
-                                        <button type="button" class="btn-sm btn-primary" id="add_form_field"><i
-                                                class="fa-solid fa-plus"></i></button>
+                                campo (Máx 10) </label>
+                            @foreach ($dadosAdicionais as $key => $input)
+                                @if ($key === 0)
+                                    <button type="button" class="btn btn-primary mt-4" id="add_form_field"
+                                        wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo campo</button>
+                                @endif
+                                <div class="row mt-3">
+                                    <div class="mb-3  col-md-4">
+                                        <label for="dadosAdicionais_{{ $key }}_nome">Nome Completo</label>
+                                        <input class="form-control" type="text" name="test"
+                                            id="dadosAdicionais_{{ $key }}_nome"
+                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome">
+                                        <div class="mt-2"><span class="text-danger">
+                                                @error('dadosAdicionais.' . $key . '.nome')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span></div>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
+                                            parentesco*</label>
+                                        <select class="parentesco form-select" name="parentesco"
+                                            wire:model.defer="dadosAdicionais.{{ $key }}.parentesco"
+                                            id="dadosAdicionais_{{ $key }}_parentesco" required>
+                                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
+                                            </option>
+                                            <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
+                                                linha reta
+                                                (pai/mãe,
+                                                filho/filha)
+                                            </option>
+                                            <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
+                                                reta
+                                                (avô/avó, neto/neta)
+                                            </option>
+                                            <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
+                                                grau em
+                                                linha colateral (tio/tia, sobrinho/sobrinha)</option>
+                                        </select>
+                                        <div class="mt-2"><span class="text-danger">
+                                                @error('dadosAdicionais.' . $key . '.parentesco')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span></div>
+                                    </div>
+                                    <div class="mb-3 col-md-2">
+                                        <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="idade"
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.idade"
+                                                id="dadosAdicionais.{{ $key }}.idade">
+                                            @if ($key > 0)
+                                                <button type="button" class="btn-sm btn-danger"
+                                                    id="remove_form_field"
+                                                    wire:click="removeInput({{ $key }})"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            @endif
+                                        </div>
+                                        <div class="mt-2"><span class="text-danger">
+                                                @error('dadosAdicionais.' . $key . '.idade')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span></div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -381,7 +514,11 @@
                                 data-parsley-required
                                 data-parsley-required-message="Você deve selecionar um tipo de pagamento">
                         @endforeach
-                        <div class="mt-2"><span class="text-danger">@error('pagamento'){{ $message }}@enderror</span></div>
+                        <div class="mt-2"><span class="text-danger">
+                                @error('pagamento')
+                                    {{ $message }}
+                                @enderror
+                            </span></div>
                     </div>
                     <p class="mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo com a
                         renda bruta
@@ -389,8 +526,8 @@
                         comprovada pelo
                         envio de documentos que demonstrem a renda.</p>
 
-                    <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input" wire:model="declaracao_isencao"
-                        onchange="comprovanteIsencaoInputShow()" type="checkbox">
+                    <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
+                        wire:model="declaracao_isencao" onchange="comprovanteIsencaoInputShow()" type="checkbox">
                     <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
                         analise socio economica familia pela diretoria da AVICO.</label>
                 </div>
@@ -402,7 +539,7 @@
                         digitalizados, sob pena de indeferimento imediato do requerimento.
                     </p>
                     <p>2. Para gerar o termo para a assinatura clique no botão indicado:
-                        <a type="button" target="_blank" href="inscricao/gerar_pdf"id="gerar_pdf"
+                        <a type="button" target="_blank" wire:click="generate_array()" id="gerar_pdf"
                             class="btn btn-primary mb-2">Gerar termo</a>
                         . Caso seja necessario pode ser assinado digitalmente via <a
                             href="https://sso.acesso.gov.br/login?client_id=assinador.iti.br&authorization_id=1844e5391cc">
@@ -418,25 +555,28 @@
                         <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]"
                             id="cpf_rg" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
-                    @if (in_array("Sobrevivente da COVID-19", $this->condicoes))
-                    <div class="mb-3" id="comprovante">
-                        <label class="form-label" for="">Cópia de Comprovante Médico de existência de sequelas
-                            da
-                            COVID-19 (em caso de sobrevivente)*
-                        </label>
-                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
-                        id="comprovanteMedico" accept="image/.jpg,.png,.jpeg" multiple required>
-                    </div>
+                    @if (in_array('Sobrevivente da COVID-19', $this->condicoes))
+                        <div class="mb-3" id="comprovante">
+                            <label class="form-label" for="">Cópia de Comprovante Médico de existência de
+                                sequelas
+                                da
+                                COVID-19 (em caso de sobrevivente)*
+                            </label>
+                            <input class="form-control" type="file" name="filenames[]"
+                                onchange="fileValidation()" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg"
+                                multiple required>
+                        </div>
                     @endif
-                    @if (in_array("Familiar de vítima da COVID-19", $this->condicoes))
-                    <div class="mb-3" id="certidao_obito">
-                        <label class="form-label" for="">Cópia da Certidão de Óbito da vítima (em caso de
-                            familiar
-                            de vítima)*
-                        </label>
-                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
-                        id="certidaoObito" accept="image/.jpg,.png,.jpeg" multiple required>
-                    </div>
+                    @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
+                        <div class="mb-3" id="certidao_obito">
+                            <label class="form-label" for="">Cópia da Certidão de Óbito da vítima (em caso de
+                                familiar
+                                de vítima)*
+                            </label>
+                            <input class="form-control" type="file" name="filenames[]"
+                                onchange="fileValidation()" id="certidaoObito" accept="image/.jpg,.png,.jpeg"
+                                multiple required>
+                        </div>
                     @endif
 
                     <div class="mb-3" id="compEndereco">
@@ -444,16 +584,19 @@
                         <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
                             id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
-                    @if ($declaracao_isencao)  
-                    <div class="mb-3" id="comprovante_isencao">
-                        <label class="form-label" for="">Para casos de isenção de contribuição (renda familiar
-                            bruta de até 1,5 salário mínimo per capita), cópia dos documentos comprobatórios de renda
-                            familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a renda
-                            familiar.
-                        </label>
-                        <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]"
-                        id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
-                    </div>
+                    @if ($declaracao_isencao)
+                        <div class="mb-3" id="comprovante_isencao">
+                            <label class="form-label" for="">Para casos de isenção de contribuição (renda
+                                familiar
+                                bruta de até 1,5 salário mínimo per capita), cópia dos documentos comprobatórios de
+                                renda
+                                familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a
+                                renda
+                                familiar.
+                            </label>
+                            <input class="form-control" type="file" onchange="fileValidation()"
+                                name="filenames[]" id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
+                        </div>
                     @endif
                 </div>
             @endif
@@ -462,11 +605,11 @@
                     <button type="button" class="previous btn btn-info float-left mr-5"
                         wire:click="decreaseStep()">Anterior</button>
                 @endif
-                @if($currentStep != $totalSteps)
-                <button type="button" class="next btn btn-info float-right mr-5"
-                    wire:click="increaseStep()">Proximo</button>
+                @if ($currentStep != $totalSteps)
+                    <button type="button" class="next btn btn-info float-right mr-5"
+                        wire:click="increaseStep()">Proximo</button>
                 @endif
-                    @if ($currentStep == 5)
+                @if ($currentStep == 5)
                     <button type="submit" class="btn btn-success float-right mr-5">Enviar</button>
                 @endif
             </div>
