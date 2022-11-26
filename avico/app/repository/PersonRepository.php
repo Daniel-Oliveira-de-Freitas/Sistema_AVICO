@@ -14,6 +14,7 @@ class PersonRepository
     private FileRepository $fileRepository;
     private AdressRepository $adressRepository;
     private ReasonRepository $reasonRepository;
+    private FamilyVictimRepository $familyVictimRepository;
 
     public function save(Request $request, $fileNames, $filePaths)
     {
@@ -21,6 +22,7 @@ class PersonRepository
         $this->fileRepository = new FileRepository();
         $this->adressRepository = new AdressRepository();
         $this->reasonRepository = new ReasonRepository();
+        $this->familyVictimRepository = new FamilyVictimRepository();
         try {
             DB::beginTransaction();
             $userid = $this->userRepository->save($request);
@@ -40,10 +42,12 @@ class PersonRepository
             $person->save();
             $this->reasonRepository->save($request, $person->id);
             $this->adressRepository->save($request, $person->id);
+            $this->familyVictimRepository->save($request, $person->id);
             $this->fileRepository->save($person->id, $fileNames, $filePaths);
             DB::commit();
             return $person->id;
         } catch (Exception $e) {
+            dd($e);
             DB::rollBack();
             return false;
         }

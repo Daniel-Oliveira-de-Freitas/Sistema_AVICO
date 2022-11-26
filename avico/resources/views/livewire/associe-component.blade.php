@@ -238,12 +238,7 @@
                         <div class="mb-3 col-md-6">
                             <label>Telefone residencial (DDD+número)</label>
                             <input class="form-control" type="tel" name="telefone_residencial"
-                                wire:model="telefone_residencial" id="telefone_residencial"
-                                data-parsley-minlength-message="Insira um numero de telefone residencial válido."
-                                data-parsley-minlength="10" maxlength="18">
-                            <span id="message_errorTelefoneResidencial" style="color: red; visibility:hidden;">Insira
-                                um
-                                numero de telefone residencial válido.</span>
+                                wire:model="telefone_residencial" id="telefone_residencial">
                             <div class="mt-2"><span class="text-danger">
                                     @error('telefone_residencial')
                                         {{ $message }}
@@ -253,7 +248,7 @@
                         <div class="mb-3">
                             <label>E-mail*</label>
                             <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email"
-                                wire:model="email" required data-parsley-type-message="Email inválido">
+                                wire:model="email">
                             <div class="mt-3"><span class="text-danger">
                                     @error('email')
                                         {{ $message }}
@@ -424,7 +419,6 @@
                                     </div>
                                 @endif
                             </div>
-                        @endif
                         <div class="mb-3">
                             <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
                                 para a COVID-19 (mãe, pai,
@@ -438,7 +432,7 @@
                                 <div class="row mt-3">
                                     <div class="mb-3  col-md-4">
                                         <label for="dadosAdicionais_{{ $key }}_nome">Nome Completo</label>
-                                        <input class="form-control" type="text" name="test"
+                                        <input class="form-control" type="text" name="nomeParente"
                                             id="dadosAdicionais_{{ $key }}_nome"
                                             wire:model.defer="dadosAdicionais.{{ $key }}.nome">
                                         <div class="mt-2"><span class="text-danger">
@@ -496,6 +490,7 @@
                                 </div>
                             @endforeach
                         </div>
+                        @endif
                     </div>
                 </div>
             @endif
@@ -527,7 +522,7 @@
                         envio de documentos que demonstrem a renda.</p>
 
                     <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
-                        wire:model="declaracao_isencao" onchange="comprovanteIsencaoInputShow()" type="checkbox">
+                        wire:model="declaracao_isencao" type="checkbox">
                     <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
                         analise socio economica familia pela diretoria da AVICO.</label>
                 </div>

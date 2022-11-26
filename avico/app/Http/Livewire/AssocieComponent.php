@@ -47,7 +47,7 @@ class AssocieComponent extends Component
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '']]),
         ]);
-        $this->currentStep = 3;
+        $this->currentStep = 1;
     }
 
     public function render()
@@ -315,7 +315,6 @@ class AssocieComponent extends Component
             'bairro' => $this->bairro,
             'profissao' => $this->profissao,
             'condicoes' => $this->condicoes,
-            'parentesco' => $this->parentesco,
             'outros' => $this->outros,
             'pagamento' => $this->pagamento,
             'declaracao_isencao' => $this->declaracao_isencao,

@@ -33,7 +33,8 @@ class AssocieController extends Controller
         if ($cadastro) {
             return redirect()->back()
             ->with('success', 'messages.success_registration');
-        }else{
+        }
+        else{
             return redirect()->back()
             ->with('fail', 'messages.fail_registration');
         }

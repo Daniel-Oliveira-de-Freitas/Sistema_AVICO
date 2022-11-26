@@ -30,7 +30,8 @@ class Person extends Model
         'telefone_residencial',
         'profissao',
         'tipo_pagamento',
-        'declaracao_isencao'
+        'declaracao_isencao',
+        'dados_adicionais'
     ];
 
     protected $casts = [

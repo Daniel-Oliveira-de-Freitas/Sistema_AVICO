@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('raca_cor', 50);
             $table->string('cpf', 15)->unique();
             $table->string('rg', 15);
-            $table->bigInteger('telefone');
-            $table->bigInteger('telefone_residencial')->nullable();
+            $table->string('telefone');
+            $table->string('telefone_residencial')->nullable();
             $table->string('profissao')->nullable();
             $table->string('tipo_pagamento')->nullable();
             $table->boolean('declaracao_isencao')->default(false);

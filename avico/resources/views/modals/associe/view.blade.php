@@ -39,9 +39,6 @@
                         <dt>Condicão:</dt>
                         <dd>@foreach (json_decode($inscricao->person->reason->condicao) as $item){{$item}}</br>@endforeach</dd>
                         <dt>Grau Parentesco: </dt>
-                        <dd>{{$inscricao->person->reason->grau_parentesco}}</dd>
-                       @if(isset($inscricao->person->reason->outros)) <dt>Outros: </dt>
-                        <dd>{{$inscricao->person->reason->outros}}</dd>@endif
                         <dt>Tipo de associação:</dt>
                         <dd>@foreach ($inscricao->role as $item){{ $item->name }}</br>@endforeach</dd>
                         <dt>Tipo de pagamento: </dt>
