@@ -6,11 +6,13 @@ use App\Models\FamilyVictim;
 class FamilyVictimRepository{
 
     public function save($request, $person_id){
-        $familyVictim = new FamilyVictim();
-        $familyVictim->person_id = $person_id;
-        $familyVictim->nome_completo =  $request->nomeParente;
-        $familyVictim->grau_parentesco = $request->parentesco;
-        $familyVictim->idade = $request->idade;
-        $familyVictim->save();
+        foreach($request->dadosAdicionais as $dados){
+            $familyVictim = new FamilyVictim();
+            $familyVictim->person_id = $person_id;
+            $familyVictim->nome_completo =  $dados["nome"];
+            $familyVictim->grau_parentesco = $dados["parentesco"];
+            $familyVictim->idade = $dados["idade"];
+            $familyVictim->save();
+        }
     }
 }

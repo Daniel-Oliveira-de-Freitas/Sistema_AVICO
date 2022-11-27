@@ -8,7 +8,7 @@
     <div class="card-body">
         <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
 
-        <form action="{{ route('inscricao.store') }}" method="POST" class="form-cadastro" enctype="multipart/form-data">
+        <form class="form-cadastro" enctype="multipart/form-data">
             @csrf
             @if ($currentStep == 1)
                 <div div class="form-content mb-3">
@@ -16,8 +16,7 @@
                     @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                         <br>
                         <input class="tipo form-check-input" type="checkbox" name="tipo[]" wire:model="tipo"
-                            id="{{ $value->value }}" value="{{ $value->value }}" data-parsley-required
-                            data-parsley-mincheck="1" data-parsley-required-message="Você deve selecionar uma opção">
+                            id="{{ $value->value }}" value="{{ $value->value }}">
                         <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                     @endforeach
                     <div class="mt-3">
@@ -156,8 +155,7 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
-                                    id="neutro" value="Neutro" data-parsley-required data-parsley-mincheck="1"
-                                    data-parsley-required-message="Você deve selecionar uma opção">
+                                    id="neutro" value="Neutro">
                                 <label class="form-check-label">Prefiro Não Definir</label>
                             </div>
                             <div class="mt-3">
@@ -193,9 +191,7 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="raca_cor form-check-input" type="radio" name="raca_cor"
-                                    wire:model="raca_cor" id="amarela" value="Amarela " data-parsley-required
-                                    data-parsley-mincheck="1"
-                                    data-parsley-required-message="Você deve selecionar uma opção">
+                                    wire:model="raca_cor" id="amarela" value="Amarela">
                                 <label class="form-check-label">Amarela </label>
                             </div>
                             <div class="mt-3"><span class="text-danger">
@@ -207,8 +203,7 @@
                         <div class="mb-3 col-md-6">
                             <label>CPF*</label>
                             <input class="form-control" type="text" name="cpf" wire:model.lazy="cpf"
-                                id="cpf" data-parsley-minlength="10" maxlength="14"
-                                data-parsley-minlength-message="Insira um CPF válido." required>
+                                id="cpf" maxlength="14" required>
                             <div class="mt-3"><span class="text-danger">
                                     @error('cpf')
                                         {{ $message }}
@@ -419,6 +414,7 @@
                                     </div>
                                 @endif
                             </div>
+                        @endif
                         <div class="mb-3">
                             <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
                                 para a COVID-19 (mãe, pai,
@@ -427,12 +423,13 @@
                             @foreach ($dadosAdicionais as $key => $input)
                                 @if ($key === 0)
                                     <button type="button" class="btn btn-primary mt-4" id="add_form_field"
-                                        wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo campo</button>
+                                        wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
+                                        campo</button>
                                 @endif
                                 <div class="row mt-3">
                                     <div class="mb-3  col-md-4">
                                         <label for="dadosAdicionais_{{ $key }}_nome">Nome Completo</label>
-                                        <input class="form-control" type="text" name="nomeParente"
+                                        <input class="form-control" type="text" name="test"
                                             id="dadosAdicionais_{{ $key }}_nome"
                                             wire:model.defer="dadosAdicionais.{{ $key }}.nome">
                                         <div class="mt-2"><span class="text-danger">
@@ -490,7 +487,6 @@
                                 </div>
                             @endforeach
                         </div>
-                        @endif
                     </div>
                 </div>
             @endif
@@ -505,9 +501,7 @@
                             <br>
                             <label class="form-check-label" for="{{ $value->name }}">{{ $value->name }}</label>
                             <input class="pagamento form-check-input" type="radio" name="pagamento"
-                                id="{{ $value->value }}" value="{{ $value->value }}" wire:model="pagamento"
-                                data-parsley-required
-                                data-parsley-required-message="Você deve selecionar um tipo de pagamento">
+                                id="{{ $value->value }}" value="{{ $value->value }}" wire:model="pagamento">
                         @endforeach
                         <div class="mt-2"><span class="text-danger">
                                 @error('pagamento')
@@ -522,7 +516,7 @@
                         envio de documentos que demonstrem a renda.</p>
 
                     <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
-                        wire:model="declaracao_isencao" type="checkbox">
+                        wire:model="declaracao_isencao" onchange="comprovanteIsencaoInputShow()" type="checkbox">
                     <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
                         analise socio economica familia pela diretoria da AVICO.</label>
                 </div>
@@ -542,12 +536,12 @@
                     </p>
                     <div class="mb-3" id="termo_inscricao">
                         <label class="form-label" for="termo_inscrição">Termo de inscrição AVICO*</label>
-                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
-                            id="termo_inscricao" accept="image/.jpg,.png,.jpeg" required>
+                        <input class="form-control" type="file" name="filenames[]" id="termo_inscricao"
+                            accept="image/.jpg,.png,.jpeg" wire:model="filenames" required>
                     </div>
                     <div class="mb-3" id="rgCPF">
                         <label class="form-label" for="Cópia do RG/CPF">CPF/RG*</label>
-                        <input class="form-control" type="file" onchange="fileValidation()" name="filenames[]"
+                        <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
                             id="cpf_rg" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                     @if (in_array('Sobrevivente da COVID-19', $this->condicoes))
@@ -557,9 +551,8 @@
                                 da
                                 COVID-19 (em caso de sobrevivente)*
                             </label>
-                            <input class="form-control" type="file" name="filenames[]"
-                                onchange="fileValidation()" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg"
-                                multiple required>
+                            <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
+                                id="comprovanteMedico" accept="image/.jpg,.png,.jpeg" multiple required>
                         </div>
                     @endif
                     @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
@@ -568,15 +561,14 @@
                                 familiar
                                 de vítima)*
                             </label>
-                            <input class="form-control" type="file" name="filenames[]"
-                                onchange="fileValidation()" id="certidaoObito" accept="image/.jpg,.png,.jpeg"
-                                multiple required>
+                            <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
+                                id="certidaoObito" accept="image/.jpg,.png,.jpeg" multiple required>
                         </div>
                     @endif
 
                     <div class="mb-3" id="compEndereco">
                         <label class="form-label" for="">Cópia de Comprovante de Endereço*</label>
-                        <input class="form-control" type="file" name="filenames[]" onchange="fileValidation()"
+                        <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
                             id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple required>
                     </div>
                     @if ($declaracao_isencao)
@@ -589,8 +581,8 @@
                                 renda
                                 familiar.
                             </label>
-                            <input class="form-control" type="file" onchange="fileValidation()"
-                                name="filenames[]" id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
+                            <input class="form-control" type="file" wire:model="filenames" name="filenames[]"
+                                id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
                         </div>
                     @endif
                 </div>
@@ -605,7 +597,8 @@
                         wire:click="increaseStep()">Proximo</button>
                 @endif
                 @if ($currentStep == 5)
-                    <button type="submit" class="btn btn-success float-right mr-5">Enviar</button>
+                    <button type="button" class="btn btn-success float-right mr-5"
+                        wire:click="sendInfos()">Enviar</button>
                 @endif
             </div>
         </form>

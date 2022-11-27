@@ -10,9 +10,12 @@
 </head>
 <style>
     @media dompdf {
-       * { line-height: 1.2; }
+        * {
+            line-height: 1.2;
+        }
     }
-    </style>
+</style>
+
 <body>
     <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
     <div class="card-body">
@@ -22,7 +25,7 @@
             @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                 <br>
                 <input class="tipo form-check-input" type="checkbox" name="tipo[]" id="{{ $value->value }}"
-                    value="{{ $value->value }}" {{ in_array($value->value ,$tipo)? 'checked' : '' }}>
+                    value="{{ $value->value }}" {{ in_array($value->value, $tipo) ? 'checked' : '' }}>
                 <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
             @endforeach
         </div>
@@ -204,49 +207,56 @@
 
                     <div class="form-check">
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            id="sobrevivente" value="Sobrevivente da COVID-19" {{ in_array('Sobrevivente da COVID-19', $condicoes) ? 'checked' : '' }} />
+                            id="sobrevivente" value="Sobrevivente da COVID-19"
+                            {{ in_array('Sobrevivente da COVID-19', $condicoes) ? 'checked' : '' }} />
                         <label for="">Sobrevivente da COVID-19</label>
                     </div>
                     <div class="form-check">
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="familiar"
-                            value="Familiar de vítima da COVID-19" {{ in_array('Familiar de vítima da COVID-19', $condicoes) ? 'checked' : '' }}>
+                            value="Familiar de vítima da COVID-19"
+                            {{ in_array('Familiar de vítima da COVID-19', $condicoes) ? 'checked' : '' }}>
                         <label for="">Familiar de vítima da COVID-19</label>
                     </div>
                     <div class="form-check">
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]" id="nenhum"
-                            value="Nenhuma das alternativas acima" {{ in_array('Nenhuma das alternativas acima', $condicoes) ? 'checked' : '' }}>
+                            value="Nenhuma das alternativas acima"
+                            {{ in_array('Nenhuma das alternativas acima', $condicoes) ? 'checked' : '' }}>
                         <label for="">Nenhuma das alternativas acima</label>
                     </div>
                 </div>
                 <div id="grauParentesco" class="mb-3">
                     <label>Qual o grau de parentesco com a vítima?*</label>
-                    <input class="form-control" type="text" name="parentesco" id="parentesco" value="{{$parentesco}}" required>
+                    <input class="form-control" type="text" name="parentesco" id="parentesco"
+                        value="{{ $parentesco }}" required>
                     <div id="outrosInput">
                         <span>Por favor, especifique no campo abaixo:*</span>
-                        <input class="outrosData form-control" name="outro" id="outrosData" value="{{$outros}}" type="text"
-                            required>
+                        <input class="outrosData form-control" name="outro" id="outrosData"
+                            value="{{ $outros }}" type="text" required>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu para a
-                        COVID-19 (mãe, pai,
-                        filho, filha, avô, avó, pais, cônjuges).</label>
-                    <div id="field" class="row mt-3">
-                        <div class="mb-3 col">
-                            <label for="nome">Nome Completo</label>
-                            <input class="form-control " type="text" name="nomeParente" id="nomeParente">
-                        </div>
-                        <div class="mb-3 col-md-2">
-                            <label for="idade">grau de parentesco</label>
-                            <input class="form-control" type="text" name="idadeParente" id="idadeParente"
-                                required>
-                        </div>
-                        <div class="mb-3 col-md-2">
-                            <label for="idade">idade</label>
-                            <input class="form-control" type="text" name="idadeParente" id="idadeParente"
-                                required>
-                        </div>
-                    </div>
+                    <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
+                        para a COVID-19 (mãe, pai, filho, filha, avô, avó, pais, cônjuges).</label>
+                    @foreach ($dadosAdicionais as $key => $input)
+                        <div class="row mt-3">
+                            <div class="mb-3  col-md-4">
+                                <label for="dadosAdicionais_nome">Nome Completo</label>
+                                <input class="form-control" type="text" name="test"
+                                    value="{{ $input['nome'] }}" </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="dadosAdicionais_parentesco">Grau de
+                                        parentesco*</label>
+                                    <input class="parentesco form-select" type="text" name="parentesco"
+                                        value="{{ $input['parentesco'] }}">
+
+                                </div>
+                                <div class="mb-3 col-md-2">
+                                    <label for="dadosAdicionais_idade">idade</label>
+                                    <input class="form-control" type="text" name="idade"
+                                        value="{{ $input['idade'] }}">
+                                </div>
+                            </div>
+                    @endforeach
                 </div>
             </div>
         </div>

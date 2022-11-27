@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\AssocieController;
+use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Js;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -37,10 +40,14 @@ class AssocieComponent extends Component
     public $outros;
     public $pagamento;
     public $declaracao_isencao;
+    public $filenames = [];
     public $currentStep = 1;
     public $totalSteps = 5;
 
     public Collection $dadosAdicionais;
+    private AssocieController $associeController;
+
+    use WithFileUploads;
 
     public function mount()
     {
@@ -244,7 +251,7 @@ class AssocieComponent extends Component
             $this->uf = isset($dados['uf']) ? $dados['uf'] : "";
             $this->complemento = isset($dados['complemento']) ? $dados['complemento'] : "";
             $this->bairro = isset($dados['bairro']) ? $dados['bairro'] : "";
-            if (!isset($dados["erro"])) {
+            if (isset($dados["erro"])) {
                 return throw ValidationException::withMessages([
                     'cep' => 'CEP inválido'
                 ]);
@@ -265,7 +272,7 @@ class AssocieComponent extends Component
     {
         if (!$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'celular' => 'Erro!'
+                'celular' => 'Celular inválido'
             ]);
         }
     }
@@ -274,7 +281,7 @@ class AssocieComponent extends Component
     {
         if (!$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'telefone_residencial' => 'Erro!'
+                'telefone_residencial' => 'Celular inválido'
             ]);
         }
     }
@@ -317,8 +324,9 @@ class AssocieComponent extends Component
             'condicoes' => $this->condicoes,
             'outros' => $this->outros,
             'pagamento' => $this->pagamento,
+            'parentesco' => $this->parentesco,
             'declaracao_isencao' => $this->declaracao_isencao,
-            'camposAdicionais' => $this->camposAdicionais
+            'dadosAdicionais' => $this->dadosAdicionais
         ];
         return $this->generate_pdf($myArr);
     }
@@ -343,5 +351,52 @@ class AssocieComponent extends Component
             fn () => print($pdf),
             'termo.pdf'
         );
+    }
+
+    public function sendInfos()
+    {
+        $this->associeController = new AssocieController();
+        $myArr = [
+            'tipo' => $this->tipo,
+            'nome' => $this->nome,
+            'dataNascimento' => $this->dataNascimento,
+            'genero' => $this->genero,
+            'raca_cor' => $this->raca_cor,
+            'cpf' => $this->cpf,
+            'rg' => $this->rg,
+            'celular' => $this->celular,
+            'telefone_residencial' => $this->telefone_residencial,
+            'email' => $this->email,
+            'cep' => $this->cep,
+            'endereco' => $this->endereco,
+            'nmrEndereco' => $this->nmrEndereco,
+            'cidade' => $this->cidade,
+            'uf' => $this->uf,
+            'complemento' => $this->complemento,
+            'bairro' => $this->bairro,
+            'profissao' => $this->profissao,
+            'condicoes' => $this->condicoes,
+            'outros' => $this->outros,
+            'pagamento' => $this->pagamento,
+            'declaracao_isencao' => $this->declaracao_isencao,
+            'dadosAdicionais' => $this->dadosAdicionais
+        ];
+        $myRequest = Request();
+        $myRequest->setMethod('POST');
+        $myRequest->request->add($myArr);
+        try {
+            return $this->associeController->store($myRequest, $this->saveFile($this->filenames), $this->saveFile($this->filenames));
+        } catch (Exception $err) {
+            return false;
+        }
+    }
+
+    function saveFile($files)
+    {
+        foreach ($files as $file) {
+            $files = $file->store('files/' . $this->cpf, 'public');
+        }
+
+        return $files;
     }
 }
