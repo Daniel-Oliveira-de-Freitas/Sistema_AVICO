@@ -40,7 +40,12 @@ class AssocieComponent extends Component
     public $outros;
     public $pagamento;
     public $declaracao_isencao;
-    public $filenames = [];
+    public $termoInscricao;
+    public $fileCpfRg = [];
+    public $fileComprovante;
+    public $fileCertidaoObito = [];
+    public $fileComprovanteEndereco;
+    public $fileComprovanteIsencao;
     public $currentStep = 1;
     public $totalSteps = 5;
 
@@ -49,17 +54,17 @@ class AssocieComponent extends Component
 
     use WithFileUploads;
 
+    public function render()
+    {
+        return view('livewire.associe-component');
+    }
+
     public function mount()
     {
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '']]),
         ]);
-        $this->currentStep = 1;
-    }
-
-    public function render()
-    {
-        return view('livewire.associe-component');
+        $this->currentStep = 5;
     }
 
     protected $rules = [
@@ -73,13 +78,13 @@ class AssocieComponent extends Component
         'unique'    => ':attribute já está sendo usado.',
         'same' => 'A senha deve ser identica ao confirmar senha.',
         'min' => ':attribute deve ter pelo menos :min caracteres.',
+        'max' => 'O arquivo excedeu o tamanho de 1 mb',
         'numeric' => 'Digite apenas números.',
         'email' => 'Você deve digitar um :attribute valido.',
         'dadosAdicionais.*.nome.required' => 'Este campo é obrigatório.',
         'dadosAdicionais.*.parentesco.required' => 'Este campo é obrigatório.',
         'dadosAdicionais.*.idade.required' => 'Este campo é obrigatório.',
     ];
-
 
     public function updated($property)
     {
@@ -164,6 +169,27 @@ class AssocieComponent extends Component
             $this->validate([
                 'pagamento' => 'required',
             ]);
+        } elseif ($this->currentStep == 5) {
+            $this->validate([
+                'termoInscricao' => 'required|max:1024',
+                'fileCpfRg' => 'required|max:1024',
+                'fileComprovanteEndereco' => 'required|max:1024',
+            ]);
+            if (in_array("Familiar de vítima da COVID-19", $this->condicoes)) {
+                $this->validate([
+                    'fileCertidaoObito' => 'required|max:1024'
+                ]);
+            }
+            if (in_array("Sobrevivente da COVID-19", $this->condicoes)) {
+                $this->validate([
+                    'fileComprovante' => 'required|max:1024'
+                ]);
+            }
+            if ($this->declaracao_isencao) {
+                $this->validate([
+                    'fileComprovanteIsencao' => 'required|max:1024'
+                ]);
+            }
         }
     }
 
@@ -181,7 +207,6 @@ class AssocieComponent extends Component
             return $cpf;
         }
     }
-
 
     public function validaCPF($cpf = "")
     {
@@ -355,6 +380,7 @@ class AssocieComponent extends Component
 
     public function sendInfos()
     {
+        $this->validateData();
         $this->associeController = new AssocieController();
         $myArr = [
             'tipo' => $this->tipo,
@@ -385,18 +411,39 @@ class AssocieComponent extends Component
         $myRequest->setMethod('POST');
         $myRequest->request->add($myArr);
         try {
-            return $this->associeController->store($myRequest, $this->saveFile($this->filenames), $this->saveFile($this->filenames));
+            $filenames = $this->saveFile($this->generateFilesArray());
+            return $this->associeController->store($myRequest,  $filenames,  $filenames);
         } catch (Exception $err) {
             return false;
         }
     }
 
-    function saveFile($files)
+    private function generateFilesArray()
     {
-        foreach ($files as $file) {
-            $files = $file->store('files/' . $this->cpf, 'public');
-        }
+        return [
+            $this->termoInscricao,
+            $this->fileCpfRg,
+            $this->fileComprovante,
+            $this->fileCertidaoObito,
+            $this->fileComprovanteEndereco,
+            $this->fileComprovanteIsencao
+        ];
+    }
 
-        return $files;
+    private function saveFile($files)
+    {
+        $count = 0;
+        $filepaths = array();
+        foreach ($files as $file) {
+            $count++;
+            if (!is_array($file) && $file !== null) {
+                array_push($filepaths, $file->storeAs('files/' . $this->cpf, $count . $file->getClientOriginalName(), 'public'));
+            } elseif (is_array($file) && $file !== null) {
+                foreach ($file as $f) {
+                    array_push($filepaths, $f->storeAs('files/' . $this->cpf, $count . $f->getClientOriginalName(), 'public'));
+                }
+            }
+        }
+        return $filepaths;
     }
 }

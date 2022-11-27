@@ -8,7 +8,7 @@
     <div class="card-body">
         <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
 
-        <form class="form-cadastro" enctype="multipart/form-data">
+        <form class="form-cadastro" wire:submit.prevent="submit" enctype="multipart/form-data">
             @csrf
             @if ($currentStep == 1)
                 <div div class="form-content mb-3">
@@ -358,18 +358,20 @@
                             <div class="form-check">
                                 <label for="Sobrevivente da COVID-19">Sobrevivente da COVID-19</label>
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                    {{ in_array('Nenhuma das alternativas acima', $this->condicoes) ? 'disabled' : '' }}
                                     wire:model="condicoes" id="sobrevivente" value="Sobrevivente da COVID-19" />
                             </div>
                             <div class="form-check">
                                 <label for="Familiar de vítima da COVID-19">Familiar de vítima da COVID-19</label>
-
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                    {{ in_array('Nenhuma das alternativas acima', $this->condicoes) ? 'disabled' : '' }}
                                     wire:model="condicoes" id="familiar" value="Familiar de vítima da COVID-19">
                             </div>
                             <div class="form-check">
                                 <label for="Nenhuma das alternativas acima">Nenhuma das alternativas acima</label>
-
                                 <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                    {{ in_array('Sobrevivente da COVID-19', $this->condicoes) ? 'disabled' : '' }}
+                                    {{ in_array('Familiar de vítima da COVID-19', $this->condicoes) ? 'disabled' : '' }}
                                     wire:model="condicoes" id="nenhum" value="Nenhuma das alternativas acima">
                             </div>
                             <div class="mt-2"><span class="text-danger">
@@ -414,79 +416,83 @@
                                     </div>
                                 @endif
                             </div>
-                        @endif
-                        <div class="mb-3">
-                            <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
-                                para a COVID-19 (mãe, pai,
-                                filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um novo
-                                campo (Máx 10) </label>
-                            @foreach ($dadosAdicionais as $key => $input)
-                                @if ($key === 0)
-                                    <button type="button" class="btn btn-primary mt-4" id="add_form_field"
-                                        wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
-                                        campo</button>
-                                @endif
-                                <div class="row mt-3">
-                                    <div class="mb-3  col-md-4">
-                                        <label for="dadosAdicionais_{{ $key }}_nome">Nome Completo</label>
-                                        <input class="form-control" type="text" name="test"
-                                            id="dadosAdicionais_{{ $key }}_nome"
-                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome">
-                                        <div class="mt-2"><span class="text-danger">
-                                                @error('dadosAdicionais.' . $key . '.nome')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span></div>
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                        <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
-                                            parentesco*</label>
-                                        <select class="parentesco form-select" name="parentesco"
-                                            wire:model.defer="dadosAdicionais.{{ $key }}.parentesco"
-                                            id="dadosAdicionais_{{ $key }}_parentesco" required>
-                                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
-                                            </option>
-                                            <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
-                                                linha reta
-                                                (pai/mãe,
-                                                filho/filha)
-                                            </option>
-                                            <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
-                                                reta
-                                                (avô/avó, neto/neta)
-                                            </option>
-                                            <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
-                                                grau em
-                                                linha colateral (tio/tia, sobrinho/sobrinha)</option>
-                                        </select>
-                                        <div class="mt-2"><span class="text-danger">
-                                                @error('dadosAdicionais.' . $key . '.parentesco')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span></div>
-                                    </div>
-                                    <div class="mb-3 col-md-2">
-                                        <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="text" name="idade"
-                                                wire:model.defer="dadosAdicionais.{{ $key }}.idade"
-                                                id="dadosAdicionais.{{ $key }}.idade">
-                                            @if ($key > 0)
-                                                <button type="button" class="btn-sm btn-danger"
-                                                    id="remove_form_field"
-                                                    wire:click="removeInput({{ $key }})"><i
-                                                        class="fa-solid fa-trash"></i></button>
-                                            @endif
+                            <div class="mb-3">
+                                <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você
+                                    perdeu
+                                    para a COVID-19 (mãe, pai,
+                                    filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um novo
+                                    campo (Máx 10) </label>
+                                @foreach ($dadosAdicionais as $key => $input)
+                                    @if ($key === 0)
+                                        <button type="button" class="btn btn-primary mt-4" id="add_form_field"
+                                            wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
+                                            campo</button>
+                                    @endif
+                                    <div class="row mt-3">
+                                        <div class="mb-3  col-md-4">
+                                            <label for="dadosAdicionais_{{ $key }}_nome">Nome
+                                                Completo</label>
+                                            <input class="form-control" type="text" name="test"
+                                                id="dadosAdicionais_{{ $key }}_nome"
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.nome">
+                                            <div class="mt-2"><span class="text-danger">
+                                                    @error('dadosAdicionais.' . $key . '.nome')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span></div>
                                         </div>
-                                        <div class="mt-2"><span class="text-danger">
-                                                @error('dadosAdicionais.' . $key . '.idade')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span></div>
+                                        <div class="mb-3 col-md-6">
+                                            <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
+                                                parentesco*</label>
+                                            <select class="parentesco form-select" name="parentesco"
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.parentesco"
+                                                id="dadosAdicionais_{{ $key }}_parentesco" required>
+                                                <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
+                                                </option>
+                                                <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
+                                                    linha reta
+                                                    (pai/mãe,
+                                                    filho/filha)
+                                                </option>
+                                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em
+                                                    linha
+                                                    reta
+                                                    (avô/avó, neto/neta)
+                                                </option>
+                                                <option
+                                                    value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
+                                                    grau em
+                                                    linha colateral (tio/tia, sobrinho/sobrinha)</option>
+                                            </select>
+                                            <div class="mt-2"><span class="text-danger">
+                                                    @error('dadosAdicionais.' . $key . '.parentesco')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span></div>
+                                        </div>
+                                        <div class="mb-3 col-md-2">
+                                            <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" name="idade"
+                                                    wire:model.defer="dadosAdicionais.{{ $key }}.idade"
+                                                    id="dadosAdicionais.{{ $key }}.idade">
+                                                @if ($key > 0)
+                                                    <button type="button" class="btn-sm btn-danger"
+                                                        id="remove_form_field"
+                                                        wire:click="removeInput({{ $key }})"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                @endif
+                                            </div>
+                                            <div class="mt-2"><span class="text-danger">
+                                                    @error('dadosAdicionais.' . $key . '.idade')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span></div>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endif
@@ -516,7 +522,7 @@
                         envio de documentos que demonstrem a renda.</p>
 
                     <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
-                        wire:model="declaracao_isencao" onchange="comprovanteIsencaoInputShow()" type="checkbox">
+                        wire:model="declaracao_isencao" type="checkbox">
                     <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
                         analise socio economica familia pela diretoria da AVICO.</label>
                 </div>
@@ -537,43 +543,75 @@
                     <div class="mb-3" id="termo_inscricao">
                         <label class="form-label" for="termo_inscrição">Termo de inscrição AVICO*</label>
                         <input class="form-control" type="file" name="filenames[]" id="termo_inscricao"
-                            accept="image/.pdf,.png,.jpeg" wire:model="filenames" required>
+                            accept="application/pdf" wire:model="termoInscricao">
+                        <div class="mt-2"><span class="text-danger">
+                                @error('termoInscricao')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
                     </div>
                     <div class="mb-3" id="rgCPF">
-                        <label class="form-label" for="Cópia do RG/CPF">CPF/RG*</label>
-                        <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
-                            id="cpf_rg" accept="image/.jpg,.png,.jpeg" multiple required>
+                        <label class="form-label" for="cpf_rg">CPF/RG*</label>
+                        <input class="form-control" type="file" name="filenames[]" wire:model="fileCpfRg"
+                            id="cpf_rg" accept="image/.jpg,.png,.jpeg" multiple>
+                        <div class="mt-2"><span class="text-danger">
+                                @error('fileCpfRg')
+                                    {{ $message }}
+                                @enderror
+                            </span></div>
                     </div>
                     @if (in_array('Sobrevivente da COVID-19', $this->condicoes))
                         <div class="mb-3" id="comprovante">
-                            <label class="form-label" for="">Cópia de Comprovante Médico de existência de
+                            <label class="form-label" for="comprovanteMedico">Cópia de Comprovante Médico de
+                                existência de
                                 sequelas
                                 da
                                 COVID-19 (em caso de sobrevivente)*
                             </label>
-                            <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
-                                id="comprovanteMedico" accept="image/.jpg,.png,.jpeg" multiple required>
+                            <input class="form-control" type="file" name="filenames[]"
+                                wire:model="fileComprovante" id="comprovanteMedico" accept="image/.jpg,.png,.jpeg"
+                                multiple>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('fileComprovante')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                     @endif
                     @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
                         <div class="mb-3" id="certidao_obito">
-                            <label class="form-label" for="">Cópia da Certidão de Óbito da vítima (em caso de
+                            <label class="form-label" for="certidaoObito">Cópia da Certidão de Óbito da vítima (em
+                                caso de
                                 familiar
                                 de vítima)*
                             </label>
-                            <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
-                                id="certidaoObito" accept="image/.jpg,.png,.jpeg" multiple required>
+                            <input class="form-control" type="file" name="filenames[]"
+                                wire:model="fileCertidaoObito" id="certidaoObito" accept="image/.jpg,.png,.jpeg"
+                                multiple>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('fileCertidaoObito')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                     @endif
 
                     <div class="mb-3" id="compEndereco">
-                        <label class="form-label" for="">Cópia de Comprovante de Endereço*</label>
-                        <input class="form-control" type="file" name="filenames[]" wire:model="filenames"
-                            id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg" multiple required>
+                        <label class="form-label" for="comprovanteEndereco">Cópia de Comprovante de Endereço*</label>
+                        <input class="form-control" type="file" name="filenames[]"
+                            wire:model="fileComprovanteEndereco" id="comprovanteEndereco"
+                            accept="image/.jpg,.png,.jpeg">
+                        <div class="mt-2"><span class="text-danger">
+                                @error('fileComprovanteEndereco')
+                                    {{ $message }}
+                                @enderror
+                            </span></div>
                     </div>
                     @if ($declaracao_isencao)
-                        <div class="mb-3" id="comprovante_isencao">
-                            <label class="form-label" for="">Para casos de isenção de contribuição (renda
+                        <div class="mb-3" id="comprovante_isencao" wire:show="">
+                            <label class="form-label" for="comprovanteRenda">Para casos de isenção de contribuição
+                                (renda
                                 familiar
                                 bruta de até 1,5 salário mínimo per capita), cópia dos documentos comprobatórios de
                                 renda
@@ -581,8 +619,13 @@
                                 renda
                                 familiar.
                             </label>
-                            <input class="form-control" type="file" wire:model="filenames" name="filenames[]"
-                                id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
+                            <input class="form-control" type="file" wire:model="fileComprovanteIsencao"
+                                name="filenames[]" id="comprovanteRenda" accept="image/.jpg,.png,.jpeg" multiple>
+                            <div class="mt-2"><span class="text-danger">
+                                    @error('fileComprovanteIsencao')
+                                        {{ $message }}
+                                    @enderror
+                                </span></div>
                         </div>
                     @endif
                 </div>
