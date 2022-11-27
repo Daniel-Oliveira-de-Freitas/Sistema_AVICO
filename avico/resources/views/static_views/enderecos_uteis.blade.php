@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Endereços Uteis')
 @section('content')
     <section class="page-section">
         <main class="container container-text">

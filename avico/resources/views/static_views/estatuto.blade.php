@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('title', 'Estatuto')
-
-
 @section('content')
 <section class="page-section">
     <div class="container h-auto container-text">

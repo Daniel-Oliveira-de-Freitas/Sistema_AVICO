@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Noticias - AVICO')
+@section('title', 'Noticias')
 
 @section('content')
     <section class="container container-text sem_ rmb">

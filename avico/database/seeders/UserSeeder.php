@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // $admin = new User();
-        // $admin->email =  'admin@admin.com';
-        // $admin->password = Hash::make('123');
-        // $admin->status = 'aprovado';
-        // $admin->active= 'true';
-        // $admin->save();
-        // $admin->assignRole('admin');
+        $admin = new User();
+        $admin->email =  'admin@admin.com';
+        $admin->password = Hash::make('123');
+        $admin->status = 'aprovado';
+        $admin->active= 'true';
+        $admin->save();
+        $admin->assignRole('admin');
     }
 }

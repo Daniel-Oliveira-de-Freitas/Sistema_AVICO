@@ -228,7 +228,7 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <!--<h4>22 de junho de 2021</h4>-->
-                            <h5 class="subheading">Ato que homenageiam 500 mil vítimas da Covid-19</h5>
+                            <h5 class="subheading">Ato em homenagem a 500 mil vitimas da covid-19</h5>
                         </div>
                     </div>
                 </li>
@@ -240,7 +240,7 @@
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <!--<h4>15 de outubro de 2021</h4>-->
-                            <h5 class="subheading">Ato em Dashboardnagem a 602 mil vítimas da Covid-19 em frente ao Congresso
+                            <h5 class="subheading">Ato em defesa a 602 mil vítimas da Covid-19 em frente ao Congresso
                                 Nacional</h5>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
                         <div class="timeline-heading">
                             <!--<h4>05 novembro de 2021</h4>-->
                             <h5 class="subheading">AVICO integra comitê estadual em defesa das vítimas da Covid-19 do
-                                conselho estadual de saúde</h5>
+                                Conselho Estadual de Saúde - RS </h5>
                         </div>
                     </div>
                 </li>

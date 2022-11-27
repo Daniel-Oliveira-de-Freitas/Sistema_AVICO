@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Apoio Psicossocial')
+@section('title', 'Mobilização e Controle Social')
 
 @section('content')
         <!-- Menu-->
