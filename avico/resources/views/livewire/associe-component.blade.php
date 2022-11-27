@@ -537,7 +537,7 @@
                     <div class="mb-3" id="termo_inscricao">
                         <label class="form-label" for="termo_inscrição">Termo de inscrição AVICO*</label>
                         <input class="form-control" type="file" name="filenames[]" id="termo_inscricao"
-                            accept="image/.jpg,.png,.jpeg" wire:model="filenames" required>
+                            accept="image/.pdf,.png,.jpeg" wire:model="filenames" required>
                     </div>
                     <div class="mb-3" id="rgCPF">
                         <label class="form-label" for="Cópia do RG/CPF">CPF/RG*</label>
