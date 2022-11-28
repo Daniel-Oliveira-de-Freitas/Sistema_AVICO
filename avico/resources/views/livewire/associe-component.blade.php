@@ -534,7 +534,7 @@
                         digitalizados, sob pena de indeferimento imediato do requerimento.
                     </p>
                     <p>2. Para gerar o termo para a assinatura clique no botão indicado:
-                        <a type="button" target="_blank" wire:click="generate_array()" id="gerar_pdf"
+                        <a type="button" target="_blank" wire:click="generate_pdf()" id="gerar_pdf"
                             class="btn btn-primary mb-2">Gerar termo</a>
                         . Caso seja necessario pode ser assinado digitalmente via <a
                             href="https://sso.acesso.gov.br/login?client_id=assinador.iti.br&authorization_id=1844e5391cc">
