@@ -47,7 +47,7 @@ class ListagemController extends Controller
     $zip = new ZipArchive;
     $filename = $user->person->cpf . '.zip';
     if ($zip->open(public_path($filename), ZipArchive::CREATE) === TRUE) {
-      $files = File::files(public_path($user->person->file->caminho_arquivos));
+      $files = File::files(storage_path('app\public\files\\'.$user->person->cpf));
 
       foreach ($files as $key => $value) {
         $relativeName = basename($value);

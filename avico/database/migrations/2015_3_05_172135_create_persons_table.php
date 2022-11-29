@@ -19,12 +19,14 @@ return new class extends Migration
             $table->string('nome_completo');
             $table->date('data_nascimento');
             $table->string('genero', 50);
-            $table->string('cpf', 11)->unique();
-            $table->string('rg', 10);
-            $table->bigInteger('telefone');
-            $table->bigInteger('telefone_residencial')->nullable();
+            $table->string('raca_cor', 50);
+            $table->string('cpf', 15)->unique();
+            $table->string('rg', 15);
+            $table->string('telefone');
+            $table->string('telefone_residencial')->nullable();
             $table->string('profissao')->nullable();
             $table->string('tipo_pagamento')->nullable();
+            $table->boolean('declaracao_isencao')->default(false);
             $table->timestamps();
         
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -88,7 +88,7 @@ Route::get('/noticias', function () {
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
 
-Route::post('/inscricao/store',[AssocieController::class, 'store'])->name('inscricao.store');
+Route::post('/inscricao/store', [AssocieController::class, 'store'])->name('inscricao.store');
 
 //Rotas das Noticias
 
