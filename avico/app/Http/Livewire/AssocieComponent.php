@@ -64,7 +64,7 @@ class AssocieComponent extends Component
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '']]),
         ]);
-        $this->currentStep = 5;
+        $this->currentStep = 1;
     }
 
     protected $rules = [
@@ -150,14 +150,14 @@ class AssocieComponent extends Component
                 'nmrEndereco' => 'required',
                 'bairro' => 'required|string',
                 'profissao' => 'required',
-                'condicoes' => 'required|array|min:1',
-                'dadosAdicionais.*.nome' => 'required',
-                'dadosAdicionais.*.parentesco' => 'required',
-                'dadosAdicionais.*.idade' => 'required|numeric'
+                'condicoes' => 'required|array|min:1'
             ]);
             if (in_array("Familiar de vítima da COVID-19", $this->condicoes)) {
                 $this->validate([
-                    'parentesco' => 'required'
+                    'parentesco' => 'required',
+                    'dadosAdicionais.*.nome' => 'required',
+                    'dadosAdicionais.*.parentesco' => 'required',
+                    'dadosAdicionais.*.idade' => 'required|numeric'
                 ]);
                 if ($this->parentesco === "outros") {
                     $this->validate([
@@ -327,7 +327,7 @@ class AssocieComponent extends Component
 
     public function generate_array()
     {
-        $myArr = [
+        return [
             'tipo' => $this->tipo,
             'nome' => $this->nome,
             'dataNascimento' => $this->dataNascimento,
@@ -353,7 +353,6 @@ class AssocieComponent extends Component
             'declaracao_isencao' => $this->declaracao_isencao,
             'dadosAdicionais' => $this->dadosAdicionais
         ];
-        return $this->generate_pdf($myArr);
     }
 
     public function addInput()
@@ -368,10 +367,10 @@ class AssocieComponent extends Component
         $this->dadosAdicionais->pull($key);
     }
 
-    public function generate_pdf($arr)
+    public function generate_pdf()
     {
 
-        $pdf = Pdf::loadView('layouts.pdf', $arr)->setPaper('a4', 'landscape')->output();
+        $pdf = Pdf::loadView('layouts.pdf', $this->generate_array())->setPaper('a4', 'landscape')->output();
         return response()->streamDownload(
             fn () => print($pdf),
             'termo.pdf'
@@ -382,34 +381,9 @@ class AssocieComponent extends Component
     {
         $this->validateData();
         $this->associeController = new AssocieController();
-        $myArr = [
-            'tipo' => $this->tipo,
-            'nome' => $this->nome,
-            'dataNascimento' => $this->dataNascimento,
-            'genero' => $this->genero,
-            'raca_cor' => $this->raca_cor,
-            'cpf' => $this->cpf,
-            'rg' => $this->rg,
-            'celular' => $this->celular,
-            'telefone_residencial' => $this->telefone_residencial,
-            'email' => $this->email,
-            'cep' => $this->cep,
-            'endereco' => $this->endereco,
-            'nmrEndereco' => $this->nmrEndereco,
-            'cidade' => $this->cidade,
-            'uf' => $this->uf,
-            'complemento' => $this->complemento,
-            'bairro' => $this->bairro,
-            'profissao' => $this->profissao,
-            'condicoes' => $this->condicoes,
-            'outros' => $this->outros,
-            'pagamento' => $this->pagamento,
-            'declaracao_isencao' => $this->declaracao_isencao,
-            'dadosAdicionais' => $this->dadosAdicionais
-        ];
         $myRequest = Request();
         $myRequest->setMethod('POST');
-        $myRequest->request->add($myArr);
+        $myRequest->request->add($this->generate_array());
         try {
             $filenames = $this->saveFile($this->generateFilesArray());
             return $this->associeController->store($myRequest,  $filenames,  $filenames);
