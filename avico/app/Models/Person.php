@@ -22,12 +22,16 @@ class Person extends Model
         'user_id',
         'nome_completo',
         'data_nascimento',
+        'genero',
+        'raca_cor',
         'cpf',
         'rg',
         'telefone',
         'telefone_residencial',
         'profissao',
-        'tipo_pagamento'
+        'tipo_pagamento',
+        'declaracao_isencao',
+        'dados_adicionais'
     ];
 
     protected $casts = [
