@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 class NoticeRepository {
 
     
-    public function save(NoticeRequest $nr){
+    public function save(NoticeRequest $nr, $filePath){
         $notice = new Notice();
         $notice->user_id = Auth::user()->id;
         $notice->titulo = $nr->title;
         $notice->conteudo = $nr->body;
-        $notice->caminho_imagem = $nr->userfile;
+        $notice->caminho_imagem = $filePath;
         $notice->save();
     }
 

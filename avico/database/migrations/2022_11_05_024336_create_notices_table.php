@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('titulo');
-            $table->string('conteudo');
-            $table->string('caminho_imagem')->nullable();
+            $table->string('titulo', 1000);
+            $table->longText('conteudo');
+            $table->longText('caminho_imagem')->nullable();
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users');
 
         });
