@@ -350,6 +350,7 @@ class AssocieComponent extends Component
             'outros' => $this->outros,
             'pagamento' => $this->pagamento,
             'parentesco' => $this->parentesco,
+            'outros' => $this->outros,
             'declaracao_isencao' => $this->declaracao_isencao,
             'dadosAdicionais' => $this->dadosAdicionais
         ];

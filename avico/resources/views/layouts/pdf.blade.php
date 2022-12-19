@@ -45,9 +45,9 @@
                     2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
                     requerer a admissão como Associado da AVICO – Associação de Vítimas e Familiares de vítimas de
                     COVID-19,
-                    inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Praia de Belas, nº 454, apto
-                    201, Praia de
-                    Belas, CEP 90110-000, Porto Alegre/RS, de acordo com o artigo 27, parágrafo segundo, do Estatuto
+                    inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Carlos Gomes, nº 111, conjunto 1101
+                    Bairro Auxiliadora, CEP 90480-003, Porto Alegre/RS, de acordo com o artigo 27, parágrafo segundo, do
+                    Estatuto
                     e suas alterações,
                     disponível no site www.avico.com.br, do qual declaro, por meio deste termo, ter total
                     conhecimento e me
@@ -213,7 +213,7 @@
                     <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você perdeu
                         para a COVID-19 (mãe, pai, filho, filha, avô, avó, pais, cônjuges).</label><br>
                     @foreach ($dadosAdicionais as $key => $input)
-                    <br>
+                        <br>
                         <div class="mb-3  col-md-4">
                             <label for="dadosAdicionais_nome">Nome Completo: {{ $input['nome'] }}</label>
                         </div><br>
@@ -255,21 +255,21 @@
     </div>
     <br><br><br><br>
     <div>
-        <label for="text" >Data:</label>
-        <label >__/__/____</label>
+        <label for="text">Data:</label>
+        <label>__/__/____</label>
     </div><br><br><br><br><br>
     <div style="text-align: center">
-        <label >_________________________________</label><br>
+        <label>_________________________________</label><br>
         <label for="declaracao" style="text-align: center">Assinatura requerente</label>
     </div><br><br><br>
-        <div  style="text-align: center">
-            <label>_________________________________</label><br>
-            <label for="declaracao" style="text-align: center">Assinatura.</label>
-        </div><br><br><br>
-        <div style="text-align: center">
-            <label>_________________________________</label><br>
-            <label style="text-align: center" for="declaracao">Assinatura</label>
-        </div>
+    <div style="text-align: center">
+        <label>_________________________________</label><br>
+        <label for="declaracao" style="text-align: center">Assinatura.</label>
+    </div><br><br><br>
+    <div style="text-align: center">
+        <label>_________________________________</label><br>
+        <label style="text-align: center" for="declaracao">Assinatura</label>
+    </div>
     </div>
 
 </body>

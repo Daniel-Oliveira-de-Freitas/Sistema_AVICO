@@ -24,7 +24,7 @@
                         <a class="btn btn-dark btn-social mx-2" href="mailto:avicobrasil@gmail.com"
                             aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                     </div>
-                    <div class="col-lg-4 text-lg-start police">Versão 1.0.0</div>
+                    <div class="col-lg-4 text-lg-start police">Versão 1.1.0</div>
                 </div>
             </div>
         </footer>

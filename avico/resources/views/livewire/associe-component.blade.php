@@ -43,13 +43,14 @@
                             2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
                             requerer a admissão como Associado da AVICO – Associação de Vítimas e Familiares de vítimas
                             de COVID-19,
-                            inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Praia de Belas, nº 454, apto
-                            201, Praia de
-                            Belas, CEP 90110-000, Porto Alegre/RS, de acordo com o artigo 27, parágrafo segundo, do
-                            Estatuto e suas alterações,
-                            disponível no site www.avico.com.br, do qual declaro, por meio deste termo, ter total
-                            conhecimento e me
-                            comprometo a respeitar todas as suas disposições.
+                            inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Carlos Gomes, nº
+                            111, conjunto 1101 Bairro Auxiliadora, CEP 90480-003, Porto Alegre/RS, de acordo com o
+                            artigo 27, parágrafo segundo, do Estatuto e suas alterações,
+                            disponível no site <a href="https://avicobrasil.com.br/"
+                                target="_blank">www.avico.com.br</a>, do qual
+                            declaro, por
+                            meio deste termo, ter total
+                            conhecimento e me comprometo a respeitar todas as suas disposições.
                         </p>
                         <p>3. Estou ciente e de acordo em disponibilizar meus dados pessoais para cadastro na AVICO
                             e de
@@ -345,7 +346,7 @@
                         </div>
                         <div class="mb-3 ">
                             <label>Profissão*</label>
-                            <input class="form-select" type="text" name="profissao" wire:model="profissao">
+                            <input class="form-control" type="text" name="profissao" wire:model="profissao">
                             <div class="mt-2"><span class="text-danger">
                                     @error('profissao')
                                         {{ $message }}
