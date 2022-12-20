@@ -6,7 +6,8 @@
     @endif
     <h1 class="text-center">Formulário de Cadastro Avico</h1>
     <div class="card-body">
-        <p class="text-center">Os campos destacados com * indicam que são Obrigatórios !!</p>
+        <x-alert alertType="warning" dismissible='false'
+            message="Os campos destacados com * indicam que são Obrigatórios !!" />
 
         <form class="form-cadastro" wire:submit.prevent="submit" enctype="multipart/form-data">
             @csrf
@@ -30,7 +31,7 @@
             @endif
             @if ($currentStep == 2)
                 <div class="form-content">
-                    <div class="form-group text-sm-start form-check">
+                    <div class="form-group text-sm-start form-check" id="termos_associacao">
 
                         <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
                         <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo
@@ -41,7 +42,8 @@
                         </p>
                         <p>
                             2. Venho, através do preenchimento dos dados solicitados neste Termo de Associação,
-                            requerer a admissão como Associado da AVICO – Associação de Vítimas e Familiares de vítimas
+                            requerer a admissão como Associado da AVICO – Associação de Vítimas e Familiares de
+                            vítimas
                             de COVID-19,
                             inscrita no CNPJ sob nº 42.900.150/0001-00, com sede na Avenida Carlos Gomes, nº
                             111, conjunto 1101 Bairro Auxiliadora, CEP 90480-003, Porto Alegre/RS, de acordo com o
@@ -387,14 +389,17 @@
                                 <select class="form-select parentesco" name="parentesco" wire:model="parentesco"
                                     id="parentesco" required>
                                     <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)</option>
-                                    <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha reta
+                                    <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em linha
+                                        reta
                                         (pai/mãe,
                                         filho/filha)</option>
-                                    <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha reta
+                                    <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
+                                        reta
                                         (avô/avó,
                                         neto/neta)
                                     </option>
-                                    <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau em
+                                    <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º grau
+                                        em
                                         linha
                                         colateral (tio/tia, sobrinho/sobrinha)</option>
                                     <option id="outros" value="outros">Outros</option>
@@ -421,7 +426,8 @@
                                 <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você
                                     perdeu
                                     para a COVID-19 (mãe, pai,
-                                    filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um novo
+                                    filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um
+                                    novo
                                     campo (Máx 10) </label>
                                 @foreach ($dadosAdicionais as $key => $input)
                                     @if ($key === 0)
@@ -450,18 +456,21 @@
                                                 id="dadosAdicionais_{{ $key }}_parentesco" required>
                                                 <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
                                                 </option>
-                                                <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
+                                                <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º
+                                                    grau em
                                                     linha reta
                                                     (pai/mãe,
                                                     filho/filha)
                                                 </option>
-                                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em
+                                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau
+                                                    em
                                                     linha
                                                     reta
                                                     (avô/avó, neto/neta)
                                                 </option>
                                                 <option
-                                                    value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
+                                                    value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">
+                                                    3º
                                                     grau em
                                                     linha colateral (tio/tia, sobrinho/sobrinha)</option>
                                             </select>
@@ -516,7 +525,8 @@
                                 @enderror
                             </span></div>
                     </div>
-                    <p class="mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo com a
+                    <p class="mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo
+                        com a
                         renda bruta
                         familiar do associado (renda bruta de até de 1,5 salário mínimo per capita) que deverá ser
                         comprovada pelo
@@ -524,13 +534,15 @@
 
                     <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
                         wire:model="declaracao_isencao" type="checkbox">
-                    <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
+                    <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e
+                        solicito
                         analise socio economica familia pela diretoria da AVICO.</label>
                 </div>
             @endif
             @if ($currentStep == 5)
                 <div class="form-content mb-3">
-                    <p>1. Estou de acordo e entendo que devo encaminhar os documentos abaixo elecancados, em boa ordem,
+                    <p>1. Estou de acordo e entendo que devo encaminhar os documentos abaixo elecancados, em boa
+                        ordem,
                         legíveis e
                         digitalizados, sob pena de indeferimento imediato do requerimento.
                     </p>
@@ -599,7 +611,8 @@
                     @endif
 
                     <div class="mb-3" id="compEndereco">
-                        <label class="form-label" for="comprovanteEndereco">Cópia de Comprovante de Endereço*</label>
+                        <label class="form-label" for="comprovanteEndereco">Cópia de Comprovante de
+                            Endereço*</label>
                         <input class="form-control" type="file" name="filenames[]"
                             wire:model="fileComprovanteEndereco" id="comprovanteEndereco"
                             accept="image/.jpg,.png,.jpeg">
