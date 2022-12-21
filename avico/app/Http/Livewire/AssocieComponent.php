@@ -64,7 +64,7 @@ class AssocieComponent extends Component
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '']]),
         ]);
-        $this->currentStep = 1;
+        $this->currentStep = 5;
     }
 
     protected $rules = [
