@@ -21,11 +21,11 @@ class AssocieComponent extends Component
     public $password;
     public $confirmPassword;
     public $genero;
-    public $raca_cor;
+    public $racaCor;
     public $cpf;
     public $rg;
     public $celular;
-    public $telefone_residencial;
+    public $telefoneResidencial;
     public $email;
     public $cep;
     public $endereco;
@@ -39,7 +39,7 @@ class AssocieComponent extends Component
     public $parentesco;
     public $outros;
     public $pagamento;
-    public $declaracao_isencao;
+    public $declaracaoIsencao;
     public $termoInscricao;
     public $fileCpfRg = [];
     public $fileComprovante;
@@ -62,7 +62,7 @@ class AssocieComponent extends Component
     public function mount()
     {
         $this->fill([
-            'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '']]),
+            'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']]),
         ]);
         $this->currentStep = 5;
     }
@@ -139,7 +139,7 @@ class AssocieComponent extends Component
                 'password' => 'required|min:8',
                 'confirmPassword' => 'required|min:8',
                 'genero' => 'required',
-                'raca_cor' => 'required',
+                'racaCor' => 'required',
                 'cpf' =>  'required|string',
                 'rg' => 'required|string|max:18|min:10',
                 'celular' => 'required',
@@ -185,7 +185,7 @@ class AssocieComponent extends Component
                     'fileComprovante' => 'required|max:1024'
                 ]);
             }
-            if ($this->declaracao_isencao) {
+            if ($this->declaracaoIsencao) {
                 $this->validate([
                     'fileComprovanteIsencao' => 'required|max:1024'
                 ]);
@@ -332,11 +332,11 @@ class AssocieComponent extends Component
             'nome' => $this->nome,
             'dataNascimento' => $this->dataNascimento,
             'genero' => $this->genero,
-            'raca_cor' => $this->raca_cor,
+            'racaCor' => $this->racaCor,
             'cpf' => $this->cpf,
             'rg' => $this->rg,
             'celular' => $this->celular,
-            'telefone_residencial' => $this->telefone_residencial,
+            'telefoneResidencial' => $this->telefoneResidencial,
             'email' => $this->email,
             'cep' => $this->cep,
             'endereco' => $this->endereco,
@@ -351,7 +351,7 @@ class AssocieComponent extends Component
             'pagamento' => $this->pagamento,
             'parentesco' => $this->parentesco,
             'outros' => $this->outros,
-            'declaracao_isencao' => $this->declaracao_isencao,
+            'declaracaoIsencao' => $this->declaracaoIsencao,
             'dadosAdicionais' => $this->dadosAdicionais
         ];
     }
@@ -359,7 +359,7 @@ class AssocieComponent extends Component
     public function addInput()
     {
         if (count($this->dadosAdicionais) !== 10) {
-            $this->dadosAdicionais->push(['nome' => '', 'parentesco' => '', 'idade' => '']);
+            $this->dadosAdicionais->push(['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']);
         }
     }
 

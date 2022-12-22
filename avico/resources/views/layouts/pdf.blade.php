@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.css" rel="stylesheet"> --}}
     <title>PDF</title>
 </head>
 <style>
@@ -113,28 +112,28 @@
                     <label>Raça/Cor:</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor" id="branca"
-                            value="Branca" {{ $raca_cor === 'Branca' ? 'checked' : '' }}>
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" id="branca"
+                            value="Branca" {{ $racaCor === 'Branca' ? 'checked' : '' }}>
                         <label class="form-check-label">Branca</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor" id="Preta"
-                            value="Preta" {{ $raca_cor === 'Preta' ? 'checked' : '' }}>
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" id="Preta"
+                            value="Preta" {{ $racaCor === 'Preta' ? 'checked' : '' }}>
                         <label class="form-check-label">Preta</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="raca_cor" id="parda"
-                            value="Parda" {{ $raca_cor === 'Parda' ? 'checked' : '' }}>
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" id="parda"
+                            value="Parda" {{ $racaCor === 'Parda' ? 'checked' : '' }}>
                         <label class="form-check-label">Parda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor" id="indigena"
-                            value="Indígena" {{ $raca_cor === 'Indígena' ? 'checked' : '' }}>
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" id="indigena"
+                            value="Indígena" {{ $racaCor === 'Indígena' ? 'checked' : '' }}>
                         <label class="form-check-label">Indígena</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor" id="amarela"
-                            value="Amarela" {{ $raca_cor === 'Amarela' ? 'checked' : '' }}>
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" id="amarela"
+                            value="Amarela" {{ $racaCor === 'Amarela' ? 'checked' : '' }}>
                         <label class="form-check-label">Amarela </label>
                     </div>
                 </div>
@@ -150,7 +149,7 @@
                     <label>Celular (DDD+número):{{ $celular }}</label>
                 </div><br>
                 <div class="mb-3 col-md-6">
-                    <label>Telefone residencial (DDD+número): {{ $telefone_residencial }}</label>
+                    <label>Telefone residencial (DDD+número): {{ $telefoneResidencial }}</label>
                 </div><br>
                 <div class="mb-3">
                     <label>E-mail: {{ $email }}</label>
@@ -248,9 +247,9 @@
             comprovada pelo
             envio de documentos que demonstrem a renda.</p>
 
-        <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input" type="checkbox"
-            {{ $declaracao_isencao === true ? 'checked' : '' }}>
-        <label for="declaracao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
+        <input name="declaracaoIsencao" id="declaracaoIsencao" class="form-check-input" type="checkbox"
+            {{ $declaracaoIsencao === true ? 'checked' : '' }}>
+        <label for="declaracaoIsencao">Declaro não ter condições de arcar com as mensalidades da AVICO, e solicito
             analise socio economica familia pela diretoria da AVICO.</label>
     </div>
     <br><br><br><br>

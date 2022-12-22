@@ -122,34 +122,34 @@
                     <x-error-message errorName="genero" />
                 </div>
                 <div class="mb-3 form-group">
-                    <label>Raça/Cor*</label>
+                    <label for="racaCor">Raça/Cor*</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor"
-                            wire:model="raca_cor" id="branca" value="Branca">
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                            id="branca" value="Branca">
                         <label class="form-check-label" for="branca">Branca</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor"
-                            wire:model="raca_cor" id="Preta" value="Preta">
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                            id="Preta" value="Preta">
                         <label class="form-check-label" for="preta">Preta</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="raca_cor" wire:model="raca_cor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
                             id="parda" value="Parda">
                         <label class="form-check-label" for="parda">Parda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor"
-                            wire:model="raca_cor" id="indigena" value="Indígena">
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                            id="indigena" value="Indígena">
                         <label class="form-check-label" for="indigena">Indígena</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="raca_cor form-check-input" type="radio" name="raca_cor"
-                            wire:model="raca_cor" id="amarela" value="Amarela">
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                            id="amarela" value="Amarela">
                         <label class="form-check-label" for="amarela">Amarela </label>
                     </div>
-                    <x-error-message errorName="raca_cor" />
+                    <x-error-message errorName="racaCor" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="cpf">CPF*</label>
@@ -170,10 +170,10 @@
                     <x-error-message errorName="celular" />
                 </div>
                 <div class="mb-3 col-md-6">
-                    <label for="telefone_residencial">Telefone residencial (DDD+número)</label>
-                    <input class="form-control" type="text" name="telefone_residencial"
-                        wire:model="telefone_residencial" id="telefone_residencial">
-                    <x-error-message errorName="telefone_residencial" />
+                    <label for="telefoneResidencial">Telefone residencial (DDD+número)</label>
+                    <input class="form-control" type="text" name="telefoneResidencial"
+                        wire:model="telefoneResidencial" id="telefoneResidencial">
+                    <x-error-message errorName="telefoneResidencial" />
                 </div>
                 <div class="mb-3">
                     <label for="email">E-mail*</label>
@@ -287,58 +287,72 @@
                             @if ($key === 0)
                                 <button type="button" class="btn btn-primary mt-4" id="add_form_field"
                                     wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
-                                    campo</button>
+                                    famliar</button>
                             @endif
-                            <div class="row mt-3">
-                                <div class="mb-3 col-md-4">
-                                    <label for="dadosAdicionais_{{ $key }}_nome">Nome
-                                        Completo</label>
-                                    <input class="form-control" type="text" name="test"
-                                        id="dadosAdicionais_{{ $key }}_nome"
-                                        wire:model.defer="dadosAdicionais.{{ $key }}.nome">
-                                    <x-error-message errorName="dadosAdicionais.{{ $key }}.nome" />
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
-                                        parentesco*</label>
-                                    <select class="parentesco form-select" name="parentesco"
-                                        wire:model.defer="dadosAdicionais.{{ $key }}.parentesco"
-                                        id="dadosAdicionais_{{ $key }}_parentesco" required>
-                                        <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
-                                        </option>
-                                        <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
-                                            linha reta (pai/mãe, filho/filha)
-                                        </option>
-                                        <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
-                                            reta (avô/avó, neto/neta)
-                                        </option>
-                                        <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
-                                            grau em linha colateral (tio/tia, sobrinho/sobrinha)</option>
-                                        <option id="outros" value="outros">Outros</option>
-                                    </select>
-                                    <x-error-message errorName="dadosAdicionais.{{ $key }}.parentesco" />
-                                </div>
-                                <div class="mb-3 col-md-2">
-                                    <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" name="idade"
-                                            id="dadosAdicionais.{{ $key }}.idade"
-                                            wire:model.defer="dadosAdicionais.{{ $key }}.idade">
+                            <div class="card mt-3">
+                                <h5 class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="title p-1">
+                                            Familiar {{ $key + 1 }}
+                                        </span>
                                         @if ($key > 0)
-                                            <button type="button" class="btn-sm btn-danger" id="remove_form_field"
-                                                wire:click="removeInput({{ $key }})"><i
-                                                    class="fa-solid fa-trash"></i></button>
+                                            <div class="p-1">
+                                                <button type="button" class="btn-sm btn-danger"
+                                                    id="remove_form_field"
+                                                    wire:click="removeInput({{ $key }})"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </div>
                                         @endif
                                     </div>
-                                    <x-error-message errorName="dadosAdicionais.{{ $key }}.idade" />
-                                </div>
-                                <div class="mb-3 col">
-                                    <label for="dadosAdicionais_{{ $key }}_outro">Outro tipo de
-                                        parentesco</label>
-                                    <input class="form-control" type="text" name="outro"
-                                        id="dadosAdicionais.{{ $key }}.outro"
-                                        wire:model.defer="dadosAdicionais.{{ $key }}.outro">
-                                    <x-error-message errorName="dadosAdicionais.{{ $key }}.outro" />
+                                </h5>
+                                <div class="card-body row py-0">
+                                    <div class="form-group mb-3 col-md-4">
+                                        <label for="dadosAdicionais_{{ $key }}_nome">Nome
+                                            Completo</label>
+                                        <input class="form-control" type="text" name="test"
+                                            id="dadosAdicionais_{{ $key }}_nome"
+                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome">
+                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.nome" />
+                                    </div>
+                                    <div class="form-group mb-3 col-md-6">
+                                        <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
+                                            parentesco*</label>
+                                        <select class="parentesco form-select" name="parentesco"
+                                            wire:model="dadosAdicionais.{{ $key }}.parentesco"
+                                            id="dadosAdicionais_{{ $key }}_parentesco" required>
+                                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
+                                            </option>
+                                            <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
+                                                linha reta (pai/mãe, filho/filha)
+                                            </option>
+                                            <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
+                                                reta (avô/avó, neto/neta)
+                                            </option>
+                                            <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
+                                                grau em linha colateral (tio/tia, sobrinho/sobrinha)</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
+                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.parentesco" />
+                                    </div>
+                                    <div class="form-group mb-3 col-md-2">
+                                        <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="idade"
+                                                id="dadosAdicionais.{{ $key }}.idade"
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.idade">
+                                        </div>
+                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.idade" />
+                                    </div>
+                                    @if ($this->dadosAdicionais[$key]['parentesco'] === 'outro')
+                                        <div class="form-group mb-3 col">
+                                            <label for="dadosAdicionais_{{ $key }}_outro">Outro tipo de
+                                                parentesco</label>
+                                            <input class="form-control" type="text" name="outro"
+                                                id="dadosAdicionais.{{ $key }}.outro"
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.outro">
+                                            <x-error-message errorName="dadosAdicionais.{{ $key }}.outro" />
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
@@ -369,9 +383,9 @@
                     comprovada pelo
                     envio de documentos que demonstrem a renda.</p>
                 <div class="form-check">
-                    <input name="declaracao_isencao" id="declaracao_isencao" class="form-check-input"
-                        wire:model="declaracao_isencao" type="checkbox">
-                    <label class="form-check-label" for="declaracao">Declaro não ter condições de arcar com as
+                    <input name="declaracaoIsencao" id="declaracaoIsencao" class="form-check-input"
+                        wire:model="declaracaoIsencao" type="checkbox">
+                    <label class="form-check-label" for="declaracaoIsencao">Declaro não ter condições de arcar com as
                         mensalidades da AVICO, e solicito análise socio econômica familia pela diretoria da
                         AVICO.</label>
                 </div>
@@ -431,8 +445,8 @@
                         wire:model="fileComprovanteEndereco" id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg">
                     <x-error-message errorName="fileComprovanteEndereco" />
                 </div>
-                @if ($declaracao_isencao)
-                    <div class="form-goup mb-3" id="comprovante_isencao" wire:show="">
+                @if ($declaracaoIsencao)
+                    <div class="form-goup mb-3" id="comprovante_isencao">
                         <label class="form-label" for="comprovanteRenda">Para casos de isenção de contribuição
                             (renda familiar bruta de até 1,5 salário mínimo per capita), cópia dos documentos
                             comprobatórios de
@@ -446,7 +460,7 @@
                 @endif
             </div>
         @endif
-        <div class="form-navigation gap-1 d-md-flex justify-content-md-center">
+        <div class="form-navigation gap-1 d-flex d-flex justify-content-between">
             @if ($currentStep > 1)
                 <button type="button" class="btn btn-info float-left mr-5 rounded"
                     wire:click="decreaseStep()">Anterior</button>
