@@ -1,7 +1,5 @@
 <div>
-    @if (session('success'))
-        @include(session('success'))
-    @elseif(session('fail'))
+    @if (session('fail'))
         @include(session('fail'))
     @endif
     <h1 class="text-center">Formulário de Cadastro Avico</h1>
@@ -15,7 +13,8 @@
                 @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                     <br>
                     <input class="tipo form-check-input" type="checkbox" name="tipo[]" wire:model="tipo"
-                        id="{{ $value->value }}" value="{{ $value->value }}">
+                        id="{{ $value->value }}" value="{{ $value->value }}"
+                        {{ old('tipo') == $value->value ? 'checked' : '' }}>
                     <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                 @endforeach
                 <x-error-message errorName="tipo" />
@@ -75,7 +74,7 @@
                 <div class="mb-3 form-group col">
                     <label for="nome">Nome completo*</label>
                     <input class="form-control text-break" type="text" name="nome" wire:model="nome"
-                        id="nome">
+                        value="{{ old('nome') }}" id="nome" maxlength="255">
                     <x-error-message errorName="nome" />
                 </div>
                 <div class="mb-3 form-group col-md-6">
@@ -251,7 +250,7 @@
                 <div class="mb-3 ">
                     <label for="profissao">Profissão*</label>
                     <input class="form-control" type="text" name="profissao" id="profissao"
-                        wire:model="profissao">
+                        wire:model="profissao" maxlength="255">
                     <x-error-message errorName="profissao" />
                 </div>
                 <div class="form-group mb-3">
@@ -279,7 +278,7 @@
                 </div>
                 @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
                     <div class="mb-3">
-                        <label> Informe no campo abaixo quantas pessoas do seu grupo familiar nuclear você
+                        <label> Informe nos campos abaixo quantas pessoas do seu grupo familiar nuclear você
                             perdeu para a COVID-19 (mãe, pai,
                             filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um
                             novo campo (Máx 10) </label>
@@ -289,7 +288,7 @@
                                     wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
                                     famliar</button>
                             @endif
-                            <div class="card mt-3">
+                            <div class="card mt-3 mb-2">
                                 <h5 class="card-header">
                                     <div class="d-flex justify-content-between">
                                         <span class="title p-1">
@@ -311,7 +310,8 @@
                                             Completo</label>
                                         <input class="form-control" type="text" name="test"
                                             id="dadosAdicionais_{{ $key }}_nome"
-                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome">
+                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome"
+                                            maxlength="255">
                                         <x-error-message errorName="dadosAdicionais.{{ $key }}.nome" />
                                     </div>
                                     <div class="form-group mb-3 col-md-6">
@@ -325,8 +325,14 @@
                                             <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
                                                 linha reta (pai/mãe, filho/filha)
                                             </option>
+                                            <option value="2º grau em linha colateral (irmão/irmâ)">2º grau em
+                                                linha colateral
+                                                (irmão/irmâ)
+                                            </option>
                                             <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
-                                                reta (avô/avó, neto/neta)
+                                                reta
+                                                (avô/avó,
+                                                neto/neta)
                                             </option>
                                             <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
                                                 grau em linha colateral (tio/tia, sobrinho/sobrinha)</option>
@@ -349,7 +355,8 @@
                                                 parentesco</label>
                                             <input class="form-control" type="text" name="outro"
                                                 id="dadosAdicionais.{{ $key }}.outro"
-                                                wire:model.defer="dadosAdicionais.{{ $key }}.outro">
+                                                wire:model.defer="dadosAdicionais.{{ $key }}.outro"
+                                                maxlength="255">
                                             <x-error-message errorName="dadosAdicionais.{{ $key }}.outro" />
                                         </div>
                                     @endif
@@ -362,7 +369,8 @@
         @endif
         @if ($currentStep == 4)
             <div class="mb-3">
-                <p class="text-justify">1. Tornando-se associado, você está ciente do pagamento do valor de R$ 40,00
+                <p class="text-justify">1. Tornando-se associado, você está ciente do pagamento do valor de R$
+                    40,00
                     (quarenta reais)
                     mensais a título de contribuição à AVICO.
                 </p>
@@ -376,7 +384,8 @@
                     @endforeach
                     <x-error-message errorName="pagamento" />
                 </div>
-                <p class="text-justify mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de acordo
+                <p class="text-justify mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de
+                    acordo
                     com a
                     renda bruta
                     familiar do associado (renda bruta de até de 1,5 salário mínimo per capita) que deverá ser
@@ -385,7 +394,8 @@
                 <div class="form-check">
                     <input name="declaracaoIsencao" id="declaracaoIsencao" class="form-check-input"
                         wire:model="declaracaoIsencao" type="checkbox">
-                    <label class="form-check-label" for="declaracaoIsencao">Declaro não ter condições de arcar com as
+                    <label class="form-check-label" for="declaracaoIsencao">Declaro não ter condições de arcar com
+                        as
                         mensalidades da AVICO, e solicito análise socio econômica familia pela diretoria da
                         AVICO.</label>
                 </div>
@@ -450,7 +460,8 @@
                         <label class="form-label" for="comprovanteRenda">Para casos de isenção de contribuição
                             (renda familiar bruta de até 1,5 salário mínimo per capita), cópia dos documentos
                             comprobatórios de
-                            renda familiar. Ex: holerites dos membros da família ou outros documentos que comprovem a
+                            renda familiar. Ex: holerites dos membros da família ou outros documentos que comprovem
+                            a
                             renda familiar.
                         </label>
                         <input class="form-control" type="file" wire:model="fileComprovanteIsencao"

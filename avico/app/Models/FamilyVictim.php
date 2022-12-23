@@ -17,6 +17,7 @@ class FamilyVictim extends Model
         'person_id',
         'nome_completo',
         'grau_parentesco',
-        'idade'
+        'idade',
+        'outro'
     ];
 }

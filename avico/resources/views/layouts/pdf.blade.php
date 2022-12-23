@@ -223,6 +223,12 @@
                         <div class="mb-3 col-md-2">
                             <label for="dadosAdicionais_idade">idade: {{ $input['idade'] }}</label>
                         </div><br>
+                        @if ($input['parentesco'] === 'outro')
+                            <div class="form-group mb-3 col">
+                                <label for="dadosAdicionais_{{ $key }}_outro">Outro tipo de
+                                    parentesco: {{ $input['outro'] }}</label>
+                            </div><br>
+                        @endif
                     @endforeach
                 </div>
             </div>

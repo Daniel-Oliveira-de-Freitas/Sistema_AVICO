@@ -64,7 +64,7 @@ class AssocieComponent extends Component
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']]),
         ]);
-        $this->currentStep = 5;
+        $this->currentStep = 1;
     }
 
     protected $rules = [
@@ -154,14 +154,13 @@ class AssocieComponent extends Component
             ]);
             if (in_array("Familiar de vítima da COVID-19", $this->condicoes)) {
                 $this->validate([
-                    'parentesco' => 'required',
                     'dadosAdicionais.*.nome' => 'required',
                     'dadosAdicionais.*.parentesco' => 'required',
                     'dadosAdicionais.*.idade' => 'required|numeric'
                 ]);
-                if ($this->parentesco === "outros") {
+                if ('dadosAdicionais.*.outro' === "outros") {
                     $this->validate([
-                        'outros' => 'required'
+                        'dadosAdicionais.*.outro' => 'required'
                     ]);
                 }
             }
@@ -214,7 +213,7 @@ class AssocieComponent extends Component
         // Verifica se um número foi informado
         if (empty($cpf)) {
             return throw ValidationException::withMessages([
-                'cpf' => 'teu cpf tá errado'
+                'cpf' => 'O CPF informado é invalido'
             ]);
         }
 
@@ -263,7 +262,7 @@ class AssocieComponent extends Component
     public function cpfMessageError()
     {
         return throw ValidationException::withMessages([
-            'cpf' => 'CPF inválido.'
+            'cpf' => 'O CPF informado é inválido'
         ]);
     }
 
@@ -278,7 +277,7 @@ class AssocieComponent extends Component
             $this->bairro = isset($dados['bairro']) ? $dados['bairro'] : "";
             if (isset($dados["erro"])) {
                 return throw ValidationException::withMessages([
-                    'cep' => 'CEP inválido'
+                    'cep' => 'O CEP informado é inválido'
                 ]);
             }
         }
@@ -297,7 +296,7 @@ class AssocieComponent extends Component
     {
         if (!$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'celular' => 'Celular inválido'
+                'celular' => 'O celular informado é inválido'
             ]);
         }
     }
@@ -306,7 +305,7 @@ class AssocieComponent extends Component
     {
         if (!$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'telefone_residencial' => 'Celular inválido'
+                'telefone_residencial' => 'O telefone residencial informado é inválido'
             ]);
         }
     }
@@ -347,7 +346,6 @@ class AssocieComponent extends Component
             'bairro' => $this->bairro,
             'profissao' => $this->profissao,
             'condicoes' => $this->condicoes,
-            'outros' => $this->outros,
             'pagamento' => $this->pagamento,
             'parentesco' => $this->parentesco,
             'outros' => $this->outros,
@@ -389,7 +387,6 @@ class AssocieComponent extends Component
             $filenames = $this->saveFile($this->generateFilesArray());
             return $this->associeController->store($myRequest,  $filenames,  $filenames);
         } catch (Exception $err) {
-            return false;
         }
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository;
+
 use App\Models\Person;
 use App\Repository\UserRepository;
 use Exception;
@@ -31,11 +32,11 @@ class PersonRepository
             $person->user_id = $userid;
             $person->data_nascimento =  $request->dataNascimento;
             $person->genero =  $request->genero;
-            $person->raca_cor =  $request->raca_cor;
+            $person->raca_cor =  $request->racaCor;
             $person->cpf =  $request->cpf;
             $person->rg =  $request->rg;
             $person->telefone = $request->celular;
-            $person->telefone_residencial = $request->telefone_residencial;
+            $person->telefone_residencial = $request->telefoneResidencial;
             $person->profissao = $request->profissao;
             $person->tipo_pagamento = $request->pagamento;
             $person->declaracao_isencao = $request->has('declaracao_isencao') ? true : false;
