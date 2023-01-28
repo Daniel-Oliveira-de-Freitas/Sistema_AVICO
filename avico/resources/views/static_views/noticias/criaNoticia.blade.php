@@ -6,7 +6,7 @@
         @if (session('success'))
             @include(session('success'))
         @endif
-        <form action="{{ route('cria_noticia') }}" method="POST">
+        <form action="{{ route('cria_noticia') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="col-md-8 col-md-offset-8" style="position: absolute; left: 17%; ">
                 <div class="form-group mb-4">

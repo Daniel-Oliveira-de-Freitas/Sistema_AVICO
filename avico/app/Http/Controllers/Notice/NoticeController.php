@@ -18,9 +18,13 @@ class NoticeController extends Controller
 
     function store(NoticeRequest $nr){
         $this->noticeRepository = new NoticeRepository();
-        $this->noticeRepository->save($nr);
+        
+        if (!empty ($nr->hasfile('userfile'))) {
+            $name = $nr->userfile->getClientOriginalName();
+            $filePath = $nr->userfile->move(storage_path('app\public\files\notices\\'), $name);
+        } 
+        $this->noticeRepository->save($nr, $filePath);
         return redirect()->back()
         ->with('success', 'messages.notices.success_notice_registration');
-    } 
-
+    }
 }
