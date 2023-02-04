@@ -10,15 +10,24 @@
             @csrf
             <div class="col-md-8 col-md-offset-8" style="position: absolute; left: 17%; ">
                 <div class="form-group mb-4">
-                    <label> Titulo</label>
+                    <label> Titulo*</label>
                     <input type="text" class="form-control" name="title" placeholder="Adicione o Titulo da noticia">
+                    <div class="mt-2"><span class="text-danger">
+                            @error('title')
+                                {{ $message }}
+                            @enderror
+                        </span></div>
                 </div>
                 <div class="form-group mb-4">
-
-                    <label> Noticia </label>
+                    <label> Noticia* </label>
                     <input id="editor1" class="form-control" name="body" placeholder="Adicione a noticia"
                         type="hidden" name="content">
                     <trix-editor input="editor1"></trix-editor>
+                    <div class="mt-2"><span class="text-danger">
+                            @error('body')
+                                {{ $message }}
+                            @enderror
+                        </span></div>
                 </div>
 
                 <div class="form-group mb-4">

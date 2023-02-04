@@ -26,11 +26,15 @@ class NoticeRequest extends FormRequest
         return [
             'title' => 'required|max:255|min:3',
             'body' => 'required',
-            
-            
         ];
     }
 
-
-
+    public function messages()
+    {
+        return [
+            'title.required' => 'O campo de titulo é obrigatório',
+            'body.required' => 'O campo de conteúdo é obrigatório',
+            'title.max' => 'Numero de caracters máximo de 255 foi atingido'
+        ];
+    }
 }
