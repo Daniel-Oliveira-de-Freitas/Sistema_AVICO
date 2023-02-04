@@ -67,4 +67,7 @@ Route::middleware('role:admin')->group(function () {
     Route::patch('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
     Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
     Route::get('/listar/visualizar/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
+    Route::delete('/noticia/{id}/delete', [NoticeController::class, 'removeNotice'])->name('removeNoticia');
+    Route::get('/noticia/{id}/editar', [NoticeController::class, 'findNoticeByIdUpdate'])->name('updateNoticia');
+    Route::patch('/noticia/{id}/editar', [NoticeController::class, 'updateNotice'])->name('updatedNoticia');
 });

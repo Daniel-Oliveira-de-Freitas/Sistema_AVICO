@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Repository;
 
 use App\Models\Notice;
 use App\Http\Requests\Notice\NoticeRequest;
 use Illuminate\Support\Facades\Auth;
 
-class NoticeRepository {
+class NoticeRepository
+{
 
-    
-    public function save(NoticeRequest $nr, $filePath){
+
+    public function save(NoticeRequest $nr, $filePath)
+    {
         $notice = new Notice();
         $notice->user_id = Auth::user()->id;
         $notice->titulo = $nr->title;
@@ -21,7 +24,8 @@ class NoticeRepository {
      * Retorna todos os usuario do banco de dados
      * @return array
      */
-    public function getAll(){
+    public function getAll()
+    {
         return Notice::all();
     }
 
@@ -30,7 +34,8 @@ class NoticeRepository {
      * @param int $id
      * @return object
      */
-    public function getById($id){
+    public function getById($id)
+    {
         return Notice::findorfail($id);
     }
 
@@ -39,18 +44,19 @@ class NoticeRepository {
      * @param int $id
      * @param array $user
      */
-    public function update($id, array $arr){
-        $user = Notice::findorfail($id);
-       return $user->update($arr);
+    public function update($id, NoticeRequest $nr, $filePath)
+    {
+        $notice = Notice::findorfail($id);
+        $notice->update(['titulo' => $nr->title, 'conteudo' =>  $nr->body, 'caminho_imagem' => $filePath ? $filePath : $notice->caminho_imagem]);
     }
 
     /**
-    * Deleta um usuario
-    * @param int $id
-    */
-    public function destroy($id){
-        $user = Notice::findorfail($id);
-        return $user->delete();
+     * Deleta um usuario
+     * @param int $id
+     */
+    public function destroy($id)
+    {
+        $notice = Notice::findorfail($id);
+        return $notice->delete();
     }
-    
 }

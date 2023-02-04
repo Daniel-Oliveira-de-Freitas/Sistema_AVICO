@@ -18,7 +18,7 @@ class NoticeService
 
     public function createNotice(NoticeRequest $nr)
     {
-        return $this->noticeRepository->save($nr);
+        // return $this->noticeRepository->save($nr);
     }
 
 
@@ -40,7 +40,7 @@ class NoticeService
     {
         try {
             return $this->noticeRepository->getById($id);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return false;
         }
     }
@@ -50,16 +50,16 @@ class NoticeService
      * @param int $id
      * @param array $user
      */
-    public function updateNotice($id, $arr)
+    public function updateNotice($id, NoticeRequest $nr, $filePath)
     {
         try {
-            return $this->noticeRepository->update($id, $arr);
+            return $this->noticeRepository->update($id, $nr, $filePath);
         } catch (Exception $e) {
             return false;
         }
     }
 
-    
+
     /**
      * Deleta um usuario
      * @param int $id
