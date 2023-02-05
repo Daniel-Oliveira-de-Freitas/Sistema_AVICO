@@ -9,22 +9,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Notice extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'user_id',
         'titulo',
         'conteudo',
         'caminho_imagem'
     ];
-    
-   
+
+
     /**
-    * Get the user that owns the Adress
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    */
-   public function user(): BelongsTo
-   {
-       return $this->belongsTo(User::class, 'user_id');
-   }
+     * Get the user that owns the Adress
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

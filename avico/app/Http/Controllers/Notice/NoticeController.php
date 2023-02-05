@@ -68,6 +68,7 @@ class NoticeController extends Controller
             $r->userfile->move(public_path('images\assets\noticias\\'), $name);
             return 'images\assets\noticias\\' . $name;
         }
-        return 'images\assets\img\noticias\LOGO-AVICO.png';
+
+        return '';
     }
 }

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Notice;
 use App\Http\Requests\Notice\NoticeRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NoticeRepository
 {
@@ -16,7 +17,7 @@ class NoticeRepository
         $notice->user_id = Auth::user()->id;
         $notice->titulo = $nr->title;
         $notice->conteudo = $nr->body;
-        $notice->caminho_imagem = $filePath;
+        $notice->caminho_imagem = $filePath ? $filePath : 'images\assets\img\noticias\LOGO-AVICO.png';
         $notice->save();
     }
 
@@ -26,7 +27,7 @@ class NoticeRepository
      */
     public function getAll()
     {
-        return Notice::all();
+        return DB::table('notices')->orderBy('id', 'DESC')->paginate(10);
     }
 
     /**

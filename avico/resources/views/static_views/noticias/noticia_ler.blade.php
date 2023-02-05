@@ -16,7 +16,7 @@
                 </form>
             </div>
         @endrole
-        <div class="pb-3">Por <a href="estrutura">{{ !empty($noticia->user->person->nome_completo) }}</a>
+        <div class="pb-3">Por {{ $noticia->user->person->nome_completo }}
             em
             {{ $noticia->created_at }}
         </div>

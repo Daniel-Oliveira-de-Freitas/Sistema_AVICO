@@ -22,5 +22,8 @@
         @empty
             <h2 class="text-center">Nenhuma notícia publicada</h2>
         @endforelse
+        <div class="container">
+            {{ $noticias->links('pagination::bootstrap-5') }}
+        </div>
     </section>
 @endsection
