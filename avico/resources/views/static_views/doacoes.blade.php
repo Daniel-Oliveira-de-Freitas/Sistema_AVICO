@@ -3,8 +3,7 @@
 @section('title', 'Faça sua doação')
 
 @section('content')
-    <section class="container container-text">
-
+    <section class="page-section container container-text">
         <div class="card">
             <div class="card-body">
                 <p>

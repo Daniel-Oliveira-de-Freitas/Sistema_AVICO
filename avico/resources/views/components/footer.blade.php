@@ -3,7 +3,7 @@
         flex: 1 0 auto;
     }
 </style>
-<footer class="footer py-lg-4 fixed">
+<footer class="footer py-lg-4 fixed-bottom">
     <div class="container">
         <div class="row align-items-center">
             <div class="d-none d-lg-block col-lg-4 text-lg-start police">Copyright &copy; AVICO BRASIL 2022

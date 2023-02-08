@@ -9,14 +9,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         SOBRE NÓS
                     </button>
-
-
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="/sobre">Nossa origem</a></li>
                         <li><a class="dropdown-item" href="/estrutura">Estrutua organizacional</a></li>
@@ -27,16 +24,13 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            EIXOS DE ATUAÇÃO
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="/juridico">JURÍDICO</a>
-                            <a class="dropdown-item" href="/juridico">JURÍDICO</a>
-                            <a class="dropdown-item" href="/apoio">APOIO PSICOSSOCIAL</a>
-                            <a class="dropdown-item" href="/mobilizacao">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
-                        </div>
+                        EIXOS DE ATUAÇÃO
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/juridico">JURÍDICO</a>
+                        <a class="dropdown-item" href="/apoio">APOIO PSICOSSOCIAL</a>
+                        <a class="dropdown-item" href="/mobilizacao">MOBILIZAÇÃO E CONTROLE SOCIAL</a>
+                    </div>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
@@ -72,10 +66,8 @@
                 @endrole
                 @guest
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 @endguest
                 @auth
-                    <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
                 @endauth
             </ul>
