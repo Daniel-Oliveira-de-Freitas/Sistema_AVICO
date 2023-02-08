@@ -8,6 +8,7 @@ use App\Notifications\ResetPasswordNotification;
 use App\Notifications\WelcomeUserNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,10 +16,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions;
-    
+
     public $timestamps = false;
 
     /**
@@ -66,13 +67,24 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notices(): HasMany
+    {
+        return $this->hasMany(Notice::class, 'user_id');
+    }
+
+
+    /**
      * The roles that belong to the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function role(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id','role_id');
+        return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
     }
 
     /**
