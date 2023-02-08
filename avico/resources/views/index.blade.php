@@ -2,10 +2,10 @@
 @section('title', 'Avico Brasil - Associação de Vítimas e Familiares de Vítimas da Covid-19')
 @section('content')
     <header class="masthead">
+        @if (session('success'))
+            @include(session('success'))
+        @endif
         <div class="container">
-            @if (session('success'))
-                @include(session('success'))
-            @endif
             <div class="masthead-heading text-uppercase">AVICO</div>
             <div class="masthead-subheading">Associação de Vítimas e Familiares de Vítimas da Covid-19</div>
             <a class="btn btn-primary btn-xl text-uppercase mb-3" href="/inscricao">Associe-se a AVICO</a>
@@ -141,12 +141,12 @@
                 <!--/.Indicators-->
                 <!--Controls-->
                 <!--<div class="text-center">
-                                                                                                                                  <div class="controls-top">
-                                                                                                                                  <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                                                                                                                                  <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-                                                                                                                                  </div>
-                                                                                                                                </div>
-                                                                                                                                <!--/.Controls-->
+                                                                                                                                              <div class="controls-top">
+                                                                                                                                              <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                                                                                                                                              <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                                                                                                                                              </div>
+                                                                                                                                            </div>
+                                                                                                                                            <!--/.Controls-->
 
 
                 <!--/.Carousel Wrapper-->
@@ -163,33 +163,33 @@
 
     </section>
     <!--<section class="page-section" id="services">
-                                                                                                                                    <div class="container">
-                                                                                                                                        <div class="text-center">
-                                                                                                                                            <h2 class="section-heading text-uppercase">Sobre Nós</h2>
-                                                                                                                                            <h3 class="section-subheading text-muted">A Associação de Vítimas e Familiares de Vítimas da Covid-19 –
-                                                                                                                                                AVICO Brasil foi fundada em 08 de abril de 2021, em pleno colapso da saúde pública na cidade de Porto
-                                                                                                                                                Alegre/RS, partir da indignação de Gustavo Bernardes (Advogado) e Paola Falceta (Assistente Social) com
-                                                                                                                                                a ineficiência e negligência do Estado diante das múltiplas consequências da pandemia de covid-19 na
-                                                                                                                                                vida dos brasileiros. Gustavo foi internado (e entubado) no final de 2020 para tratamento da doença e
-                                                                                                                                                sofreu com as graves sequelas oriundas da infecção. Paola foi infectada enquanto cuidava de sua mãe,
-                                                                                                                                                hospitalizada primeiramente para uma cirurgia de emergência, mas que também se infectou e faleceu da
-                                                                                                                                                doença em março de 2021. Por terem atuado juntos na defesa de Direitos Humanos de outro coletivo da
-                                                                                                                                                sociedade civil, sempre acreditaram que, diante da inação (intencional ou não) do Estado, somente a
-                                                                                                                                                potência da mobilização social e o enfrentamento comunitário poderiam minimizar os diferentes impactos
-                                                                                                                                                da pandemia no Brasil.</h3>
-                                                                                                                                            <h3 class="section-subheading text-muted">Nasce, dessa força conjunta, um coletivo social que luta por
-                                                                                                                                                justiça e memória às vítimas fatais e também pela garantia e acesso aos Direitos Humanos constitucionais
-                                                                                                                                                dos sobreviventes da covid-19. Ainda que estejamos constituídos legalmente (com CNPJ), não somos uma
-                                                                                                                                                empresa ou escritório de advocacia, não temos sede ou funcionários. Somos todos trabalhadores que
-                                                                                                                                                paralelamente oferecem seu apoio e conhecimento solidária e coletivamente à outros como nós. Decidimos
-                                                                                                                                                não ficar parados assistindo o Estado brasileiro contribuindo com o adoecimento e morte de nosso povo
-                                                                                                                                                pela covid-19. E para isso, é fundamental que ocupemos os diversos espaços políticos e sociais da nossa
-                                                                                                                                                sociedade, fazendo com que enxerguem e ouçam as nossas histórias. Somos vidas e amores de alguém e nunca
-                                                                                                                                                nos reduzirão a números! É na luta coletiva que somos mais fortes!</h3>
+                                                                                                                                                <div class="container">
+                                                                                                                                                    <div class="text-center">
+                                                                                                                                                        <h2 class="section-heading text-uppercase">Sobre Nós</h2>
+                                                                                                                                                        <h3 class="section-subheading text-muted">A Associação de Vítimas e Familiares de Vítimas da Covid-19 –
+                                                                                                                                                            AVICO Brasil foi fundada em 08 de abril de 2021, em pleno colapso da saúde pública na cidade de Porto
+                                                                                                                                                            Alegre/RS, partir da indignação de Gustavo Bernardes (Advogado) e Paola Falceta (Assistente Social) com
+                                                                                                                                                            a ineficiência e negligência do Estado diante das múltiplas consequências da pandemia de covid-19 na
+                                                                                                                                                            vida dos brasileiros. Gustavo foi internado (e entubado) no final de 2020 para tratamento da doença e
+                                                                                                                                                            sofreu com as graves sequelas oriundas da infecção. Paola foi infectada enquanto cuidava de sua mãe,
+                                                                                                                                                            hospitalizada primeiramente para uma cirurgia de emergência, mas que também se infectou e faleceu da
+                                                                                                                                                            doença em março de 2021. Por terem atuado juntos na defesa de Direitos Humanos de outro coletivo da
+                                                                                                                                                            sociedade civil, sempre acreditaram que, diante da inação (intencional ou não) do Estado, somente a
+                                                                                                                                                            potência da mobilização social e o enfrentamento comunitário poderiam minimizar os diferentes impactos
+                                                                                                                                                            da pandemia no Brasil.</h3>
+                                                                                                                                                        <h3 class="section-subheading text-muted">Nasce, dessa força conjunta, um coletivo social que luta por
+                                                                                                                                                            justiça e memória às vítimas fatais e também pela garantia e acesso aos Direitos Humanos constitucionais
+                                                                                                                                                            dos sobreviventes da covid-19. Ainda que estejamos constituídos legalmente (com CNPJ), não somos uma
+                                                                                                                                                            empresa ou escritório de advocacia, não temos sede ou funcionários. Somos todos trabalhadores que
+                                                                                                                                                            paralelamente oferecem seu apoio e conhecimento solidária e coletivamente à outros como nós. Decidimos
+                                                                                                                                                            não ficar parados assistindo o Estado brasileiro contribuindo com o adoecimento e morte de nosso povo
+                                                                                                                                                            pela covid-19. E para isso, é fundamental que ocupemos os diversos espaços políticos e sociais da nossa
+                                                                                                                                                            sociedade, fazendo com que enxerguem e ouçam as nossas histórias. Somos vidas e amores de alguém e nunca
+                                                                                                                                                            nos reduzirão a números! É na luta coletiva que somos mais fortes!</h3>
 
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-                                                                                                                                </section>-->
+                                                                                                                                                    </div>
+                                                                                                                                                </div>
+                                                                                                                                            </section>-->
 
 
     <!-- Video AVICO-->
@@ -313,14 +313,14 @@
                     </div>
                 </li>
                 <!--<li>
-                                                                                                                                                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." /></div>
-                                                                                                                                                    <div class="timeline-panel">
-                                                                                                                                                        <div class="timeline-heading">
-                                                                                                                                                            <h4>27 de abril de 2022</h4>
-                                                                                                                                                            <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                </li>-->
+                                                                                                                                                                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." /></div>
+                                                                                                                                                                <div class="timeline-panel">
+                                                                                                                                                                    <div class="timeline-heading">
+                                                                                                                                                                        <h4>27 de abril de 2022</h4>
+                                                                                                                                                                        <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
+                                                                                                                                                                    </div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </li>-->
                 <li class="timeline-panel">
                     <div class="timeline-image">
 

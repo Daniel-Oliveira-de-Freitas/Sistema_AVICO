@@ -75,22 +75,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h4>Ivarlete de França</h4>
-                    <p class="large text-muted">Diretora de Promoção da Saúde</p>
-                    <h4>Gabriela Moraes</h4>
-                    <p class="large text-muted">Diretora de Promoção da Assistência Social e Previdência</p>
-                    <h4>Letícia Woida</h4>
-                    <p class="large text-muted">Diretora-Jurídica</p>
-                    <h4>Any Moraes</h4>
+                    <h4>Patrícia Teixeira</h4>
                     <p class="large text-muted">Secretária-Geral</p>
-                    <h4>Nícolas Alcântara Rocha</h4>
-                    <p class="large text-muted">Tesoureiro</p>
                     <br><br>
-                    <h3 class="section-subheading text-muted">Conselho Fiscal:</h3>
+                    <h4 class="section-subheading text-muted mb-4">Conselho Fiscal</h4>
                     <h4>Bruno da Rosa Lumertz, Gabriela Moraes dos Santos e Nicolas Alcântara Rocha</h4>
                     <p class="large text-muted">Titulares</p>
-                    <h4>Carolina Tavares Oliveira Borges, Luiz Fernando Valadares Flores e Núria Debertolis de Motta e
-                        Carolina</h4>
+                    <h4>Carolina Tavares Oliveira Borges, Luiz Fernando Valadares Flores e Núria Debertolis de Motta</h4>
                     <p class="large text-muted">Suplentes</p>
                 </div>
             </div>

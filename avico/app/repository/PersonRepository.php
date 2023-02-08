@@ -43,11 +43,14 @@ class PersonRepository
             $person->save();
             $this->reasonRepository->save($request, $person->id);
             $this->adressRepository->save($request, $person->id);
-            $this->familyVictimRepository->save($request, $person->id);
             $this->fileRepository->save($person->id, $fileNames, $filePaths);
+            if (in_array('Familiar de vítima da COVID-19', $request->condicoes)) {
+                $this->familyVictimRepository->save($request, $person->id);
+            }
             DB::commit();
             return $person->id;
         } catch (Exception $e) {
+            dd($e);
             DB::rollBack();
             return false;
         }
