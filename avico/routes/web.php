@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home.avico');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,6 +31,10 @@ require __DIR__ . '/auth.php';
 
 Route::get('/perguntas', function () {
     return view('static_views.perguntas');
+});
+
+Route::get('/doacoes', function () {
+    return view('static_views.doacoes');
 });
 
 Route::get('/estatuto', function () {
