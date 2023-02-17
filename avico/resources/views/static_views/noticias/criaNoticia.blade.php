@@ -8,7 +8,7 @@
         @endif
         <form action="{{ route('cria_noticia') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="col-md-8 col-md-offset-8" style="position: absolute; left: 17%; ">
+            <div class="col-md-8 col-md-offset-8" style="left: 17%; ">
                 <div class="form-group mb-4">
                     <label> Titulo*</label>
                     <input type="text" class="form-control" name="title" placeholder="Adicione o Titulo da noticia">
@@ -40,9 +40,5 @@
             </div>
         </form>
     </section>
-    <script>
-        document.addEventListener("trix-file-accept", function(event) {
-            event.preventDefault();
-        });
-    </script>
+
 @endsection

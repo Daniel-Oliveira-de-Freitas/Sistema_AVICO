@@ -61,6 +61,7 @@
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/listar">Listar Inscrições</a>
+                            <a class="dropdown-item" href="/noticias/criaNoticia">Criar Noticias</a>
                         </div>
                     </div>
                 @endrole
