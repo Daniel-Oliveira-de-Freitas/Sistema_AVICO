@@ -5,8 +5,6 @@ namespace App\Http\Livewire;
 use App\Http\Controllers\AssocieController;
 use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
@@ -368,7 +366,6 @@ class AssocieComponent extends Component
 
     public function generate_pdf()
     {
-
         $pdf = Pdf::loadView('layouts.pdf', $this->generate_array())->setPaper('a4', 'landscape')->output();
         return response()->streamDownload(
             fn () => print($pdf),
@@ -383,11 +380,9 @@ class AssocieComponent extends Component
         $myRequest = Request();
         $myRequest->setMethod('POST');
         $myRequest->request->add($this->generate_array());
-        try {
-            $filenames = $this->saveFile($this->generateFilesArray());
-            return $this->associeController->store($myRequest,  $filenames,  $filenames);
-        } catch (Exception $err) {
-        }
+
+        $filenames = $this->saveFile($this->generateFilesArray());
+        return $this->associeController->store($myRequest, $filenames, $filenames);
     }
 
     private function generateFilesArray()

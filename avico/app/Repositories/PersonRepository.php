@@ -1,29 +1,37 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 
 use App\Models\Person;
-use App\Repository\UserRepository;
+use App\Repositories\UserRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PersonRepository
 {
-
     private UserRepository $userRepository;
     private FileRepository $fileRepository;
     private AdressRepository $adressRepository;
     private ReasonRepository $reasonRepository;
     private FamilyVictimRepository $familyVictimRepository;
 
-    public function save(Request $request, $fileNames, $filePaths)
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
         $this->userRepository = new UserRepository();
         $this->fileRepository = new FileRepository();
         $this->adressRepository = new AdressRepository();
         $this->reasonRepository = new ReasonRepository();
         $this->familyVictimRepository = new FamilyVictimRepository();
+    }
+
+    public function save(Request $request, $fileNames, $filePaths)
+    {
         try {
             DB::beginTransaction();
             $userid = $this->userRepository->save($request);

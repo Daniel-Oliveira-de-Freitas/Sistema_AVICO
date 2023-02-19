@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use App\Http\Requests\Notice\NoticeRequest;
-use App\Repository\NoticeRepository;
+use App\Repositories\NoticeRepository;
 use Exception;
-use GuzzleHttp\Psr7\Request;
 
 class NoticeService
 {

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Notice;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Notice\NoticeRequest;
-use App\Repository\NoticeRepository;
-use App\Service\NoticeService;
+use App\Repositories\NoticeRepository;
+use App\Services\NoticeService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class NoticeController extends Controller
 {
@@ -15,7 +14,7 @@ class NoticeController extends Controller
 
     public function create()
     {
-        return view('static_views.noticias.criaNoticia');
+        return view('noticias.criaNoticia');
     }
 
     public function store(NoticeRequest $nr)
@@ -51,7 +50,7 @@ class NoticeController extends Controller
     {
         $this->noticeService = new NoticeService();
         $noticia = $this->noticeService->findNoticeById($id);
-        return view('static_views.noticias.editarNoticia')->with(compact('noticia'));
+        return view('noticias.editarNoticia')->with(compact('noticia'));
     }
 
     public function updateNotice($id, NoticeRequest $nr)

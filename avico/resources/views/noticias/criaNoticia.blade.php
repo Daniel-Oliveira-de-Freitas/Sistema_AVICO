@@ -4,7 +4,7 @@
 @section('content')
     <section class="form_body container rows ">
         @if (session('success'))
-            @include(session('success'))
+            <x-alert alertType="warning" dismissible='true' message="Noticia cadastrada sucesso!" />
         @endif
         <form action="{{ route('cria_noticia') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -12,22 +12,14 @@
                 <div class="form-group mb-4">
                     <label> Titulo*</label>
                     <input type="text" class="form-control" name="title" placeholder="Adicione o Titulo da noticia">
-                    <div class="mt-2"><span class="text-danger">
-                            @error('title')
-                                {{ $message }}
-                            @enderror
-                        </span></div>
+                    <x-error-message errorName="title" />
                 </div>
                 <div class="form-group mb-4">
                     <label> Noticia* </label>
                     <input id="editor1" class="form-control" name="body" placeholder="Adicione a noticia"
                         type="hidden" name="content">
                     <trix-editor input="editor1"></trix-editor>
-                    <div class="mt-2"><span class="text-danger">
-                            @error('body')
-                                {{ $message }}
-                            @enderror
-                        </span></div>
+                    <x-error-message errorName="body" />
                 </div>
 
                 <div class="form-group mb-4">

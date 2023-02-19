@@ -1,17 +1,27 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
-use App\Repository\UserRepository;
+use App\Repositories\PersonRepository;
+use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 use Exception;
 
 class UserService
 {
+    protected PersonRepository $personRepository;
     protected UserRepository $userRepository;
+
 
     public function __construct()
     {
+        $this->personRepository = new PersonRepository();
         $this->userRepository = new UserRepository();
+    }
+
+    public function create(Request $request, $fileNames, $filePaths)
+    {
+        return $this->personRepository->save($request, $fileNames, $filePaths);
     }
 
     /**
@@ -32,7 +42,7 @@ class UserService
     {
         try {
             return $this->userRepository->getById($id);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return false;
         }
     }
@@ -51,7 +61,7 @@ class UserService
         }
     }
 
-    
+
     /**
      * Deleta um usuario
      * @param int $id
