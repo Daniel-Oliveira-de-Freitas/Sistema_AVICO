@@ -141,12 +141,12 @@
                 <!--/.Indicators-->
                 <!--Controls-->
                 <!--<div class="text-center">
-                                                                                                                                              <div class="controls-top">
-                                                                                                                                              <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                                                                                                                                              <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-                                                                                                                                              </div>
-                                                                                                                                            </div>
-                                                                                                                                            <!--/.Controls-->
+                                                                                                                                                                          <div class="controls-top">
+                                                                                                                                                                          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                                                                                                                                                                          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                                                                                                                                                                          </div>
+                                                                                                                                                                        </div>
+                                                                                                                                                                        <!--/.Controls-->
 
 
                 <!--/.Carousel Wrapper-->
@@ -156,43 +156,8 @@
     </section>
 
     <!-- Fim Cards Noticias LG-->
-
-
-
-
-
     </section>
-    <!--<section class="page-section" id="services">
-                                                                                                                                                <div class="container">
-                                                                                                                                                    <div class="text-center">
-                                                                                                                                                        <h2 class="section-heading text-uppercase">Sobre Nós</h2>
-                                                                                                                                                        <h3 class="section-subheading text-muted">A Associação de Vítimas e Familiares de Vítimas da Covid-19 –
-                                                                                                                                                            AVICO Brasil foi fundada em 08 de abril de 2021, em pleno colapso da saúde pública na cidade de Porto
-                                                                                                                                                            Alegre/RS, partir da indignação de Gustavo Bernardes (Advogado) e Paola Falceta (Assistente Social) com
-                                                                                                                                                            a ineficiência e negligência do Estado diante das múltiplas consequências da pandemia de covid-19 na
-                                                                                                                                                            vida dos brasileiros. Gustavo foi internado (e entubado) no final de 2020 para tratamento da doença e
-                                                                                                                                                            sofreu com as graves sequelas oriundas da infecção. Paola foi infectada enquanto cuidava de sua mãe,
-                                                                                                                                                            hospitalizada primeiramente para uma cirurgia de emergência, mas que também se infectou e faleceu da
-                                                                                                                                                            doença em março de 2021. Por terem atuado juntos na defesa de Direitos Humanos de outro coletivo da
-                                                                                                                                                            sociedade civil, sempre acreditaram que, diante da inação (intencional ou não) do Estado, somente a
-                                                                                                                                                            potência da mobilização social e o enfrentamento comunitário poderiam minimizar os diferentes impactos
-                                                                                                                                                            da pandemia no Brasil.</h3>
-                                                                                                                                                        <h3 class="section-subheading text-muted">Nasce, dessa força conjunta, um coletivo social que luta por
-                                                                                                                                                            justiça e memória às vítimas fatais e também pela garantia e acesso aos Direitos Humanos constitucionais
-                                                                                                                                                            dos sobreviventes da covid-19. Ainda que estejamos constituídos legalmente (com CNPJ), não somos uma
-                                                                                                                                                            empresa ou escritório de advocacia, não temos sede ou funcionários. Somos todos trabalhadores que
-                                                                                                                                                            paralelamente oferecem seu apoio e conhecimento solidária e coletivamente à outros como nós. Decidimos
-                                                                                                                                                            não ficar parados assistindo o Estado brasileiro contribuindo com o adoecimento e morte de nosso povo
-                                                                                                                                                            pela covid-19. E para isso, é fundamental que ocupemos os diversos espaços políticos e sociais da nossa
-                                                                                                                                                            sociedade, fazendo com que enxerguem e ouçam as nossas histórias. Somos vidas e amores de alguém e nunca
-                                                                                                                                                            nos reduzirão a números! É na luta coletiva que somos mais fortes!</h3>
 
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </section>-->
-
-
-    <!-- Video AVICO-->
     <section class="page-section bg-light" id="portfolio">
         <div class="container px-5">
             <div class="text-center">
@@ -204,7 +169,7 @@
             </div>
         </div>
     </section>
-    <!-- About-->
+
     <section class="page-section" id="about">
         <div class="container">
             <div class="text-center">
@@ -215,11 +180,9 @@
                 <li>
                     <div class="timeline-image">
                         <h4>08 de <br />abril<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/1.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>08 de abril de 2021</h4>-->
                             <h5 class="subheading">Fundação da Avico</h5>
                         </div>
                     </div>
@@ -227,11 +190,9 @@
                 <li class="timeline-inverted">
                     <div class="timeline-image">
                         <h4>09 de <br />junho<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/2.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>09 de junho de 2021</h4>-->
                             <h5 class="subheading">Representação criminal contra Bolsonaro na PGR</h4>
                         </div>
                     </div>
@@ -239,11 +200,9 @@
                 <li>
                     <div class="timeline-image">
                         <h4>22 de <br />junho<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>22 de junho de 2021</h4>-->
                             <h5 class="subheading">Ato em homenagem a 500 mil vitimas da covid-19</h5>
                         </div>
                     </div>
@@ -251,11 +210,9 @@
                 <li class="timeline-inverted">
                     <div class="timeline-image">
                         <h4>15 de <br />outubro<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/4.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>15 de outubro de 2021</h4>-->
                             <h5 class="subheading">Ato em defesa a 602 mil vítimas da Covid-19 em frente ao Congresso
                                 Nacional</h5>
                         </div>
@@ -264,11 +221,9 @@
                 <li>
                     <div class="timeline-image">
                         <h4>05 de <br />novembro<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>05 novembro de 2021</h4>-->
                             <h5 class="subheading">AVICO integra comitê estadual em defesa das vítimas da Covid-19 do
                                 Conselho Estadual de Saúde - RS </h5>
                         </div>
@@ -277,11 +232,9 @@
                 <li class="timeline-inverted">
                     <div class="timeline-image">
                         <h4>19 de <br />dezembro<br /> de 2021</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/4.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>19 de dezembro de 2021</h4>-->
                             <h5 class="subheading">MPF ajuíza ação civil pública contra União em defesa das vítimas da
                                 Covid-19</h5>
                         </div>
@@ -290,11 +243,9 @@
                 <li>
                     <div class="timeline-image">
                         <h4>12 de <br />março <br />de 2022</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>12 de março de 2022</h4>-->
                             <h5 class="subheading">AVICO Brasil faz atos em homenagem ao dia das vítimas da Covid-19 em
                                 sete capitais</h5>
                         </div>
@@ -303,24 +254,14 @@
                 <li class="timeline-inverted">
                     <div class="timeline-image">
                         <h4>08 de<br /> abril <br />de 2022</h4>
-                        <!--<img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/4.jpg') }}" alt="..." />-->
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>08 de abril de 2022</h4>-->
                             <h5 class="subheading">AVICO ajuíza queixa-crime contra Bolsonaro no STF</h5>
                         </div>
                     </div>
                 </li>
-                <!--<li>
-                                                                                                                                                                <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ asset('images/assets/img/about/3.jpg') }}" alt="..." /></div>
-                                                                                                                                                                <div class="timeline-panel">
-                                                                                                                                                                    <div class="timeline-heading">
-                                                                                                                                                                        <h4>27 de abril de 2022</h4>
-                                                                                                                                                                        <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de Covid-19</h5>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </li>-->
+
                 <li class="timeline-panel">
                     <div class="timeline-image">
 
@@ -334,7 +275,6 @@
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <!--<h4>27 de abril de 2022</h4>-->
                             <h5 class="subheading">AVICO integra frente parlamentar estadual em defesa das vítimas de
                                 Covid-19</h5>
                         </div>

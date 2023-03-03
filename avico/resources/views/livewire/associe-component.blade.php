@@ -79,7 +79,7 @@
                 </div>
                 <div class="mb-3 form-group col-md-6">
                     <label for="dataNascimento">Data de Nascimento*</label>
-                    <input class="form-control" type="date" name="dataNascimento" wire:model="dataNascimento"
+                    <input class="form-control" type="datetime" name="dataNascimento" wire:model="dataNascimento"
                         id="dataNascimento">
                     <x-error-message errorName="dataNascimento" />
                 </div>
