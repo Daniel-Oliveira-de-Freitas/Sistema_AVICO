@@ -16,13 +16,11 @@ Após de realizar o clone do projeto execute os seguintes comandos no terminal:
 composer install
 ```
 
-
 ```
 composer dump-autoload
 ````
 
-
-
 ```
-npm install
+cp .env.example .env
+php artisan key:generate
 ```
