@@ -12,21 +12,11 @@ use Livewire\Component;
 
 class AssocieComponent extends Component
 {
+
+
+    public array $data = [];
     public $tipo = [];
-    public $termos;
-    public $nome;
-    public $dataNascimento;
-    public $password;
-    public $confirmPassword;
-    public $genero;
-    public $racaCor;
-    public $cpf;
-    public $rg;
-    public $celular;
-    public $telefoneResidencial;
-    public $email;
-    public $cep;
-    public $endereco;
+
     public $nmrEndereco;
     public $cidade;
     public $uf;
@@ -52,13 +42,27 @@ class AssocieComponent extends Component
 
     use WithFileUploads;
 
-    public function render()
-    {
-        return view('livewire.associe-component');
-    }
-
     public function mount()
     {
+        $this->data = [
+            'tipo' => [],
+            'termos' => '',
+            'nome' => '',
+            'dataNascimento' => '',
+            'password' => '',
+            'confirmPassword' => '',
+            'genero' => '',
+            'racaCor' => '',
+            'cpf' => '',
+            'rg' => '',
+            'celular' => '',
+            'telefoneResidencial' => '',
+            'email' => '',
+            'cep' => '',
+            'endereco' => '',
+            'nmrEndereco' => ''
+        ];
+
         $this->fill([
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']]),
         ]);
@@ -72,8 +76,8 @@ class AssocieComponent extends Component
     ];
 
     protected $messages = [
-        'required'  => 'Este campo é obrigatório.',
-        'unique'    => ':attribute já está sendo usado.',
+        'required' => 'Este campo é obrigatório.',
+        'unique' => ':attribute já está sendo usado.',
         'same' => 'A senha deve ser identica ao confirmar senha.',
         'min' => ':attribute deve ter pelo menos :min caracteres.',
         'max' => 'O arquivo excedeu o tamanho de 1 mb',
@@ -109,7 +113,7 @@ class AssocieComponent extends Component
     {
         if (in_array('voluntario', $this->tipo) && in_array('associado', $this->tipo) && $this->currentStep == 3) {
             $this->currentStep--;
-        } elseif (in_array('voluntario', $this->tipo) &&  $this->currentStep == 5) {
+        } elseif (in_array('voluntario', $this->tipo) && $this->currentStep == 5) {
             $this->currentStep--;
             $this->currentStep--;
         } else {
@@ -138,7 +142,7 @@ class AssocieComponent extends Component
                 'confirmPassword' => 'required|min:8',
                 'genero' => 'required',
                 'racaCor' => 'required',
-                'cpf' =>  'required|string',
+                'cpf' => 'required|string',
                 'rg' => 'required|string|max:18|min:10',
                 'celular' => 'required',
                 'email' => 'required|email',
@@ -219,22 +223,22 @@ class AssocieComponent extends Component
         $cpf = preg_replace("/[^0-9]/", "", $cpf);
         $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
 
-        // Verifica se o numero de digitos informados é igual a 11 
+        // Verifica se o numero de digitos informados é igual a 11
         if (strlen($cpf) != 11) {
             return $this->cpfMessageError();
         }
-        // Verifica se nenhuma das sequências invalidas abaixo 
+        // Verifica se nenhuma das sequências invalidas abaixo
         // foi digitada. Caso afirmativo, retorna falso
         elseif (
-            $cpf == '00000000000'  ||
-            $cpf == '11111111111'  ||
-            $cpf == '22222222222'  ||
-            $cpf == '33333333333'  ||
-            $cpf == '44444444444'  ||
-            $cpf == '55555555555'  ||
-            $cpf == '66666666666'  ||
-            $cpf == '77777777777'  ||
-            $cpf == '88888888888'  ||
+            $cpf == '00000000000' ||
+            $cpf == '11111111111' ||
+            $cpf == '22222222222' ||
+            $cpf == '33333333333' ||
+            $cpf == '44444444444' ||
+            $cpf == '55555555555' ||
+            $cpf == '66666666666' ||
+            $cpf == '77777777777' ||
+            $cpf == '88888888888' ||
             $cpf == '99999999999'
         ) {
             return $this->cpfMessageError();
@@ -284,7 +288,7 @@ class AssocieComponent extends Component
 
     public function searchCEP($value)
     {
-        $response =  Http::get('https://viacep.com.br/ws/' . $value . '/json/');
+        $response = Http::get('https://viacep.com.br/ws/' . $value . '/json/');
         if ($response->status() === 200) {
             return $response->json();
         }
@@ -368,7 +372,7 @@ class AssocieComponent extends Component
     {
         $pdf = Pdf::loadView('layouts.pdf', $this->generate_array())->setPaper('a4', 'landscape')->output();
         return response()->streamDownload(
-            fn () => print($pdf),
+            fn() => print($pdf),
             'termo.pdf'
         );
     }
