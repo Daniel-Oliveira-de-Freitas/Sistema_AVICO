@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Livewire\Traits;
 
-trait AssocieComponentMessagesTrait
+trait AssocieComponentStepMessagesTrait
 {
     protected array $messages = [
         'required' => 'Este campo é obrigatório.',

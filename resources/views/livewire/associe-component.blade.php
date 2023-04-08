@@ -12,12 +12,12 @@
                 <label class="mb-2">Deseja se tornar:*</label>
                 @foreach (\App\Enums\UserTypes::cases() as $key => $value)
                     <br>
-                    <input class="tipo form-check-input" type="checkbox" name="tipo[]" wire:model="tipo"
+                    <input class="tipo form-check-input" type="checkbox" name="tipo[]" wire:model="data.tipo"
                         id="{{ $value->value }}" value="{{ $value->value }}"
-                        {{ old('tipo') == $value->value ? 'checked' : '' }}>
+                        {{ old('data.tipo') == $value->value ? 'checked' : '' }}>
                     <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                 @endforeach
-                <x-error-message errorName="tipo" />
+                <x-error-message errorName="data.tipo" />
             </div>
         @endif
         @if ($currentStep == 2)
@@ -64,148 +64,148 @@
                         pena
                         de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
                 </div>
-                <input id="termos" name="termos" class="form-check-input" type="checkbox" wire:model="termos">
+                <input id="termos" name="termos" class="form-check-input" type="checkbox" wire:model="data.termos">
                 <label for="termos" class="form-check-label">Concorda com os termos de associação?*</label>
-                <x-error-message errorName="termos" />
+                <x-error-message errorName="data.termos" />
             </div>
         @endif
         @if ($currentStep == 3)
             <div class="row">
                 <div class="mb-3 form-group col">
                     <label for="nome">Nome completo*</label>
-                    <input class="form-control text-break" type="text" name="nome" wire:model="nome"
-                        value="{{ old('nome') }}" id="nome" maxlength="255">
-                    <x-error-message errorName="nome" />
+                    <input class="form-control text-break" type="text" name="nome" wire:model="data.nome"
+                        value="{{ old('data.nome') }}" id="nome" maxlength="255">
+                    <x-error-message errorName="data.nome" />
                 </div>
                 <div class="mb-3 form-group col-md-6">
                     <label for="dataNascimento">Data de Nascimento*</label>
-                    <input class="form-control" type="datetime" name="dataNascimento" wire:model="dataNascimento"
+                    <input class="form-control" type="date" name="dataNascimento" wire:model="data.dataNascimento"
                         id="dataNascimento">
-                    <x-error-message errorName="dataNascimento" />
+                    <x-error-message errorName="data.dataNascimento" />
                 </div>
                 <div class="mb-3 form-group col-md-6">
                     <label for="password">Digite sua senha*</label>
-                    <input class="password form-control" type="password" name="password" wire:model="password"
+                    <input class="password form-control" type="password" name="password" wire:model="data.password"
                         id="password">
-                    <x-error-message errorName="password" />
+                    <x-error-message errorName="data.password" />
                 </div>
                 <div class="mb-3 form-group col-md-6">
                     <label for="confirmPassword">Confirmar senha*</label>
-                    <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                        wire:model="confirmPassword">
-                    <x-error-message errorName="confirmPassword" />
+                    <input class="form-control" type="password" name="confirmPassword" id="data.confirmPassword"
+                        wire:model="data.confirmPassword">
+                    <x-error-message errorName="data.confirmPassword" />
                 </div>
                 <div class="mb-3 form-group">
                     <label class="form-check-label text-start">Gênero*</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
                             id="masculino" value="Masculino">
                         <label class="form-check-label" for="masculino">Masculino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
                             id="feminino" value="Feminino">
                         <label class="form-check-label" for="feminino">Feminino</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
                             id="nao_binario" value="Não-binário">
                         <label class="form-check-label" for="nao_binario">Não-binário</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="genero"
+                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
                             id="neutro" value="Neutro">
                         <label class="form-check-label" for="neutro">Prefiro Não Definir</label>
                     </div>
-                    <x-error-message errorName="genero" />
+                    <x-error-message errorName="data.genero" />
                 </div>
                 <div class="mb-3 form-group">
                     <label for="racaCor">Raça/Cor*</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="data.racaCor"
                             id="branca" value="Branca">
                         <label class="form-check-label" for="branca">Branca</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="data.racaCor"
                             id="Preta" value="Preta">
                         <label class="form-check-label" for="preta">Preta</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="data.racaCor"
                             id="parda" value="Parda">
                         <label class="form-check-label" for="parda">Parda</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="data.racaCor"
                             id="indigena" value="Indígena">
                         <label class="form-check-label" for="indigena">Indígena</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="racaCor"
+                        <input class="racaCor form-check-input" type="radio" name="racaCor" wire:model="data.racaCor"
                             id="amarela" value="Amarela">
                         <label class="form-check-label" for="amarela">Amarela </label>
                     </div>
-                    <x-error-message errorName="racaCor" />
+                    <x-error-message errorName="data.racaCor" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="cpf">CPF*</label>
-                    <input class="form-control" type="text" name="cpf" wire:model.lazy="cpf"
+                    <input class="form-control" type="text" name="cpf" wire:model.lazy="data.cpf"
                         id="cpf" maxlength="14" required>
-                    <x-error-message errorName="cpf" />
+                    <x-error-message errorName="data.cpf" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="rg">RG*</label>
-                    <input class="form-control" type="text" name="rg" wire:model="rg" id="rg"
+                    <input class="form-control" type="text" name="rg" wire:model="data.rg" id="rg"
                         maxlength="14" required>
-                    <x-error-message errorName="rg" />
+                    <x-error-message errorName="data.rg" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="celular">Celular (DDD+número)*</label>
-                    <input class="form-control" type="text" name="celular" wire:model="celular" id="celular"
+                    <input class="form-control" type="text" name="celular" wire:model="data.celular" id="celular"
                         maxlength="18" required>
-                    <x-error-message errorName="celular" />
+                    <x-error-message errorName="data.celular" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="telefoneResidencial">Telefone residencial (DDD+número)</label>
                     <input class="form-control" type="text" name="telefoneResidencial"
-                        wire:model="telefoneResidencial" id="telefoneResidencial">
-                    <x-error-message errorName="telefoneResidencial" />
+                        wire:model="data.telefoneResidencial" id="telefoneResidencial">
+                    <x-error-message errorName="data.telefoneResidencial" />
                 </div>
                 <div class="mb-3">
                     <label for="email">E-mail*</label>
                     <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email"
-                        id="email" wire:model="email">
-                    <x-error-message errorName="email" />
+                        id="email" wire:model="data.email">
+                    <x-error-message errorName="data.email" />
                 </div>
                 <div class="mb-3 col-md-3">
                     <label for="cep">CEP*</label>
-                    <input class="form-control" type="text" name="cep" id="cep" wire:model="cep"
+                    <input class="form-control" type="text" name="cep" id="cep" wire:model.lazy="data.cep"
                         maxlength="8">
-                    <x-error-message errorName="cep" />
+                    <x-error-message errorName="data.cep" />
                 </div>
                 <div class="mb-3 col-md-7">
                     <label for="endereco">Endereço*</label>
-                    <input class="form-control" type="text" name="endereco" id="endereco" wire:model="endereco"
+                    <input class="form-control" type="text" name="endereco" id="endereco" wire:model="data.endereco"
                         id="endereco">
-                    <x-error-message errorName="endereco" />
+                    <x-error-message errorName="data.endereco" />
                 </div>
                 <div class="mb-3 col-md-2">
                     <label for="nrmEndereco">Nº*</label>
                     <input class="form-control" type="number" name="nmrEndereco" id="nrmEndereco"
-                        wire:model="nmrEndereco">
-                    <x-error-message errorName="nmrEndereco" />
+                        wire:model="data.nmrEndereco">
+                    <x-error-message errorName="data.nmrEndereco" />
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="cidade">Cidade*</label>
-                    <input class="form-control" type="text" name="cidade" wire:model="cidade" id="cidade">
-                    <x-error-message errorName="telefone_residencial" />
+                    <input class="form-control" type="text" name="cidade" wire:model="data.cidade" id="cidade">
+                    <x-error-message errorName="data.cidade" />
                 </div>
                 <div class="mb-3 col-md-2">
                     <label for="uf">UF*</label>
-                    <select class="form-select" name="uf" id="uf" wire:model="uf" aria-label="AC">
+                    <select class="form-select" name="uf" id="uf" wire:model="data.uf" aria-label="AC">
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -234,55 +234,55 @@
                         <option value="SE">SE</option>
                         <option value="TO">TO</option>
                     </select>
-                    <x-error-message errorName="uf" />
+                    <x-error-message errorName="data.uf" />
                 </div>
                 <div class="mb-3 col-md-4">
                     <label for="complemento">Complemento</label>
                     <input class="form-control" type="text" name="complemento" id="complemento"
-                        wire:model="complemento" id="complemento">
+                        wire:model="data.complemento" id="complemento">
                 </div>
                 <div class="mb-3">
                     <label for="bairro">Bairro*</label>
-                    <input class="form-control" type="text" name="bairro" id="bairro" wire:model="bairro"
+                    <input class="form-control" type="text" name="bairro" id="bairro" wire:model="data.bairro"
                         id="bairro">
-                    <x-error-message errorName="bairro" />
+                    <x-error-message errorName="data.bairro" />
                 </div>
                 <div class="mb-3 ">
                     <label for="profissao">Profissão*</label>
                     <input class="form-control" type="text" name="profissao" id="profissao"
-                        wire:model="profissao" maxlength="255">
-                    <x-error-message errorName="profissao" />
+                        wire:model="data.profissao" maxlength="255">
+                    <x-error-message errorName="data.profissao" />
                 </div>
                 <div class="form-group mb-3">
                     <label>Qual sua condição para se tornar associado?*</label>
                     <div class="form-check">
                         <label for="sobrevivente">Sobrevivente da COVID-19</label>
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            {{ in_array('Nenhuma das alternativas acima', $this->condicoes) ? 'disabled' : '' }}
-                            id="sobrevivente" wire:model="condicoes" value="Sobrevivente da COVID-19" />
+                            {{ in_array('Nenhuma das alternativas acima', $this->data['condicoes']) ? 'disabled' : '' }}
+                            id="sobrevivente" wire:model="data.condicoes" value="Sobrevivente da COVID-19" />
                     </div>
                     <div class="form-check">
                         <label for="familiar">Familiar de vítima da COVID-19</label>
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            {{ in_array('Nenhuma das alternativas acima', $this->condicoes) ? 'disabled' : '' }}
-                            id="familiar" wire:model="condicoes" value="Familiar de vítima da COVID-19">
+                            {{ in_array('Nenhuma das alternativas acima', $this->data['condicoes']) ? 'disabled' : '' }}
+                            id="familiar" wire:model="data.condicoes" value="Familiar de vítima da COVID-19">
                     </div>
                     <div class="form-check">
                         <label for="nenhuma">Nenhuma das alternativas acima</label>
                         <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            {{ in_array('Sobrevivente da COVID-19', $this->condicoes) ? 'disabled' : '' }}
-                            {{ in_array('Familiar de vítima da COVID-19', $this->condicoes) ? 'disabled' : '' }}
-                            id="nenhum" wire:model="condicoes" value="Nenhuma das alternativas acima">
+                            {{ in_array('Sobrevivente da COVID-19', $this->data['condicoes']) ? 'disabled' : '' }}
+                            {{ in_array('Familiar de vítima da COVID-19', $this->data['condicoes']) ? 'disabled' : '' }}
+                            id="nenhum" wire:model="data.condicoes" value="Nenhuma das alternativas acima">
                     </div>
-                    <x-error-message errorName="condicoes" />
+                    <x-error-message errorName="data.condicoes" />
                 </div>
-                @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
+                @if (in_array('Familiar de vítima da COVID-19', $this->data['condicoes']))
                     <div class="mb-3">
                         <label> Informe nos campos abaixo quantas pessoas do seu grupo familiar nuclear você
                             perdeu para a COVID-19 (mãe, pai,
                             filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um
                             novo campo (Máx 10) </label>
-                        @foreach ($dadosAdicionais as $key => $input)
+                        @foreach ( $this->data['dadosAdicionais'] as $key => $input)
                             @if ($key === 0)
                                 <button type="button" class="btn btn-primary mt-4" id="add_form_field"
                                     wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
@@ -310,15 +310,15 @@
                                             Completo</label>
                                         <input class="form-control" type="text" name="test"
                                             id="dadosAdicionais_{{ $key }}_nome"
-                                            wire:model.defer="dadosAdicionais.{{ $key }}.nome"
+                                            wire:model.defer="data.dadosAdicionais.{{ $key }}.nome"
                                             maxlength="255">
-                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.nome" />
+                                        <x-error-message errorName="data.dadosAdicionais.{{ $key }}.nome" />
                                     </div>
                                     <div class="form-group mb-3 col-md-6">
                                         <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
                                             parentesco*</label>
                                         <select class="parentesco form-select" name="parentesco"
-                                            wire:model="dadosAdicionais.{{ $key }}.parentesco"
+                                            wire:model="data.dadosAdicionais.{{ $key }}.parentesco"
                                             id="dadosAdicionais_{{ $key }}_parentesco" required>
                                             <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
                                             </option>
@@ -338,26 +338,26 @@
                                                 grau em linha colateral (tio/tia, sobrinho/sobrinha)</option>
                                             <option value="outro">Outro</option>
                                         </select>
-                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.parentesco" />
+                                        <x-error-message errorName="data.dadosAdicionais.{{ $key }}.parentesco" />
                                     </div>
                                     <div class="form-group mb-3 col-md-2">
                                         <label for="dadosAdicionais_{{ $key }}_idade">idade</label>
                                         <div class="input-group">
                                             <input class="form-control" type="text" name="idade"
                                                 id="dadosAdicionais.{{ $key }}.idade"
-                                                wire:model.defer="dadosAdicionais.{{ $key }}.idade">
+                                                wire:model.defer="data.dadosAdicionais.{{ $key }}.idade">
                                         </div>
                                         <x-error-message errorName="dadosAdicionais.{{ $key }}.idade" />
                                     </div>
-                                    @if ($this->dadosAdicionais[$key]['parentesco'] === 'outro')
+                                    @if ($this->data['dadosAdicionais'][$key]['parentesco'] === 'outro')
                                         <div class="form-group mb-3 col">
                                             <label for="dadosAdicionais_{{ $key }}_outro">Outro tipo de
                                                 parentesco</label>
                                             <input class="form-control" type="text" name="outro"
                                                 id="dadosAdicionais.{{ $key }}.outro"
-                                                wire:model.defer="dadosAdicionais.{{ $key }}.outro"
+                                                wire:model.defer="data.dadosAdicionais.{{ $key }}.outro"
                                                 maxlength="255">
-                                            <x-error-message errorName="dadosAdicionais.{{ $key }}.outro" />
+                                            <x-error-message errorName="data.dadosAdicionais.{{ $key }}.outro" />
                                         </div>
                                     @endif
                                 </div>
@@ -393,7 +393,7 @@
                     envio de documentos que demonstrem a renda.</p>
                 <div class="form-check">
                     <input name="declaracaoIsencao" id="declaracaoIsencao" class="form-check-input"
-                        wire:model="declaracaoIsencao" type="checkbox">
+                        wire:model="data.declaracaoIsencao" type="checkbox">
                     <label class="form-check-label" for="declaracaoIsencao">Declaro não ter condições de arcar com
                         as
                         mensalidades da AVICO, e solicito análise socio econômica familia pela diretoria da
@@ -428,7 +428,7 @@
                         id="cpf_rg" accept="image/.jpg,.png,.jpeg" multiple>
                     <x-error-message errorName="fileCpfRg" />
                 </div>
-                @if (in_array('Sobrevivente da COVID-19', $this->condicoes))
+                @if (in_array('Sobrevivente da COVID-19', $this->data['condicoes']))
                     <div class="form-goup mb-3" id="comprovante">
                         <label class="form-label" for="comprovanteMedico">Cópia de Comprovante Médico de
                             existência de sequelas da COVID-19 (em caso de sobrevivente)*
@@ -438,7 +438,7 @@
                         <x-error-message errorName="fileComprovante" />
                     </div>
                 @endif
-                @if (in_array('Familiar de vítima da COVID-19', $this->condicoes))
+                @if (in_array('Familiar de vítima da COVID-19', $this->data['condicoes']))
                     <div class="form-goup mb-3" id="certidao_obito">
                         <label class="form-label" for="certidaoObito">Cópia da Certidão de Óbito da vítima (em
                             caso de familiar de vítima)*
@@ -455,7 +455,7 @@
                         wire:model="fileComprovanteEndereco" id="comprovanteEndereco" accept="image/.jpg,.png,.jpeg">
                     <x-error-message errorName="fileComprovanteEndereco" />
                 </div>
-                @if ($declaracaoIsencao)
+                @if ($this->data['declaracaoIsencao'])
                     <div class="form-goup mb-3" id="comprovante_isencao">
                         <label class="form-label" for="comprovanteRenda">Para casos de isenção de contribuição
                             (renda familiar bruta de até 1,5 salário mínimo per capita), cópia dos documentos
