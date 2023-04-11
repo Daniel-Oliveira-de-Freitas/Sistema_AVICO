@@ -55,7 +55,6 @@ class ListagemController extends Controller
       }
       $zip->close();
     }
-
     return response()->download($filename)->deleteFileAfterSend(true);
   }
 }

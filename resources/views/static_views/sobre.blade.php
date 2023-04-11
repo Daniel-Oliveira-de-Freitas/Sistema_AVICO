@@ -6,7 +6,8 @@
         <div class="container container-text">
 
             <h3>Sobre Nós</h3>
-            <p>A Associação de Vítimas e Familiares de Vítimas da Covid-19 – AVICO Brasil foi fundada em 08 de abril de
+            <p>
+                A Associação de Vítimas e Familiares de Vítimas da Covid-19 – AVICO Brasil foi fundada em 08 de abril de
                 2021, em pleno colapso da saúde pública na cidade de Porto Alegre/RS, partir da indignação de Gustavo
                 Bernardes (Advogado) e Paola Falceta (Assistente Social) com a ineficiência e negligência do Estado diante
                 das múltiplas consequências da pandemia de covid-19 na vida dos brasileiros. Gustavo foi internado (e

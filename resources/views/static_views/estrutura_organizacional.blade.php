@@ -8,10 +8,9 @@
                 <h2 class="section-heading text-uppercase">Estrutura Organizacional</h2>
                 <h3 class="section-subheading text-muted">A gestão da AVICO Brasil é composta por:</h3>
             </div>
+
             <div class="row">
-
                 <div class="col-lg-12">
-
                     <div class="team-member">
                         <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/perfil-paola.jpeg') }}"
                             alt="..." />
@@ -24,19 +23,18 @@
                 </div>
 
                 <div class="col-lg-6">
-
                     <div class="team-member">
                         <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/RosangelaOSilva.png') }}"
                             alt="..." />
                         <h4>Rosângela O. Silva</h4>
                         <p class="text-muted">Vice-presidente de saúde da Avico Brasil</p>
                         <p class="text-muted">Socióloga(FESPSP), Assistente Social(Universidade Braz Cubas) - CRESS 61.689,
-                            Servidora Pública. Assiciada da Avico Brasil.</p>
+                            Servidora Pública. Assiciada da Avico Brasil.
+                        </p>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
                             src="{{ asset('images/assets/img/team/PamelaCopettiGhisleni.png') }}" alt="..." />
@@ -48,31 +46,29 @@
                 </div>
 
                 <div class="col-lg-6">
-
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
                             src="{{ asset('images/assets/img/team/VeraLuciadeMeloAragao.png') }}" alt="..." />
                         <h4>Vera Lúcia de Melo Aragão</h4>
                         <p class="text-muted">Vice-presidente de Assistência Social e Previdência da Avico Brasil</p>
                         <p class="text-muted">Professora, Pedagoga e Historiadora formada pela UERJ, com Pós graduação em
-                            Gestão Escolar,
-                            Supervisão e Orientação Escolar pelas faculdades Estácio de Sá - RJ e Cândido Mendes.</p>
+                            Gestão Escolar, Supervisão e Orientação Escolar pelas faculdades Estácio de Sá - RJ e Cândido Mendes.</p>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
                             src="{{ asset('images/assets/img/team/AcirJosePereiradeBastos.png') }}" alt="..." />
                         <h4>Acir José Pereira de Bastos</h4>
                         <p class="text-muted">Vice-presidente Administrativo Financeiro da Avico Brasil</p>
                         <p class="text-muted">Empresário, Formado em Administração pela UFPR, Pós-graduado em Auditoria e
-                            MBA em Gestão Empresarioal pela FAE Business School Curitiba-PR.</p>
+                            MBA em Gestão Empresarioal pela FAE Business School Curitiba-PR.
+                        </p>
                     </div>
                 </div>
-
             </div>
+
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <h4>Patrícia Teixeira</h4>

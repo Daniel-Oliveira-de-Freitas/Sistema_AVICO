@@ -3,9 +3,8 @@
 @section('content')
     <section class="page-section">
 
-        <main class="container container-text">
-            <h3>Assessoria Jurídica</h3>
-            <br>
+        <div class="container container-text">
+            <h3 class="mb-12">Assessoria Jurídica</h3>
             <p>
                 Com pandemia de covid-19 o Estado Brasileiro e seus representantes públicos cometeram uma série de violações
                 de direitos em âmbito coletivo e/ou individual, o que motivou a Avico Brasil a denunciar os responsáveis ao
@@ -118,6 +117,6 @@
                 justiça. Para tirar suas dúvidas e receber orientação entre em contato com nosso whatsapp (51) 99180-9952 de
                 segunda a sextas-feiras, das 9h as 12h e das 14h as 18h ou pelo e-mail avicobrasil@gmail.com.
             </p>
-        </main>
+        </div>
     </section>
 @endsection

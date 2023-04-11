@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Perguntas Frequentes')
 @section('content')
-    <main class="container container-text">
-        <section class="page-section">
+    <section class="page-section">
+    <div class="container container-text">
             <div class="accordion mb-5" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -90,6 +90,6 @@
                     </div>
                 </div>
             </div>
-    </main>
+    </div>
     </section>
 @endsection
