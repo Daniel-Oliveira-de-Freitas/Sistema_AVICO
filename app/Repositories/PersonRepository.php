@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Person;
 use App\Repositories\UserRepository;
+use App\Repositories\FileRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

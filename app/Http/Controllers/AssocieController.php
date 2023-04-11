@@ -12,12 +12,10 @@ class AssocieController extends Controller
         return view('associados.associe');
     }
 
-    private UserService $userService;
-
-    public function store(Request $request, $filesNameArray, $filesPath)
+    public function store(Request $request, array $filesNameArray, array $filesPath)
     {
-        $this->userService = new UserService();
-        $cadastro = $this->userService->create($request, $filesNameArray, $filesPath);
+        $userService = new UserService();
+        $cadastro = $userService->create($request, $filesNameArray, $filesPath);
         if ($cadastro) {
             return redirect()->route('home.avico')
                 ->with('success', 'messages.success_registration');
