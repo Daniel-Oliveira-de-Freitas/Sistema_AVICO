@@ -26,9 +26,8 @@
                 <div class="form-group mb-4">
                     <label> Carregar Imagem </label>
                     <input type="file" name="userfile" accept="image/.jpg,.png,.jpeg">
-
-                    <button type="submit" class="btn btn-success col-md-2 mt-4" style="margin-left: 83%;">Salvar
-                        Edição</button>
+                    <button type="submit" class="btn btn-success col-md-2 mt-4" style="margin-left: 83%;">Salvar Edição
+                    </button>
                 </div>
 
             </div>

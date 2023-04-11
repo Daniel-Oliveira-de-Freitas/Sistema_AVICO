@@ -13,18 +13,12 @@
             <a class="btn btn-primary btn-xl text-uppercase" href="/doacoes">Faça sua Doação</a>
         </div>
     </header>
-    <!-- Cards Noticias LG-->
+
     <section class="page-section" id="noticias">
         <div class="container px-lg-5">
-
             <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-                <!--Slides-->
                 <div class="carousel-inner" role="listbox">
-
-                    <!--First slide-->
                     <div class="carousel-item active">
-
                         <div class="col-md-4 px-3" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\Infome10.png"
@@ -35,8 +29,7 @@
                                             Trabalhadores & Covid-19 do Cesteh-Fiocruz</b>
                                     </p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/covid-longa-e-tema-do-decimo-informe-da-rede-trabalhadores-covid-19-do-cesteh-fiocruz">Leia
-                                        Mais</a>
+                                        href="/covid-longa-e-tema-do-decimo-informe-da-rede-trabalhadores-covid-19-do-cesteh-fiocruz">Leia Mais</a>
                                 </div>
                             </div>
                         </div>
@@ -65,20 +58,13 @@
                                     <p class="card-text altura-linha"><b>Audiência debate a situação das sequelas das
                                             vítimas da covid no Rio Grande do Sul</b></p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/audiencia-debate-a-situacao-das-sequelas-das-vitimas-da-covid-no-rio-grande-do-sul">Leia
-                                        Mais</a>
+                                        href="/audiencia-debate-a-situacao-das-sequelas-das-vitimas-da-covid-no-rio-grande-do-sul">Leia Mais</a>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-                    <!--/.First slide-->
 
-                    <!--Second slide-->
                     <div class="carousel-item">
-
                         <div class="col-md-4 px-3" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\ascon-cns.png"
@@ -124,38 +110,14 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <!--/.Second slide-->
-
-
-
                 </div>
-                <!--/.Slides-->
-                <!--Indicators-->
                 <ol class="carousel-indicators pt-3">
                     <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
                     <li data-target="#multi-item-example" data-slide-to="1"></li>
-
                 </ol>
-                <!--/.Indicators-->
-                <!--Controls-->
-                <!--<div class="text-center">
-                                                                                                                                                                          <div class="controls-top">
-                                                                                                                                                                          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                                                                                                                                                                          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-                                                                                                                                                                          </div>
-                                                                                                                                                                        </div>
-                                                                                                                                                                        <!--/.Controls-->
-
-
-                <!--/.Carousel Wrapper-->
-
             </div>
         </div>
-    </section>
-
-    <!-- Fim Cards Noticias LG-->
     </section>
 
     <section class="page-section bg-light" id="portfolio">
@@ -261,10 +223,8 @@
                         </div>
                     </div>
                 </li>
-
                 <li class="timeline-panel">
                     <div class="timeline-image">
-
                         <h4>
                             27 de
                             <br />

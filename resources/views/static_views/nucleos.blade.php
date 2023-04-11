@@ -5,7 +5,8 @@
     <section class="page-section">
         <div class="container container-text">
             <h3>Núcleos Estaduais</h3>
-            <p> Com o crescimento vertiginoso de inscritos interessados em se associar a Avico Brasil por todo território
+            <p>
+                Com o crescimento vertiginoso de inscritos interessados em se associar a Avico Brasil por todo território
                 nacional, decidimos criar Núcleos Estaduais, fazendo a distribuição dos associados e voluntários por Estado
                 e ao mesmo tempo elencando os facilitadores (advogados, psicólogos, assistentes sociais, cientistas sociais,
                 graduados em políticas públicas, entre outros) que nos auxiliarão a replicar o nosso eixo de atuação
