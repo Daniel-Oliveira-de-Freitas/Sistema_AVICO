@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 
 use App\Models\File;
 
 class FileRepository
 {
-    
+
     public function save($person_id, $filenames, $filepaths)
     {
         $file = new File();

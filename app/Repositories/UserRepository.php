@@ -1,26 +1,26 @@
 <?php
-namespace App\Repository;
+
+namespace App\Repositories;
 
 use App\Enums\UserTypes;
 use App\Models\User;
-use App\Repositories\Contracts\GenericRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UserRepository {
+class UserRepository
+{
 
-    
-    public function save(Request $request){
+    public function save(Request $request)
+    {
         $user = new User();
         $user->email =  $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        if(in_array(UserTypes::Voluntario->value, $request->tipo,true) === true && in_array(UserTypes::Associado->value, $request->tipo, true) === true){
-            $user->assignRole(UserTypes::from($request->tipo[0])->value);
-            $user->assignRole(UserTypes::from($request->tipo[1])->value);
-        }else {
-            $user->assignRole(UserTypes::from($request->tipo[0])->value);
-        }
+        $roles = collect($request->input('tipo'))->map(function ($type) {
+            return UserTypes::from($type)->value;
+        });
+        $user->assignRole($roles);
+
         return $user->id;
     }
 
@@ -28,7 +28,8 @@ class UserRepository {
      * Retorna todos os usuario do banco de dados
      * @return array
      */
-    public function getAll(){
+    public function getAll()
+    {
         return User::all();
     }
 
@@ -37,7 +38,8 @@ class UserRepository {
      * @param int $id
      * @return object
      */
-    public function getById($id){
+    public function getById($id)
+    {
         return User::findorfail($id);
     }
 
@@ -46,18 +48,19 @@ class UserRepository {
      * @param int $id
      * @param array $user
      */
-    public function update($id, array $arr){
+    public function update($id, array $arr)
+    {
         $user = User::findorfail($id);
-       return $user->update($arr);
+        return $user->update($arr);
     }
 
     /**
-    * Deleta um usuario
-    * @param int $id
-    */
-    public function destroy($id){
+     * Deleta um usuario
+     * @param int $id
+     */
+    public function destroy($id)
+    {
         $user = User::findorfail($id);
         return $user->delete();
     }
-    
 }

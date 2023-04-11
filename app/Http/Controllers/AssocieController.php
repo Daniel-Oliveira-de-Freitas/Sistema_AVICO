@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Busines\PersonBusines;
-use App\Http\Requests\StoreRegistrationFormRequest;
-use Exception;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class AssocieController extends Controller
 {
     public function create()
     {
-        return view('static_views.associados.associe');
+        return view('associados.associe');
     }
 
-    private PersonBusines $business;
-
-    public function store(Request $request, $filesNameArray, $filesPath)
+    public function store(Request $request, array $filesNameArray, array $filesPath)
     {
-        $this->business = new PersonBusines();
-        $cadastro = $this->business->inserir($request, $filesNameArray, $filesPath);
+        $userService = new UserService();
+        $cadastro = $userService->create($request, $filesNameArray, $filesPath);
         if ($cadastro) {
             return redirect()->route('home.avico')
                 ->with('success', 'messages.success_registration');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 
 use App\Models\Notice;
 use App\Http\Requests\Notice\NoticeRequest;

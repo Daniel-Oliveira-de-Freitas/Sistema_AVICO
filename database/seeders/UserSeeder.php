@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +19,7 @@ class UserSeeder extends Seeder
         $admin->email =  'admin@admin.com';
         $admin->password = Hash::make('123');
         $admin->status = 'aprovado';
-        $admin->active= 'true';
+        $admin->active = 'true';
         $admin->save();
         $admin->assignRole('admin');
     }

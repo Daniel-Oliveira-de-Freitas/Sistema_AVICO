@@ -16,10 +16,10 @@ class ListagemController extends Controller
   public function create()
   {
     $inscricoes = User::where('status', StatusTypes::Aguardando_aprovacao->value)->paginate(10);
-    return view("static_views.associados.list")->with(compact('inscricoes'));
+    return view("associados.listar-associados")->with(compact('inscricoes'));
   }
 
-  public function remove(Request $request,$id)
+  public function remove(Request $request, $id)
   {
     $user = User::findorfail($id);
     $user->update(['status' => StatusTypes::Indeferido->value, 'active' => false]);
@@ -40,14 +40,14 @@ class ListagemController extends Controller
         <strong>Usuario aprovado no sistema</strong>
       </div>');
   }
-  
+
   public function downloadFiles($id)
   {
     $user = User::findorfail($id);
     $zip = new ZipArchive;
     $filename = $user->person->cpf . '.zip';
     if ($zip->open(public_path($filename), ZipArchive::CREATE) === TRUE) {
-      $files = File::files(storage_path('app\public\files\\'.$user->person->cpf));
+      $files = File::files(storage_path('app\public\files\\' . $user->person->cpf));
 
       foreach ($files as $key => $value) {
         $relativeName = basename($value);

@@ -2,44 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use App\Actions\AssocieGetPropertiesAction;
 use App\Http\Controllers\AssocieController;
+use App\Http\Livewire\Traits\AssocieComponentStepMessagesTrait;
+use App\Http\Livewire\Traits\AssocieComponentStepRulesTrait;
+use App\Services\ViaCepService;
 use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class AssocieComponent extends Component
 {
-    public $tipo = [];
-    public $termos;
-    public $nome;
-    public $dataNascimento;
-    public $password;
-    public $confirmPassword;
-    public $genero;
-    public $racaCor;
-    public $cpf;
-    public $rg;
-    public $celular;
-    public $telefoneResidencial;
-    public $email;
-    public $cep;
-    public $endereco;
-    public $nmrEndereco;
-    public $cidade;
-    public $uf;
-    public $complemento;
-    public $bairro;
-    public $profissao;
-    public $condicoes = [];
-    public $parentesco;
-    public $outros;
-    public $pagamento;
-    public $declaracaoIsencao;
+
+    use WithFileUploads, AssocieComponentStepMessagesTrait, AssocieComponentStepRulesTrait;
+
+    public array $data = [];
     public $termoInscricao;
     public $fileCpfRg = [];
     public $fileComprovante;
@@ -49,54 +27,18 @@ class AssocieComponent extends Component
     public $currentStep = 1;
     public $totalSteps = 5;
 
-    public Collection $dadosAdicionais;
-    private AssocieController $associeController;
-
-    use WithFileUploads;
-
-    public function render()
-    {
-        return view('livewire.associe-component');
-    }
-
     public function mount()
     {
-        $this->fill([
-            'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']]),
-        ]);
+        $this->data = AssocieGetPropertiesAction::initializeEmptyArray();
         $this->currentStep = 1;
-    }
-
-    protected $rules = [
-        'email' => 'unique:users',
-        'cpf' => 'unique:persons',
-        'password' => 'min:8|required_with:confirmPassword|same:confirmPassword'
-    ];
-
-    protected $messages = [
-        'required'  => 'Este campo é obrigatório.',
-        'unique'    => ':attribute já está sendo usado.',
-        'same' => 'A senha deve ser identica ao confirmar senha.',
-        'min' => ':attribute deve ter pelo menos :min caracteres.',
-        'max' => 'O arquivo excedeu o tamanho de 1 mb',
-        'numeric' => 'Digite apenas números.',
-        'email' => 'Você deve digitar um :attribute valido.',
-        'dadosAdicionais.*.nome.required' => 'Este campo é obrigatório.',
-        'dadosAdicionais.*.parentesco.required' => 'Este campo é obrigatório.',
-        'dadosAdicionais.*.idade.required' => 'Este campo é obrigatório.',
-    ];
-
-    public function updated($property)
-    {
-        $this->validateOnly($property);
     }
 
     public function increaseStep()
     {
-        $this->validateData();
-        if (in_array('voluntario', $this->tipo) && in_array('associado', $this->tipo) && $this->currentStep == 3) {
+        $this->validateStep($this->currentStep);
+        if (in_array('voluntario', $this->data['tipo']) && in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep++;
-        } elseif (in_array('voluntario', $this->tipo) && $this->currentStep == 3) {
+        } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep++;
             $this->currentStep++;
         } else {
@@ -109,9 +51,9 @@ class AssocieComponent extends Component
 
     public function decreaseStep()
     {
-        if (in_array('voluntario', $this->tipo) && in_array('associado', $this->tipo) && $this->currentStep == 3) {
+        if (in_array('voluntario', $this->data['tipo']) && in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep--;
-        } elseif (in_array('voluntario', $this->tipo) &&  $this->currentStep == 5) {
+        } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 5) {
             $this->currentStep--;
             $this->currentStep--;
         } else {
@@ -122,128 +64,69 @@ class AssocieComponent extends Component
         }
     }
 
-    public function validateData()
+    public function validateStep(int $step)
     {
-        if ($this->currentStep == 1) {
-            $this->validate([
-                'tipo' => 'required|array|min:1',
-            ]);
-        } elseif ($this->currentStep == 2) {
-            $this->validate([
-                'termos' => 'required',
-            ]);
-        } elseif ($this->currentStep == 3) {
-            $this->validate([
-                'nome' => 'required',
-                'dataNascimento' => 'required',
-                'password' => 'required|min:8',
-                'confirmPassword' => 'required|min:8',
-                'genero' => 'required',
-                'racaCor' => 'required',
-                'cpf' =>  'required|string',
-                'rg' => 'required|string|max:18|min:10',
-                'celular' => 'required',
-                'email' => 'required|email',
-                'cep' => 'required|numeric',
-                'endereco' => 'required|string',
-                'cidade' => 'required',
-                'nmrEndereco' => 'required',
-                'bairro' => 'required|string',
-                'profissao' => 'required',
-                'condicoes' => 'required|array|min:1'
-            ]);
-            if (in_array("Familiar de vítima da COVID-19", $this->condicoes)) {
-                $this->validate([
-                    'dadosAdicionais.*.nome' => 'required',
-                    'dadosAdicionais.*.parentesco' => 'required',
-                    'dadosAdicionais.*.idade' => 'required|numeric'
-                ]);
-                if ('dadosAdicionais.*.outro' === "outros") {
-                    $this->validate([
-                        'dadosAdicionais.*.outro' => 'required'
-                    ]);
-                }
-            }
-        } elseif ($this->currentStep == 4) {
-            $this->validate([
-                'pagamento' => 'required',
-            ]);
-        } elseif ($this->currentStep == 5) {
-            $this->validate([
-                'termoInscricao' => 'required|max:1024',
-                'fileCpfRg' => 'required|max:1024',
-                'fileComprovanteEndereco' => 'required|max:1024',
-            ]);
-            if (in_array("Familiar de vítima da COVID-19", $this->condicoes)) {
-                $this->validate([
-                    'fileCertidaoObito' => 'required|max:1024'
-                ]);
-            }
-            if (in_array("Sobrevivente da COVID-19", $this->condicoes)) {
-                $this->validate([
-                    'fileComprovante' => 'required|max:1024'
-                ]);
-            }
-            if ($this->declaracaoIsencao) {
-                $this->validate([
-                    'fileComprovanteIsencao' => 'required|max:1024'
-                ]);
+        $rules = $this->validationRules[$step];
+
+        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes'])) {
+            $rules += [
+                'data.dadosAdicionais.*.nome' => 'required',
+                'data.dadosAdicionais.*.parentesco' => 'required',
+                'data.dadosAdicionais.*.idade' => 'required|numeric'
+            ];
+
+            if ('data.dadosAdicionais.*.outro' === "outros") {
+                $rules += [
+                    'data.dadosAdicionais.*.outro' => 'required'
+                ];
             }
         }
+
+        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes'])) {
+            $rules += [
+                'fileCertidaoObito' => 'required|max:10024'
+            ];
+        }
+
+        if (in_array("Sobrevivente da COVID-19", $this->data['condicoes'])) {
+            $rules += [
+                'fileComprovante' => 'required|max:10024'
+            ];
+        }
+
+        if ($this->data['declaracaoIsencao']) {
+            $rules += [
+                'fileComprovanteIsencao' => 'required|max:10024'
+            ];
+        }
+
+        $this->validate($rules);
     }
 
-    public function updatedCpf($value)
-    {
-        $this->cpf = $this->formatCpf($this->validaCPF($value));
-    }
-
-    public function formatCpf($value)
+    public function formatCpf(string $value): array|string
     {
         if ($value !== "") {
             $cpf = substr_replace($value, '.', 3, 0);
             $cpf = substr_replace($cpf, '.', 7, 0);
-            $cpf = substr_replace($cpf, '-', 11, 0);
-            return $cpf;
+            return substr_replace($cpf, '-', 11, 0);
         }
+        return "";
     }
 
-    public function validaCPF($cpf = "")
+    public function validateCPF(string $cpf = ""): array|string
     {
-
-        // Verifica se um número foi informado
-        if (empty($cpf)) {
-            return throw ValidationException::withMessages([
-                'cpf' => 'O CPF informado é invalido'
-            ]);
-        }
-
-        // Elimina possivel mascara
+        $cpfInvalidos = [
+            '00000000000', '11111111111', '22222222222',
+            '33333333333', '44444444444', '55555555555',
+            '66666666666', '77777777777', '88888888888',
+            '99999999999'
+        ];
         $cpf = preg_replace("/[^0-9]/", "", $cpf);
         $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
 
-        // Verifica se o numero de digitos informados é igual a 11 
-        if (strlen($cpf) != 11) {
+        if (strlen($cpf) != 11 || in_array($cpf, $cpfInvalidos)) {
             return $this->cpfMessageError();
-        }
-        // Verifica se nenhuma das sequências invalidas abaixo 
-        // foi digitada. Caso afirmativo, retorna falso
-        elseif (
-            $cpf == '00000000000'  ||
-            $cpf == '11111111111'  ||
-            $cpf == '22222222222'  ||
-            $cpf == '33333333333'  ||
-            $cpf == '44444444444'  ||
-            $cpf == '55555555555'  ||
-            $cpf == '66666666666'  ||
-            $cpf == '77777777777'  ||
-            $cpf == '88888888888'  ||
-            $cpf == '99999999999'
-        ) {
-            return $this->cpfMessageError();
-            // Calcula os digitos verificadores para verificar se o
-            // CPF é válido
         } else {
-
             for ($t = 9; $t < 11; $t++) {
 
                 for ($d = 0, $c = 0; $c < $t; $c++) {
@@ -254,143 +137,92 @@ class AssocieComponent extends Component
                     return $this->cpfMessageError();
                 }
             }
-
-            return $cpf;
         }
+        return $this->formatCpf($cpf);
     }
 
     public function cpfMessageError()
     {
         return throw ValidationException::withMessages([
-            'cpf' => 'O CPF informado é inválido'
+            'data.cpf' => 'O CPF informado é inválido'
         ]);
     }
 
-    public function updatedCep($value)
+    public function updated($key, $value)
     {
-        if (strlen($value) === 8) {
-            $dados = $this->searchCEP($value);
-            $this->endereco = isset($dados['logradouro']) ? $dados['logradouro'] : "";
-            $this->cidade = isset($dados['localidade']) ? $dados['localidade'] : "";
-            $this->uf = isset($dados['uf']) ? $dados['uf'] : "";
-            $this->complemento = isset($dados['complemento']) ? $dados['complemento'] : "";
-            $this->bairro = isset($dados['bairro']) ? $dados['bairro'] : "";
-            if (isset($dados["erro"])) {
-                return throw ValidationException::withMessages([
-                    'cep' => 'O CEP informado é inválido'
-                ]);
-            }
+        if ($key == 'data.cep') {
+            $viaCepArray = ViaCepService::handle($value);
+            $this->data['endereco'] = $viaCepArray['endereco'];
+            $this->data['cidade'] = $viaCepArray['cidade'];
+            $this->data['uf'] = $viaCepArray['uf'];
+            $this->data['complemento'] = $viaCepArray['complemento'];
+            $this->data['bairro'] = $viaCepArray['bairro'];
         }
-    }
-
-
-    public function searchCEP($value)
-    {
-        $response =  Http::get('https://viacep.com.br/ws/' . $value . '/json/');
-        if ($response->status() === 200) {
-            return $response->json();
-        }
-    }
-
-    public function updatedCelular($value)
-    {
-        if (!$this->formatPhoneNumber($value)) {
+        if ($key === 'data.celular' && !$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'celular' => 'O celular informado é inválido'
+                'data.celular' => 'O celular informado é inválido'
             ]);
         }
-    }
 
-    public function updatedTelefoneResidencial($value)
-    {
-        if (!$this->formatPhoneNumber($value)) {
+        if ($key === 'data.telefoneResidencial' && !$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
-                'telefone_residencial' => 'O telefone residencial informado é inválido'
+                'data.telefoneResidencial' => 'O telefone residencial informado é inválido'
             ]);
         }
+
+        if ($key === 'data.cpf') {
+            $this->data['cpf'] = $this->validateCPF($value);
+        }
+
+        $this->validateOnly($key, $this->validationRules[$this->currentStep]);
     }
 
-    public function formatPhoneNumber($telefone)
+    public function formatPhoneNumber(string $telefone): bool
     {
-        $telefone = trim(str_replace('/', '', str_replace(' ', '', str_replace('-', '', str_replace(')', '', str_replace('(', '', $telefone))))));
+        $telefone = preg_replace('/\D/', '', $telefone);
 
-        $regexTelefone = "^[0-9]{11}$";
-
-        $regexCel = '/[0-9]{2}[6789][0-9]{3,4}[0-9]{4}/'; // Regex para validar somente celular
+        $regexCel = '/[0-9]{2}[6789][0-9]{3,4}[0-9]{4}/';
         if (preg_match($regexCel, $telefone) && (strlen($telefone) < 15)) {
             return true;
-        } else {
-            return false;
         }
-    }
 
-    public function generate_array()
-    {
-        return [
-            'tipo' => $this->tipo,
-            'nome' => $this->nome,
-            'dataNascimento' => $this->dataNascimento,
-            'genero' => $this->genero,
-            'racaCor' => $this->racaCor,
-            'cpf' => $this->cpf,
-            'rg' => $this->rg,
-            'celular' => $this->celular,
-            'telefoneResidencial' => $this->telefoneResidencial,
-            'email' => $this->email,
-            'cep' => $this->cep,
-            'endereco' => $this->endereco,
-            'nmrEndereco' => $this->nmrEndereco,
-            'cidade' => $this->cidade,
-            'uf' => $this->uf,
-            'complemento' => $this->complemento,
-            'bairro' => $this->bairro,
-            'profissao' => $this->profissao,
-            'condicoes' => $this->condicoes,
-            'pagamento' => $this->pagamento,
-            'parentesco' => $this->parentesco,
-            'outros' => $this->outros,
-            'declaracaoIsencao' => $this->declaracaoIsencao,
-            'dadosAdicionais' => $this->dadosAdicionais
-        ];
+        return false;
     }
 
     public function addInput()
     {
-        if (count($this->dadosAdicionais) !== 10) {
-            $this->dadosAdicionais->push(['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']);
+        if (count($this->data['dadosAdicionais']) !== 10) {
+            array_push($this->data['dadosAdicionais'], ['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']);
         }
     }
 
-    public function removeInput($key)
+    public function removeInput(int $key)
     {
-        $this->dadosAdicionais->pull($key);
+        unset($this->data['dadosAdicionais'][$key]);
     }
 
     public function generate_pdf()
     {
-
-        $pdf = Pdf::loadView('layouts.pdf', $this->generate_array())->setPaper('a4', 'landscape')->output();
+        $pdf = Pdf::loadView('layouts.pdf', $this->data)->setPaper('a4', 'landscape')->output();
         return response()->streamDownload(
-            fn () => print($pdf),
+            fn() => print($pdf),
             'termo.pdf'
         );
     }
 
     public function sendInfos()
     {
-        $this->validateData();
-        $this->associeController = new AssocieController();
+        $this->validateStep($this->currentStep);
+        $associeController = new AssocieController();
         $myRequest = Request();
         $myRequest->setMethod('POST');
-        $myRequest->request->add($this->generate_array());
-        try {
-            $filenames = $this->saveFile($this->generateFilesArray());
-            return $this->associeController->store($myRequest,  $filenames,  $filenames);
-        } catch (Exception $err) {
-        }
+        $myRequest->request->add($this->data);
+
+        $filenames = $this->saveFile($this->generateFilesArray());
+        return $associeController->store($myRequest, $filenames, $filenames);
     }
 
-    private function generateFilesArray()
+    private function generateFilesArray(): array
     {
         return [
             $this->termoInscricao,
@@ -402,17 +234,17 @@ class AssocieComponent extends Component
         ];
     }
 
-    private function saveFile($files)
+    private function saveFile(arraY $files): array
     {
         $count = 0;
         $filepaths = array();
         foreach ($files as $file) {
             $count++;
             if (!is_array($file) && $file !== null) {
-                array_push($filepaths, $file->storeAs('files/' . $this->cpf, $count . $file->getClientOriginalName(), 'public'));
-            } elseif (is_array($file) && $file !== null) {
+                array_push($filepaths, $file->storeAs('files/' . $this->data['cpf'], $count . $file->getClientOriginalName(), 'public'));
+            } elseif (is_array($file)) {
                 foreach ($file as $f) {
-                    array_push($filepaths, $f->storeAs('files/' . $this->cpf, $count . $f->getClientOriginalName(), 'public'));
+                    array_push($filepaths, $f->storeAs('files/' . $this->data['cpf'], $count . $f->getClientOriginalName(), 'public'));
                 }
             }
         }

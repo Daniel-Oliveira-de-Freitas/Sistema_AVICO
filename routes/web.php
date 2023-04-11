@@ -70,8 +70,18 @@ Route::get('/fale_conosco', function () {
 });
 
 Route::post('/fale_conosco/mail', function (Request $request) {
+    $request->validate([
+        'name' => ['required'],
+        'email' => ['required', 'email'],
+        'phone' => ['required'],
+        'message' => ['required'],
+
+    ], [
+        '*.required' => 'Este campo é obrigatório!',
+        'email.email' => 'É necessário informar um email válido!',
+    ]);
     Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
-    return view('static_views.fale_conosco');
+    return redirect()->back()->with("success", "Sua menssagem foi enviada!");
 });
 
 Route::get('/enderecos', function () {
@@ -83,10 +93,7 @@ Route::get('/juridico', function () {
 });
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
-
 Route::post('/inscricao/store', [AssocieController::class, 'store'])->name('inscricao.store');
-
-//Rotas das Noticias
 
 Route::get('/noticias', [NoticeController::class, 'getAllNotices'])->name('noticias.avico');
 Route::get('/noticia/{id}', [NoticeController::class, 'findNoticeById'])->name('noticiaLer.avico');

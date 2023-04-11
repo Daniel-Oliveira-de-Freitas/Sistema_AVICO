@@ -3,11 +3,12 @@
 @section('title', 'Faça sua doação')
 
 @section('content')
-    <section class="page-section container container-text">
-        <div class="card">
+    <section class="container container-text">
+        <div class="card bg-light shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <p>
-                    Para fortalecer a nossa luta contribua com as nossas ações, atividades e projetos através de doação por
+                    Para fortalecer a nossa luta contribua com as nossas ações, atividades e projetos através de doação
+                    por
                     PIX,
                     transferência ou depósito.
                 </p>

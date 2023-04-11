@@ -1,29 +1,28 @@
 @extends('layouts.app')
 @section('title', 'Login - Avico Brasil')
 @section('content')
-<section class="container" >
-    <div class="col-md-4 col-md-offset-4">
-        <br><br><br><br><br>
-        @if ($errors->any())
-        <div class="alert alert-dismissible alert-danger">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Usuário ou senha errados</strong></div>
-        @endif
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Digite seu Email" required autofocus>
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Senha</label>
-                <input type="password" name="password" class="form-control" placeholder="Digite sua Senha" required autofocus>
-            </div>
-            <a class="mb-3" href="/forgot-password">Esqueci minha senha</a>
-            <br>
-            <button type="submit" class="btn btn-primary col-md-12 col-md-offset-12">Login</button>
-        </form>
+    <section class="page-section">
+        <div class="col-md-4 col-md-offset-4 container">
+            @if ($errors->any())
+                <x-alert alertType="danger" dismissible='true' message="Usuário ou senha incorretos" />
+            @endif
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="form-group mb-2">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" name="email" id="passwordInput" type="email"
+                        placeholder="Digite seu Email" required autofocus>
+                </div>
+                <div class="form-group mb-2">
+                    <label class="form-label">Senha</label>
+                    <input class="form-control" name="password" id="passwordInput" type="password"
+                        placeholder="Digite sua Senha" required autofocus>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="mt-2 mb-2 btn btn-primary" type="submit">Login</button>
+                </div>
+                <a class="d-flex justify-content-center" href="/forgot-password">Esqueci minha senha</a>
+            </form>
         </div>
-</section>
+    </section>
 @endsection
