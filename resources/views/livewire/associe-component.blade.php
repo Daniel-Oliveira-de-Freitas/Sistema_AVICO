@@ -1,7 +1,5 @@
 <div>
-    @if (session('fail'))
-        @include(session('fail'))
-    @endif
+    @include('messages.messages')
     <h1 class="text-center">Formulário de Cadastro Avico</h1>
     <x-alert alertType="warning" dismissible='false'
         message="Os campos destacados com * indicam que são Obrigatórios !!" />
@@ -22,7 +20,7 @@
         @endif
         @if ($currentStep == 2)
             <div class="form-check">
-                <div class="text-sm-start" id="termos_associacao">
+                <div class="text-sm-start fw-bold" id="termos_associacao">
                     <h1 class="text-center">TERMO DE ASSOCIAÇÃO</h1>
                     <p> 1. Os dados fornecidos serão utilizados exclusivamente pela nossa Associação, sendo
                         vedado o
@@ -206,8 +204,8 @@
                 <div class="mb-3 col-md-2">
                     <label for="uf">UF*</label>
                     <select class="form-select" name="uf" id="uf" wire:model="data.uf" aria-label="AC">
-                        @foreach(Uf::all() as $uf)
-                            <option>{{$uf}}</option>
+                        @foreach(\App\Models\Uf::all() as $uf)
+                            <option>{{$uf->sigla}}</option>
                         @endforeach
                     </select>
                     <x-error-message errorName="data.uf" />
@@ -356,9 +354,9 @@
                         <br>
                         <label class="form-check-label" for="{{ $value->name }}">{{ $value->name }}</label>
                         <input class="pagamento form-check-input" type="radio" name="pagamento"
-                            id="{{ $value->value }}" value="{{ $value->value }}" wire:model="pagamento">
+                            id="{{ $value->value }}" value="{{ $value->value }}" wire:model="data.pagamento">
                     @endforeach
-                    <x-error-message errorName="pagamento" />
+                    <x-error-message errorName="data.pagamento" />
                 </div>
                 <p class="text-justify mb-2">2. Os casos de isenção serão analisados pela Diretoria da AVICO, de
                     acordo
@@ -450,15 +448,15 @@
         <div class="form-navigation gap-1 d-flex d-flex justify-content-between">
             @if ($currentStep > 1)
                 <button type="button" class="btn btn-info float-left mr-5 rounded"
-                    wire:click="decreaseStep()">Anterior</button>
+                    wire:click="decreaseStep">Anterior</button>
             @endif
             @if ($currentStep != $totalSteps)
                 <button type="button" class="btn btn-info float-right mr-5 rounded"
-                    wire:click="increaseStep()">Proximo</button>
+                    wire:click="increaseStep" @disabled($errors->hasAny())>Próximo</button>
             @endif
-            @if ($currentStep == 5)
+            @if ($currentStep == $totalSteps)
                 <button type="button" class="btn btn-success float-right mr-5 rounded"
-                    wire:click="sendInfos()">Enviar</button>
+                    wire:click="sendInfos">Enviar</button>
             @endif
         </div>
     </form>

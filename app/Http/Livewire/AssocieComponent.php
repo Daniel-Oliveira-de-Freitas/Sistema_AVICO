@@ -30,7 +30,6 @@ class AssocieComponent extends Component
     public function mount()
     {
         $this->data = AssocieGetPropertiesAction::initializeEmptyArray();
-        $this->currentStep = 1;
     }
 
     public function increaseStep()
@@ -234,7 +233,7 @@ class AssocieComponent extends Component
         ];
     }
 
-    private function saveFile(arraY $files): array
+    private function saveFile(array $files): array
     {
         $count = 0;
         $filepaths = array();

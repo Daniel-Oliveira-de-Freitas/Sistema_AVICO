@@ -10,10 +10,14 @@
                         <span aria-hidden="true"></span>
                     </button>
                 </div>
-                <div class="modal-body">Você deseja aprovar o cadastro de <b>{{ $inscricao->person->nome_completo }}</b>?</div>
+                <div class="modal-body">
+                    <span>
+                        Você deseja aprovar o cadastro de <b>{{ $inscricao->person->nome_completo }}</b>?
+                    </span>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn gray btn-outline-secondary"
-                        data-dismiss="modal">{{ __('Cancel') }}</button>
+                            data-dismiss="modal">{{ __('Cancel') }}</button>
                     <button type="submit" class="btn btn-outline-success">Aprovar</button>
                 </div>
             </div>

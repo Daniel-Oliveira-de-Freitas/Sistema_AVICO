@@ -59,7 +59,6 @@ class PersonRepository
             DB::commit();
             return $person->id;
         } catch (Exception $e) {
-            dd($e);
             DB::rollBack();
             return false;
         }

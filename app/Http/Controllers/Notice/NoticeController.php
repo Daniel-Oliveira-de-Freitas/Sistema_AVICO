@@ -14,7 +14,7 @@ class NoticeController extends Controller
 
     public function create()
     {
-        return view('noticias.criaNoticia');
+        return view('web.noticias.criar-noticia');
     }
 
     public function store(NoticeRequest $nr)
@@ -22,21 +22,21 @@ class NoticeController extends Controller
         $noticeRepository = new NoticeRepository();
         $noticeRepository->save($nr, $this->getImagePath($nr));
         return redirect()->back()
-            ->with('success', 'messages.notices.success_notice_registration');
+            ->with('success', 'Noticia criada com sucesso!');
     }
 
     public function getAllNotices()
     {
         $this->noticeService = new NoticeService();
         $noticias = $this->noticeService->getAllNotices();
-        return view('static_views.noticias')->with(compact('noticias'));
+        return view('web.static_views.noticias')->with(compact('noticias'));
     }
 
     public function findNoticeById($id)
     {
         $this->noticeService = new NoticeService();
         $noticia = $this->noticeService->findNoticeById($id);
-        return view('static_views.noticias.noticia_ler')->with(compact('noticia'));
+        return view('web.noticias.visualizar-noticia')->with(compact('noticia'));
     }
 
     public function removeNotice($id)
@@ -50,7 +50,7 @@ class NoticeController extends Controller
     {
         $this->noticeService = new NoticeService();
         $noticia = $this->noticeService->findNoticeById($id);
-        return view('noticias.editarNoticia')->with(compact('noticia'));
+        return view('web.noticias.editar-noticia')->with(compact('noticia'));
     }
 
     public function updateNotice($id, NoticeRequest $nr)

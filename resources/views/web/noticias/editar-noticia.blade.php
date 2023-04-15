@@ -3,9 +3,7 @@
 
 @section('content')
     <section class="form_body container rows ">
-        @if (session('success'))
-            @include(session('success'))
-        @endif
+        @include('messages.messages')
         <form action="{{ route('updatedNoticia', $noticia->id) }}" method="POST" enctype="multipart/form-data">
             @method('PATCH')
             @csrf

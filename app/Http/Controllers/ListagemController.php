@@ -3,58 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StatusTypes;
-use App\Models\Person;
 use App\Models\User;
 use App\Notifications\IndeferUserNotification;
 use App\Notifications\WelcomeUserNotification;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use ZipArchive;
 
 class ListagemController extends Controller
 {
-  public function create()
-  {
-    $inscricoes = User::where('status', StatusTypes::Aguardando_aprovacao->value)->paginate(10);
-    return view("associados.listar-associados")->with(compact('inscricoes'));
-  }
 
-  public function remove(Request $request, $id)
-  {
-    $user = User::findorfail($id);
-    $user->update(['status' => StatusTypes::Indeferido->value, 'active' => false]);
-    $user->notify(new IndeferUserNotification($request->motivo));
-    return redirect()->back()->with('success', '<div class="alert alert-dismissible alert-success">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Usuario indeferido no sisteam</strong>
-      </div>');
-  }
+    private UserService $userService;
 
-  public function aprove($id)
-  {
-    $user = User::findorfail($id);
-    $user->update(['status' => StatusTypes::Aprovado->value, 'active' => true]);
-    $user->notify(new WelcomeUserNotification());
-    return redirect()->back()->with('success', '<div class="alert alert-dismissible alert-success">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Usuario aprovado no sistema</strong>
-      </div>');
-  }
-
-  public function downloadFiles($id)
-  {
-    $user = User::findorfail($id);
-    $zip = new ZipArchive;
-    $filename = $user->person->cpf . '.zip';
-    if ($zip->open(public_path($filename), ZipArchive::CREATE) === TRUE) {
-      $files = File::files(storage_path('app\public\files\\' . $user->person->cpf));
-
-      foreach ($files as $key => $value) {
-        $relativeName = basename($value);
-        $zip->addFile($value, $relativeName);
-      }
-      $zip->close();
+    /**
+     * @param UserService $userService
+     */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
     }
-    return response()->download($filename)->deleteFileAfterSend(true);
-  }
+
+    public function create()
+    {
+        $inscricoes = $this->userService->getAllUsersAwaitingApproval()->paginate(10);
+        return view("web.associados.listar-associados")->with(compact('inscricoes'));
+    }
+
+    public function remove(Request $request, $id)
+    {
+        $user = $this->userService->findUserById($id);
+        $this->userService->updateUser($id, ['status' => StatusTypes::Indeferido->value, 'active' => false]);
+        $user->notify(new IndeferUserNotification($request->motivo));
+        return redirect()->back()->with('success', 'Usuário indeferido no sistema');
+    }
+
+    public function aprove($id)
+    {
+        $user = $this->userService->findUserById($id);
+        $this->userService->updateUser($id, ['status' => StatusTypes::Aprovado->value, 'active' => true]);
+        $user->sendWelcomeNotification();
+        return redirect()->back()->with('success', 'Usuário aprovado no sistema');
+    }
+
+    public function downloadFiles($id)
+    {
+        $user = $this->userService->findUserById($id);
+        $zip = new ZipArchive;
+        $filename = $user->person->cpf . '.zip';
+        if ($zip->open(public_path($filename), ZipArchive::CREATE) === TRUE) {
+            $files = File::files(storage_path('app\public\files\\' . $user->person->cpf));
+
+            foreach ($files as $key => $value) {
+                $relativeName = basename($value);
+                $zip->addFile($value, $relativeName);
+            }
+            $zip->close();
+        }
+        return response()->download($filename)->deleteFileAfterSend(true);
+    }
 }
