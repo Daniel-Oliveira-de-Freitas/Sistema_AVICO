@@ -3,9 +3,7 @@
 
 @section('content')
     <section class="form_body container rows ">
-        @if (session('success'))
-            <x-alert alertType="warning" dismissible='true' message="Noticia cadastrada sucesso!"/>
-        @endif
+        @include('messages.messages')
         <form action="{{ route('cria_noticia') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="col-md-8 col-md-offset-8" style="left: 17%; ">

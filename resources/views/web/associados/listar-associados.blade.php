@@ -3,7 +3,9 @@
 
 @section('content')
     <section class="container-fluid table-responsive">
-        <div class="container">{!! session()->get('success') !!}</div>
+        <div class="container">
+            @include('messages.messages')
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -27,9 +29,7 @@
                     <td>{{ $inscricao->person->nome_completo }}</td>
                     <td>{{ $inscricao->person->genero }}</td>
                     <td>@foreach ($inscricao->role as $item){{ $item->name }}</br>@endforeach</td>
-                    <td>@if(isset($inscricao->person->tipo_pagamento->name))
-                            {{ $inscricao->person->tipo_pagamento->name  }}
-                        @endif</td>
+                    <td>{{ $inscricao->person->tipo_pagamento?->name  }}</td>
                     <td>{{ $inscricao->email }}</td>
                     <td>{{ $inscricao->person->cpf }}</td>
                     <td>{{ $inscricao->person->rg }}</td>
@@ -37,37 +37,37 @@
                     <td>{{ $inscricao->person->adress->cidade }}</td>
                     <td>{{ $inscricao->person->adress->estado }}</td>
                     <td>
-                        <form method="GET" action="{{route('baixar_dados', $inscricao->id)}}">
+                        <form method="GET" action="{{ route('baixar_dados', $inscricao->id) }}">
                             <button type="submit" class="btn btn-info btn-md"><i class="fa-solid fa-download"></i>
                                 Download Arquivos
                             </button>
                         </form>
                     </td>
                     <td>
-                        <div class="btn-group">
+                        <div class="btn-group" role="group" aria-label="ações">
                             <button type="button" role="button" href="#" data-toggle="modal"
-                                    data-target="#ModalVisualizar{{$inscricao->id}}" class="btn btn-info btn-sm"><i
+                                    data-target="#ModalVisualizar{{ $inscricao->id }}" class="btn btn-info btn-sm"><i
                                     class="fa-solid fa-eye"></i> Visualizar
                             </button>
                             <button type="button" role="button" href="#" data-toggle="modal"
-                                    data-target="#ModalAprovar{{$inscricao->id}}" class="btn btn-success btn-sm"><i
+                                    data-target="#ModalAprovar{{ $inscricao->id }}" class="btn btn-success btn-sm"><i
                                     class="fa-solid fa-check"></i> Deferir
                             </button>
                             <button type="button" role="button" href="#" data-toggle="modal"
-                                    data-target="#ModalReprovar{{$inscricao->id}}" class="btn btn-danger btn-sm"><i
-                                    class="fa-solid fa-trash"></i> Indeferir
+                                    data-target="#ModalReprovar{{ $inscricao->id }}" class="btn btn-danger btn-sm"><i
+                                    class="fa-solid fa-xmark"></i> Indeferir
                             </button>
                         </div>
                     </td>
                 </tr>
-                @include('modals.associe.view')
-                @include('modals.associe.deferir')
-                @include('modals.associe.indeferir')
+                @include('web.associados.modals.view')
+                @include('web.associados.modals.deferir')
+                @include('web.associados.modals.indeferir')
             @endforeach
             </tbody>
         </table>
         <div class="container">
-            {{$inscricoes->links('pagination::bootstrap-5')}}
+            {{ $inscricoes->links('pagination::bootstrap-5') }}
         </div>
     </section>
 @endsection

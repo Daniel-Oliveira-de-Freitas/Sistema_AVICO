@@ -30,43 +30,43 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/perguntas', function () {
-    return view('static_views.perguntas');
+    return view('web.static_views.perguntas');
 });
 
 Route::get('/doacoes', function () {
-    return view('static_views.doacoes');
+    return view('web.static_views.doacoes');
 });
 
 Route::get('/estatuto', function () {
-    return view('static_views.estatuto');
+    return view('web.static_views.estatuto');
 });
 
 Route::get('/estrutura', function () {
-    return view('static_views.estrutura_organizacional');
+    return view('web.static_views.estrutura_organizacional');
 });
 
 Route::get('/mobilizacao', function () {
-    return view('static_views.mobilizacao_e_controle_social');
+    return view('web.static_views.mobilizacao_e_controle_social');
 });
 
 Route::get('/apoio', function () {
-    return view('static_views.apoio_psicossocial');
+    return view('web.static_views.apoio_psicossocial');
 });
 
 Route::get('/nucleos', function () {
-    return view('static_views.nucleos');
+    return view('web.static_views.nucleos');
 });
 
 Route::get('/parceiros', function () {
-    return view('static_views.parceiros');
+    return view('web.static_views.parceiros');
 });
 
 Route::get('/sobre', function () {
-    return view('static_views.sobre');
+    return view('web.static_views.sobre');
 });
 
 Route::get('/fale_conosco', function () {
-    return view('static_views.fale_conosco');
+    return view('web.static_views.fale_conosco');
 });
 
 Route::post('/fale_conosco/mail', function (Request $request) {
@@ -85,11 +85,11 @@ Route::post('/fale_conosco/mail', function (Request $request) {
 });
 
 Route::get('/enderecos', function () {
-    return view('static_views.enderecos_uteis');
+    return view('web.static_views.enderecos_uteis');
 });
 
 Route::get('/juridico', function () {
-    return view('static_views.juridico');
+    return view('web.static_views.juridico');
 });
 
 Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');

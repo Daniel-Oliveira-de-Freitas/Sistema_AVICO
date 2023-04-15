@@ -2,9 +2,7 @@
 @section('title', 'Avico Brasil - Associação de Vítimas e Familiares de Vítimas da Covid-19')
 @section('content')
     <header class="masthead">
-        @if (session('success'))
-            @include(session('success'))
-        @endif
+        @include('messages.messages')
         <div class="container">
             <div class="masthead-heading text-uppercase">AVICO</div>
             <div class="masthead-subheading">Associação de Vítimas e Familiares de Vítimas da Covid-19</div>
@@ -22,14 +20,15 @@
                         <div class="col-md-4 px-3" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\Infome10.png"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia">Postado em 10/06/2022</p>
                                     <p class="card-text altura-linha"><b>Covid longa é tema do décimo informe da Rede
                                             Trabalhadores & Covid-19 do Cesteh-Fiocruz</b>
                                     </p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/covid-longa-e-tema-do-decimo-informe-da-rede-trabalhadores-covid-19-do-cesteh-fiocruz">Leia Mais</a>
+                                       href="/covid-longa-e-tema-do-decimo-informe-da-rede-trabalhadores-covid-19-do-cesteh-fiocruz">Leia
+                                        Mais</a>
                                 </div>
                             </div>
                         </div>
@@ -37,13 +36,13 @@
                         <div class="col-md-4 px-3 lgcards" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\emergencia.jpeg"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia">Postado em 02/06/2022</p>
                                     <p class="card-text altura-linha"><b>Mesmo com o fim da situação de emergência
                                             sanitária, parte da população ainda sofre com sequelas da covid-19</b></p>
                                     <a class="btn btn-primary" btn-sm
-                                        href="/mesmo-com-o-fim-da-situacao-de-emergencia-sanitaria-parte-da-populacao-ainda-sofre-com-sequelas-da-covid-19">Leia
+                                       href="/mesmo-com-o-fim-da-situacao-de-emergencia-sanitaria-parte-da-populacao-ainda-sofre-com-sequelas-da-covid-19">Leia
                                         Mais</a>
                                 </div>
                             </div>
@@ -52,13 +51,14 @@
                         <div class="col-md-4 px-3 lgcards" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\BDF1.png"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia">Postado em 01/06/2022</p>
                                     <p class="card-text altura-linha"><b>Audiência debate a situação das sequelas das
                                             vítimas da covid no Rio Grande do Sul</b></p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/audiencia-debate-a-situacao-das-sequelas-das-vitimas-da-covid-no-rio-grande-do-sul">Leia Mais</a>
+                                       href="/audiencia-debate-a-situacao-das-sequelas-das-vitimas-da-covid-no-rio-grande-do-sul">Leia
+                                        Mais</a>
                                 </div>
                             </div>
                         </div>
@@ -68,14 +68,15 @@
                         <div class="col-md-4 px-3" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\ascon-cns.png"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia">Postado em 27/05/2022</p>
                                     <p class="card-text altura-linha"><b>“Estamos há quase três anos com a Covid-19 no
-                                            Brasil e ainda nada foi feito”, critica presidenta da Avico, no Pleno do CNS,
+                                            Brasil e ainda nada foi feito”, critica presidenta da Avico, no Pleno do
+                                            CNS,
                                             sobre familiares e vítimas da doença<b></p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/estamos-ha-quase-tres-anos-com-a-covid-19-no-brasil-e-ainda-nada-foi-feito-critica-presidenta-da-avico-no-pleno-do-cns-sobre-familiares-e-vitimas-da-doenca">Leia
+                                       href="/estamos-ha-quase-tres-anos-com-a-covid-19-no-brasil-e-ainda-nada-foi-feito-critica-presidenta-da-avico-no-pleno-do-cns-sobre-familiares-e-vitimas-da-doenca">Leia
                                         Mais</a>
                                 </div>
                             </div>
@@ -84,13 +85,13 @@
                         <div class="col-md-4 px-3 lgcards" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\BdF.png"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia">Postado em 27/05/2022</p>
                                     <p class="card-text altura-linha"><b>Audiências públicas debaterão a situação das
                                             sequelas das vítimas da covid no estado.</b></p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/audiencias-publicas-debaterao-a-situacao-das-sequelas-das-vitimas-da-covid-no-estado">Leia
+                                       href="/audiencias-publicas-debaterao-a-situacao-das-sequelas-das-vitimas-da-covid-no-estado">Leia
                                         Mais</a>
                                 </div>
                             </div>
@@ -99,13 +100,14 @@
                         <div class="col-md-4 px-3 lgcards" style="float:left">
                             <div class="card mb-2">
                                 <img class="card-img-top" src="images\assets\img\noticias\assembleia.jpeg"
-                                    alt="Imagem de um paciente em tratamento e uma profissional de saúde">
+                                     alt="Imagem de um paciente em tratamento e uma profissional de saúde">
                                 <div class="card-body">
                                     <p class="datanoticia ">Postado em 27/04/2022</p>
-                                    <p class="card-text altura-linha"><b>Assembleia Legislativa instala Frente Parlamentar
+                                    <p class="card-text altura-linha"><b>Assembleia Legislativa instala Frente
+                                            Parlamentar
                                             em Defesa das Vítimas da Covid-19.</b></p>
                                     <a class="btn btn-primary btn-sm"
-                                        href="/assembleia-legislativa-instala-frente-parlamentar-em-defesa-das-vitimas-da-covid-19">Leia
+                                       href="/assembleia-legislativa-instala-frente-parlamentar-em-defesa-das-vitimas-da-covid-19">Leia
                                         Mais</a>
                                 </div>
                             </div>
@@ -125,9 +127,9 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Para conhecer melhor a nossa história</h2>
                 <iframe width="100%" height="700rem" src="https://www.youtube.com/embed/iphbaAw50b8"
-                    title="FAÇA DIFERENÇA - AJUDA VíTIMAS DA COVID" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                        title="FAÇA DIFERENÇA - AJUDA VíTIMAS DA COVID" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -141,7 +143,7 @@
             <ul class="timeline">
                 <li>
                     <div class="timeline-image">
-                        <h4>08 de <br />abril<br /> de 2021</h4>
+                        <h4>08 de <br/>abril<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -151,7 +153,7 @@
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <h4>09 de <br />junho<br /> de 2021</h4>
+                        <h4>09 de <br/>junho<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -161,7 +163,7 @@
                 </li>
                 <li>
                     <div class="timeline-image">
-                        <h4>22 de <br />junho<br /> de 2021</h4>
+                        <h4>22 de <br/>junho<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -171,7 +173,7 @@
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <h4>15 de <br />outubro<br /> de 2021</h4>
+                        <h4>15 de <br/>outubro<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -182,7 +184,7 @@
                 </li>
                 <li>
                     <div class="timeline-image">
-                        <h4>05 de <br />novembro<br /> de 2021</h4>
+                        <h4>05 de <br/>novembro<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -193,7 +195,7 @@
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <h4>19 de <br />dezembro<br /> de 2021</h4>
+                        <h4>19 de <br/>dezembro<br/> de 2021</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -204,7 +206,7 @@
                 </li>
                 <li>
                     <div class="timeline-image">
-                        <h4>12 de <br />março <br />de 2022</h4>
+                        <h4>12 de <br/>março <br/>de 2022</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -215,7 +217,7 @@
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <h4>08 de<br /> abril <br />de 2022</h4>
+                        <h4>08 de<br/> abril <br/>de 2022</h4>
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
@@ -227,9 +229,9 @@
                     <div class="timeline-image">
                         <h4>
                             27 de
-                            <br />
+                            <br/>
                             abril
-                            <br />
+                            <br/>
                             de 2022
                         </h4>
                     </div>
@@ -244,9 +246,9 @@
                     <div class="timeline-image">
                         <h4>
                             Faça
-                            <br />
+                            <br/>
                             Parte da
-                            <br />
+                            <br/>
                             AVICO!
                         </h4>
                     </div>

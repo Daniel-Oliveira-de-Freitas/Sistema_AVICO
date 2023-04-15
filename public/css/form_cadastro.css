@@ -1,17 +1,4 @@
-#termos_associacao{
-    font-weight: bold
-}
-
-.btn-info,
-.btn-success {
-    margin-top: 10px;
-    display: block;
-}
-
 .form-navigation {
     padding-bottom: 120px;
 }
 
-.form_body {
-    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}

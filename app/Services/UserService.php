@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Repositories\PersonRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -26,17 +28,27 @@ class UserService
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return array
+     * @return Collection
      */
-    public function getAllUsers()
+    public function getAllUsers(): Collection
     {
         return $this->userRepository->getAll();
+    }
+
+
+    /**
+     * Retorna todos os usuario que estão esperando aprovação do banco de dados
+     * @return Builder
+     */
+    public function getAllUsersAwaitingApproval(): Builder
+    {
+        return $this->userRepository->getAllAwaitingApproval();
     }
 
     /**
      * Retorna um usuario por id
      * @param int $id
-     * @return object
+     * @return object|bool
      */
     public function findUserById($id)
     {
@@ -52,7 +64,7 @@ class UserService
      * @param int $id
      * @param array $user
      */
-    public function updateUser($id, $arr)
+    public function updateUser($id, $arr): ?bool
     {
         try {
             return $this->userRepository->update($id, $arr);
@@ -61,18 +73,4 @@ class UserService
         }
     }
 
-
-    /**
-     * Deleta um usuario
-     * @param int $id
-     */
-    public function deleteUser($id)
-    {
-        try {
-            $this->userRepository->destroy($id);
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
-    }
 }

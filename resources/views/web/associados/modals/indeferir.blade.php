@@ -11,17 +11,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Você deseja indeferir o cadastro de <b>{{ $inscricao->person->nome_completo }}</b>?
-                </br>
-                </br>
-                    Motivo:
-                    <textarea class="form-control" name="motivo" style="min-width: 100%"></textarea>
+                    <label class="mb-2">
+                        Você deseja indeferir o cadastro de <b>{{ $inscricao->person->nome_completo }}</b>?
+                    </label>
+                    <label for="motivo">Motivo:</label>
+                    <textarea class="form-control" id="motivo" name="motivo"></textarea>
                 </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn gray btn-outline-secondary"
+                <div class="modal-footer">
+                    <button type="button" class="btn gray btn-outline-secondary"
                             data-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="btn btn-outline-danger">Indeferir</button>
-                    </div>
+                    <button type="submit" class="btn btn-outline-danger">Indeferir</button>
                 </div>
             </div>
         </div>

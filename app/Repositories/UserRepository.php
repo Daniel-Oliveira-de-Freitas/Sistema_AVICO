@@ -2,8 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Enums\StatusTypes;
 use App\Enums\UserTypes;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,11 +29,20 @@ class UserRepository
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return array
+     * @return Collection
      */
-    public function getAll()
+    public function getAll(): Collection
     {
         return User::all();
+    }
+
+    /**
+     * Retorna todos os usuario do banco de dados
+     * @return Builder
+     */
+    public function getAllAwaitingApproval(): Builder
+    {
+        return User::where('status', StatusTypes::Aguardando_aprovacao->value);
     }
 
     /**
@@ -38,7 +50,7 @@ class UserRepository
      * @param int $id
      * @return object
      */
-    public function getById($id)
+    public function getById(int $id): object
     {
         return User::findorfail($id);
     }
@@ -46,21 +58,12 @@ class UserRepository
     /**
      * Atualiza os dados de um usuario
      * @param int $id
-     * @param array $user
+     * @param array $arr
+     * @return null
      */
-    public function update($id, array $arr)
+    public function update(int $id, array $arr)
     {
-        $user = User::findorfail($id);
-        return $user->update($arr);
+        return User::findorfail($id)?->update($arr);
     }
 
-    /**
-     * Deleta um usuario
-     * @param int $id
-     */
-    public function destroy($id)
-    {
-        $user = User::findorfail($id);
-        return $user->delete();
-    }
 }

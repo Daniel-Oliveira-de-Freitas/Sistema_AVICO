@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-3">
+    <div class="mt-1">
         <span class="text-danger">
             @error($errorName)
                 {{ $message }}
