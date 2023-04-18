@@ -6,7 +6,6 @@ use App\Models\Reason;
 
 class ReasonRepository
 {
-
     public function save($request, $personId)
     {
         $reason = new Reason();

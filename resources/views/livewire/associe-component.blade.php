@@ -452,11 +452,11 @@
             @endif
             @if ($currentStep != $totalSteps)
                 <button type="button" class="btn btn-info float-right mr-5 rounded"
-                    wire:click="increaseStep" @disabled($errors->hasAny())>Próximo</button>
+                    wire:click="increaseStep" @disabled($errors->any())>Próximo</button>
             @endif
             @if ($currentStep == $totalSteps)
                 <button type="button" class="btn btn-success float-right mr-5 rounded"
-                    wire:click="sendInfos">Enviar</button>
+                    wire:click="sendInfos" wire:loading.attr="disabled">Enviar</button>
             @endif
         </div>
     </form>

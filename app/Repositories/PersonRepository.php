@@ -48,7 +48,7 @@ class PersonRepository
             $person->telefone_residencial = $request->telefoneResidencial;
             $person->profissao = $request->profissao;
             $person->tipo_pagamento = $request->pagamento;
-            $person->declaracao_isencao = $request->has('declaracao_isencao') ? true : false;
+            $person->declaracao_isencao = $request->has('declaracao_isencao');
             $person->save();
             $this->reasonRepository->save($request, $person->id);
             $this->adressRepository->save($request, $person->id);

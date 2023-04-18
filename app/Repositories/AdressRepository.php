@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class AdressRepository
 {
-
-
     public function save(Request $request, $personId)
     {
         $adress = new Adress();

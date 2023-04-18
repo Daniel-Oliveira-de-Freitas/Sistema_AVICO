@@ -14,7 +14,6 @@ use Livewire\Component;
 
 class AssocieComponent extends Component
 {
-
     use WithFileUploads, AssocieComponentStepMessagesTrait, AssocieComponentStepRulesTrait;
 
     public array $data = [];
@@ -35,31 +34,25 @@ class AssocieComponent extends Component
     public function increaseStep()
     {
         $this->validateStep($this->currentStep);
-        if (in_array('voluntario', $this->data['tipo']) && in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
+        if (in_array('voluntario', $this->data['tipo']) &&
+            in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep++;
         } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 3) {
-            $this->currentStep++;
-            $this->currentStep++;
+            $this->currentStep += 2;
         } else {
             $this->currentStep++;
-        }
-        if ($this->currentStep > $this->totalSteps) {
-            $this->currentStep = $this->totalSteps;
         }
     }
 
     public function decreaseStep()
     {
-        if (in_array('voluntario', $this->data['tipo']) && in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
+        if (in_array('voluntario', $this->data['tipo']) &&
+            in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep--;
         } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 5) {
-            $this->currentStep--;
-            $this->currentStep--;
+            $this->currentStep -= 2;
         } else {
             $this->currentStep--;
-        }
-        if ($this->currentStep < 1) {
-            $this->currentStep = 1;
         }
     }
 
@@ -67,7 +60,7 @@ class AssocieComponent extends Component
     {
         $rules = $this->validationRules[$step];
 
-        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes'])) {
+        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes']) && $this->currentStep == 3) {
             $rules += [
                 'data.dadosAdicionais.*.nome' => 'required',
                 'data.dadosAdicionais.*.parentesco' => 'required',
@@ -81,19 +74,19 @@ class AssocieComponent extends Component
             }
         }
 
-        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes'])) {
+        if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes']) && $this->currentStep == 5) {
             $rules += [
                 'fileCertidaoObito' => 'required|max:10024'
             ];
         }
 
-        if (in_array("Sobrevivente da COVID-19", $this->data['condicoes'])) {
+        if (in_array("Sobrevivente da COVID-19", $this->data['condicoes']) && $this->currentStep == 5) {
             $rules += [
                 'fileComprovante' => 'required|max:10024'
             ];
         }
 
-        if ($this->data['declaracaoIsencao']) {
+        if ($this->data['declaracaoIsencao'] && $this->currentStep == 5) {
             $rules += [
                 'fileComprovanteIsencao' => 'required|max:10024'
             ];

@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\DB;
 class NoticeRepository
 {
 
-
     public function save(NoticeRequest $nr, $filePath)
     {
         $notice = new Notice();
         $notice->user_id = Auth::user()->id;
         $notice->titulo = $nr->title;
         $notice->conteudo = $nr->body;
-        $notice->caminho_imagem = $filePath ? $filePath : 'images\assets\img\noticias\LOGO-AVICO.png';
+        $notice->caminho_imagem = $filePath ?: 'images\assets\img\noticias\LOGO-AVICO.png';
         $notice->save();
     }
 
@@ -48,7 +47,7 @@ class NoticeRepository
     public function update($id, NoticeRequest $nr, $filePath)
     {
         $notice = Notice::findorfail($id);
-        $notice->update(['titulo' => $nr->title, 'conteudo' =>  $nr->body, 'caminho_imagem' => $filePath ? $filePath : $notice->caminho_imagem]);
+        $notice->update(['titulo' => $nr->title, 'conteudo' =>  $nr->body, 'caminho_imagem' => $filePath ?: $notice->caminho_imagem]);
     }
 
     /**
