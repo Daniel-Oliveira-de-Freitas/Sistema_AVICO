@@ -77,11 +77,4 @@ class Person extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
-    protected function cpf(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => format_document($value),
-        );    
-    }
 }
