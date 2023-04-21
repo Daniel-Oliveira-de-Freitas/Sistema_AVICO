@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AssocieController extends Controller
 {
-    public function create()
+    public function index()
     {
         return view('web.associados.associe');
     }

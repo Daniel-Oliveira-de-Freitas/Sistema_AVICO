@@ -24,7 +24,7 @@ class ListagemController extends Controller
         $this->userService = $userService;
     }
 
-    public function create()
+    public function index()
     {
         $inscricoes = $this->userService->getAllUsersAwaitingApproval()->paginate(10);
         return view("web.associados.listar-associados")->with(compact('inscricoes'));

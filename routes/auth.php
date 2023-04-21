@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('role:admin')->group(function () {
     Route::get('/email/welcome', [ListagemController::class, 'create']);
-    Route::get('/listar', [ListagemController::class, 'create']);
+    Route::get('/listar', [ListagemController::class, 'index']);
     Route::get('/noticias/criaNoticia', [NoticeController::class, 'create']);
     Route::post('/noticias/criaNoticia/store', [NoticeController::class, 'store'])->name('cria_noticia');
     Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');

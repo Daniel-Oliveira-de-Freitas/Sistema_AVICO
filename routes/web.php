@@ -3,8 +3,6 @@
 use App\Http\Controllers\AssocieController;
 use App\Http\Controllers\Notice\NoticeController;
 use App\Mail\FaleConoscoEmail;
-use App\Models\Notice;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -69,17 +67,7 @@ Route::get('/fale_conosco', function () {
     return view('web.static_views.fale_conosco');
 });
 
-Route::post('/fale_conosco/mail', function (Request $request) {
-    $request->validate([
-        'name' => ['required'],
-        'email' => ['required', 'email'],
-        'phone' => ['required'],
-        'message' => ['required'],
-
-    ], [
-        '*.required' => 'Este campo é obrigatório!',
-        'email.email' => 'É necessário informar um email válido!',
-    ]);
+Route::post('/fale_conosco/mail', function (\App\Http\Requests\FaleConoscoRequest $request) {
     Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
     return redirect()->back()->with("success", "Sua menssagem foi enviada!");
 });
@@ -92,7 +80,7 @@ Route::get('/juridico', function () {
     return view('web.static_views.juridico');
 });
 
-Route::get('/inscricao', [AssocieController::class, 'create'])->name('inscricao.avico');
+Route::get('/inscricao', [AssocieController::class, 'index'])->name('inscricao.avico');
 Route::post('/inscricao/store', [AssocieController::class, 'store'])->name('inscricao.store');
 
 Route::get('/noticias', [NoticeController::class, 'getAllNotices'])->name('noticias.avico');
