@@ -7,6 +7,7 @@
             @include('messages.messages')
         </div>
         <table class="table table-hover">
+            <caption></caption>
             <thead>
             <tr>
                 <th scope="row">Nome</th>

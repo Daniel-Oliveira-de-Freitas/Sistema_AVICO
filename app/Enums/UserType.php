@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum UserTypes: string
+enum UserType: string
 {
        case Voluntario = 'voluntario';
        case Associado = 'associado';

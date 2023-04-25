@@ -6,7 +6,7 @@
         <div class="container">
             <div class="masthead-heading text-uppercase">AVICO</div>
             <div class="masthead-subheading">Associação de Vítimas e Familiares de Vítimas da Covid-19</div>
-            <a class="btn btn-primary btn-xl text-uppercase mb-3" href="/inscricao">Associe-se a AVICO</a>
+            <a class="btn btn-primary btn-xl text-uppercase mb-3" href="{{ route('cadastro') }}">Associe-se a AVICO</a>
             <br>
             <a class="btn btn-primary btn-xl text-uppercase" href="/doacoes">Faça sua Doação</a>
         </div>

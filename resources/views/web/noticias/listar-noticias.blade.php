@@ -10,12 +10,12 @@
             <div class="row border-top  pt-3">
                 <div class="col-lg-4"><img class="img-fluid" src="{{ asset($noticia->caminho_imagem) }}" alt=""></div>
                 <div class="col-lg-8 rpttitle">
-                    <div class="sem_cor"><a href="{{ route('noticiaLer.avico', $noticia->id) }}">
+                    <div class="sem_cor"><a href="{{ route('visualizar.noticia', $noticia->id) }}">
                             <h5>{{ $noticia->titulo }}</h5></a>
                     </div>
                     <p>{!! Str::limit($noticia->conteudo, 250) !!}</p>
                     <div class="float-end pe-2 pb-4"><a class="btn btn-primary btn-sm"
-                            href="{{ route('noticiaLer.avico', $noticia->id) }}">Leia Mais</a>
+                            href="{{ route('visualizar.noticia', $noticia->id) }}">Leia Mais</a>
                     </div>
                 </div>
             </div>

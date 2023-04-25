@@ -1,4 +1,4 @@
-<form action="{{ route('indeferir_cadastro', $inscricao->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('indeferir.cadastro', $inscricao->id) }}" method="post" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
     <div class="modal fade" id="ModalReprovar{{ $inscricao->id }}" tabindex="-1" role="dialog" aria-hidden="true">

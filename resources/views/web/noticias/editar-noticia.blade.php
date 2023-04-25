@@ -4,7 +4,7 @@
 @section('content')
     <section class="form_body container rows ">
         @include('messages.messages')
-        <form action="{{ route('updatedNoticia', $noticia->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('atualizar.noticia.store', $noticia->id) }}" method="POST" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div class="col-md-8 col-md-offset-8" style="position: absolute; left: 17%; ">

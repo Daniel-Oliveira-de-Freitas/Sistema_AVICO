@@ -2,33 +2,33 @@
 
 namespace App\Repositories;
 
-use App\Enums\StatusTypes;
-use App\Enums\UserTypes;
+use App\Enums\StatusType;
+use App\Enums\UserType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
 
     public function save(Request $request)
     {
-        $user = new User();
-        $user->email =  $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
         $roles = collect($request->input('tipo'))->map(function ($type) {
-            return UserTypes::from($type)->value;
+            return UserType::from($type)->value;
         });
         $user->assignRole($roles);
 
-        return $user->id;
+        return $user;
     }
 
     /**
-     * Retorna todos os usuario do banco de dados
+     * Retorna todos os usuarios do banco de dados
      * @return Collection
      */
     public function getAll(): Collection
@@ -42,7 +42,7 @@ class UserRepository
      */
     public function getAllAwaitingApproval(): Builder
     {
-        return User::where('status', StatusTypes::Aguardando_aprovacao->value);
+        return User::where('status', StatusType::Aguardando_aprovacao->value);
     }
 
     /**
@@ -59,11 +59,10 @@ class UserRepository
      * Atualiza os dados de um usuario
      * @param int $id
      * @param array $arr
-     * @return null
      */
     public function update(int $id, array $arr)
     {
-        return User::findorfail($id)?->update($arr);
+        return User::findorfail($id)->update($arr);
     }
 
 }

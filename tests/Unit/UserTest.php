@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Http\Controllers\Register\RegisterFormController;
 use PHPUnit\Framework\TestCase;
-use App\Http\Controllers\AssocieController;
 
 class UserTest extends TestCase
 {
@@ -14,7 +14,7 @@ class UserTest extends TestCase
      */
     public function test_calculoCPF()
     {
-        $object = (new AssocieController());
+        $object = (new RegisterFormController());
         $response = $object->verifyCPF(61814601104);
         $this->assertFalse($response);
     }

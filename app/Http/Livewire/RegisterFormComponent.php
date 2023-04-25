@@ -3,18 +3,18 @@
 namespace App\Http\Livewire;
 
 use App\Actions\AssocieGetPropertiesAction;
-use App\Http\Controllers\AssocieController;
-use App\Http\Livewire\Traits\AssocieComponentStepMessagesTrait;
-use App\Http\Livewire\Traits\AssocieComponentStepRulesTrait;
+use App\Http\Controllers\Register\RegisterFormController;
+use App\Http\Livewire\Traits\RegisterFormComponentStepMessagesTrait;
+use App\Http\Livewire\Traits\RegisterFormComponentStepRulesTrait;
 use App\Services\ViaCepService;
-use Livewire\WithFileUploads;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
-class AssocieComponent extends Component
+class RegisterFormComponent extends Component
 {
-    use WithFileUploads, AssocieComponentStepMessagesTrait, AssocieComponentStepRulesTrait;
+    use WithFileUploads, RegisterFormComponentStepMessagesTrait, RegisterFormComponentStepRulesTrait;
 
     public array $data = [];
     public $termoInscricao;
@@ -25,6 +25,11 @@ class AssocieComponent extends Component
     public $fileComprovanteIsencao;
     public $currentStep = 1;
     public $totalSteps = 5;
+
+    public function render()
+    {
+        return view('livewire.register-form-component');
+    }
 
     public function mount()
     {
@@ -205,13 +210,12 @@ class AssocieComponent extends Component
     public function sendInfos()
     {
         $this->validateStep($this->currentStep);
-        $associeController = new AssocieController();
+        $associeController = new RegisterFormController();
         $myRequest = Request();
         $myRequest->setMethod('POST');
         $myRequest->request->add($this->data);
-
-        $filenames = $this->saveFile($this->generateFilesArray());
-        return $associeController->store($myRequest, $filenames, $filenames);
+        $myRequest->files->set('registerFiles', $this->generateFilesArray());
+        return $associeController->store($myRequest);
     }
 
     private function generateFilesArray(): array
@@ -224,22 +228,5 @@ class AssocieComponent extends Component
             $this->fileComprovanteEndereco,
             $this->fileComprovanteIsencao
         ];
-    }
-
-    private function saveFile(array $files): array
-    {
-        $count = 0;
-        $filepaths = array();
-        foreach ($files as $file) {
-            $count++;
-            if (!is_array($file) && $file !== null) {
-                array_push($filepaths, $file->storeAs('files/' . $this->data['cpf'], $count . $file->getClientOriginalName(), 'public'));
-            } elseif (is_array($file)) {
-                foreach ($file as $f) {
-                    array_push($filepaths, $f->storeAs('files/' . $this->data['cpf'], $count . $f->getClientOriginalName(), 'public'));
-                }
-            }
-        }
-        return $filepaths;
     }
 }

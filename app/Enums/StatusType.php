@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum StatusTypes: string
+enum StatusType: string
 {
         case Aguardando_aprovacao = 'aguardando_aprovacao';
         case Aprovado = 'aprovado';

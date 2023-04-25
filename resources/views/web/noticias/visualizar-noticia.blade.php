@@ -5,12 +5,12 @@
     <section class="container container-text sem_">
         @role('admin')
         <div class="d-flex flex-row-reverse bd-highlight ">
-            <form method="POST" action="{{ route('removeNoticia', $noticia->id) }}">
+            <form method="POST" action="{{ route('remover.noticia', $noticia->id) }}">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger">Excluir</button>
             </form>
-            <form method="GET" action="{{ route('updateNoticia', $noticia->id) }}">
+            <form method="GET" action="{{ route('atualizar.noticia', $noticia->id) }}">
                 @csrf
                 <button type="submit" class="btn btn-primary">Editar</button>
             </form>

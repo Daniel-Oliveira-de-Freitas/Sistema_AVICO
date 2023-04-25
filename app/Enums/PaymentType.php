@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PaymentTypes: string
+enum PaymentType: string
 {
         case Pix = 'pix';
         case Deposito = 'deposito';

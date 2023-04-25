@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\AssocieController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Notice\NoticeController;
-use App\Mail\FaleConoscoEmail;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Register\RegisterFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('index');
-})->name('home.avico');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__ . '/auth.php';
+})->name('avico.home');
 
 Route::get('/perguntas', function () {
     return view('web.static_views.perguntas');
@@ -67,11 +61,6 @@ Route::get('/fale_conosco', function () {
     return view('web.static_views.fale_conosco');
 });
 
-Route::post('/fale_conosco/mail', function (\App\Http\Requests\FaleConoscoRequest $request) {
-    Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
-    return redirect()->back()->with("success", "Sua menssagem foi enviada!");
-});
-
 Route::get('/enderecos', function () {
     return view('web.static_views.enderecos_uteis');
 });
@@ -80,8 +69,10 @@ Route::get('/juridico', function () {
     return view('web.static_views.juridico');
 });
 
-Route::get('/inscricao', [AssocieController::class, 'index'])->name('inscricao.avico');
-Route::post('/inscricao/store', [AssocieController::class, 'store'])->name('inscricao.store');
+Route::post('/fale_conosco/mail', ContactUsController::class);
 
-Route::get('/noticias', [NoticeController::class, 'getAllNotices'])->name('noticias.avico');
-Route::get('/noticia/{id}', [NoticeController::class, 'findNoticeById'])->name('noticiaLer.avico');
+Route::get('/cadastro-avico', [RegisterFormController::class, 'create'])->name('cadastro');
+Route::post('/cadastro-avico', [RegisterFormController::class, 'store'])->name('cadastro.store');
+
+Route::get('/noticias', [NoticeController::class, 'index'])->name('listar.noticias');
+Route::get('noticias/noticia/{id}', [NoticeController::class, 'show'])->name('visualizar.noticia');

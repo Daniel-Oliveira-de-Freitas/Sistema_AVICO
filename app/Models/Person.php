@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use App\Enums\PaymentTypes;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\PaymentType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Person extends Model
 {
-    use HasFactory;
     protected $table = 'persons';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,14 +32,23 @@ class Person extends Model
         'dados_adicionais'
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int>
+     */
+    protected $hidden = [
+        'user_id'
+    ];
+
     protected $casts = [
-        'tipo_pagamento' => PaymentTypes::class
+        'tipo_pagamento' => PaymentType::class
     ];
 
     /**
      *  Associa os registro de adresses com person
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function adress(): HasOne
     {
@@ -51,7 +58,7 @@ class Person extends Model
     /**
      * Associa os registro de reason com person
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function reason(): HasOne
     {
@@ -61,7 +68,7 @@ class Person extends Model
     /**
      * Associa os registro de file com person
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function file(): HasOne
     {
@@ -71,7 +78,7 @@ class Person extends Model
     /**
      * Associa os registro de user com person
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {

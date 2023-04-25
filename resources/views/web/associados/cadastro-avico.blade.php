@@ -3,6 +3,6 @@
 
 @section('content')
     <section class="container rows col-md-6 offset-md-3">
-        <livewire:associe-component />
+        <livewire:register-form-component/>
     </section>
 @endsection

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Enums\StatusTypes;
+use App\Enums\StatusType;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +61,7 @@ class LoginRequest extends FormRequest
         return array(
             'email' => $request->get('email'),
             'password' => $request->get('password'),
-            'status'=> StatusTypes::Aprovado,
+            'status'=> StatusType::Aprovado,
             'active' => true
         );
     }

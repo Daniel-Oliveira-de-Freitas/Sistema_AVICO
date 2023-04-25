@@ -6,13 +6,13 @@ use App\Models\Reason;
 
 class ReasonRepository
 {
-    public function save($request, $personId)
+    public function save($request, $personId): void
     {
-        $reason = new Reason();
-        $reason->person_id = $personId;
-        $reason->condicao =  json_encode($request->condicoes);
-        $reason->grau_parentesco = $request->parentesco;
-        $reason->outros = $request->outros;
-        $reason->save();
+        Reason::create([
+            'person_id' => $personId,
+            'condicao' => json_encode($request->condicoes),
+            'grau_parentesco' =>  $request->parentesco,
+            'outros' => $request->outros
+        ]);
     }
 }
