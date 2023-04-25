@@ -16,6 +16,6 @@ class ContactUsController extends Controller
     public function __invoke(ContactUsRequest $request)
     {
         Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
-        return redirect()->back()->with("success", "Sua menssagem foi enviada!");
+        return redirect()->back()->with("success", "Sua mensagem foi enviada!");
     }
 }

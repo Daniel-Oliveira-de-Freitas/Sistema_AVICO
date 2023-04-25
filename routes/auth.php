@@ -60,7 +60,6 @@ Route::middleware('role:admin')->group(function () {
         ->name('baixar_dados');
     Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
     Route::get('/noticias/criar-noticia', [NoticeController::class, 'create'])->name('criar.noticia');
-    Route::post('/noticias/criar-noticia', [NoticeController::class, 'store'])->name('criar.noticia.store');
     Route::patch('/listar-cadastros/aprovar/{id}', [RegisterFormController::class, 'aprove'])->name('deferir.cadastro');
     Route::patch('/listar-cadastros/indeferir/{id}', [RegisterFormController::class, 'remove'])
         ->name('indeferir.cadastro');
