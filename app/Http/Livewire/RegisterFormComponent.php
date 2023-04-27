@@ -64,7 +64,6 @@ class RegisterFormComponent extends Component
     public function validateStep(int $step)
     {
         $rules = $this->validationRules[$step];
-
         if (in_array("Familiar de vítima da COVID-19", $this->data['condicoes']) && $this->currentStep == 3) {
             $rules += [
                 'data.dadosAdicionais.*.nome' => 'required',

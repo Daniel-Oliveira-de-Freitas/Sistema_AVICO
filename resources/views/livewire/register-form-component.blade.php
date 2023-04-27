@@ -62,8 +62,8 @@
                         pena
                         de aplicação dos artigos 29 a 33 do Estatuto Social.</p>
                 </div>
-                <input id="termos" name="termos" class="form-check-input" type="checkbox" wire:model="data.termos">
                 <label for="termos" class="form-check-label">Concorda com os termos de associação?*</label>
+                <input id="termos" name="termos" class="form-check-input" type="checkbox" wire:model="data.termos">
                 <x-error-message errorName="data.termos"/>
             </div>
         @endif
