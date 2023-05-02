@@ -52,7 +52,7 @@ No caso do SQLite o DB_DATABASE você deve indicar o caminho que deseja que o ba
 
 ```dotenv
 DB_CONNECTION=sqlite
-DB_DATABASE=database/avico.sqlite
+DB_DATABASE=../database/avico.sqlite
 DB_FOREIGN_KEYS=true
 ```
 
