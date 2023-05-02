@@ -3,7 +3,7 @@
 ## Requisitos para executar o projeto
 
 - [Laravel](https://laravel.com/docs/9.x) >= 9.0 
-- [PHP](https://www.php.net/downloads.php) >= 8.0
+- [PHP](https://www.php.net/downloads.php) >= 8.2
 - [Composer](https://getcomposer.org/)
 - Algum banco de dados relacional (Recomendo postgresql)
 
