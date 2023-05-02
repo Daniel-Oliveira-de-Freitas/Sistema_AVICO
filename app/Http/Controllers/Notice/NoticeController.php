@@ -48,13 +48,13 @@ class NoticeController extends Controller
     {
         $this->noticeService = new NoticeService();
         $this->noticeService->updateNotice($id, $nr);
-        return redirect()->route('listar.noticias');
+        return redirect()->route('listar.noticias')->with('success', 'Noticia atualizada com sucesso!');
     }
 
     public function destroy(int $id)
     {
         $this->noticeService = new NoticeService();
         $this->noticeService->deleteNotice($id);
-        return redirect()->route('listar.noticias');
+        return redirect()->route('listar.noticias')->with('success', 'Noticia deletada com sucesso!');
     }
 }

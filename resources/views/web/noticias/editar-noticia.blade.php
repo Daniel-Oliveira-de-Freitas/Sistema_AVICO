@@ -9,9 +9,9 @@
             @csrf
             <div class="col-md-8 col-md-offset-8" style="position: absolute; left: 17%; ">
                 <div class="form-group mb-4">
-                    <label> Titulo</label>
+                    <label for="titulo"> Titulo</label>
                     <input type="text" class="form-control" name="title" value="{{ $noticia->titulo }}"
-                        placeholder="Adicione o Titulo da noticia">
+                        placeholder="Adicione o Titulo da noticia" id="titulo">
                 </div>
                 <div class="form-group mb-4">
 

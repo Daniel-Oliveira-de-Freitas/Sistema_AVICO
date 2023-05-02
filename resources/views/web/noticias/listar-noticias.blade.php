@@ -6,6 +6,7 @@
         <div class="text-center pb-3">
             <h3 class="section-heading text-uppercase">Notícias</h3>
         </div>
+        @include('messages.messages')
         @forelse ($noticias as $noticia)
             <div class="row border-top  pt-3">
                 <div class="col-lg-4"><img class="img-fluid" src="{{ asset($noticia->caminho_imagem) }}" alt=""></div>
