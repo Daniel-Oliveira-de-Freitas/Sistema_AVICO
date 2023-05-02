@@ -27,7 +27,7 @@
                 reduzirão a números! É na luta coletiva que somos mais fortes!
             <p>
             <div class="text-center"><a class="btn btn-primary btn-xl text-uppercase"
-                    href="{{ route('inscricao.avico') }}">Associe-se a AVICO</a>
+                    href="{{ route('cadastro') }}">Associe-se a AVICO</a>
             </div>
         </div>
     </section>

@@ -9,3 +9,9 @@
 @if(session()->has('warning'))
     <x-alert alertType="warning" message="{{session()->get('warning')}}"/>
 @endif
+
+@if($errors->get('validationError'))
+    @foreach ($errors->get('validationError') as $message)
+        <x-alert alertType="danger" message="{!! $message !!}"/>
+    @endforeach
+@endif

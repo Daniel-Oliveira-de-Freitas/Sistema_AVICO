@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactUsRequest;
-use App\Mail\FaleConoscoEmail;
+use App\Mail\ContactUsEmail;
 use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
@@ -15,7 +15,7 @@ class ContactUsController extends Controller
      */
     public function __invoke(ContactUsRequest $request)
     {
-        Mail::to('avicobrasil@gmail.com')->send(new FaleConoscoEmail($request));
+        Mail::to('avicobrasil@gmail.com')->send(new ContactUsEmail($request));
         return redirect()->back()->with("success", "Sua mensagem foi enviada!");
     }
 }

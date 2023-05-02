@@ -11,8 +11,7 @@
                 @foreach (\App\Enums\UserType::cases() as $key => $value)
                     <br>
                     <input class="tipo form-check-input" type="checkbox" name="tipo[]" wire:model="data.tipo"
-                           id="{{ $value->value }}" value="{{ $value->value }}"
-                        {{ old('data.tipo') == $value->value ? 'checked' : '' }}>
+                           id="{{ $value->value }}" value="{{ $value->value }}">
                     <label class="form-check-label" for="{{ $value->name }}"> {{ $value->name }}</label>
                 @endforeach
                 <x-error-message errorName="data.tipo"/>
@@ -72,7 +71,7 @@
                 <div class="mb-3 form-group col">
                     <label for="nome">Nome completo*</label>
                     <input class="form-control text-break" type="text" name="nome" wire:model="data.nome"
-                           value="{{ old('data.nome') }}" id="nome" maxlength="255">
+                           value="{{ 'data.nome' }}" id="nome" maxlength="255">
                     <x-error-message errorName="data.nome"/>
                 </div>
                 <div class="mb-3 form-group col-md-6">
@@ -258,7 +257,7 @@
                             @if ($key === 0)
                                 <button type="button" class="btn btn-primary mt-4" id="add_form_field"
                                         wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
-                                    famliar
+                                    familiar
                                 </button>
                             @endif
                             <div class="card mt-3 mb-2">

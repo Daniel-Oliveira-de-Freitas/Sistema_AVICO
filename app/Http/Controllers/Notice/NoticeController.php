@@ -20,7 +20,6 @@ class NoticeController extends Controller
     public function create()
     {
         return view('web.noticias.criar-noticia');
-
     }
 
     public function store(NoticeRequest $nr)

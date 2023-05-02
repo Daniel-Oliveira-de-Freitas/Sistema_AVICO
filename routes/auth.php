@@ -9,7 +9,6 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Notice\NoticeController;
 use App\Http\Controllers\Register\RegisterFormController;
-use App\Http\Controllers\Register\RegisterListController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -56,15 +55,17 @@ Route::middleware('auth')->group(function () {
 Route::middleware('role:admin')->group(function () {
     Route::get('/email/welcome', [RegisterFormController::class, 'create']);
     Route::get('/listar-cadastros', [RegisterFormController::class, 'index'])->name('listar.cadastros');
-    Route::get('/listar/download_arquivos/{id}', [RegisterFormController::class, 'downloadFiles'])
+    Route::get('/listar/download_arquivos/{user}', [RegisterFormController::class, 'downloadFiles'])
         ->name('baixar_dados');
-    Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
+//    Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
     Route::get('/noticias/criar-noticia', [NoticeController::class, 'create'])->name('criar.noticia');
-    Route::patch('/listar-cadastros/aprovar/{id}', [RegisterFormController::class, 'aprove'])->name('deferir.cadastro');
-    Route::patch('/listar-cadastros/indeferir/{id}', [RegisterFormController::class, 'remove'])
-        ->name('indeferir.cadastro');
     Route::get('/noticias/noticia/{id}/editar', [NoticeController::class, 'edit'])
         ->name('atualizar.noticia');
+    Route::post('/noticias/criar-noticia', [NoticeController::class, 'store'])->name('criar.noticia.store');
+    Route::patch('/listar-cadastros/aprovar/{id}', [RegisterFormController::class, 'approveUserRegister'])
+        ->name('deferir.cadastro');
+    Route::patch('/listar-cadastros/indeferir/{id}', [RegisterFormController::class, 'rejectUserRegister'])
+        ->name('indeferir.cadastro');
     Route::patch('/noticias/noticia/{id}/editar', [NoticeController::class, 'update'])
         ->name('atualizar.noticia.store');
     Route::delete('/noticias/noticia/{id}', [NoticeController::class, 'destroy'])->name('remover.noticia');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Register;
 
 use App\Enums\StatusType;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -38,33 +39,30 @@ class RegisterFormController extends Controller
                 ->with('warning', 'Seus dados serão analisados e você será avisado(a) via email!');
         }
 
-        return session()->now('error', 'Houve um erro ao realizar o seu cadastro!');
+        session()->now('error', 'Houve um erro ao realizar o seu cadastro!');
     }
 
-    public function remove(Request $request, int $id)
+    public function rejectUserRegister(Request $request, int $id)
     {
         $user = $this->userService->findUserById($id);
-        $this->userService->updateUser($id, ['status' => StatusType::Indeferido->value, 'active' => false]);
-        $user->sendIndeferRegisterNotification($request->motivo);
-        return redirect()->back()->with('success', 'Usuário indeferido no sistema');
+        $user->sendRejectedUserRegisterNotification($request->motivo);
+        return redirect()->back()->with('success', 'O Usuário foi indeferido no sistema');
     }
 
-    public function aprove(int $id)
+    public function approveUserRegister(int $id)
     {
         $user = $this->userService->findUserById($id);
-        $this->userService->updateUser($id, ['status' => StatusType::Aprovado->value, 'active' => true]);
+        $this->userService->updateUser($id, ['status' => StatusType::Aprovado, 'active' => true]);
         $user->sendWelcomeNotification();
-        return redirect()->back()->with('success', 'Usuário aprovado no sistema');
+        return redirect()->back()->with('success', 'O Usuário foi aprovado no sistema');
     }
 
-    public function downloadFiles(int $id)
+    public function downloadFiles(User $user)
     {
-        $user = $this->userService->findUserById($id);
         $zip = new ZipArchive;
         $filename = 'Documentos de ' . $user->person->nome_completo . '.zip';
         if ($zip->open(public_path($filename), ZipArchive::CREATE) === true) {
-            $files = File::files(storage_path('app\public\files\\' . $user->person->cpf));
-
+            $files = File::files(storage_path('app\public\\' . $user->person->file->caminho_arquivos));
             foreach ($files as $file) {
                 $relativeName = basename($file);
                 $zip->addFile($file, $relativeName);
@@ -73,4 +71,5 @@ class RegisterFormController extends Controller
         }
         return response()->download($filename)->deleteFileAfterSend();
     }
+
 }

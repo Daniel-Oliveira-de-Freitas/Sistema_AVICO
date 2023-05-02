@@ -38,10 +38,13 @@
                     <div class="col-6">
                         <h5>Dados para associacão</h5>
                         <dt>Condicão:</dt>
-                        <dd>@foreach (json_decode($inscricao->person->reason->condicao) as $item){{$item}}</br>@endforeach</dd>
+                        <dd>@foreach ($inscricao->person->reason->condicao as $item){{$item}}<br>
+                            @endforeach</dd>
                         <dt>Grau Parentesco:</dt>
                         <dt>Tipo de associação:</dt>
-                        <dd>@foreach ($inscricao->role as $item){{ $item->name }}</br>@endforeach</dd>
+                        <dd>@foreach ($inscricao->role as $item)
+                                {{ $item->name }}<br>
+                            @endforeach</dd>
                         <dt>Tipo de pagamento:</dt>
                         <dd>{{ $inscricao->person->tipo_pagamento?->name }}</dd>
                     </div>

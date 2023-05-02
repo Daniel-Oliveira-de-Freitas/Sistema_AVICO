@@ -10,18 +10,18 @@
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-control mb-3" type="email" name="email"
+                    <input class="form-control mb-3" type="email" name="email" id="email"
                         value="{{ old('email', $request->email) }}" readonly>
                     <x-error-message errorName="email" />
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Senha</label>
-                    <input class="form-control mb-3" type="password" name="password">
+                    <input class="form-control mb-3" type="password" name="password" id="password">
                     <x-error-message errorName="password" />
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label" for="password_confirmation">Confirmar senha</label>
-                    <input class="form-control" type="password" name="password_confirmation">
+                    <input class="form-control" type="password" name="password_confirmation" id="password_confirmation">
                     <x-error-message errorName="password_confirmation" />
                 </div>
                 <button class="btn btn-primary" type="submit">Redefinir senha</button>

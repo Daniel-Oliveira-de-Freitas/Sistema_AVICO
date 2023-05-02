@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Enums\StatusType;
 use App\Mail\WelcomeEmail;
-use App\Notifications\IndeferUserNotification;
+use App\Notifications\RejectedUserRegisterNotification;
 use App\Notifications\ResetPasswordNotification;
 use App\Notifications\WelcomeUserNotification;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -116,9 +116,9 @@ class User extends Authenticatable
      *n
      * @return void
      */
-    public function sendIndeferRegisterNotification($reason): void
+    public function sendRejectedUserRegisterNotification($reason): void
     {
-        $this->notify(new IndeferUserNotification($reason));
+        $this->notify(new RejectedUserRegisterNotification($reason));
     }
 
     /**

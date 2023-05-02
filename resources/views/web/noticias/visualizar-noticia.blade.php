@@ -16,7 +16,7 @@
             </form>
         </div>
         @endrole
-        <div class="pb-3">Por {{ $noticia->user->person?->nome_completo }}
+        <div class="pb-3">Por {!! $noticia->user->person?->nome_completo !!}
             em
             {{ $noticia->created_at }}
         </div>
@@ -25,7 +25,7 @@
             <div class="col-lg-9 noticia">
                 <h3>{{ $noticia->titulo }}</h3>
                 <div class="row pt-3">
-                    <img class="img-fluid" src="{{ asset($noticia->caminho_imagem) }}" alt="{{ $noticia->titulo }}">
+                    <img class="img-fluid" src="{!! asset($noticia->caminho_imagem) !!}" alt="{{ $noticia->titulo }}">
                 </div>
                 <div class="row pt-3">
                     {!! $noticia->conteudo !!}

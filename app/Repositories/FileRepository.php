@@ -12,8 +12,8 @@ class FileRepository
         $filesInfos = SaveFilesAction::registerFormFilesSave($files, $person->cpf);
         File::create([
             'person_id' => $person->id,
-            'arquivos' => json_encode($filesInfos),
-            'caminho_arquivos' =>  $filesInfos,
+            'arquivos' => $filesInfos['arquivos'],
+            'caminho_arquivos' => $filesInfos['caminho_arquivos'],
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -32,15 +33,6 @@ class Reason extends Model
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'condicao' => 'array',
-    ];
-
-    /**
      * Get the user that owns the Reason
      *
      * @return BelongsTo
@@ -50,4 +42,14 @@ class Reason extends Model
         return $this->belongsTo(User::class, 'person_id');
     }
 
+    /**
+     * Interact with the reason condicao
+     */
+    protected function condicao(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => json_decode($value),
+            set: fn ($value) => json_encode($value)
+        );
+    }
 }

@@ -10,8 +10,8 @@ class ReasonRepository
     {
         Reason::create([
             'person_id' => $personId,
-            'condicao' => json_encode($request->condicoes),
-            'grau_parentesco' =>  $request->parentesco,
+            'condicao' => $request->condicoes,
+            'grau_parentesco' => $request->parentesco,
             'outros' => $request->outros
         ]);
     }
