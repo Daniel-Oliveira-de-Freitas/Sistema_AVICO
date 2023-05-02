@@ -17,7 +17,7 @@
 
                     <label> Noticia </label>
                     <input id="editor1" class="form-control" name="body" value="{{ $noticia->conteudo }}"
-                        placeholder="Adicione a noticia" type="hidden" name="content">
+                        placeholder="Adicione a noticia" type="hidden">
                     <trix-editor input="editor1"></trix-editor>
                 </div>
 
