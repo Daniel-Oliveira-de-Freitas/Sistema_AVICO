@@ -41,7 +41,7 @@ php artisan serve
 ```dotenv
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
-DB_PORT=5432 //porta pafrão do postgresql
+DB_PORT=5432 //porta padrão do postgresql
 DB_DATABASE=avico //nome do banco criado
 DB_USERNAME=meu_usuario
 DB_PASSWORD=minha_senha
