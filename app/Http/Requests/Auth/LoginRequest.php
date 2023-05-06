@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Enums\StatusTypes;
+use App\Enums\StatusType;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -42,29 +42,27 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate($request)
+    public function authenticate($request): void
     {
+        $credentials = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'status' => StatusType::Aprovado,
+            'active' => true
+        ];
 
-        if (! Auth::attempt($this->credentials($request))) {
+        if (!Auth::attempt($credentials)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'validationError' => trans('auth.failed'),
             ]);
         }
+
 
         RateLimiter::clear($this->throttleKey());
     }
 
-
-    private function credentials($request){
-        return array(
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-            'status'=> StatusTypes::Aprovado,
-            'active' => true
-        );
-    }
     /**
      * Ensure the login request is not rate limited.
      *
@@ -72,9 +70,9 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function ensureIsNotRateLimited()
+    public function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -83,7 +81,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'validationError' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -97,6 +95,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('email')) . '|' . $this->ip());
     }
 }

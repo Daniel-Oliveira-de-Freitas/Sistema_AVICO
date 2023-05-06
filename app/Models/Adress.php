@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Adress extends Model
 {
-    use HasFactory;
-    
     public $timestamps = false;
-    protected $table = 'adresses'; 
+    protected $table = 'adresses';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,7 +34,7 @@ class Adress extends Model
     protected $hidden = [
         'person_id'
     ];
-    
+
     /**
      * Get the user that owns the Adress
      *

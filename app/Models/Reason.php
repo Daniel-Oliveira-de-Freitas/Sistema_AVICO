@@ -3,16 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reason extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
     protected $table = 'reasons';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,22 +24,32 @@ class Reason extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
-    protected $casts = [
-        'condicao' => 'array',
+    protected $hidden = [
+        'person_id'
     ];
 
     /**
      * Get the user that owns the Reason
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'person_id');
     }
 
+    /**
+     * Interact with the reason condicao
+     */
+    protected function condicao(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => json_decode($value),
+            set: fn ($value) => json_encode($value)
+        );
+    }
 }

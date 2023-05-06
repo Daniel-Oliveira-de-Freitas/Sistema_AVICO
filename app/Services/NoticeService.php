@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Requests\Notice\NoticeRequest;
+use App\Http\Requests\NoticeRequest;
 use App\Repositories\NoticeRepository;
 use Exception;
 
@@ -17,25 +17,31 @@ class NoticeService
 
     public function createNotice(NoticeRequest $nr)
     {
-        // return $this->noticeRepository->save($nr);
+        try {
+            $this->noticeRepository->save($nr);
+        } catch (Exception $e) {
+            return false;
+        }
     }
-
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return array
      */
     public function getAllNotices()
     {
-        return $this->noticeRepository->getAll();
+        try {
+            return $this->noticeRepository->getAll()->paginate(10);
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
      * Retorna um usuario por id
      * @param int $id
-     * @return object
+     * @return object|bool
      */
-    public function findNoticeById($id)
+    public function findNoticeById(int $id): object|bool
     {
         try {
             return $this->noticeRepository->getById($id);
@@ -44,20 +50,19 @@ class NoticeService
         }
     }
 
-    /**
+    /*
      * Atualiza os dados de um usuario
      * @param int $id
-     * @param array $user
+     * @param NoticeRequest $nr
      */
-    public function updateNotice($id, NoticeRequest $nr, $filePath)
+    public function updateNotice(int $id, NoticeRequest $nr)
     {
         try {
-            return $this->noticeRepository->update($id, $nr, $filePath);
+            $this->noticeRepository->update($id, $nr);
         } catch (Exception $e) {
             return false;
         }
     }
-
 
     /**
      * Deleta um usuario

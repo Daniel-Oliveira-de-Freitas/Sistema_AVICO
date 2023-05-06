@@ -7,7 +7,7 @@ class AssocieGetPropertiesAction
     public static function initializeEmptyArray(): array {
         return [
             'tipo' => [],
-            'termos' => false,
+            'termos' => '',
             'nome' => '',
             'dataNascimento' => '',
             'password' => '',
