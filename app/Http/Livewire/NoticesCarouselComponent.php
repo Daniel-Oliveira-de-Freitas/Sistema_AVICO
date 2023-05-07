@@ -5,14 +5,14 @@ namespace App\Http\Livewire;
 use App\Models\Notice;
 use Livewire\Component;
 
-class NoticesCarousel extends Component
+class NoticesCarouselComponent extends Component
 {
 
     public $notices;
 
     public function render()
     {
-        return view('livewire.notices-carousel');
+        return view('livewire.notices-carousel-component');
     }
 
     public function mount()

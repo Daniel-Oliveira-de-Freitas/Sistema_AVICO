@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class chatbot extends Component
+class Chatbot extends Component
 {
     /**
      * Create a new component instance.
