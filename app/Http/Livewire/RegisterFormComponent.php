@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Actions\AssocieGetPropertiesAction;
+use App\Actions\RegisterFormGetPropertiesAction;
 use App\Http\Controllers\Register\RegisterFormController;
 use App\Http\Livewire\Traits\RegisterFormComponentStepMessagesTrait;
 use App\Http\Livewire\Traits\RegisterFormComponentStepRulesTrait;
@@ -33,14 +33,16 @@ class RegisterFormComponent extends Component
 
     public function mount()
     {
-        $this->data = AssocieGetPropertiesAction::initializeEmptyArray();
+        $this->data = RegisterFormGetPropertiesAction::initializeEmptyArray();
     }
 
     public function increaseStep()
     {
         $this->validateStep($this->currentStep);
-        if (in_array('voluntario', $this->data['tipo']) &&
-            in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
+        if (
+            in_array('voluntario', $this->data['tipo']) &&
+            in_array('associado', $this->data['tipo']) && $this->currentStep == 3
+        ) {
             $this->currentStep++;
         } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 3) {
             $this->currentStep += 2;
@@ -51,8 +53,10 @@ class RegisterFormComponent extends Component
 
     public function decreaseStep()
     {
-        if (in_array('voluntario', $this->data['tipo']) &&
-            in_array('associado', $this->data['tipo']) && $this->currentStep == 3) {
+        if (
+            in_array('voluntario', $this->data['tipo']) &&
+            in_array('associado', $this->data['tipo']) && $this->currentStep == 3
+        ) {
             $this->currentStep--;
         } elseif (in_array('voluntario', $this->data['tipo']) && $this->currentStep == 5) {
             $this->currentStep -= 2;
@@ -154,6 +158,7 @@ class RegisterFormComponent extends Component
             $this->data['complemento'] = $viaCepArray['complemento'];
             $this->data['bairro'] = $viaCepArray['bairro'];
         }
+
         if ($key === 'data.celular' && !$this->formatPhoneNumber($value)) {
             return throw ValidationException::withMessages([
                 'data.celular' => 'O celular informado é inválido'
@@ -201,7 +206,7 @@ class RegisterFormComponent extends Component
     {
         $pdf = Pdf::loadView('layouts.pdf', $this->data)->setPaper('a4', 'landscape')->output();
         return response()->streamDownload(
-            fn() => print($pdf),
+            fn () => print($pdf),
             'termo.pdf'
         );
     }

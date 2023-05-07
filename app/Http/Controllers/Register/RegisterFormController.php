@@ -39,7 +39,7 @@ class RegisterFormController extends Controller
                 ->with('warning', 'Seus dados serão analisados e você será avisado(a) via email!');
         }
 
-        session()->now('error', 'Houve um erro ao realizar o seu cadastro!');
+        session()->now('error', 'Houve um erro ao realizar o seu cadastro, por favor verifique os dados fornecidas!');
     }
 
     public function rejectUserRegister(Request $request, int $id)
@@ -62,7 +62,8 @@ class RegisterFormController extends Controller
         $zip = new ZipArchive;
         $filename = 'Documentos de ' . $user->person->nome_completo . '.zip';
         if ($zip->open(public_path($filename), ZipArchive::CREATE) === true) {
-            $files = File::files(storage_path('app\public\\' . $user->person->file->caminho_arquivos));
+            //$files = File::files(storage_path('app\public\\' . $user->person->file->caminho_arquivos));
+            $files = File::files(storage_path('app\public\files\\' . $user->person->cpf));
             foreach ($files as $file) {
                 $relativeName = basename($file);
                 $zip->addFile($file, $relativeName);
@@ -71,5 +72,4 @@ class RegisterFormController extends Controller
         }
         return response()->download($filename)->deleteFileAfterSend();
     }
-
 }

@@ -2,9 +2,10 @@
 
 namespace App\Actions;
 
-class AssocieGetPropertiesAction
+class RegisterFormGetPropertiesAction
 {
-    public static function initializeEmptyArray(): array {
+    public static function initializeEmptyArray(): array
+    {
         return [
             'tipo' => [],
             'termos' => '',
@@ -35,5 +36,4 @@ class AssocieGetPropertiesAction
             'dadosAdicionais' => collect([['nome' => '', 'parentesco' => '', 'idade' => '', 'outro' => '']])
         ];
     }
-
 }
