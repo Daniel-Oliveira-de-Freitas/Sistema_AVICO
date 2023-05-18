@@ -2,35 +2,47 @@
 
 namespace App\Repositories;
 
-use App\Enums\UserTypes;
+use App\Enums\StatusType;
+use App\Enums\UserType;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
 
     public function save(Request $request)
     {
-        $user = new User();
-        $user->email =  $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
         $roles = collect($request->input('tipo'))->map(function ($type) {
-            return UserTypes::from($type)->value;
+            return UserType::from($type)->value;
         });
         $user->assignRole($roles);
 
-        return $user->id;
+        return $user;
+    }
+
+    /**
+     * Retorna todos os usuarios do banco de dados
+     * @return Collection
+     */
+    public function getAll(): Collection
+    {
+        return User::all();
     }
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return array
+     * @return Builder
      */
-    public function getAll()
+    public function getAllAwaitingApproval(): Builder
     {
-        return User::all();
+        return User::where('status', StatusType::Aguardando_aprovacao->value);
     }
 
     /**
@@ -38,7 +50,7 @@ class UserRepository
      * @param int $id
      * @return object
      */
-    public function getById($id)
+    public function getById(int $id): object
     {
         return User::findorfail($id);
     }
@@ -46,21 +58,11 @@ class UserRepository
     /**
      * Atualiza os dados de um usuario
      * @param int $id
-     * @param array $user
+     * @param array $arr
      */
-    public function update($id, array $arr)
+    public function update(int $id, array $arr)
     {
-        $user = User::findorfail($id);
-        return $user->update($arr);
+        return User::findorfail($id)->update($arr);
     }
 
-    /**
-     * Deleta um usuario
-     * @param int $id
-     */
-    public function destroy($id)
-    {
-        $user = User::findorfail($id);
-        return $user->delete();
-    }
 }

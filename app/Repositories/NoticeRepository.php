@@ -2,32 +2,33 @@
 
 namespace App\Repositories;
 
+use App\Actions\SaveFilesAction;
+use App\Http\Requests\NoticeRequest;
 use App\Models\Notice;
-use App\Http\Requests\Notice\NoticeRequest;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NoticeRepository
 {
 
-
-    public function save(NoticeRequest $nr, $filePath)
+    public function save(NoticeRequest $nr): void
     {
-        $notice = new Notice();
-        $notice->user_id = Auth::user()->id;
-        $notice->titulo = $nr->title;
-        $notice->conteudo = $nr->body;
-        $notice->caminho_imagem = $filePath ? $filePath : 'images\assets\img\noticias\LOGO-AVICO.png';
-        $notice->save();
+        Notice::create([
+            'user_id' => Auth::user()->id,
+            'titulo' => $nr->title,
+            'conteudo' => $nr->body,
+            'caminho_imagem' => SaveFilesAction::noticeFileSave($nr->userfile) ?: 'images\assets\img\noticias\LOGO-AVICO.png'
+        ]);
     }
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return array
+     * @return Builder
      */
-    public function getAll()
+    public function getAll(): Builder
     {
-        return DB::table('notices')->orderBy('id', 'DESC')->paginate(10);
+        return DB::table('notices')->orderBy('id', 'DESC');
     }
 
     /**
@@ -35,7 +36,7 @@ class NoticeRepository
      * @param int $id
      * @return object
      */
-    public function getById($id)
+    public function getById(int $id): object
     {
         return Notice::findorfail($id);
     }
@@ -43,19 +44,23 @@ class NoticeRepository
     /**
      * Atualiza os dados de um usuario
      * @param int $id
-     * @param array $user
+     * @param NoticeRequest $nr
+     * @param string $filePath
      */
-    public function update($id, NoticeRequest $nr, $filePath)
+    public function update(int $id, NoticeRequest $nr): void
     {
         $notice = Notice::findorfail($id);
-        $notice->update(['titulo' => $nr->title, 'conteudo' =>  $nr->body, 'caminho_imagem' => $filePath ? $filePath : $notice->caminho_imagem]);
+        $notice->update([
+            'titulo' => $nr->title,
+            'conteudo' => $nr->body,
+            'caminho_imagem' => SaveFilesAction::noticeFileSave($nr->userfile) ?: $notice->caminho_imagem]);
     }
 
     /**
      * Deleta um usuario
      * @param int $id
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $notice = Notice::findorfail($id);
         return $notice->delete();

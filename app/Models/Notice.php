@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Notice extends Model
 {
-    use HasFactory;
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<>
+     */
     protected $fillable = [
         'user_id',
         'titulo',
@@ -17,11 +19,19 @@ class Notice extends Model
         'caminho_imagem'
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'user_id'
+    ];
 
     /**
      * Get the user that owns the Adress
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {

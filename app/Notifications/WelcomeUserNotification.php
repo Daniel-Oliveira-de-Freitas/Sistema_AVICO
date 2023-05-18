@@ -55,7 +55,7 @@ class WelcomeUserNotification extends Notification
         return (new MailMessage)
                     ->subject('Notificação sobre o status do cadastro na Avico Brasil')
                     ->line('Seu cadastro na Avico Brasil foi aprovado')
-                    ->action('Acesse o site aqui', url('/'))
+                    ->action('Acesse o site aqui', url(route('avico.home')))
                     ->line('Bem vindo!');
     }
 

@@ -2,17 +2,18 @@
 
 namespace App\Repositories;
 
+use App\Actions\SaveFilesAction;
 use App\Models\File;
 
 class FileRepository
 {
-
-    public function save($person_id, $filenames, $filepaths)
+    public function save($person, $files): void
     {
-        $file = new File();
-        $file->arquivos = json_encode($filenames);
-        $file->caminho_arquivos =  $filepaths;
-        $file->person_id = $person_id;
-        $file->save();
+        $filesInfos = SaveFilesAction::registerFormFilesSave($files, $person->cpf);
+        File::create([
+            'person_id' => $person->id,
+            'arquivos' => $filesInfos['arquivos'],
+            'caminho_arquivos' => $filesInfos['caminho_arquivos'],
+        ]);
     }
 }

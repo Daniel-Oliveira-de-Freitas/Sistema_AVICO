@@ -15,7 +15,7 @@ class Alert extends Component
      *
      * @return void
      */
-    public function __construct(String $alertType, String $message, String $dismissible = '')
+    public function __construct(String $alertType, String $message, String $dismissible = 'true')
     {
         $this->alertType = $alertType;
         $this->message = $message;

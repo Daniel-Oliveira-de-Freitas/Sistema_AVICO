@@ -6,10 +6,9 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\ListagemController;
 use App\Http\Controllers\Notice\NoticeController;
+use App\Http\Controllers\Register\RegisterFormController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -54,15 +53,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('role:admin')->group(function () {
-    Route::get('/email/welcome', [ListagemController::class, 'create']);
-    Route::get('/listar', [ListagemController::class, 'create']);
-    Route::get('/noticias/criaNoticia', [NoticeController::class, 'create']);
-    Route::post('/noticias/criaNoticia/store', [NoticeController::class, 'store'])->name('cria_noticia');
-    Route::patch('/listar/aprovar/{id}', [ListagemController::class, 'aprove'])->name('deferir_cadastro');
-    Route::patch('/listar/indeferir/{id}', [ListagemController::class, 'remove'])->name('indeferir_cadastro');
-    Route::get('/listar/download_arquivos/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
-    Route::get('/listar/visualizar/{id}', [ListagemController::class, 'downloadFiles'])->name('baixar_dados');
-    Route::delete('/noticia/{id}/delete', [NoticeController::class, 'removeNotice'])->name('removeNoticia');
-    Route::get('/noticia/{id}/editar', [NoticeController::class, 'findNoticeByIdUpdate'])->name('updateNoticia');
-    Route::patch('/noticia/{id}/editar', [NoticeController::class, 'updateNotice'])->name('updatedNoticia');
+    Route::get('/email/welcome', [RegisterFormController::class, 'create']);
+    Route::get('/listar-cadastros', [RegisterFormController::class, 'index'])->name('listar.cadastros');
+    Route::get('/listar/download_arquivos/{user}', [RegisterFormController::class, 'downloadFiles'])
+        ->name('baixar_dados');
+//    Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
+    Route::get('/noticias/criar-noticia', [NoticeController::class, 'create'])->name('criar.noticia');
+    Route::get('/noticias/noticia/{id}/editar', [NoticeController::class, 'edit'])
+        ->name('atualizar.noticia');
+    Route::post('/noticias/criar-noticia', [NoticeController::class, 'store'])->name('criar.noticia.store');
+    Route::patch('/listar-cadastros/aprovar/{id}', [RegisterFormController::class, 'approveUserRegister'])
+        ->name('deferir.cadastro');
+    Route::patch('/listar-cadastros/indeferir/{id}', [RegisterFormController::class, 'rejectUserRegister'])
+        ->name('indeferir.cadastro');
+    Route::patch('/noticias/noticia/{id}/editar', [NoticeController::class, 'update'])
+        ->name('atualizar.noticia.store');
+    Route::delete('/noticias/noticia/{id}', [NoticeController::class, 'destroy'])->name('remover.noticia');
 });
