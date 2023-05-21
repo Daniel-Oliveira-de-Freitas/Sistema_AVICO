@@ -35,11 +35,12 @@
     <x-navbar />
     <main id="content">
         @yield('content')
+        <x-use-agreement />
     </main>
     <x-footer />
     @livewireScripts
 </body>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/script.js') }}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
