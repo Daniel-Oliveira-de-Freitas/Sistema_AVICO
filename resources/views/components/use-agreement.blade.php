@@ -1,38 +1,34 @@
-    <div class="modal fade" id="useAgreement" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="useAgreementLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h5 class="modal-title w-100" id="useAgreementLabel">Termos de uso</h5>
-                </div>
-                <div class="modal-body">
+    <div id="useAgreement" style="display: none">
+        <div class="footer py-lg-2">
+            <div class="row align-items-center">
+                <div class="d-block col text-lg">
                     <p>
                         Ao utilizar o site da Avico Brasil eu concordo com os
                         seguintes termos:
+                        <a href="{{ asset('images/assets/politicas_termos/Política de Privacidade.pdf') }}"
+                            target="_blank">Termo de
+                            privacidade</a>
+                        e
+                        <a href="{{ asset('images/assets/politicas_termos/Termos de Uso e Condições.pdf') }}"
+                            target="_blank">Termo de uso e
+                            condições</a>
                     </p>
-                    <a href="{{ asset('images/assets/politicas_termos/Política de Privacidade.pdf') }}"
-                        target="_blank">Termo de
-                        privacidade</a>
-                    e
-                    <a href="{{ asset('images/assets/politicas_termos/Termos de Uso e Condições.pdf') }}"
-                        target="_blank">Termo de uso e
-                        condições</a>
-
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                        id="disagreBtn">Recusar</button>
+                <div class="col-lg-2 my-1 my-lg-0">
                     <button type="button" class="btn btn-primary" id="agreeBtn">Li e aceito os termos</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
+    <script lang="js" defer>
         window.onload = function() {
-            if (getCookie() != true) {
-                $('#useAgreement').modal('show')
+            if (getCookie()) {
+                $("#useAgreement").css('display', 'none');
+                return;
             }
+
+            $("#useAgreement").css('display', 'block');
         };
 
         const cookieValue = document.cookie
@@ -52,7 +48,7 @@
 
         function setCookie() {
             document.cookie = `user_agreement=${btoa("accept")}`;
-            $('#useAgreement').modal('hide').remove();
+            $('#useAgreement').css('display', 'none').remove();
 
         }
 

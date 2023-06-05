@@ -35,7 +35,6 @@
     <x-navbar />
     <main id="content">
         @yield('content')
-        <x-use-agreement />
     </main>
     <x-footer />
     @livewireScripts
