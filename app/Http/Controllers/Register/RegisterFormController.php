@@ -44,17 +44,12 @@ class RegisterFormController extends Controller
 
     public function rejectUserRegister(Request $request, int $id)
     {
-        $user = $this->userService->findUserById($id);
-        $user->sendRejectedUserRegisterNotification($request->motivo);
-        return redirect()->back()->with('success', 'O Usuário foi indeferido no sistema');
+        return redirect()->back()->with($this->userService->updateUserRegister($id, StatusType::Indeferido, $request));
     }
 
     public function approveUserRegister(int $id)
     {
-        $user = $this->userService->findUserById($id);
-        $this->userService->updateUser($id, ['status' => StatusType::Aprovado, 'active' => true]);
-        $user->sendWelcomeNotification();
-        return redirect()->back()->with('success', 'O Usuário foi aprovado no sistema');
+        return redirect()->back()->with($this->userService->updateUserRegister($id, StatusType::Aprovado));
     }
 
     public function downloadFiles(User $user)

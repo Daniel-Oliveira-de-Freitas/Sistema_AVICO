@@ -48,7 +48,7 @@ class Reason extends Model
     protected function condicao(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => json_decode($value),
+            get: fn ($value) => is_array($value) ? $value : json_decode($value),
             set: fn ($value) => json_encode($value)
         );
     }

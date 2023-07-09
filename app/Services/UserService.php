@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\StatusType;
 use App\Repositories\AdressRepository;
 use App\Repositories\FamilyVictimRepository;
 use App\Repositories\FileRepository;
@@ -102,4 +103,30 @@ class UserService
         }
     }
 
+
+    /**
+     * Atualiza o cadastro de um usuário e manda um email
+     * @param int $id
+     * @param array $arr
+     */
+    public function updateUserRegister(int $id, StatusType $statusType, String $motivo = null)
+    {
+        try {
+            DB::beginTransaction();
+            $user = $this->findUserById($id);
+            if ($statusType === StatusType::Indeferido) {
+                $this->updateUser($id, ['status' => StatusType::Indeferido, 'active' => false]);
+                $user->sendRejectedUserRegisterNotification($motivo);
+            } else {
+                $this->updateUser($id, ['status' => StatusType::Aprovado, 'active' => true]);
+                $user->sendWelcomeNotification();
+            }
+
+            DB::commit();
+            return response(["success" => "O usuário foi " . $statusType->value . " com sucesso no sistema"], 200)->original;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response(["error" => "Ocorreu um erro ao processar sua requisição"], 500)->original;
+        }
+    }
 }
