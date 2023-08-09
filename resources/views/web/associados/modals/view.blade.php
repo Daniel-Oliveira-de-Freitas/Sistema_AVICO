@@ -1,5 +1,5 @@
 <div class="modal fade bd-modal-lg" id="ModalVisualizar{{ $inscricao->id }}" tabindex="-1" role="dialog"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,13 +38,29 @@
                     <div class="col-6">
                         <h5>Dados para associacão</h5>
                         <dt>Condicão:</dt>
-                        <dd>@foreach ($inscricao->person->reason->condicao as $item){{$item}}<br>
-                            @endforeach</dd>
+                        @if (is_array($inscricao->person->reason->condicao))
+                            <dd>
+                                @foreach ($inscricao->person->reason->condicao as $item)
+                                    {{ $item }}
+                                    <br>
+                                @endforeach
+                            </dd>
+                        @else
+                            <dd>
+                                @foreach (json_decode($inscricao->person->reason->condicao) as $item)
+                                    {{ $item }}
+                                    <br>
+                                @endforeach
+                            </dd>
+                        @endif
                         <dt>Grau Parentesco:</dt>
                         <dt>Tipo de associação:</dt>
-                        <dd>@foreach ($inscricao->role as $item)
-                                {{ $item->name }}<br>
-                            @endforeach</dd>
+                        <dd>
+                            @foreach ($inscricao->role as $item)
+                                {{ $item->name }}
+                                <br>
+                            @endforeach
+                        </dd>
                         <dt>Tipo de pagamento:</dt>
                         <dd>{{ $inscricao->person->tipo_pagamento?->name }}</dd>
                     </div>
@@ -61,7 +77,7 @@
                             <dd>{{ $inscricao->person->adress->nmrEndereco }}</dd>
                         </div>
                         <div class="col-5">
-                            @if(isset($inscricao->person->adress->complemento))
+                            @if (isset($inscricao->person->adress->complemento))
                                 <dt>Complemento:</dt>
                                 <dd>{{ $inscricao->person->adress->complemento }}</dd>
                             @endif
@@ -77,7 +93,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn gray btn-outline-secondary"
-                        data-dismiss="modal">{{ __('Close') }}</button>
+                    data-dismiss="modal">{{ __('Close') }}</button>
             </div>
         </div>
     </div>

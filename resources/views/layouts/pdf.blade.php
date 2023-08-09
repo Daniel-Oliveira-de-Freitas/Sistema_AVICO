@@ -17,7 +17,8 @@
 
 <body>
 <div style="text-align: center">
-    <img src="images\Logo_avico.png" height="!50" width="600" alt="AVico Logo">
+    {{-- TODO verificar porque parou de funcionar o modo de pegar a logo da avico --}}
+    <img src="{{ public_path() . 'images\Logo_avico.png' }}" height="!50" width="600" alt="AVico Logo">
 </div>
 <h1 class="text-center" style="text-align: center">TERMO DE ASSOCIAÇÃO</h1>
 <div class="card-body">
