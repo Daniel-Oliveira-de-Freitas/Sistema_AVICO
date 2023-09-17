@@ -71,283 +71,289 @@
             </div>
         @endif
         @if ($currentStep == 3)
-            <div class="row">
-                <div class="mb-3 form-group col">
-                    <label for="nome">Nome completo*</label>
-                    <input class="form-control text-break @error('data.nome') is-invalid @enderror" name="nome"
-                        wire:model="data.nome" value="{{ 'data.nome' }}" id="nome" maxlength="255">
-                    <x-error-message errorName="data.nome" />
-                </div>
-                <div class="mb-3 form-group col-md-6">
-                    <label for="dataNascimento">Data de Nascimento*</label>
-                    <input class="form-control" type="date" name="dataNascimento" wire:model="data.dataNascimento"
-                        id="dataNascimento">
-                    <x-error-message errorName="data.dataNascimento" />
-                </div>
-                <div class="mb-3 form-group col-md-6">
-                    <label for="password">Digite sua senha*</label>
-                    <input class="password form-control" type="password" name="password" wire:model="data.password"
-                        id="password">
-                    <x-error-message errorName="data.password" />
-                </div>
-                <div class="mb-3 form-group col-md-6">
-                    <label for="confirmPassword">Confirmar senha*</label>
-                    <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                        wire:model="data.confirmPassword">
-                    <x-error-message errorName="data.confirmPassword" />
-                </div>
-                <div class="mb-3 form-group">
-                    <label class="form-check-label text-start">Gênero*</label>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
-                            id="masculino" value="Masculino">
-                        <label class="form-check-label" for="masculino">Masculino</label>
+            <form>
+                <div class="row" id="formdiv">
+                    <div class="mb-3 form-group col">
+                        <label for="nome">Nome completo*</label>
+                        <input class="form-control text-break @error('data.nome') invalid @enderror" name="nome"
+                            wire:model="data.nome" value="{{ 'data.nome' }}" id="nome" maxlength="255">
+                        <x-error-message errorName="data.nome" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
-                            id="feminino" value="Feminino">
-                        <label class="form-check-label" for="feminino">Feminino</label>
+                    <div class="mb-3 form-group col-md-6">
+                        <label for="dataNascimento">Data de Nascimento*</label>
+                        <input class="form-control text-break @error('data.dataNascimento') invalid @enderror"  type="date" name="dataNascimento"
+                               wire:model="data.dataNascimento"
+                            id="dataNascimento">
+                        <x-error-message errorName="data.dataNascimento" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
-                            id="nao_binario" value="Não-binário">
-                        <label class="form-check-label" for="nao_binario">Não-binário</label>
+                    <div class="mb-3 form-group col-md-6">
+                        <label for="password">Digite sua senha*</label>
+                        <input class="password form-control text-break @error('data.password') invalid @enderror" type="password" name="password"
+                               wire:model="data.password"
+                            id="password">
+                        <x-error-message errorName="data.password" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
-                            id="neutro" value="Neutro">
-                        <label class="form-check-label" for="neutro">Prefiro Não Definir</label>
+                    <div class="mb-3 form-group col-md-6">
+                        <label for="confirmPassword">Confirmar senha*</label>
+                        <input class="form-control text-break @error('data.confirmPassword') invalid @enderror" type="password" name="confirmPassword" id="confirmPassword"
+                            wire:model="data.confirmPassword">
+                        <x-error-message errorName="data.confirmPassword" />
                     </div>
-                    <x-error-message errorName="data.genero" />
-                </div>
-                <div class="mb-3 form-group">
-                    <label for="racaCor">Raça/Cor*</label>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor"
-                            wire:model="data.racaCor" id="branca" value="Branca">
-                        <label class="form-check-label" for="branca">Branca</label>
+                    <div id="genero" class="mb-3 form-group text-break @error('data.genero') invalid @enderror">
+                        <label class="form-check-label text-start">Gênero*</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
+                                id="masculino" value="Masculino">
+                            <label class="form-check-label" for="masculino">Masculino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
+                                id="feminino" value="Feminino">
+                            <label class="form-check-label" for="feminino">Feminino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
+                                id="nao_binario" value="Não-binário">
+                            <label class="form-check-label" for="nao_binario">Não-binário</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="genero form-check-input" type="radio" name="genero" wire:model="data.genero"
+                                id="neutro" value="Neutro">
+                            <label class="form-check-label" for="neutro">Prefiro Não Definir</label>
+                        </div>
+                        <x-error-message errorName="data.genero" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor"
-                            wire:model="data.racaCor" id="preta" value="Preta">
-                        <label class="form-check-label" for="preta">Preta</label>
+                    <div id="racaCor" class="mb-3 form-group text-break @error('data.racaCor') invalid @enderror">
+                        <label for="racaCor">Raça/Cor*</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="racaCor form-check-input" type="radio" name="racaCor"
+                                wire:model="data.racaCor" id="branca" value="Branca">
+                            <label class="form-check-label" for="branca">Branca</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="racaCor form-check-input" type="radio" name="racaCor"
+                                wire:model="data.racaCor" id="preta" value="Preta">
+                            <label class="form-check-label" for="preta">Preta</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="racaCor form-check-input" type="radio" name="racaCor"
+                                wire:model="data.racaCor" id="parda" value="Parda">
+                            <label class="form-check-label" for="parda">Parda</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="racaCor form-check-input" type="radio" name="racaCor"
+                                wire:model="data.racaCor" id="indigena" value="Indígena">
+                            <label class="form-check-label" for="indigena">Indígena</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="racaCor form-check-input" type="radio" name="racaCor"
+                                wire:model="data.racaCor" id="amarela" value="Amarela">
+                            <label class="form-check-label" for="amarela">Amarela </label>
+                        </div>
+                        <x-error-message errorName="data.racaCor" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor"
-                            wire:model="data.racaCor" id="parda" value="Parda">
-                        <label class="form-check-label" for="parda">Parda</label>
+                    <div class="mb-3 col-md-6">
+                        <label for="cpf">CPF*</label>
+                        <input class="form-control text-break @error('data.cpf') invalid @enderror" type="text" name="cpf"
+                               wire:model.lazy="data.cpf"
+                            id="cpf" maxlength="14" required>
+                        <x-error-message errorName="data.cpf" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor"
-                            wire:model="data.racaCor" id="indigena" value="Indígena">
-                        <label class="form-check-label" for="indigena">Indígena</label>
+                    <div class="mb-3 col-md-6">
+                        <label for="rg">RG*</label>
+                        <input class="form-control text-break @error('data.rg') invalid @enderror" type="text" name="rg"
+                               wire:model="data.rg" id="rg" maxlength="14" required>
+                        <x-error-message errorName="data.rg" />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="racaCor form-check-input" type="radio" name="racaCor"
-                            wire:model="data.racaCor" id="amarela" value="Amarela">
-                        <label class="form-check-label" for="amarela">Amarela </label>
+                    <div class="mb-3 col-md-6">
+                        <label for="celular">Celular (DDD+número)*</label>
+                        <input class="form-control text-break @error('data.celular') invalid @enderror" type="text" name="celular"
+                               wire:model="data.celular"
+                            id="celular" maxlength="18" required>
+                        <x-error-message errorName="data.celular" />
                     </div>
-                    <x-error-message errorName="data.racaCor" />
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="cpf">CPF*</label>
-                    <input class="form-control" type="text" name="cpf" wire:model.lazy="data.cpf"
-                        id="cpf" maxlength="14" required>
-                    <x-error-message errorName="data.cpf" />
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="rg">RG*</label>
-                    <input class="form-control" type="text" name="rg" wire:model="data.rg" id="rg"
-                        maxlength="14" required>
-                    <x-error-message errorName="data.rg" />
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="celular">Celular (DDD+número)*</label>
-                    <input class="form-control" type="text" name="celular" wire:model="data.celular"
-                        id="celular" maxlength="18" required>
-                    <x-error-message errorName="data.celular" />
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="telefoneResidencial">Telefone residencial (DDD+número)</label>
-                    <input class="form-control" type="text" name="telefoneResidencial"
-                        wire:model="data.telefoneResidencial" id="telefoneResidencial">
-                    <x-error-message errorName="data.telefoneResidencial" />
-                </div>
-                <div class="mb-3">
-                    <label for="email">E-mail*</label>
-                    <input class="form-control" type="email" placeholder="nome@exemplo.com" name="email"
-                        id="email" wire:model="data.email">
-                    <x-error-message errorName="data.email" />
-                </div>
-                <div class="mb-3 col-md-3">
-                    <label for="cep">CEP*</label>
-                    <input class="form-control" type="text" name="cep" id="cep"
-                        wire:model.lazy="data.cep" maxlength="8">
-                    <x-error-message errorName="data.cep" />
-                </div>
-                <div class="mb-3 col-md-7">
-                    <label for="endereco">Endereço*</label>
-                    <input class="form-control" type="text" name="endereco" id="endereco"
-                        wire:model="data.endereco">
-                    <x-error-message errorName="data.endereco" />
-                </div>
-                <div class="mb-3 col-md-2">
-                    <label for="nrmEndereco">Nº*</label>
-                    <input class="form-control" type="number" name="nmrEndereco" id="nrmEndereco"
-                        wire:model="data.nmrEndereco">
-                    <x-error-message errorName="data.nmrEndereco" />
-                </div>
-                <div class="mb-3 col-md-6">
-                    <label for="cidade">Cidade*</label>
-                    <input class="form-control" type="text" name="cidade" wire:model="data.cidade"
-                        id="cidade">
-                    <x-error-message errorName="data.cidade" />
-                </div>
-                <div class="mb-3 col-md-2">
-                    <label for="uf">UF*</label>
-                    <select class="form-select" name="uf" id="uf" wire:model="data.uf" aria-label="AC">
-                        @foreach (\App\Models\Uf::all() as $uf)
-                            <option>{{ $uf->sigla }}</option>
-                        @endforeach
-                    </select>
-                    <x-error-message errorName="data.uf" />
-                </div>
-                <div class="mb-3 col-md-4">
-                    <label for="complemento">Complemento</label>
-                    <input class="form-control" type="text" name="complemento" id="complemento"
-                        wire:model="data.complemento">
-                </div>
-                <div class="mb-3">
-                    <label for="bairro">Bairro*</label>
-                    <input class="form-control" type="text" name="bairro" id="bairro"
-                        wire:model="data.bairro">
-                    <x-error-message errorName="data.bairro" />
-                </div>
-                <div class="mb-3 ">
-                    <label for="profissao">Profissão*</label>
-                    <input class="form-control" type="text" name="profissao" id="profissao"
-                        wire:model="data.profissao" maxlength="255">
-                    <x-error-message errorName="data.profissao" />
-                </div>
-                <div class="form-group mb-3">
-                    <label>Qual sua condição para se tornar associado?*</label>
-                    <div class="form-check">
-                        <label for="sobrevivente">Sobrevivente da COVID-19</label>
-                        <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            @disabled(in_array('Nenhuma das alternativas acima', $this->data['condicoes'])) id="sobrevivente" wire:model="data.condicoes"
-                            value="Sobrevivente da COVID-19" />
+                    <div class="mb-3 col-md-6">
+                        <label for="telefoneResidencial">Telefone residencial (DDD+número)</label>
+                        <input class="form-control" type="text" name="telefoneResidencial"
+                            wire:model="data.telefoneResidencial" id="telefoneResidencial">
+                        <x-error-message errorName="data.telefoneResidencial" />
                     </div>
-                    <div class="form-check">
-                        <label for="familiar">Familiar de vítima da COVID-19</label>
-                        <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            @disabled(in_array('Nenhuma das alternativas acima', $this->data['condicoes'])) id="familiar" wire:model="data.condicoes"
-                            value="Familiar de vítima da COVID-19">
-                    </div>
-                    <div class="form-check">
-                        <label for="nenhum">Nenhuma das alternativas acima</label>
-                        <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
-                            @disabled(in_array('Sobrevivente da COVID-19', $this->data['condicoes']) ||
-                                    in_array('Familiar de vítima da COVID-19', $this->data['condicoes'])) id="nenhum" wire:model="data.condicoes"
-                            value="Nenhuma das alternativas acima">
-                    </div>
-                    <x-error-message errorName="data.condicoes" />
-                </div>
-                @if (in_array('Familiar de vítima da COVID-19', $this->data['condicoes']))
                     <div class="mb-3">
-                        <label> Informe nos campos abaixo quantas pessoas do seu grupo familiar nuclear você
-                            perdeu para a COVID-19 (mãe, pai,
-                            filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um
-                            novo campo (Máx 10) </label>
-                        @foreach ($this->data['dadosAdicionais'] as $key => $input)
-                            @if ($key === 0)
-                                <button type="button" class="btn btn-primary mt-4" id="add_form_field"
-                                    wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
-                                    familiar
-                                </button>
-                            @endif
-                            <div class="card mt-3 mb-2">
-                                <h5 class="card-header">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="title p-1">
-                                            Familiar {{ $key + 1 }}
-                                        </span>
-                                        @if ($key > 0)
-                                            <div class="p-1">
-                                                <button type="button" class="btn-sm btn-danger"
-                                                    id="remove_form_field"
-                                                    wire:click="removeInput({{ $key }})"><i
-                                                        class="fa-solid fa-trash"></i></button>
+                        <label for="email">E-mail*</label>
+                        <input class="form-control text-break @error('data.email') invalid @enderror" type="email" placeholder="nome@exemplo.com" name="email"
+                            id="email" wire:model="data.email">
+                        <x-error-message errorName="data.email" />
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="cep">CEP*</label>
+                        <input class="form-control text-break @error('data.cep') invalid @enderror" type="text" name="cep" id="cep"
+                            wire:model.lazy="data.cep" maxlength="8">
+                        <x-error-message errorName="data.cep" />
+                    </div>
+                    <div class="mb-3 col-md-7">
+                        <label for="endereco">Endereço*</label>
+                        <input class="form-control text-break @error('data.endereco') invalid @enderror" type="text" name="endereco" id="endereco"
+                            wire:model="data.endereco">
+                        <x-error-message errorName="data.endereco" />
+                    </div>
+                    <div class="mb-3 col-md-2">
+                        <label for="nrmEndereco">Nº*</label>
+                        <input class="form-control text-break @error('data.nmrEndereco') invalid @enderror" type="number" name="nmrEndereco" id="nrmEndereco"
+                            wire:model="data.nmrEndereco">
+                        <x-error-message errorName="data.nmrEndereco" />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="cidade">Cidade*</label>
+                        <input class="form-control text-break @error('data.cidade') invalid @enderror" type="text" name="cidade" wire:model="data.cidade"
+                            id="cidade">
+                        <x-error-message errorName="data.cidade" />
+                    </div>
+                    <div class="mb-3 col-md-2">
+                        <label for="uf">UF*</label>
+                        <select class="form-select text-break @error('data.uf') invalid @enderror" name="uf" id="uf" wire:model="data.uf" aria-label="AC">
+                            @foreach (\App\Models\Uf::all() as $uf)
+                                <option>{{ $uf->sigla }}</option>
+                            @endforeach
+                        </select>
+                        <x-error-message errorName="data.uf" />
+                    </div>
+                    <div class="mb-3 col-md-4">
+                        <label for="complemento">Complemento</label>
+                        <input class="form-control" type="text" name="complemento" id="complemento"
+                            wire:model="data.complemento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bairro">Bairro*</label>
+                        <input class="form-control text-break @error('data.bairro') invalid @enderror" type="text" name="bairro" id="bairro"
+                            wire:model="data.bairro">
+                        <x-error-message errorName="data.bairro" />
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="profissao">Profissão*</label>
+                        <input class="form-control text-break @error('data.profissao') invalid @enderror" type="text" name="profissao" id="profissao"
+                            wire:model="data.profissao" maxlength="255">
+                        <x-error-message errorName="data.profissao" />
+                    </div>
+                    <div id="condicoes" class="form-group mb-3 text-break @error('data.condicoes') invalid @enderror">
+                        <label>Qual sua condição para se tornar associado?*</label>
+                        <div class="form-check">
+                            <label for="sobrevivente">Sobrevivente da COVID-19</label>
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                @disabled(in_array('Nenhuma das alternativas acima', $this->data['condicoes'])) id="sobrevivente" wire:model="data.condicoes"
+                                value="Sobrevivente da COVID-19" />
+                        </div>
+                        <div class="form-check">
+                            <label for="familiar">Familiar de vítima da COVID-19</label>
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                @disabled(in_array('Nenhuma das alternativas acima', $this->data['condicoes'])) id="familiar" wire:model="data.condicoes"
+                                value="Familiar de vítima da COVID-19">
+                        </div>
+                        <div class="form-check">
+                            <label for="nenhum">Nenhuma das alternativas acima</label>
+                            <input class="condicao form-check-input" type="checkbox" name="condicoes[]"
+                                @disabled(in_array('Sobrevivente da COVID-19', $this->data['condicoes']) ||
+                                        in_array('Familiar de vítima da COVID-19', $this->data['condicoes'])) id="nenhum" wire:model="data.condicoes"
+                                value="Nenhuma das alternativas acima">
+                        </div>
+                        <x-error-message errorName="data.condicoes" />
+                    </div>
+                    @if (in_array('Familiar de vítima da COVID-19', $this->data['condicoes']))
+                        <div class="mb-3">
+                            <label> Informe nos campos abaixo quantas pessoas do seu grupo familiar nuclear você
+                                perdeu para a COVID-19 (mãe, pai,
+                                filho, filha, avô, avó, pais, cônjuges). Clique no icone de + para adicionar um
+                                novo campo (Máx 10) </label>
+                            @foreach ($this->data['dadosAdicionais'] as $key => $input)
+                                @if ($key === 0)
+                                    <button type="button" class="btn btn-primary mt-4" id="add_form_field"
+                                        wire:click="addInput()"><i class="fa-solid fa-plus"></i>Adicionar novo
+                                        familiar
+                                    </button>
+                                @endif
+                                <div class="card mt-3 mb-2">
+                                    <h5 class="card-header">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="title p-1">
+                                                Familiar {{ $key + 1 }}
+                                            </span>
+                                            @if ($key > 0)
+                                                <div class="p-1">
+                                                    <button type="button" class="btn-sm btn-danger"
+                                                        id="remove_form_field"
+                                                        wire:click="removeInput({{ $key }})"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </h5>
+                                    <div class="card-body row py-0">
+                                        <div class="form-group mb-3 col-md-4">
+                                            <label for="dadosAdicionais_{{ $key }}_nome">Nome
+                                                Completo</label>
+                                            <input class="form-control" type="text" name="test"
+                                                id="dadosAdicionais_{{ $key }}_nome"
+                                                wire:model.defer="data.dadosAdicionais.{{ $key }}.nome"
+                                                maxlength="255">
+                                            <x-error-message errorName="data.dadosAdicionais.{{ $key }}.nome" />
+                                        </div>
+                                        <div class="form-group mb-3 col-md-6">
+                                            <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
+                                                parentesco*</label>
+                                            <select class="parentesco form-select" name="parentesco"
+                                                wire:model="data.dadosAdicionais.{{ $key }}.parentesco"
+                                                id="dadosAdicionais_{{ $key }}_parentesco" required>
+                                                <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
+                                                </option>
+                                                <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
+                                                    linha reta (pai/mãe, filho/filha)
+                                                </option>
+                                                <option value="2º grau em linha colateral (irmão/irmâ)">2º grau em
+                                                    linha colateral
+                                                    (irmão/irmâ)
+                                                </option>
+                                                <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
+                                                    reta
+                                                    (avô/avó,
+                                                    neto/neta)
+                                                </option>
+                                                <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
+                                                    grau em linha colateral (tio/tia, sobrinho/sobrinha)
+                                                </option>
+                                                <option value="outro">Outro</option>
+                                            </select>
+                                            <x-error-message
+                                                errorName="data.dadosAdicionais.{{ $key }}.parentesco" />
+                                        </div>
+                                        <div class="form-group mb-3 col-md-2">
+                                            <label for="dadosAdicionais.{{ $key }}.idade">idade</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" name="idade"
+                                                    id="dadosAdicionais.{{ $key }}.idade"
+                                                    wire:model.defer="data.dadosAdicionais.{{ $key }}.idade">
+                                            </div>
+                                            <x-error-message errorName="dadosAdicionais.{{ $key }}.idade" />
+                                        </div>
+                                        @if ($this->data['dadosAdicionais'][$key]['parentesco'] === 'outro')
+                                            <div class="form-group mb-3 col">
+                                                <label for="dadosAdicionais.{{ $key }}.outro">Outro tipo de
+                                                    parentesco</label>
+                                                <input class="form-control" type="text" name="outro"
+                                                    id="dadosAdicionais.{{ $key }}.outro"
+                                                    wire:model.defer="data.dadosAdicionais.{{ $key }}.outro"
+                                                    maxlength="255">
+                                                <x-error-message
+                                                    errorName="data.dadosAdicionais.{{ $key }}.outro" />
                                             </div>
                                         @endif
                                     </div>
-                                </h5>
-                                <div class="card-body row py-0">
-                                    <div class="form-group mb-3 col-md-4">
-                                        <label for="dadosAdicionais_{{ $key }}_nome">Nome
-                                            Completo</label>
-                                        <input class="form-control" type="text" name="test"
-                                            id="dadosAdicionais_{{ $key }}_nome"
-                                            wire:model.defer="data.dadosAdicionais.{{ $key }}.nome"
-                                            maxlength="255">
-                                        <x-error-message errorName="data.dadosAdicionais.{{ $key }}.nome" />
-                                    </div>
-                                    <div class="form-group mb-3 col-md-6">
-                                        <label for="dadosAdicionais_{{ $key }}_parentesco">Grau de
-                                            parentesco*</label>
-                                        <select class="parentesco form-select" name="parentesco"
-                                            wire:model="data.dadosAdicionais.{{ $key }}.parentesco"
-                                            id="dadosAdicionais_{{ $key }}_parentesco" required>
-                                            <option value="Cônjuge ou companheiro(a)">Cônjuge ou companheiro(a)
-                                            </option>
-                                            <option value="1º grau em linha reta (pai/mãe, filho/filha)">1º grau em
-                                                linha reta (pai/mãe, filho/filha)
-                                            </option>
-                                            <option value="2º grau em linha colateral (irmão/irmâ)">2º grau em
-                                                linha colateral
-                                                (irmão/irmâ)
-                                            </option>
-                                            <option value="2º grau em linha reta (avô/avó, neto/neta)">2º grau em linha
-                                                reta
-                                                (avô/avó,
-                                                neto/neta)
-                                            </option>
-                                            <option value="3º grau em linha colateral (tio/tia, sobrinho/sobrinha)">3º
-                                                grau em linha colateral (tio/tia, sobrinho/sobrinha)
-                                            </option>
-                                            <option value="outro">Outro</option>
-                                        </select>
-                                        <x-error-message
-                                            errorName="data.dadosAdicionais.{{ $key }}.parentesco" />
-                                    </div>
-                                    <div class="form-group mb-3 col-md-2">
-                                        <label for="dadosAdicionais.{{ $key }}.idade">idade</label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="text" name="idade"
-                                                id="dadosAdicionais.{{ $key }}.idade"
-                                                wire:model.defer="data.dadosAdicionais.{{ $key }}.idade">
-                                        </div>
-                                        <x-error-message errorName="dadosAdicionais.{{ $key }}.idade" />
-                                    </div>
-                                    @if ($this->data['dadosAdicionais'][$key]['parentesco'] === 'outro')
-                                        <div class="form-group mb-3 col">
-                                            <label for="dadosAdicionais.{{ $key }}.outro">Outro tipo de
-                                                parentesco</label>
-                                            <input class="form-control" type="text" name="outro"
-                                                id="dadosAdicionais.{{ $key }}.outro"
-                                                wire:model.defer="data.dadosAdicionais.{{ $key }}.outro"
-                                                maxlength="255">
-                                            <x-error-message
-                                                errorName="data.dadosAdicionais.{{ $key }}.outro" />
-                                        </div>
-                                    @endif
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </form>
         @endif
         @if ($currentStep == 4)
             <div class="mb-3">
@@ -459,7 +465,7 @@
                 </button>
             @endif
             @if ($currentStep != $totalSteps)
-                <button type="button" class="btn btn-info rounded" wire:click="increaseStep">Próximo
+                <button type="button" class="btn btn-info rounded" id="proximo" wire:click="increaseStep">Próximo
                 </button>
             @endif
             @if ($currentStep == $totalSteps)
@@ -470,3 +476,58 @@
         </div>
     </form>
 </div>
+@section('extra-scripts')
+    <script>
+
+        function executeScroll(id){
+            var invalidId = $(`#${id}`).hasClass("invalid");
+            if (invalidId) {
+                $('html, body').animate({
+                    scrollTop: Math.max(0, $(`#${id}`).offset().top - 100)
+                });
+                return true;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#formdiv').scrollspy({ target: '#navbar' });
+
+            $('#proximo').on('click', function (event) {
+                var listId = [
+                    "nome",
+                    "dataNascimento",
+                    "password",
+                    "confirmPassword",
+                    "genero",
+                    "racaCor",
+                    "cpf",
+                    "rg",
+                    "celular",
+                    "email",
+                    "cep",
+                    "endereco",
+                    "nmrEndereco",
+                    "cidade",
+                    "uf",
+                    "bairro",
+                    "profissao",
+                    "condicoes"
+                ];
+
+                function scrollToNextInvalid(index) {
+                    if (index < listId.length) {
+                        var isOk = executeScroll(listId[index]);
+                        if (!isOk) {
+                            setTimeout(function () {
+                                scrollToNextInvalid(index + 1);
+                            }, 500);
+                        }
+                    }
+                }
+
+                scrollToNextInvalid(0);
+            });
+        });
+
+    </script>
+@endsection
