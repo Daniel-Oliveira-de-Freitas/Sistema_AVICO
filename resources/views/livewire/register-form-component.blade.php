@@ -453,7 +453,7 @@
                 @endif
             </div>
         @endif
-        <div class="form-navigation d-flex d-flex justify-content-between mt-2">
+        <div class="form-navigation d-flex justify-content-between mt-2">
             @if ($currentStep > 1)
                 <button type="button" class="btn btn-info rounded" wire:click="decreaseStep">Anterior
                 </button>

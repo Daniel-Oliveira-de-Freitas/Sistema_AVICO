@@ -3,9 +3,9 @@
         <div class="carousel-inner mb-2" role="listbox">
             <div class="carousel-item active">
                 @forelse($notices as $index => $notice)
-                    @if($index < 3)
-                        <div class="col-md-4 px-3 @if($index > 0)lgcards @endif" style="float:left">
-                            <x-card-notice :notice="$notice"/>
+                    @if ($index < 3)
+                        <div class="col-md-4 px-3 @if ($index > 0) lgcards @endif" style="float:left">
+                            <x-card-notice :notice="$notice" />
                         </div>
                     @endif
                 @empty
@@ -13,10 +13,10 @@
                 @endforelse
             </div>
             <div class="carousel-item">
-                @foreach($notices as $index => $notice)
-                    @if($index > 2)
-                        <div class="col-md-4 px-3 @if($index > 3)lgcards @endif" style="float:left">
-                            <x-card-notice :notice="$notice"/>
+                @foreach ($notices as $index => $notice)
+                    @if ($index > 2)
+                        <div class="col-md-4 px-3 @if ($index > 3) lgcards @endif" style="float:left">
+                            <x-card-notice :notice="$notice" />
                         </div>
                     @endif
                 @endforeach
@@ -24,7 +24,9 @@
         </div>
         <ol class="carousel-indicators">
             <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-            <li data-target="#multi-item-example" data-slide-to="1"></li>
+            @if (empty($notices))
+                <li data-target="#multi-item-example" data-slide-to="1"></li>
+            @endif
         </ol>
     </div>
 </div>

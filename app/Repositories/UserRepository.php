@@ -5,9 +5,9 @@ namespace App\Repositories;
 use App\Enums\StatusType;
 use App\Enums\UserType;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Requests\UserRequest;
 
 class UserRepository
 {
@@ -23,17 +23,17 @@ class UserRepository
             return UserType::from($type)->value;
         });
         $user->assignRole($roles);
-
+        
         return $user;
     }
 
     /**
      * Retorna todos os usuarios do banco de dados
-     * @return Collection
+     * @return Builder
      */
-    public function getAll(): Collection
+    public function getAll(): Builder
     {
-        return User::all();
+        return User::with('roles')->where('status', StatusType::Aprovado);
     }
 
     /**
@@ -55,14 +55,22 @@ class UserRepository
         return User::findorfail($id);
     }
 
-    /**
+     /**
      * Atualiza os dados de um usuario
      * @param int $id
-     * @param array $arr
+     * @param UserRequest|array $arr
      */
-    public function update(int $id, array $arr)
+    public function update(int $id, UserRequest|array $arr)
     {
         return User::findorfail($id)->update($arr);
     }
 
+    /**
+     * Remove os dados de um usuario
+     * @param int $id
+     */
+    public function destroy(int $id)
+    {
+        return User::destroy($id);
+    }
 }

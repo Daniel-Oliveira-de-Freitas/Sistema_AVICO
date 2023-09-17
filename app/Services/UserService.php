@@ -2,18 +2,21 @@
 
 namespace App\Services;
 
+use App\Enums\Authority;
+use Exception;
 use App\Enums\StatusType;
-use App\Repositories\AdressRepository;
-use App\Repositories\FamilyVictimRepository;
+use App\Enums\UserType;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\FileRepository;
+use App\Repositories\UserRepository;
+use Spatie\Permission\Contracts\Role;
+use App\Repositories\AdressRepository;
 use App\Repositories\PersonRepository;
 use App\Repositories\ReasonRepository;
-use App\Repositories\UserRepository;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-use Exception;
+use App\Repositories\FamilyVictimRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
 
 class UserService
 {
@@ -57,11 +60,11 @@ class UserService
 
     /**
      * Retorna todos os usuario do banco de dados
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function getAllUsers(): Collection
+    public function getAllUsers(): LengthAwarePaginator
     {
-        return $this->userRepository->getAll();
+        return $this->userRepository->getAll()->paginate(10);
     }
 
 
@@ -92,20 +95,31 @@ class UserService
      * Atualiza os dados de um usuario
      * @param int $id
      * @param array $arr
-     * @return ?bool
+     * @return ResponseFactory
      */
-    public function updateUser(int $id, array $arr): ?bool
+    public function updateUser(int $id, UserRequest $userRequest)
     {
         try {
-            return $this->userRepository->update($id, $arr);
+            DB::beginTransaction();
+            $user = $this->findUserById($id);
+            $roles = collect($userRequest->input('funcao'))->map(function ($type) {
+                return Authority::from($type)->value;
+            });
+            $user->syncRoles($roles);
+
+            $this->userRepository->update($id, $userRequest->all());
+            DB::commit();
+            return response(["success" => "O usuário com identificador {$id} foi atualizado no sistema"], 200)
+                ->original;
         } catch (Exception $e) {
-            return false;
+            DB::rollBack();
+            return response(["error" => "Não foi possivel atualizar o usuário com identificador {$id}"], 200)->original;
         }
     }
 
 
     /**
-     * Atualiza o cadastro de um usuário e manda um email
+     * Atualiza o cadastro de um usuário que está aguardando aprovação e manda um email
      * @param int $id
      * @param array $arr
      */
@@ -115,18 +129,32 @@ class UserService
             DB::beginTransaction();
             $user = $this->findUserById($id);
             if ($statusType === StatusType::Indeferido) {
-                $this->updateUser($id, ['status' => StatusType::Indeferido, 'active' => false]);
+                $this->userRepository->update($id, ['status' => StatusType::Indeferido, 'active' => false]);
                 $user->sendRejectedUserRegisterNotification($motivo);
             } else {
-                $this->updateUser($id, ['status' => StatusType::Aprovado, 'active' => true]);
+                $this->userRepository->update($id, ['status' => StatusType::Aprovado, 'active' => true]);
                 $user->sendWelcomeNotification();
             }
-
             DB::commit();
-            return response(["success" => "O usuário foi " . $statusType->value . " com sucesso no sistema"], 200)->original;
+            return response(["success" => "O usuário foi {$statusType->value} com sucesso no sistema"], 200)->original;
         } catch (Exception $e) {
             DB::rollBack();
-            return response(["error" => "Ocorreu um erro ao processar sua requisição"], 500)->original;
+            return response(["error" => "Não foi possivel {$statusType->value} o usuário"], 500)->original;
+        }
+    }
+
+
+    public function destroy(int $id)
+    {
+        try {
+            DB::beginTransaction();
+            $this->userRepository->destroy($id);
+            DB::commit();
+            return response(["success" => "O usuário com identificador {$id} foi removido com sucesso no sistema"], 200)
+                ->original;
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response(["error" => "Não foi possivel remover o usuário com identificador {$id}"], 500)->original;
         }
     }
 }

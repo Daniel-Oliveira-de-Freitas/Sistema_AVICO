@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user associated with the User
+     * Get the additional informations associated
      *
      * @return HasOne
      */
@@ -70,7 +70,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all of the comments for the User
+     * Get all of the notices for the User
      *
      * @return HasMany
      */
@@ -81,7 +81,7 @@ class User extends Authenticatable
 
 
     /**
-     * The roles that belong to the User
+     * Get all of the Roles for the User
      *
      * @return BelongsToMany
      */
@@ -112,7 +112,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Send the welcome email notification.
+     * Send the reject email notification.
      *n
      * @return void
      */
