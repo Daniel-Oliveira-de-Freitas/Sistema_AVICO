@@ -4,11 +4,11 @@
                 src="{{ asset('images/assets/img/cropped-LOGO-AVICO-2021-OK-PNG-1536x402.png') }}"
                 alt="Logo AVICO"/></a>
         <button class="navbar-toggler items-center" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
             <i class="fas fa-bars ms-1"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
