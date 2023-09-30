@@ -62,7 +62,7 @@
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ route('listar.cadastros') }}">Listar Inscrições</a>
-                        <a class="dropdown-item" href="{{ route('criar.noticia') }}">Criar Noticias</a>
+                        <a class="dropdown-item" href="{{ route('content.registration') }}">Criar Conteúdos</a>
                     </div>
                 </div>
                 @endrole

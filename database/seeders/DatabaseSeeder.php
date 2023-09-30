@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolesAndPermissionsSeeder::class,
-//            UserSeeder::class, //Desabilitar quando for subir para produção
+            UserSeeder::class, //Desabilitar quando for subir para produção
             UfSeeder::class
         ]);
     }

@@ -76,3 +76,4 @@ Route::post('/cadastro-avico', [RegisterFormController::class, 'store'])->name('
 
 Route::get('/noticias', [NoticeController::class, 'index'])->name('listar.noticias');
 Route::get('noticias/noticia/{id}', [NoticeController::class, 'show'])->name('visualizar.noticia');
+

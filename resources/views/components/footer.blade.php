@@ -3,7 +3,7 @@
         flex: 1 0 auto;
     }
 </style>
-<footer class="footer py-lg-4 fixed-bottom">
+<footer class="footer py-lg-2 fixed-bottom">
     <div class="container">
         <div class="row align-items-center">
             <div class="d-none d-lg-block col-lg-4 text-lg-start police">Copyright &copy; AVICO BRASIL 2022
@@ -14,7 +14,7 @@
                         class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-lg-2" href="https://www.facebook.com/AVICOBRASIL"
                    aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-dark btn-social mx--lg-2" href="https://api.whatsapp.com/message/ADJGY4UDTDAZJ1"
+                <a class="btn btn-dark btn-social mx-lg-2" href="https://api.whatsapp.com/message/ADJGY4UDTDAZJ1"
                    aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 <a class="btn btn-dark btn-social mx-lg-2" href="https://www.instagram.com/avicobrasil/"
                    aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
