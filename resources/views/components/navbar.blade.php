@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="/"><img
                 src="{{ asset('images/assets/img/cropped-LOGO-AVICO-2021-OK-PNG-1536x402.png') }}"
                 alt="Logo AVICO"/></a>
@@ -12,7 +12,7 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         SOBRE NÓS
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         EIXOS DE ATUAÇÃO
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         NOSSA REDE
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         CENTRAL DE INFORMAÇÕES
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -57,7 +57,7 @@
                 @role('admin')
                 <div class="dropdown">
                     <button class="btn btn-secondary btn-nav-drop dropdown-toggle nav-item nav-link" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ADMINISTRAÇÂO
                     </button>
                     <div class="dropdown-menu">
