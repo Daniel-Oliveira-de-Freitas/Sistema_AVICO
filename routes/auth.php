@@ -72,4 +72,7 @@ Route::middleware('role:admin')->group(function () {
     Route::patch('/noticias/noticia/{id}/editar', [NoticeController::class, 'update'])
         ->name('atualizar.noticia.store');
     Route::delete('/noticias/noticia/{id}', [NoticeController::class, 'destroy'])->name('remover.noticia');
+
+    Route::post('/fake-news-detection/fnd', [NoticeController::class, 'store'])->name('fake-news-detection.store');
+
 });
