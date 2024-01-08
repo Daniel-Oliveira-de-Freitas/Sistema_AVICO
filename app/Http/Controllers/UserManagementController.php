@@ -9,7 +9,8 @@ class UserManagementController extends Controller
 {
     private UserService $userService;
 
-    public function __construct()
+    //TODO verificar nova forma para injetar as services
+    public function __construct(UserService $userService)
     {
         $this->userService = new UserService();
     }
@@ -28,6 +29,9 @@ class UserManagementController extends Controller
 
     public function update(int $id, UserRequest $userRequest)
     {
+        if (!$userRequest->has('active')) {
+            $userRequest->merge(['active' => false]);
+        }
         return redirect()->back()->with($this->userService->updateUser($id, $userRequest));
     }
 

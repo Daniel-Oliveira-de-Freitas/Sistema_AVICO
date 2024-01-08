@@ -28,16 +28,10 @@
                 </div>
 
                 <div class="mb-3 form-check col-6">
-                    <label for="active">Status</label>
-                    <input class="form-check-input @error('active') is-invalid @enderror" type="checkbox" name="active"
-                        value="{{ $user->active }}" id="active" maxlength="255" @checked($user->active)>
-
-                    @if ($user->active)
-                        <label class="form-check-label">Ativado</label>
-                    @else
-                        <label class="form-check-label">Desativado</label>
-                    @endif
-                    <x-error-message errorName="active" />
+                    <label for="active">Status do usuário:</label>
+                    <input class="form-check-input" type="checkbox" name="active" id="active" value="true"
+                        @checked($user->active) onchange="updateStatusLabel()">
+                    <label for="active" id="status-label"></label>
                 </div>
                 <div class="mb-3 form-group col-6">
                     <label for="funcao">Função</label>
@@ -51,22 +45,30 @@
                             </option>
                         @endforeach
                     </select>
-                    {{-- <select class="form-select form-select-lg mb-3" name="funcao[]" id="funcao" multiple>
-                        @foreach (\App\Enums\Authority::cases() as $authority)
-                            <option value="{{ $authority }}"
-                                @foreach ($user->roles as $role){{ $role->name == $authority->value ? 'selected' : '' }} @endforeach>
-                                {{ $authority->name }}</option>
-                        @endforeach
-                    </select> --}}
                     <x-error-message errorName="funcao" />
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
-                <button type="submit" class="btn btn-info rounded">Voltar
-                </button>
+                <a type="button" class="btn btn-info rounded" href="{{ url()->previous() }}">Voltar</a>
                 <button type="submit" class="btn btn-success rounded">Salvar
                 </button>
             </div>
         </form>
     </section>
 @endsection
+
+<script>
+    window.onload = function() {
+        updateStatusLabel()
+    }
+
+    function updateStatusLabel() {
+        var checkbox = document.getElementById('active').checked;
+        var statusLabel = document.getElementById('status-label');
+        if (checkbox) {
+            statusLabel.innerHTML = 'Ativo no sistema';
+        } else {
+            statusLabel.innerHTML = 'Inativo no sistema';
+        }
+    }
+</script>

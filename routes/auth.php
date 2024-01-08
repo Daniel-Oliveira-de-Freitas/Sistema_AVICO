@@ -58,7 +58,7 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/listar-cadastros', [RegisterFormController::class, 'index'])->name('listar.cadastros');
     Route::get('/listar/download_arquivos/{user}', [RegisterFormController::class, 'downloadFiles'])
         ->name('baixar_dados');
-//    Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
+    //    Route::get('/listar/visualizar/{id}', [RegisterFormController::class, ''])->name('visualizar.dados');
     Route::get('/noticias/criar-noticia', [NoticeController::class, 'create'])->name('criar.noticia');
     Route::get('/noticias/noticia/{id}/editar', [NoticeController::class, 'edit'])
         ->name('atualizar.noticia');
@@ -71,4 +71,7 @@ Route::middleware('role:admin')->group(function () {
         ->name('atualizar.noticia.store');
     Route::delete('/noticias/noticia/{id}', [NoticeController::class, 'destroy'])->name('remover.noticia');
     Route::resource('gerenciamento-usuarios', UserManagementController::class);
+    Route::get('/trix', [TrixController::class, 'index']);
+    Route::post('/upload', [TrixController::class, 'upload']);
+    Route::post('/store', [TrixController::class, 'store']);
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -16,6 +17,11 @@ class UserRequest extends FormRequest
         return auth()->user();
     }
 
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException("Você não possui acesso!");
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -26,7 +32,8 @@ class UserRequest extends FormRequest
         return [
             'nome' => 'required',
             'email' => 'required',
-            'funcao' => 'required'
+            'funcao' => 'required',
+            'active' => ''
         ];
     }
 

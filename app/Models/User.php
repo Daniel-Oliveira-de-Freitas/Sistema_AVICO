@@ -45,8 +45,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'status',
-        'active'
+        'status'
     ];
 
     /**
@@ -56,6 +55,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'status' => StatusType::class,
+        'active' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
 
