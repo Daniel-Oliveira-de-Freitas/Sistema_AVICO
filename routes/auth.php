@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Notice\NoticeController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\FakeNewsDetectionController;
 use App\Http\Controllers\Register\RegisterFormController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,8 +63,6 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/noticias/criar-noticia', [NoticeController::class, 'create'])->name('criar.noticia');
     Route::get('/noticias/noticia/{id}/editar', [NoticeController::class, 'edit'])
         ->name('atualizar.noticia');
-    Route::get('/conteudos/criar-conteudo', [ContentController::class, 'create'])->name('content.registration');
-    Route::get('conteudos/conteudo/{id}', [ContentController::class, 'show'])->name('view.content');
     Route::post('/noticias/criar-noticia', [NoticeController::class, 'store'])->name('criar.noticia.store');
     Route::patch('/listar-cadastros/aprovar/{id}', [RegisterFormController::class, 'approveUserRegister'])
         ->name('deferir.cadastro');
@@ -73,6 +72,6 @@ Route::middleware('role:admin')->group(function () {
         ->name('atualizar.noticia.store');
     Route::delete('/noticias/noticia/{id}', [NoticeController::class, 'destroy'])->name('remover.noticia');
 
-    Route::post('/fake-news-detection/fnd', [NoticeController::class, 'store'])->name('fake-news-detection.store');
-
+    Route::get('/fake-news-detection/fnd', [FakeNewsDetectionController::class, 'create'])->name('fake-news-detection');
+    Route::post('/fake-news-detection/fnd', [FakeNewsDetectionController::class, 'store'])->name('fake-news-detection.store');
 });

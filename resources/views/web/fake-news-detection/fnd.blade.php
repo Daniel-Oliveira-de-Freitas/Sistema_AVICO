@@ -8,17 +8,17 @@
                 @csrf
                 <div class="form-group mb-2">
                     <label class="form-label" for="noticiasInput">Digite o Link da Página de Noticias</label>
-                    <input class="form-control" name="noticias" id="noticiasInput" type="text"
+                    <input class="form-control" name="links" id="noticiasInput" type="text"
                            placeholder="Ex: https://g1.globo.com" required autofocus>
                 </div>
                 <div class="form-group mb-2">
                     <label class="form-label" for="frequenciaInput">Digite o numero de dias para a frequência de varredura</label>
-                    <input class="form-control" name="frequencia" id="frequenciaInput" type="number"
+                    <input class="form-control" name="cron" id="frequenciaInput" type="number"
                            placeholder="Ex: 4" required autofocus>
                 </div>
                 <div class="form-group mb-2">
                     <label class="form-label" for="emailInput">Digite o/os email/s que deseja receber os resultados</label>
-                    <input class="form-control" name="email" id="emailInput" type="email"
+                    <input class="form-control" name="emails" id="emailInput" type="email"
                            placeholder="Digite o/os email/s" required autofocus>
                 </div>
                 <div class="d-grid gap-2">

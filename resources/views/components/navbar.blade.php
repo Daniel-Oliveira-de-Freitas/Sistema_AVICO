@@ -62,7 +62,7 @@
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ route('listar.cadastros') }}">Listar Inscrições</a>
-                        <a class="dropdown-item" href="{{ route('content.registration') }}">Criar Conteúdos</a>
+                        <a class="dropdown-item" href="{{ route('fake-news-detection') }}">Detecção de fake news</a>
                     </div>
                 </div>
                 @endrole
