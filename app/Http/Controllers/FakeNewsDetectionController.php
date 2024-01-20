@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\JobFakeNewsDetection;
 use App\Services\JobFakeNewsDetectionService;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,16 @@ class FakeNewsDetectionController extends Controller
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
     }
 
+    public function index()
+{
+    $entries = JobFakeNewsDetection::all();
+
+    return view('web.fake-news-detection.fnd_list', compact('entries'));
+}
+
     public function create()
     {
-        return view('web.fake-news-detection.fnd');
+        return view('web.fake-news-detection.fnd_list');
     }
 
     public function store(Request $jobFndRequest)
@@ -41,21 +49,21 @@ class FakeNewsDetectionController extends Controller
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $jobFakeNewsDetection = $this->jobFakeNewsDetectionService->findById($id);
-        return view('web.noticias.editar-noticia')->with(compact('jobFakeNewsDetection'));
+        return view('web.fake-news-detection.fnd_edit')->with(compact('jobFakeNewsDetection'));
     }
 
     public function update(int $id, $jobFndRequest)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->update($id, $jobFndRequest);
-        return redirect()->route('listar.noticias')->with('success', 'Job atualizado com sucesso!');
+        return redirect()->route('web.fake-news-detection.fnd_list')->with('success', 'Job atualizado com sucesso!');
     }
 
     public function destroy(int $id)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->delete($id);
-        return redirect()->route('listar.noticias')->with('success', 'Job deletado com sucesso!');
+        return redirect()->route('web.fake-news-detection.fnd_list')->with('success', 'Job deletado com sucesso!');
     }
 
 }
