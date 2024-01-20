@@ -17,14 +17,15 @@ class FakeNewsDetectionController extends Controller
 
     public function index()
 {
-    $entries = JobFakeNewsDetection::all();
+    $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
+    $jobFakeNewsDetection = $this->jobFakeNewsDetectionService->getAll();
 
-    return view('web.fake-news-detection.fnd_list', compact('entries'));
+    return view('web.fake-news-detection.fnd_list', compact('jobFakeNewsDetection'));
 }
 
     public function create()
     {
-        return view('web.fake-news-detection.fnd_list');
+        return view('web.fake-news-detection.fnd');
     }
 
     public function store(Request $jobFndRequest)
