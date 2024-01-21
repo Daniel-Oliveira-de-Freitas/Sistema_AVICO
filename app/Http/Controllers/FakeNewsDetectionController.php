@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\JobFakeNewsDetection;
 use App\Services\JobFakeNewsDetectionService;
 use Illuminate\Http\Request;
 
@@ -50,21 +49,21 @@ class FakeNewsDetectionController extends Controller
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $jobFakeNewsDetection = $this->jobFakeNewsDetectionService->findById($id);
-        return view('web.fake-news-detection.fnd_edit')->with(compact('jobFakeNewsDetection'));
+        return view('web.fake-news-detection.edit')->with(compact('jobFakeNewsDetection'));
     }
 
     public function update(int $id, $jobFndRequest)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->update($id, $jobFndRequest);
-        return redirect()->route('web.fake-news-detection.fnd_list')->with('success', 'Job atualizado com sucesso!');
+        return redirect()->route('web.fake-news-detection.update')->with('success', 'Job atualizado com sucesso!');
     }
 
     public function destroy(int $id)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->delete($id);
-        return redirect()->route('web.fake-news-detection.fnd_list')->with('success', 'Job deletado com sucesso!');
+        return redirect()->route('web.fake-news-detection.list')->with('success', 'Job deletado com sucesso!');
     }
 
 }

@@ -6,7 +6,7 @@
     <section class="page-section" action="{{ route('fake-news-detection.list') }}">
         <div class="col-md-8 col-md-offset-2 container">
             <h2>Lista de Cadastros</h2>
-            @if(count($entries) > 0)
+            @if(count($jobFakeNewsDetection) > 0)
                 <table class="table">
                     <thead>
                         <tr>
@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($entries as $entry)
+                        @foreach($jobFakeNewsDetection as $entry)
                             <tr>
                                 <td>{{ $entry->links }}</td>
                                 <td>{{ $entry->cron }}</td>

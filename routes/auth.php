@@ -77,6 +77,6 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/fake-news-detection/fnd/list', [FakeNewsDetectionController::class, 'index'])->name('fake-news-detection.list');
     Route::post('/fake-news-detection/fnd/create', [FakeNewsDetectionController::class, 'store'])->name('fake-news-detection.store');
     Route::get('/fake-news-detection/{id}/edit', [FakeNewsDetectionController::class, 'edit'])->name('fake-news-detection.edit');
-    Route::put('/fake-news-detection/{id}', FakeNewsDetectionController::class, 'update')->name('fake-news-detection.update');
-    Route::delete('/fake-news-detection/{id}', FakeNewsDetectionController::class, 'destroy')->name('fake-news-detection.destroy');
+    Route::put('/fake-news-detection/{id}', [FakeNewsDetectionController::class, 'update'])->name('fake-news-detection.update');
+    Route::delete('/fake-news-detection/{id}', [FakeNewsDetectionController::class, 'destroy'])->name('fake-news-detection.destroy');
 });
