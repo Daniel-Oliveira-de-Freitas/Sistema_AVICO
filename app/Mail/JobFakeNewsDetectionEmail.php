@@ -12,6 +12,8 @@ class JobFakeNewsDetectionEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $email;
+
     /**
      * Create a new message instance.
      *
@@ -19,40 +21,17 @@ class JobFakeNewsDetectionEmail extends Mailable
      */
     public function __construct()
     {
-        //
+      
     }
 
     /**
-     * Get the message envelope.
+     * Build the message.
      *
-     * @return \Illuminate\Mail\Mailables\Envelope
+     * @return $this
      */
-    public function envelope()
+    public function build()
     {
-        return new Envelope(
-            subject: 'Job Fake News Detection Email',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-    public function content()
-    {
-        return new Content(
-            view: 'mail.job-fake-news-detection',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
-    {
-        return [];
+        return $this->subject('Deu certo!')
+            ->markdown('mail.job-fake-news-detection-email');
     }
 }

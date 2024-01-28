@@ -19,7 +19,7 @@ class SendEmail extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Comando que realiza o envio do email contendo as noticias que são fake news';
 
     /**
      * Execute the console command.
@@ -30,6 +30,6 @@ class SendEmail extends Command
     {
         Mail::to('recipient@example.com')->send(new \App\Mail\JobFakeNewsDetectionEmail);
 
-        $this->info('Email sent successfully.');
+        info('Email sent successfully.');
     }
 }

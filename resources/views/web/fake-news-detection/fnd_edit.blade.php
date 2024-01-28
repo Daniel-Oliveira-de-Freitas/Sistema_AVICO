@@ -7,12 +7,12 @@
         <div class="col-md-4 col-md-offset-4 container">
             <h2>Editar Cadastro</h2>
             @include('messages.messages')
-            <form action="{{ route('fake-news-detection.update', $entry->id) }}" method="POST">
+            <form  method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group mb-2">
                     <label class="form-label" for="noticiasInput">Digite o Link da Página de Noticias</label>
-                    <input class="form-control" name="links" id="noticiasInput" type="text"
+                    <input class="form-control" value="{{$jobFakeNewsDetection->links}}" name="links" id="noticiasInput" type="text"
                            placeholder="Ex: https://g1.globo.com" required autofocus>
                 </div>
                 <div class="form-group mb-2">

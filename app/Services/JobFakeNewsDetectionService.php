@@ -6,6 +6,7 @@ use App\Repositories\JobFakeNewsDetectionRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class JobFakeNewsDetectionService
 {
@@ -18,12 +19,14 @@ class JobFakeNewsDetectionService
 
     public function create(Request $jobFndRequest)
     {
+        Log::info("Salvando Job Execution");
         try {
             DB::beginTransaction();
             $this->jobFakeNewsDetectionRepository->save($jobFndRequest);
             DB::commit();
             return true;
         } catch (Exception $e) {
+            Log::error($e);
             DB::rollBack();
             return false;
         }
@@ -34,9 +37,11 @@ class JobFakeNewsDetectionService
      */
     public function getAll()
     {
+        Log::info("Retornando todos os dados da tabela jobFakeNewsDetection");
         try {
             return $this->jobFakeNewsDetectionRepository->getAll()->paginate(10);
         } catch (Exception $e) {
+            Log::error($e);
             return false;
         }
     }
@@ -51,6 +56,7 @@ class JobFakeNewsDetectionService
         try {
             return $this->jobFakeNewsDetectionRepository->getById($id);
         } catch (Exception $e) {
+            Log::error($e);
             return false;
         }
     }
@@ -68,6 +74,7 @@ class JobFakeNewsDetectionService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            Log::error($e);
             DB::rollBack();
             return false;
         }
@@ -85,6 +92,7 @@ class JobFakeNewsDetectionService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            Log::error($e);
             DB::rollBack();
             return false;
         }

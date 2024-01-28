@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class UserService
 {
@@ -36,6 +37,7 @@ class UserService
 
     public function create(Request $request): bool
     {
+        Log::info("Salvando as informações de um novo usuário");
         try {
             DB::beginTransaction();
             $user = $this->userRepository->save($request);
@@ -49,6 +51,7 @@ class UserService
             DB::commit();
             return true;
         } catch (Exception $e) {
+            Log::error($e);
             DB::rollBack();
             return false;
         }
@@ -60,6 +63,7 @@ class UserService
      */
     public function getAllUsers(): Collection
     {
+        Log::info("Recuperando todos os usuários");
         return $this->userRepository->getAll();
     }
 
@@ -70,6 +74,7 @@ class UserService
      */
     public function getAllUsersAwaitingApproval(): LengthAwarePaginator
     {
+        Log::info("Recuperando todos os usuários esperando aprovação");
         return $this->userRepository->getAllAwaitingApproval()->paginate(10);
     }
 
@@ -80,9 +85,11 @@ class UserService
      */
     public function findUserById(int $id): object|bool
     {
+        Log::info("Retornando usuário com id :id", $id);
         try {
             return $this->userRepository->getById($id);
         } catch (Exception $e) {
+            Log::error($e);
             return false;
         }
     }
@@ -95,9 +102,11 @@ class UserService
      */
     public function updateUser(int $id, array $arr): ?bool
     {
+        Log::info("Atualizando usuário com id :id", $id);
         try {
             return $this->userRepository->update($id, $arr);
         } catch (Exception $e) {
+            Log::error($e);
             return false;
         }
     }

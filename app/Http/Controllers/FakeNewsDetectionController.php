@@ -49,7 +49,7 @@ class FakeNewsDetectionController extends Controller
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $jobFakeNewsDetection = $this->jobFakeNewsDetectionService->findById($id);
-        return view('web.fake-news-detection.edit')->with(compact('jobFakeNewsDetection'));
+        return view('web.fake-news-detection.fnd_edit')->with(compact('jobFakeNewsDetection'));
     }
 
     public function update(int $id, $jobFndRequest)
