@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('title', 'Fake News Detection - List')
-
 @section('content')
     <section class="page-section" action="{{ route('fake-news-detection.list') }}">
         <div class="col-md-8 col-md-offset-2 container">
-            <h2>Lista de Cadastros</h2>
+            <div class="d-flex align-items-center justify-content-between">
+                <h2>Lista de Pesquisas</h2>
+                <a href="{{ route('fake-news-detection') }}" class="btn btn-primary">Criar nova pesquisa</a>
+            </div>
             @if(count($jobFakeNewsDetection) > 0)
-                <table class="table">
+                <table class="table mt-3">
                     <thead>
                         <tr>
                             <th>Link</th>
@@ -23,7 +25,7 @@
                                 <td>{{ $entry->cron }}</td>
                                 <td>{{ $entry->emails }}</td>
                                 <td>
-                                    <a href="{{ route('fake-news-detection.edit', $entry->id) }}" class="btn btn-primary">Editar</a>
+                                    <a href="{{ route('fake-news-detection.edit', $entry->id) }}" class="btn btn-success me-2">Editar</a>
                                     <form action="{{ route('fake-news-detection.destroy', $entry->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
