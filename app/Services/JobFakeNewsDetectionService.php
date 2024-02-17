@@ -6,6 +6,7 @@ use App\Repositories\JobFakeNewsDetectionRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class JobFakeNewsDetectionService
@@ -17,7 +18,7 @@ class JobFakeNewsDetectionService
         $this->jobFakeNewsDetectionRepository = new JobFakeNewsDetectionRepository();
     }
 
-    public function create(Request $jobFndRequest)
+    public function create(Request $jobFndRequest): bool
     {
         Log::info("Salvando Job Execution");
         try {
@@ -96,5 +97,11 @@ class JobFakeNewsDetectionService
             DB::rollBack();
             return false;
         }
+    }
+
+    public function retrieveFakeNewsNotice($url)
+    {
+        $response = Http::post("https://mining-api.vercel.app/fakeNewsDetection/scraping", ['url' => $url])->json();
+        return $response;
     }
 }

@@ -1,3 +1,3 @@
 @component('mail::message')
-# Deu certo
+ ## texto: {{ $texto }}
 @endcomponent

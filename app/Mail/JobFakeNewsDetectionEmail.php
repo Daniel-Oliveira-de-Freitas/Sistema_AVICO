@@ -4,8 +4,6 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class JobFakeNewsDetectionEmail extends Mailable
@@ -19,9 +17,9 @@ class JobFakeNewsDetectionEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-      
+        $this->email = $data;
     }
 
     /**
@@ -31,7 +29,11 @@ class JobFakeNewsDetectionEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Deu certo!')
-            ->markdown('mail.job-fake-news-detection-email');
+        info($this->email);
+        return $this->subject('Notificação da varredura de fake news')
+            ->markdown('mail.job-fake-news-detection-email')->with(
+                [
+                    'texto' => $this->email['text'] ?: '' ,
+                ]);
     }
 }
