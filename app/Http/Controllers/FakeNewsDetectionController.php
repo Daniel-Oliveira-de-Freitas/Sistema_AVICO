@@ -31,10 +31,10 @@ class FakeNewsDetectionController extends Controller
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
        if($this->jobFakeNewsDetectionService->create($jobFndRequest)){
            return redirect()->back()
-           ->with('success', 'Job criado com sucesso!');
+           ->with('success', 'Pesquisa Fake-News-Detection criada com sucesso!');
         }
         return redirect()->back()
-        ->with('error', 'Houve um erro ao criar o job, por favor verifique os dados fornecidas!');
+        ->with('error', 'Houve um erro ao criar a pesquisa Fake-News-Detection, por favor verifique os dados fornecidas!');
     }
 
     public function show(int $id)
@@ -55,14 +55,14 @@ class FakeNewsDetectionController extends Controller
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->update($id, $jobFndRequest);
-        return redirect()->route('web.fake-news-detection.update')->with('success', 'Job atualizado com sucesso!');
+        return redirect()->route('web.fake-news-detection.update')->with('success', 'Pesquisa Fake-News-Detection atualizada com sucesso!');
     }
 
     public function destroy(int $id)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->delete($id);
-        return redirect()->route('web.fake-news-detection.list')->with('success', 'Job deletado com sucesso!');
+        return redirect()->route('web.fake-news-detection.list')->with('success', 'Pesquisa Fake-News-Detection deletada com sucesso!');
     }
 
 }

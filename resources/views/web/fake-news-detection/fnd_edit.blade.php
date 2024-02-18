@@ -16,7 +16,7 @@
                            placeholder="Ex: https://g1.globo.com" required autofocus>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="form-label" for="frequenciaInput">Digite o numero de dias para a frequência de varredura</label>
+                    <label class="form-label" for="frequenciaInput">Digite o número de dias para a frequência de varredura</label>
                     <input class="form-control" name="cron" id="frequenciaInput" type="number"
                            placeholder="Ex: 4" required autofocus>
                 </div>
