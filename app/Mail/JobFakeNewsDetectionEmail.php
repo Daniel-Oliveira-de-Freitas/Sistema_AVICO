@@ -33,7 +33,7 @@ class JobFakeNewsDetectionEmail extends Mailable
         return $this->subject('Notificação da varredura de fake news')
             ->markdown('mail.job-fake-news-detection-email')->with(
                 [
-                    'texto' => $this->email['text'] ?: '' ,
+                    'noticiasVerificadas' => $this->email ,
                 ]);
     }
 }
