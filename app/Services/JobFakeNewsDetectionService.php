@@ -101,7 +101,17 @@ class JobFakeNewsDetectionService
 
     public function retrieveFakeNewsNotice($url)
     {
-        $response = Http::post("https://mining-api.vercel.app/fakeNewsDetection/scraping", ['url' => $url])->json();
-        return $response;
+        $resposta = [];
+        $urls = Http::post("https://mining-api.vercel.app/fakeNewsDetection/scraping", ['url' => $url])->json();
+        foreach ($urls['links'] as $url) {
+            $pageText = Http::post("https://mining-api.vercel.app/fakeNewsDetection/crawling", ['link' => $url[0]])->json();
+            if ($pageText) {
+                $text = $pageText[0];
+                $response = Http::post("https://chatbot-integration-nine.vercel.app/fakeNewsDetection/validate", ['text' => $text[2]])
+                    ->json();
+                $resposta[] = ["link" => $url[0], "text" => $response];
+            }
+        }
+        return $resposta;
     }
 }

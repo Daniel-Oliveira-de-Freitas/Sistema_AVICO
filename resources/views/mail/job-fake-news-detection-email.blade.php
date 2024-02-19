@@ -1,3 +1,7 @@
 @component('mail::message')
-{{ $noticiasVerificadas }}
+    | Link da noticia | Classificação |
+    | :----------------|:----------------|
+@foreach($noticiasVerificadas as $item)
+    | <{{$item["link"]}}> | {{$item["text"]}}|
+@endforeach
 @endcomponent
