@@ -21,8 +21,8 @@
                     <tbody>
                         @foreach($jobFakeNewsDetection as $entry)
                             <tr>
-                                <td>{{ $entry->links }}</td>
-                                <td>{{ $entry->cron }}</td>
+                                <td>{{ $entry->link }}</td>
+                                <td>{{ $entry->frequencia }}</td>
                                 <td>{{ $entry->emails }}</td>
                                 <td>
                                     <a href="{{ route('fake-news-detection.edit', $entry->id) }}" class="btn btn-success me-2">Editar</a>
