@@ -16,8 +16,8 @@ class JobFakeNewsDetection extends Model
      * @var array<>
      */
     protected $fillable = [
-        'links',
-        'cron',
+        'link',
+        'frequencia',
         'emails'
         ];
 }

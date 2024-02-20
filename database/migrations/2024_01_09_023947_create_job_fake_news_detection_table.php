@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_fake_news_detection', function (Blueprint $table) {
             $table->id();
-            $table->string('links');
-            $table->string('cron');
+            $table->string('link');
+            $table->string('frequencia');
             $table->string('emails');
         });
     }

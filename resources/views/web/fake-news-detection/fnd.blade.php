@@ -9,13 +9,16 @@
                 @csrf
                 <div class="form-group mb-4">
                     <label class="form-label" for="noticiasInput">Digite o Link da Página de Noticias</label>
-                    <input class="form-control" name="links" id="noticiasInput" type="text"
+                    <input class="form-control" name="link" id="noticiasInput" type="text"
                            placeholder="Ex: https://g1.globo.com" required autofocus>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="form-label" for="frequenciaInput">Digite o numero de dias para a frequência de varredura</label>
-                    <input class="form-control" name="cron" id="frequenciaInput" type="number"
-                           placeholder="Ex: 4" required autofocus>
+                    <label class="form-label" for="frequenciaInput">Selecione o intervalo de tempo para a frequência de varredura</label>
+                    <select class="form-control" name="frequencia" id="frequenciaInput" type="number" required autofocus>
+                        <option value="DIARIO">Diário</option>
+                        <option value="SEMANAL">Semanal</option>
+                        <option value="MENSAL">Mensal</option>
+                    </select>
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label" for="emailInput">Digite o/os email/s que deseja receber os resultados</label>

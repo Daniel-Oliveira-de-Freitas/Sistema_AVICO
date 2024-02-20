@@ -11,8 +11,8 @@ class JobFakeNewsDetectionRepository
     public function save($jobFndRequest): void
     {
         JobFakeNewsDetection::create([
-            'links' => $jobFndRequest->links,
-            'cron' => $jobFndRequest->cron,
+            'link' => $jobFndRequest->link,
+            'frequencia' => $jobFndRequest->frequencia,
             'emails' => $jobFndRequest->emails,
         ]);
     }
