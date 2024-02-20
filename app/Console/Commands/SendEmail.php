@@ -37,8 +37,8 @@ class SendEmail extends Command
         $jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $jobFakeNewsDetections = JobFakeNewsDetection::all();
         foreach ($jobFakeNewsDetections as $jobFakeNewsDetection) {
-            info($jobFakeNewsDetection->links);
-            $resposta = $jobFakeNewsDetectionService->retrieveFakeNewsNotice($jobFakeNewsDetection->links);
+            info($jobFakeNewsDetection->link);
+            $resposta = $jobFakeNewsDetectionService->retrieveFakeNewsNotice($jobFakeNewsDetection->link);
             info($resposta);
             Mail::to($jobFakeNewsDetection->emails)->send(new JobFakeNewsDetectionEmail(collect($resposta)));
         }

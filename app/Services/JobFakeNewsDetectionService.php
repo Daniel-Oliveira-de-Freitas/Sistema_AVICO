@@ -108,11 +108,12 @@ class JobFakeNewsDetectionService
         }
         foreach ($pageurls as $pageUrl) {
             $pageText = Http::post("https://mining-api.vercel.app/fakeNewsDetection/crawling", ['url' => $pageUrl[0]])->json();
+            info($pageText);
             if ($pageText) {
                 $text = $pageText[0];
                 $response = Http::post("https://chatbot-integration-nine.vercel.app/fakeNewsDetection/validate", ['text' => $text[2]])
                     ->json();
-                $resposta[] = ["link" => $url[0], "text" => $response];
+                $resposta[] = ["link" => $pageUrl[0], "text" => $response];
             }
         }
         return $resposta;

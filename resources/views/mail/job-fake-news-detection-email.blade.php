@@ -1,7 +1,7 @@
 @component('mail::message')
     ## A seguir, o resultado de varredura da fake news:
-@if($noticiasVerificadas["error"])
-## Nenhuma noticia encontrada
+@if(isset($noticiasVerificadas["error"]))
+# Nenhuma noticia encontrada
 @else
 | Link da noticia | Classificação |
 | :---------------|:--------------|
