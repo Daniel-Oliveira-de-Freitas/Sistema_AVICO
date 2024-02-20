@@ -111,7 +111,8 @@ class JobFakeNewsDetectionService
             info($pageText);
             if ($pageText) {
                 $text = $pageText[0];
-                $response = Http::post("https://chatbot-integration-nine.vercel.app/fakeNewsDetection/validate", ['text' => $text[2]])
+                info($text);
+                $response = Http::post("https://chatbot-integration-nine.vercel.app/fakeNewsDetection/validate", ['text' => $text])
                     ->json();
                 $resposta[] = ["link" => $pageUrl[0], "text" => $response];
             }
