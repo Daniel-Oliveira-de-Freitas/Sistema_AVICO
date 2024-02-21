@@ -46,7 +46,7 @@ class JobFakeNewsDetectionRepository
         $jobFakeNewsDetection = JobFakeNewsDetection::findorfail($id);
         $jobFakeNewsDetection->update([
             'link' => $jobFndRequest->link,
-            'cron' => $jobFndRequest->cron,
+            'frequencia' => $jobFndRequest->frequencia,
             'emails' => $jobFndRequest->emails
         ]);
     }

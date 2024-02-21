@@ -8,7 +8,7 @@
                 <h2>Lista de Pesquisas</h2>
                 <a href="{{ route('fake-news-detection') }}" class="btn btn-primary">Criar nova pesquisa</a>
             </div>
-            @if(count($jobFakeNewsDetection) > 0)
+            @if(count($jobFakeNewsDetections) > 0)
                 @include('messages.messages')
                 <table class="table mt-3">
                     <thead>

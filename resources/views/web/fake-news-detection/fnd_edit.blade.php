@@ -18,10 +18,10 @@
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label" for="frequenciaInput">Selecione o intervalo de tempo para a frequência de varredura</label>
-                    <select class="form-control" name="frequencia"  id="frequenciaInput" type="number" required autofocus>
-                        <option value="DIARIO">Diário</option>
-                        <option value="SEMANAL">Semanal</option>
-                        <option value="MENSAL">Mensal</option>
+                    <select class="form-control" name="frequencia" value="{{$jobFakeNewsDetection->frequencia}}" id="frequenciaInput" type="number" required autofocus>
+                        <option value="DIARIO" @if($jobFakeNewsDetection->frequencia == 'DIARIO') selected @endif>Diário</option>
+                        <option value="SEMANAL" @if($jobFakeNewsDetection->frequencia == 'SEMANAL') selected @endif>Semanal</option>
+                        <option value="MENSAL" @if($jobFakeNewsDetection->frequencia == 'MENSAL') selected @endif>Mensal</option>
                     </select>
                 </div>
                 <div class="form-group mb-4">
