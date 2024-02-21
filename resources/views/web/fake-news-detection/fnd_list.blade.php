@@ -9,6 +9,7 @@
                 <a href="{{ route('fake-news-detection') }}" class="btn btn-primary">Criar nova pesquisa</a>
             </div>
             @if(count($jobFakeNewsDetection) > 0)
+                @include('messages.messages')
                 <table class="table mt-3">
                     <thead>
                         <tr>
@@ -19,14 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($jobFakeNewsDetection as $entry)
+                        @foreach($jobFakeNewsDetections as $jobFakeNewsDetection)
                             <tr>
-                                <td>{{ $entry->link }}</td>
-                                <td>{{ $entry->frequencia }}</td>
-                                <td>{{ $entry->emails }}</td>
+                                <td>{{ $jobFakeNewsDetection->link }}</td>
+                                <td>{{ $jobFakeNewsDetection->frequencia }}</td>
+                                <td>{{ $jobFakeNewsDetection->emails }}</td>
                                 <td>
-                                    <a href="{{ route('fake-news-detection.edit', $entry->id) }}" class="btn btn-success me-2">Editar</a>
-                                    <form action="{{ route('fake-news-detection.destroy', $entry->id) }}" method="POST" style="display:inline;">
+                                    <a href="{{ route('fake-news-detection.edit', $jobFakeNewsDetection->id) }}" class="btn btn-success me-2">Editar</a>
+                                    <form action="{{ route('fake-news-detection.destroy', $jobFakeNewsDetection->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Você deseja deletar essa fake news detection?')">Deletar</button>

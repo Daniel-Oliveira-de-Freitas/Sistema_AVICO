@@ -7,8 +7,9 @@
         <div class="col-md-4 col-md-offset-4 container">
             <h2 class="text-center mb-4">Editar Pesquisa</h2>
             @include('messages.messages')
-            <form  method="POST" action="{{ route('fake-news-detection.update', $jobFakeNewsDetection->id, $jobFakeNewsDetection ) }}">
-                @csrf
+            <form method="POST" action="{{ route('fake-news-detection.update', $jobFakeNewsDetection->id) }}">
+
+            @csrf
                 @method('PUT')
                 <div class="form-group mb-4">
                     <label class="form-label" for="noticiasInput">Digite o Link da Página de Noticias</label>
@@ -17,7 +18,7 @@
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label" for="frequenciaInput">Selecione o intervalo de tempo para a frequência de varredura</label>
-                    <select class="form-control" name="frequencia" value="{{$jobFakeNewsDetection->frequencia}}" id="frequenciaInput" type="number" required autofocus>
+                    <select class="form-control" name="frequencia"  id="frequenciaInput" type="number" required autofocus>
                         <option value="DIARIO">Diário</option>
                         <option value="SEMANAL">Semanal</option>
                         <option value="MENSAL">Mensal</option>

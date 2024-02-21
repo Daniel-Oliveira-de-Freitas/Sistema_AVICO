@@ -16,9 +16,9 @@ class FakeNewsDetectionController extends Controller
     public function index()
 {
     $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
-    $jobFakeNewsDetection = $this->jobFakeNewsDetectionService->getAll();
+    $jobFakeNewsDetections = $this->jobFakeNewsDetectionService->getAll();
 
-    return view('web.fake-news-detection.fnd_list', compact('jobFakeNewsDetection'));
+    return view('web.fake-news-detection.fnd_list', compact('jobFakeNewsDetections'));
 }
 
     public function create()
@@ -51,18 +51,18 @@ class FakeNewsDetectionController extends Controller
         return view('web.fake-news-detection.fnd_edit')->with(compact('jobFakeNewsDetection'));
     }
 
-    public function update(int $id, $jobFndRequest)
+    public function update(int $id, Request $jobFndRequest)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->update($id, $jobFndRequest);
-        return redirect()->route('web.fake-news-detection.fnd_edit')->with('success', 'Pesquisa Fake-News-Detection atualizada com sucesso!');
+        return redirect()->back()->with('success', 'Pesquisa Fake-News-Detection atualizada com sucesso!');
     }
 
     public function destroy(int $id)
     {
         $this->jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $this->jobFakeNewsDetectionService->delete($id);
-        return redirect()->route('web.fake-news-detection.fnd_list')->with('success', 'Pesquisa Fake-News-Detection deletada com sucesso!');
+        return redirect()->back()->with('success', 'Pesquisa Fake-News-Detection deletada com sucesso!');
     }
 
 }
