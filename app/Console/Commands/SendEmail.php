@@ -18,7 +18,7 @@ class SendEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'send:email';
+    protected $signature = 'send:email {frequencia}';
 
     /**
      * The console command description.
@@ -35,7 +35,7 @@ class SendEmail extends Command
     public function handle()
     {
         $jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
-        $jobFakeNewsDetections = JobFakeNewsDetection::all();
+        $jobFakeNewsDetections = $jobFakeNewsDetectionService->findByFrequencia($this->argument('frequencia'));
         foreach ($jobFakeNewsDetections as $jobFakeNewsDetection) {
             info($jobFakeNewsDetection->link);
             $resposta = $jobFakeNewsDetectionService->retrieveFakeNewsNotice($jobFakeNewsDetection->link);

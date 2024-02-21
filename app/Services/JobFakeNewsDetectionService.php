@@ -62,6 +62,21 @@ class JobFakeNewsDetectionService
         }
     }
 
+    /**
+     * Retorna um conteudo por id
+     * @param int $id
+     * @return object|bool
+     */
+    public function findByFrequencia(string $frequencia): object|bool
+    {
+        try {
+            return $this->jobFakeNewsDetectionRepository->getByFrequencia($frequencia);
+        } catch (Exception $e) {
+            Log::error($e);
+            return false;
+        }
+    }
+
     /*
      * Atualiza os dados de um conteudo
      * @param int $id

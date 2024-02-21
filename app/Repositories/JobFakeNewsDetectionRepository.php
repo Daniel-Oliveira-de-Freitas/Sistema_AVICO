@@ -17,13 +17,13 @@ class JobFakeNewsDetectionRepository
         ]);
     }
 
-      /**
+    /**
      * Retorna todos os conteudos do banco de dados
      * @return Builder
      */
     public function getAll(): Builder
     {
-        return DB::table('job_fake_news_detection')->orderBy('id', 'DESC');
+        return DB::table('job_fake_news_detection')->orderBy('id', 'ASC');
     }
 
     /**
@@ -34,6 +34,16 @@ class JobFakeNewsDetectionRepository
     public function getById(int $id): object
     {
         return JobFakeNewsDetection::findorfail($id);
+    }
+
+    /**
+     * Retorna um conteudo por id
+     * @param int $id
+     * @return object
+     */
+    public function getByFrequencia(string $frequencia): object
+    {
+        return DB::table('job_fake_news_detection')->where("frequencia", $frequencia)->get();
     }
 
     /**
