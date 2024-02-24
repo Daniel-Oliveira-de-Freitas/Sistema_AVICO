@@ -37,10 +37,10 @@ class SendEmail extends Command
         $jobFakeNewsDetectionService = new JobFakeNewsDetectionService();
         $jobFakeNewsDetections = $jobFakeNewsDetectionService->findByFrequencia($this->argument('frequencia'));
         foreach ($jobFakeNewsDetections as $jobFakeNewsDetection) {
-            info($jobFakeNewsDetection->link);
             $resposta = $jobFakeNewsDetectionService->retrieveFakeNewsNotice($jobFakeNewsDetection->link);
-            info($resposta);
-            Mail::to($jobFakeNewsDetection->emails)->send(new JobFakeNewsDetectionEmail(collect($resposta)));
+            $emails = explode(',', $jobFakeNewsDetection->emails);
+            info($emails);
+            Mail::to($emails)->send(new JobFakeNewsDetectionEmail(collect($resposta)));
         }
 
         info('Email sent successfully.');

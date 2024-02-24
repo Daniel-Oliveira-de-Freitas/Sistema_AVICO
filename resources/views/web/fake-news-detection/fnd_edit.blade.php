@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label" for="emailInput">Digite o/os email/s que deseja receber os resultados</label>
-                    <input class="form-control" name="emails" id="emailInput" type="email" value="{{$jobFakeNewsDetection->emails}}"
+                    <input class="form-control" name="emails" id="emailInput" type="text" value="{{$jobFakeNewsDetection->emails}}"
                            placeholder="Digite o/os email/s" required autofocus>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">

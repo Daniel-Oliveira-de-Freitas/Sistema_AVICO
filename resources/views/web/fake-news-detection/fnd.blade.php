@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label" for="emailInput">Digite o/os email/s que deseja receber os resultados</label>
-                    <input class="form-control" name="emails" id="emailInput" type="email"
+                    <input class="form-control" name="emails" id="emailInput" type="text"
                            placeholder="Digite o/os email/s" required autofocus>
                 </div>
                 <div class="d-flex justify-content-center">
