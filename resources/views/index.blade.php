@@ -14,7 +14,7 @@
 
     <section class="page-section" id="noticias">
         <div class="container px-lg-5">
-            <livewire:notices-carousel/>
+{{--            <livewire:notices-carousel/>--}}
         </div>
     </section>
 

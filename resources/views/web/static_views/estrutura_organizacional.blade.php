@@ -12,58 +12,51 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/perfil-paola.jpeg') }}"
-                            alt="..." />
-                        <h4>Paola Falceta</h4>
-                        <p class="text-muted">Presidente e fundadora da Avico Brasil</p>
-                        <p class="text-muted">Assistente social, defensora e pós-graduanda em Direitos Humanos com atuação
-                            na área da saúde e educação. Con-sultora na área de responsabilidade social e sustentabilidade.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="team-member">
                         <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/RosangelaOSilva.png') }}"
-                            alt="..." />
+                             alt="..." />
                         <h4>Rosângela O. Silva</h4>
-                        <p class="text-muted">Vice-presidente de saúde da Avico Brasil</p>
-                        <p class="text-muted">Socióloga(FESPSP), Assistente Social(Universidade Braz Cubas) - CRESS 61.689,
-                            Servidora Pública. Assiciada da Avico Brasil.
-                        </p>
+                        <p class="text-muted">Presidente</p>
+                        <p class="text-muted">Socióloga (FESPSP), Assistente Social (Universidade Braz Cubas) - CRESS 61.689, Servidora Pública da área da saúde.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="{{ asset('images/assets/img/team/paola.jpg') }}"
+                             alt="..." />
+                        <h4>Paola Falceta</h4>
+                        <p class="text-muted">Vice-presidente de saúde e fundadora da Avico Brasil</p>
+                        <p class="text-muted">Assistente social, Defensora Direitos Humanos com atuação na área da saúde e educação, e Conselheira Estadual de Saúde – CES/RS.</p>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
-                            src="{{ asset('images/assets/img/team/PamelaCopettiGhisleni.png') }}" alt="..." />
-                        <h4>Pâmela Copetti Ghisleni</h4>
-                        <p class="text-muted">Vice-presidente júridica da Avico Brasil</p>
-                        <p class="text-muted">Professora do Curso de Graduação em Direito da Faculdade CNEC Santo Ângelo,
-                            Advogada(OAB/RS 100.497).</p>
+                             src="{{ asset('images/assets/img/team/denise.jpg') }}" alt="..." />
+                        <h4>Denise Muniz</h4>
+                        <p class="text-muted">Vice-Presidente Administrativo-Financeiro</p>
+                        <p class="text-muted">Fisioterapeuta, com atuação em Traumato-Ortopedia e Especialização em FisioUrogineco.</p>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
-                            src="{{ asset('images/assets/img/team/VeraLuciadeMeloAragao.png') }}" alt="..." />
-                        <h4>Vera Lúcia de Melo Aragão</h4>
-                        <p class="text-muted">Vice-presidente de Assistência Social e Previdência da Avico Brasil</p>
-                        <p class="text-muted">Professora, Pedagoga e Historiadora formada pela UERJ, com Pós graduação em
-                            Gestão Escolar, Supervisão e Orientação Escolar pelas faculdades Estácio de Sá - RJ e Cândido Mendes.</p>
+                             src="{{ asset('images/assets/img/team/gutemberg.jpg') }}" alt="..." />
+                        <h4>Gutenberg Alves Fortaleza Teixeira</h4>
+                        <p class="text-muted">Vice-Presidente Jurídico</p>
+                        <p class="text-muted">Advogado, especialista em Direito Internacional Público e Relações Internacionais (Léon – ULE/Espanha), Docente do curso de Direito da FAVALE.</p>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="team-member">
                         <img class="mx-auto rounded-circle"
-                            src="{{ asset('images/assets/img/team/AcirJosePereiradeBastos.png') }}" alt="..." />
-                        <h4>Acir José Pereira de Bastos</h4>
-                        <p class="text-muted">Vice-presidente Administrativo Financeiro da Avico Brasil</p>
-                        <p class="text-muted">Empresário, Formado em Administração pela UFPR, Pós-graduado em Auditoria e
-                            MBA em Gestão Empresarioal pela FAE Business School Curitiba-PR.
+                             src="{{ asset('images/assets/img/team/luciana.jpg') }}" alt="..." />
+                        <h4>Luciana Faraco de Carolis</h4>
+                        <p class="text-muted">Vice-Presidente de Assistência Social e Previdência</p>
+                        <p class="text-muted">Advogada, com atuação nas áreas de Direito de Família e Sucessões, Cível e Criminal.
                         </p>
                     </div>
                 </div>

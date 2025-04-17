@@ -17,7 +17,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="/sobre">Nossa origem</a></li>
-                        <li><a class="dropdown-item" href="/estrutura">Estrutua organizacional</a></li>
+                        <li><a class="dropdown-item" href="/estrutura">Estrutura organizacional</a></li>
                         <li class="dropdown-item"><a class="nav-link" href="/nucleos">Núcleos Estaduais</a></li>
                         <li><a class="dropdown-item" href="/estatuto">Estatuto</a></li>
                     </ul>
