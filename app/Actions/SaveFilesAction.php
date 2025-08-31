@@ -2,36 +2,58 @@
 
 namespace App\Actions;
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
+
 class SaveFilesAction
 {
-    public static function registerFormFilesSave($files, $folderName): array
+    public static function registerFormFilesSave($files, $folderName)
     {
         $absolutePath = 'files/' . $folderName;
         $count = 0;
-        $filePaths = array();
+        $filePaths = [];
+
         foreach (collect($files)['registerFiles'] as $file) {
             $count++;
             if (!is_array($file) && $file !== null) {
-                array_push($filePaths, $file->storeAs($absolutePath, $count . $file->getClientOriginalName(), 'public'));
+                $filePaths[] = $file->storeAs($absolutePath, $count . $file->getClientOriginalName(), 'public');
             } elseif (is_array($file)) {
                 foreach ($file as $f) {
-                    array_push($filePaths, $f->storeAs($absolutePath, $count . $f->getClientOriginalName(), 'public'));
+                    $filePaths[] = $f->storeAs($absolutePath, $count . $f->getClientOriginalName(), 'public');
                 }
             }
         }
+
         return [
-            'arquivos' => $filePaths,
-            'caminho_arquivos' => $absolutePath
+            'arquivos'         => $filePaths,
+            'caminho_arquivos' => $absolutePath,
         ];
     }
 
-    public static function noticeFileSave($file): string
+    /**
+     * Salva a imagem em public/images/assets/img/noticias e retorna caminho relativo (para asset()).
+     * @param UploadedFile|null $file
+     * @return string|null
+     */
+    public static function noticeFileSave($file)
     {
-        if (!empty($file)) {
-            $name = $file->getClientOriginalName();
-            $file->move(public_path('images\assets\noticias\\'), $name);
-            return 'images\assets\noticias\\' . $name;
+        if (!$file instanceof UploadedFile) {
+            return null;
         }
-        return '';
+
+        $folder = 'images/assets/img/noticias';
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $ext = $file->getClientOriginalExtension();
+        $safeName = time() . '_' . Str::slug($originalName) . '.' . $ext;
+
+        // garante o diretório
+        $absFolder = public_path($folder);
+        if (!is_dir($absFolder)) {
+            @mkdir($absFolder, 0775, true);
+        }
+
+        $file->move($absFolder, $safeName);
+
+        return $folder . '/' . $safeName;
     }
 }

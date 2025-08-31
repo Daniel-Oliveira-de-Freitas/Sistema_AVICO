@@ -8,15 +8,17 @@
         </div>
         @include('messages.messages')
         @forelse ($noticias as $noticia)
-            <div class="row border-top  pt-3">
-                <div class="col-lg-4"><img class="img-fluid" src="{{ asset($noticia->caminho_imagem) }}" alt=""></div>
-                <div class="col-lg-8 rpttitle">
-                    <div class="sem_cor"><a href="{{ route('visualizar.noticia', $noticia->id) }}">
-                            <h5>{{ $noticia->titulo }}</h5></a>
-                    </div>
-                    <p>{!! Str::limit($noticia->conteudo, 250) !!}</p>
-                    <div class="float-end pe-2 pb-4"><a class="btn btn-primary btn-sm"
-                            href="{{ route('visualizar.noticia', $noticia->id) }}">Leia Mais</a>
+            <div class="row border-top py-3 my-3">
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{{ asset($noticia->caminho_imagem) }}" alt="">
+                </div>
+                <div class="col-lg-8 rpttitle d-flex flex-column">
+                    <a href="{{ route('visualizar.noticia', $noticia->id) }}" class="sem_cor">
+                        <h5 class="mb-2">{{ $noticia->titulo }}</h5>
+                    </a>
+                    <p class="mb-3">{!! Str::limit($noticia->conteudo, 250) !!}</p>
+                    <div class="mt-auto d-flex justify-content-end">
+                        <a class="btn btn-primary btn-sm" href="{{ route('visualizar.noticia', $noticia->id) }}">Leia Mais</a>
                     </div>
                 </div>
             </div>

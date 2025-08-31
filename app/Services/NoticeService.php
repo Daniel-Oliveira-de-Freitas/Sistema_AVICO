@@ -2,78 +2,74 @@
 
 namespace App\Services;
 
-use App\Http\Requests\NoticeRequest;
+use App\Http\Requests\Notice\NoticeRequest;
 use App\Repositories\NoticeRepository;
 use Exception;
 
 class NoticeService
 {
-    protected NoticeRepository $noticeRepository;
+    /** @var NoticeRepository */
+    protected $noticeRepository;
 
     public function __construct()
     {
         $this->noticeRepository = new NoticeRepository();
     }
 
+    /** @return bool */
     public function createNotice(NoticeRequest $nr)
     {
         try {
             $this->noticeRepository->save($nr);
+            return true;
         } catch (Exception $e) {
+            report($e);
             return false;
         }
     }
 
-    /**
-     * Retorna todos os usuario do banco de dados
-     */
+    /** @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|false */
     public function getAllNotices()
     {
         try {
             return $this->noticeRepository->getAll()->paginate(10);
         } catch (Exception $e) {
+            report($e);
             return false;
         }
     }
 
-    /**
-     * Retorna um usuario por id
-     * @param int $id
-     * @return object|bool
-     */
-    public function findNoticeById(int $id): object|bool
+    /** @return object|false */
+    public function findNoticeById($id)
     {
         try {
-            return $this->noticeRepository->getById($id);
+            return $this->noticeRepository->getById((int) $id);
         } catch (Exception $e) {
+            report($e);
             return false;
         }
     }
 
-    /*
-     * Atualiza os dados de um usuario
-     * @param int $id
-     * @param NoticeRequest $nr
-     */
-    public function updateNotice(int $id, NoticeRequest $nr)
+    /** @return bool */
+    public function updateNotice($id, NoticeRequest $nr)
     {
         try {
-            $this->noticeRepository->update($id, $nr);
+            $this->noticeRepository->update((int) $id, $nr);
+            return true;
         } catch (Exception $e) {
+            report($e);
             return false;
         }
     }
 
-    /**
-     * Deleta um usuario
-     * @param int $id
-     */
+    /** @return bool */
     public function deleteNotice($id)
     {
         try {
-            $this->noticeRepository->destroy($id);
+            $this->noticeRepository->destroy((int) $id);
             return true;
         } catch (Exception $e) {
+            report($e);
             return false;
         }
     }

@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\Notice;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NoticeRequest;
+use App\Http\Requests\Notice\NoticeRequest;
 use App\Services\NoticeService;
 
 class NoticeController extends Controller
 {
-    protected NoticeService $noticeService;
+    /** @var NoticeService */
+    protected $noticeService;
+
+    public function __construct()
+    {
+        $this->noticeService = new NoticeService();
+    }
 
     public function index()
     {
-        $this->noticeService = new NoticeService();
         $noticias = $this->noticeService->getAllNotices();
         return view('web.noticias.listar-noticias')->with(compact('noticias'));
     }
@@ -24,37 +29,37 @@ class NoticeController extends Controller
 
     public function store(NoticeRequest $nr)
     {
-        $this->noticeService = new NoticeService();
-        $this->noticeService->createNotice($nr);
-        return redirect()->back()
-            ->with('success', 'Noticia criada com sucesso!');
+        $ok = $this->noticeService->createNotice($nr);
+
+        return redirect()->route('listar.noticias')
+            ->with($ok ? 'success' : 'error', $ok ? 'Noticia criada com sucesso!' : 'Falha ao criar notícia.');
     }
 
-    public function show(int $id)
+    public function show($id)
     {
-        $this->noticeService = new NoticeService();
-        $noticia = $this->noticeService->findNoticeById($id);
+        $noticia = $this->noticeService->findNoticeById((int) $id);
         return view('web.noticias.visualizar-noticia')->with(compact('noticia'));
     }
 
-    public function edit(int $id)
+    public function edit($id)
     {
-        $this->noticeService = new NoticeService();
-        $noticia = $this->noticeService->findNoticeById($id);
+        $noticia = $this->noticeService->findNoticeById((int) $id);
         return view('web.noticias.editar-noticia')->with(compact('noticia'));
     }
 
-    public function update(int $id, NoticeRequest $nr)
+    public function update($id, NoticeRequest $nr)
     {
-        $this->noticeService = new NoticeService();
-        $this->noticeService->updateNotice($id, $nr);
-        return redirect()->route('listar.noticias')->with('success', 'Noticia atualizada com sucesso!');
+        $ok = $this->noticeService->updateNotice((int) $id, $nr);
+
+        return redirect()->route('listar.noticias')
+            ->with($ok ? 'success' : 'error', $ok ? 'Noticia atualizada com sucesso!' : 'Falha ao atualizar notícia.');
     }
 
-    public function destroy(int $id)
+    public function destroy($id)
     {
-        $this->noticeService = new NoticeService();
-        $this->noticeService->deleteNotice($id);
-        return redirect()->route('listar.noticias')->with('success', 'Noticia deletada com sucesso!');
+        $ok = $this->noticeService->deleteNotice((int) $id);
+
+        return redirect()->route('listar.noticias')
+            ->with($ok ? 'success' : 'error', $ok ? 'Noticia deletada com sucesso!' : 'Falha ao deletar notícia.');
     }
 }
