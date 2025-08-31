@@ -2,33 +2,56 @@
 @section('title', 'Cadastro de Noticia - AVICO')
 
 @section('content')
-    <section class="form_body container rows ">
+    <section class="container form_body rows">
         @include('messages.messages')
-        <form action="{{ route('criar.noticia.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('criar.noticia.store') }}" method="POST" enctype="multipart/form-data" class="mb-5">
             @csrf
-            <div class="col-md-8 col-md-offset-8" style="left: 17%; ">
-                <div class="form-group mb-4">
-                    <label> Titulo*</label>
-                    <input type="text" class="form-control" name="title" placeholder="Adicione o Titulo da noticia">
-                    <x-error-message errorName="title"/>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="form-group mb-4">
+                        <label for="titulo">Título*</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="titulo"
+                            name="title"
+                            placeholder="Adicione o título da notícia"
+                            required
+                        >
+                        <x-error-message errorName="title"/>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="editor1">Notícia*</label>
+                        <input
+                            id="editor1"
+                            type="hidden"
+                            name="body"
+                            value="{{ old('body') }}"
+                        >
+                        <trix-editor input="editor1"></trix-editor>
+                        <x-error-message errorName="body"/>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="userfile">Carregar imagem</label>
+                        <input
+                            id="userfile"
+                            type="file"
+                            name="userfile"
+                            accept="image/jpeg,image/png"
+                            class="form-control-file"
+                        >
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ route('listar.noticias') }}" class="btn btn-outline-secondary btn-sm">
+                            <i class="fa fa-times"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-save"></i> Salvar
+                        </button>
+                    </div>
+                    <input type="hidden" name="redirect_to" value="{{ route('listar.noticias') }}">
                 </div>
-                <div class="form-group mb-4">
-                    <label> Noticia* </label>
-                    <input id="editor1" class="form-control" name="body" placeholder="Adicione a noticia"
-                           type="hidden" name="content">
-                    <trix-editor input="editor1"></trix-editor>
-                    <x-error-message errorName="body"/>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label> Carregar Imagem </label>
-                    <input type="file" name="userfile" accept="image/.jpg,.png,.jpeg">
-                    <button type="submit" class="btn btn-success col-md-2 mt-4" style="margin-left: 83%;">Salvar
-                    </button>
-                </div>
-
             </div>
         </form>
     </section>
-
 @endsection

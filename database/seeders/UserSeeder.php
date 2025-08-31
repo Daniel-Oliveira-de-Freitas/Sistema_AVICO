@@ -2,25 +2,26 @@
 
 namespace Database\Seeders;
 
+use App\Enums\StatusType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
-        $admin = new User();
-        $admin->email =  'admin@admin.com';
-        $admin->password = '123';
-        $admin->status = 'aprovado';
-        $admin->active = 'true';
-        $admin->save();
+        $email = 'admin@admin.com';
+        $plainPassword = '123';
+        $status = StatusType::Aprovado;
+
+        $admin = User::updateOrCreate(
+            ['email' => $email],
+            [
+                'password' => $plainPassword,
+                'status' => $status,
+                'active' => true,
+            ],
+        );
         $admin->assignRole('admin');
     }
 }

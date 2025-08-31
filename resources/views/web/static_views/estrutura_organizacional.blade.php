@@ -61,16 +61,13 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h4>Patrícia Teixeira</h4>
-                    <p class="large text-muted">Secretária-Geral</p>
-                    <br><br>
-                    <h4 class="section-subheading text-muted mb-4">Conselho Fiscal</h4>
-                    <h4>Bruno da Rosa Lumertz, Gabriela Moraes dos Santos e Nicolas Alcântara Rocha</h4>
+                    <h4 class="section-subheading mb-4">Conselho Fiscal</h4>
+                    <h4>Patricia Teixeira, Dione Michels Sá de Souza
+                        e Carolina Tavares Oliveira Borges</h4>
                     <p class="large text-muted">Titulares</p>
-                    <h4>Carolina Tavares Oliveira Borges, Luiz Fernando Valadares Flores e Núria Debertolis de Motta</h4>
+                    <h4>Gabriela Moraes dos Santos, Maria Salete Magnoni e Ruth da Silva Lacerda</h4>
                     <p class="large text-muted">Suplentes</p>
                 </div>
             </div>
